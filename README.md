@@ -21,10 +21,6 @@ GitHub Repo: https://github.com/quattrobaje3na-png/Mining-Tool
 
 YouTube: https://youtube.com/@CMDRQuattro
 
-If you run into any bugs or issues, post them in the discussion here or on the GitHub and I will look into them. Improvements will continue to be made as the game develops.
-
-🛠️ GENERAL USE: Open the GitHub Website linked above. It is fully optimized to work seamlessly on Mobile or Desktop.
-
 ⚖️ DISCLAIMERS & LEGAL:
 This is a fan-made community tool. Star Citizen®, Roberts Space Industries®, and Cloud Imperium® are registered trademarks of Cloud Imperium Rights LLC. All other content on this site is property of its respective owners. This tool is not endorsed by or affiliated with Cloud Imperium or Roberts Space Industries. All game data is subject to change as development progresses.
 

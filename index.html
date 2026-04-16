@@ -250,6 +250,31 @@
                 filteredLocs = filteredLocs.filter(l => activeFilters.every(sel => l.allMatsSet.has(sel))); 
             }
 
+            // DYNAMIC SORTING: Calculate yield scores and sort highest to top
+            filteredLocs.forEach(loc => {
+                let sortScore = 0;
+                if (activeFilters.length > 0) {
+                    ['Ship', 'ROC', 'Hand'].forEach(method => {
+                        if (loc.methods[method]) {
+                            loc.methods[method].forEach(mat => {
+                                if (activeFilters.includes(mat.name)) {
+                                    sortScore += mat.chance;
+                                }
+                            });
+                        }
+                    });
+                }
+                loc.sortScore = sortScore;
+            });
+
+            if (activeFilters.length > 0) {
+                // Sort by combined percentage (highest on top)
+                filteredLocs.sort((a, b) => b.sortScore - a.sortScore);
+            } else {
+                // Fallback to alphabetical order if no specific materials are selected
+                filteredLocs.sort((a, b) => a.name.localeCompare(b.name));
+            }
+
             const grid = document.createElement('div');
             grid.className = 'loc-grid';
             

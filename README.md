@@ -15,7 +15,7 @@ Note: Sadaryx & Savrilium can be found specifically at the Rock Breaker Contract
 
 Direct Tool: https://quattrobaje3na-png.github.io/Mining-Tool/
 
-Website Hub: https://citizen-starter-guide.com/mining-calculator/](https://citizen-starter-guide.com/star-citizen-mining-material-finder/
+Website Hub: https://citizen-starter-guide.com/star-citizen-mining-material-finder/
 
 GitHub Repo: https://github.com/quattrobaje3na-png/Mining-Tool
 

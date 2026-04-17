@@ -6,6 +6,7 @@ Works great on Desktop & Mobile
 
 It eliminates spreadsheet hunting, giving you 100% accurate drop rates and locations so you can mine more effectively.
 Whether you are looking for direction during an event or just want to maximize your crafted gears quality, this tool gives you the best locations to go mine. 
+This tool keeps things simple so new or old players alike can jump into Star Citizen 4.7 and start mining with relative ease. 
 
 🕹️ LOCATION DATABASE: Choose Stanton, Pyro, or Nyx. Select up to 3 required materials (Quantainium, Laranite, etc.). The tool will instantly filter the database and display the locations mathematical drop-percentage chances for Ship, ROC, and Hand mining deposits. Lagrange pools with shared mining values, like ARC-L5, CRU-L4, MIC-L3, are smartly grouped together to save you time.
 

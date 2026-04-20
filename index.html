@@ -5,78 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>CMDR Quattro - 4.7.1 STAR CITIZEN MINING MATERIAL FINDER 2.0</title>
     <style>
-
-       .support-container {
-    margin: 20px auto;
-    max-width: 1000px; /* Matches your main content width */
-    background: rgba(15, 15, 15, 0.7); /* Translucent dark background */
-    border: 1px solid #333;
-    border-left: 4px solid #ff4d4d; /* Red accent matching 'Unlawful' style */
-    border-radius: 4px;
-    padding: 12px 20px;
-    backdrop-filter: blur(5px); /* Smooth glass effect */
-}
-
-.support-content {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
-}
-
-.support-message {
-    margin: 0;
-    color: #e0e0e0;
-    font-size: 0.9rem;
-    line-height: 1.4;
-    flex: 1;
-}
-
-.support-message strong {
-    color: #ff4d4d; /* Highlights the call to action */
-}
-
-.support-link {
-    display: inline-flex;
-    align-items: center;
-    background-color: #f0f0f0;
-    color: #000;
-    padding: 8px 18px;
-    border-radius: 3px; /* Sharper edges to match game UI */
-    text-decoration: none;
-    font-weight: 800;
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    transition: all 0.2s ease;
-    white-space: nowrap;
-}
-
-.support-link:hover {
-    background-color: #ffffff;
-    box-shadow: 0 0 15px rgba(255, 77, 77, 0.4);
-    transform: translateY(-1px);
-}
-
-.support-avatar {
-    width: 22px;
-    height: 22px;
-    border-radius: 50%;
-    margin-right: 10px;
-    border: 1px solid #ccc;
-}
-
-/* Responsive adjustment for mobile pilots */
-@media (max-width: 768px) {
-    .support-content {
-        flex-direction: column;
-        text-align: center;
-        gap: 12px;
-    }
-    .support-message {
-        font-size: 0.85rem;
-    }
-}
         :root { 
             --bg-base: #09090b; --bg-card: #141417; --border: #27272a; 
             --text-main: #f8fafc; --text-muted: #94a3b8; 
@@ -95,12 +23,42 @@
         .spinner { border: 4px solid rgba(255,255,255,0.05); width: 40px; height: 40px; border-radius: 50%; border-left-color: var(--accent); animation: spin 1s linear infinite; margin: 0 auto 20px auto; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
-        .mining-header { background: var(--bg-card); padding: 20px; border-radius: 8px; border: 1px solid var(--border); border-top: 3px solid var(--accent); }
-        .mining-header-title { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; border-bottom: 1px solid var(--border); padding-bottom: 10px; }
-        .mining-title { font-size: 1.4rem; font-weight: 800; color: var(--text-main); letter-spacing: 1px; text-transform: uppercase; }
-        .mining-title span { color: var(--accent); }
-        .mining-credit { font-size: 0.85rem; color: var(--theme); background: rgba(0, 229, 255, 0.1); padding: 4px 8px; border-radius: 4px; border: 1px solid rgba(0, 229, 255, 0.2); font-weight: bold;}
+        /* HEADER REBUILD - 2 ROW LAYOUT */
+        .mining-header { background: var(--bg-card); padding: 20px; border-radius: 8px; border: 1px solid var(--border); border-top: 3px solid var(--accent); margin-bottom: 20px; }
         
+        /* Top Row: Title & Version Badge */
+        .mining-header-top { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); padding-bottom: 15px; margin-bottom: 15px; flex-wrap: wrap; gap: 15px; }
+        .mining-title { font-size: 1.4rem; font-weight: 800; color: var(--text-main); letter-spacing: 1px; text-transform: uppercase; margin: 0;}
+        .mining-title span { color: var(--accent); }
+        .mining-credit { font-size: 0.85rem; color: var(--theme); background: rgba(0, 229, 255, 0.1); padding: 4px 8px; border-radius: 4px; border: 1px solid rgba(0, 229, 255, 0.2); font-weight: bold; white-space: nowrap; }
+        
+        /* Bottom Row: Tabs & Subscribe CTA */
+        .mining-header-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; }
+        
+        /* CTA Box */
+        .header-sub-cta { display: flex; align-items: center; gap: 15px; background: #1a1a1c; padding: 10px 15px; border-radius: 8px; border: 1px solid #333; border-left: 3px solid #d47631; }
+        .header-sub-text { display: flex; flex-direction: column; gap: 2px; text-align: left; }
+        .header-sub-title { color: #ffffff; font-size: 0.95rem; font-weight: 700; margin: 0; letter-spacing: 0.2px; }
+        .header-sub-desc { color: #8a8a8a; font-size: 0.75rem; margin: 0; }
+        
+        /* 3D Subscribe Button */
+        .sub-action-btn { display: inline-flex; align-items: center; background: linear-gradient(180deg, #ff0000 0%, #cc0000 100%); color: #ffffff; text-decoration: none; padding: 8px 18px; border-radius: 6px; font-weight: 800; font-size: 0.9rem; letter-spacing: 0.5px; box-shadow: 0 4px 0 #990000, 0 5px 10px rgba(0, 0, 0, 0.3); transition: transform 0.1s ease, box-shadow 0.1s ease, background 0.2s ease; white-space: nowrap; }
+        .sub-action-btn:hover { background: linear-gradient(180deg, #ff1a1a 0%, #e60000 100%); }
+        .sub-action-btn:active { transform: translateY(4px); box-shadow: 0 0 0 #990000, 0 2px 5px rgba(0, 0, 0, 0.3); }
+        .sub-action-logo { width: 20px; height: 20px; border-radius: 50%; margin-right: 8px; border: 1px solid rgba(255, 255, 255, 0.3); box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 950px) {
+            .mining-header-bottom { flex-direction: column; align-items: flex-start; }
+            .header-sub-cta { width: 100%; justify-content: space-between; }
+        }
+        @media (max-width: 550px) {
+            .mining-header-top { flex-direction: column; align-items: flex-start; }
+            .header-sub-cta { flex-direction: column; text-align: center; align-items: stretch; }
+            .header-sub-text { text-align: center; }
+            .sub-action-btn { justify-content: center; }
+        }
+
         /* Tabs */
         .tab-bar { display: flex; gap: 10px; }
         .tab-btn { background: var(--bg-base); color: var(--text-muted); border: 1px solid var(--border); padding: 10px 20px; border-radius: 4px; cursor: pointer; font-size: 0.95rem; font-weight: 600; transition: 0.2s; text-transform: uppercase; letter-spacing: 0.5px; }
@@ -108,7 +66,7 @@
         .tab-btn.active { background: rgba(249, 115, 22, 0.1); color: var(--accent); border-color: var(--accent); }
 
         /* Advisory Box */
-        .advisory-box { background: rgba(249, 115, 22, 0.1); border: 1px solid rgba(249, 115, 22, 0.2); border-left: 4px solid var(--accent); padding: 15px 20px; border-radius: 4px; margin-top: 20px; margin-bottom: 20px; display: flex; align-items: flex-start; gap: 15px; }
+        .advisory-box { background: rgba(249, 115, 22, 0.1); border: 1px solid rgba(249, 115, 22, 0.2); border-left: 4px solid var(--accent); padding: 15px 20px; border-radius: 4px; margin-bottom: 25px; display: flex; align-items: flex-start; gap: 15px; }
         .advisory-icon { font-size: 1.5rem; margin-top: 2px;}
         .advisory-text { font-size: 0.95rem; color: var(--text-main); line-height: 1.5; }
         .advisory-text strong { color: var(--accent); }
@@ -132,7 +90,9 @@
         .loc-mat-row:last-child { border-bottom: none; padding-bottom: 0; }
         .loc-mat-pct { color: var(--theme); font-family: monospace; font-weight: bold; }
         
-        .loc-filters { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; background: var(--bg-card); padding: 15px; border-radius: 8px; border: 1px solid var(--border); }
+        .loc-filters { display: flex; flex-direction: column; gap: 15px; margin-bottom: 20px; background: var(--bg-card); padding: 20px; border-radius: 8px; border: 1px solid var(--border); }
+        .loc-filters-top { display: flex; justify-content: space-between; align-items: center; gap: 15px; flex-wrap: wrap; border-bottom: 1px solid var(--border); padding-bottom: 15px; }
+        .loc-filters-bottom { display: flex; flex-direction: column; gap: 10px; }
         .loc-select { background: var(--bg-base); color: var(--text-main); border: 1px solid var(--border); padding: 10px; border-radius: 4px; flex: 1; min-width: 200px; font-size: 0.9rem; outline: none; transition: border-color 0.2s; }
         .loc-select:focus { border-color: var(--theme); }
 
@@ -156,7 +116,7 @@
         .sig-note { font-size: 0.75rem; color: var(--text-muted); margin-top: 12px; border-top: 1px solid var(--border); padding-top: 12px; display:flex; justify-content: space-between; align-items: center;}
         
         .sig-filter-controls { display: flex; justify-content: space-between; align-items: center; gap: 15px; margin-bottom: 15px; flex-wrap: wrap; }
-        .sig-search { flex: 1; background: var(--bg-card); color: var(--text-main); border: 1px solid var(--border); padding: 10px 15px; border-radius: 4px; font-size: 0.95rem; outline: none; transition: border-color 0.2s; }
+        .sig-search { flex: 1; background: var(--bg-base); color: var(--text-main); border: 1px solid var(--border); padding: 10px 15px; border-radius: 4px; font-size: 0.95rem; outline: none; transition: border-color 0.2s; min-width: 250px;}
         .sig-search:focus { border-color: var(--accent); }
         .mining-subtabs { display: flex; gap: 8px; }
         .mining-subtab { background: var(--bg-card); color: var(--text-muted); border: 1px solid var(--border); padding: 8px 16px; border-radius: 4px; cursor: pointer; font-size: 0.85rem; font-weight: 600; transition: 0.2s; text-transform: uppercase;}
@@ -188,28 +148,31 @@
         </div>
 
         <div id="app-screen" class="screen">
+            
             <div class="mining-header">
-                <div class="mining-header-title">
+                <div class="mining-header-top">
                     <div class="mining-title">CMDR QUATTRO <span>4.7.1 STAR CITIZEN MINING MATERIAL FINDER 2.0</span></div>
                     <div class="mining-credit" id="version-label">Version: Loading...</div>
                 </div>
-                <div class="tab-bar">
-                    <button class="tab-btn active" id="tab-locs" onclick="switchTab('locs')">Locations & Percentages</button>
-                    <button class="tab-btn" id="tab-scan" onclick="switchTab('scan')">SIGNATURE CHECKER</button>
+
+                <div class="mining-header-bottom">
+                    <div class="tab-bar">
+                        <button class="tab-btn active" id="tab-locs" onclick="switchTab('locs')">Locations & Percentages</button>
+                        <button class="tab-btn" id="tab-scan" onclick="switchTab('scan')">SIGNATURE CHECKER</button>
+                    </div>
+                    
+                    <div class="header-sub-cta">
+                        <div class="header-sub-text">
+                            <div class="header-sub-title">Enjoying The Tool? Say Thanks!</div>
+                            <div class="header-sub-desc">+ Get Star Citizen Guides & Updates</div>
+                        </div>
+                        <a href="https://youtube.com/@CMDRQuattro" target="_blank" class="sub-action-btn">
+                            <img src="https://i.imgur.com/cJDkXIG.png" alt="CMDR Quattro Logo" class="sub-action-logo">
+                            <span>SUBSCRIBE</span>
+                        </a>
+                    </div>
                 </div>
             </div>
-
-<div class="support-container">
-    <div class="support-content">
-        <p class="support-message">
-            Enjoying the tool? <strong>Support the project!</strong> Subscribe on YouTube for Star Citizen Video Guides and be the first to know when new tools and materials go live.
-        </p>
-        <a href="https://youtube.com/@CMDRQuattro" target="_blank" class="support-link">
-            <img src="https://i.imgur.com/cJDkXIG.png" alt="CMDR Quattro" class="support-avatar">
-            <span>Subscribe</span>
-        </a>
-    </div>
-</div>
 
             <div class="advisory-box">
                 <div class="advisory-icon">⚠️</div>
@@ -218,7 +181,7 @@
                     <span>Note: Sadaryx & Savrilium can be found at the Rock Breaker Contract Locations Exclusively For The Moment. Need help? Check out the <a href="https://citizen-starter-guide.com/rock-breaker-interactive-guide/" target="_blank" style="color: var(--accent); text-decoration: underline;">Rock Breaker Interactive Guide - Citizen Starter Guide</a>.</span>
                 </div>
             </div>
-            
+
             <div id="tab-content"></div>
         </div>
     </div>
@@ -304,16 +267,18 @@
             }).join('');
 
             wrap.innerHTML = `
-                <div class="sig-filter-controls" style="justify-content: space-between;">
-                    <div style="display:flex; align-items:center; gap: 15px;">
-                        <span style="color:var(--text-muted); font-size:0.85rem; font-weight:bold; text-transform:uppercase; letter-spacing:1px; margin-top:5px;">Filter System:</span>
-                        <div class="mining-subtabs">${sysTabsHTML}</div>
-                    </div>
-                    <input type="text" class="sig-search" style="max-width:300px;" placeholder="Search locations (e.g. HUR-L1, Daymar)..." value="${esc(locSearchQuery)}" oninput="locSearchQuery=this.value;renderUI()">
-                </div>
                 <div class="loc-filters">
-                    <div style="width:100%; font-size:0.85rem; font-weight:700; color:var(--text-muted); margin-bottom:8px; text-transform:uppercase; letter-spacing:0.5px;">Filter by Materials (Must contain ALL):</div>
-                    <div style="display:flex; gap:10px; width:100%; flex-wrap:wrap;">${selectsHTML}</div>
+                    <div class="loc-filters-top">
+                        <div style="display:flex; align-items:center; gap: 15px;">
+                            <span style="color:var(--text-muted); font-size:0.85rem; font-weight:bold; text-transform:uppercase; letter-spacing:1px; margin-top:5px;">Filter System:</span>
+                            <div class="mining-subtabs">${sysTabsHTML}</div>
+                        </div>
+                        <input type="text" class="sig-search" placeholder="Search locations (e.g. HUR-L1, Daymar)..." value="${esc(locSearchQuery)}" oninput="locSearchQuery=this.value;renderUI()">
+                    </div>
+                    <div class="loc-filters-bottom">
+                        <div style="width:100%; font-size:0.85rem; font-weight:700; color:var(--text-muted); margin-bottom:4px; text-transform:uppercase; letter-spacing:0.5px;">Filter by Materials (Must contain ALL):</div>
+                        <div style="display:flex; gap:10px; width:100%; flex-wrap:wrap;">${selectsHTML}</div>
+                    </div>
                 </div>
             `;
             container.appendChild(wrap);

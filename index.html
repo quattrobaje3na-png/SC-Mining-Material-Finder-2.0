@@ -6,45 +6,76 @@
     <title>CMDR Quattro - 4.7.1 STAR CITIZEN MINING MATERIAL FINDER 2.0</title>
     <style>
 
-        .support-footer {
-    margin-top: 30px;
-    padding: 20px;
-    border-top: 1px solid #333;
-    text-align: center;
-    background: rgba(15, 15, 15, 0.8);
-    border-radius: 8px;
+       .support-container {
+    margin: 20px auto;
+    max-width: 1000px; /* Matches your main content width */
+    background: rgba(15, 15, 15, 0.7); /* Translucent dark background */
+    border: 1px solid #333;
+    border-left: 4px solid #ff4d4d; /* Red accent matching 'Unlawful' style */
+    border-radius: 4px;
+    padding: 12px 20px;
+    backdrop-filter: blur(5px); /* Smooth glass effect */
 }
 
-.support-footer p {
-    color: #ccc;
-    font-size: 0.95rem;
-    margin-bottom: 15px;
+.support-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
 }
 
-.yt-button {
+.support-message {
+    margin: 0;
+    color: #e0e0e0;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    flex: 1;
+}
+
+.support-message strong {
+    color: #ff4d4d; /* Highlights the call to action */
+}
+
+.support-link {
     display: inline-flex;
     align-items: center;
     background-color: #f0f0f0;
-    color: #0f0f0f;
-    padding: 8px 20px; /* Slightly adjusted padding for the logo height */
-    border-radius: 25px;
+    color: #000;
+    padding: 8px 18px;
+    border-radius: 3px; /* Sharper edges to match game UI */
     text-decoration: none;
-    font-weight: bold;
-    transition: all 0.3s ease;
+    font-weight: 800;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.2s ease;
+    white-space: nowrap;
 }
 
-.yt-button:hover {
+.support-link:hover {
     background-color: #ffffff;
-    box-shadow: 0 0 12px rgba(255, 255, 255, 0.3);
+    box-shadow: 0 0 15px rgba(255, 77, 77, 0.4);
     transform: translateY(-1px);
 }
 
-.channel-logo {
-    width: 28px; /* Slightly larger than the icon for better visibility */
-    height: 28px;
-    margin-right: 12px;
-    border-radius: 50%; /* Keeps the logo circular */
-    object-fit: cover;
+.support-avatar {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+}
+
+/* Responsive adjustment for mobile pilots */
+@media (max-width: 768px) {
+    .support-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 12px;
+    }
+    .support-message {
+        font-size: 0.85rem;
+    }
 }
         :root { 
             --bg-base: #09090b; --bg-card: #141417; --border: #27272a; 
@@ -168,12 +199,16 @@
                 </div>
             </div>
 
-<div class="support-footer">
-    <p>Enjoying the tool? Support the project! Subscribe on YouTube for Star Citizen Video Guides and be the first to know when new tools and materials go live.</p>
-    <a href="https://youtube.com/@CMDRQuattro" target="_blank" class="yt-button">
-        <img src="https://i.imgur.com/cJDkXIG.png" alt="CMDR Quattro Logo" class="channel-logo">
-        Subscribe to CMDR Quattro
-    </a>
+<div class="support-container">
+    <div class="support-content">
+        <p class="support-message">
+            Enjoying the tool? <strong>Support the project!</strong> Subscribe on YouTube for Star Citizen Video Guides and be the first to know when new tools and materials go live.
+        </p>
+        <a href="https://youtube.com/@CMDRQuattro" target="_blank" class="support-link">
+            <img src="https://i.imgur.com/cJDkXIG.png" alt="CMDR Quattro" class="support-avatar">
+            <span>Subscribe</span>
+        </a>
+    </div>
 </div>
 
             <div class="advisory-box">

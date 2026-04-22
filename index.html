@@ -3,1165 +3,460 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>STAR CITIZEN BLUEPRINT FINDER: MISSION &amp; CONTRACTS REWARD GUIDE FOR 4.7.2</title>
+    <title>CMDR Quattro - 4.7.2 STAR CITIZEN MINING MATERIAL FINDER 2.0</title>
     <style>
-        /* ── Variables ─────────────────────────────────────────────────── */
-        :root {
-            --bg-base:      #09090b;
-            --bg-card:      #141417;
-            --border:       #27272a;
-            --text-main:    #f8fafc;
-            --text-muted:   #94a3b8;
-            --accent:       #f97316;
-            --theme:        #00e5ff;
-            --success:      #10b981;
-            --warning:      #ef4444;
-            --weapon-color: #3b82f6;
-            --armor-color:  #a855f7;
-            --ammo-color:   #eab308;
-            --stanton-color: #3b82f6;
-            --pyro-color:    #ef4444;
-            --nyx-color:     #a855f7;
-        }
-
-        /* ── Reset & Base ───────────────────────────────────────────────── */
-        *, *::before, *::after { box-sizing: border-box; }
-
-        body {
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
-            background: var(--bg-base);
-            color: var(--text-main);
-            margin: 0;
-            padding: 20px;
-        }
-
-        /* ── Scrollbar ──────────────────────────────────────────────────── */
-        ::-webkit-scrollbar        { width: 6px; }
-        ::-webkit-scrollbar-track { background: rgba(0,0,0,0.2); border-radius: 4px; }
-        ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
-
-        /* ── Layout ─────────────────────────────────────────────────────── */
-        #main-grid {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .item-group {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 15px;
-        }
-
-        /* ── Header ─────────────────────────────────────────────────────── */
-        .explorer-header {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-top: 3px solid var(--accent);
-            border-radius: 8px;
-            padding: 20px;
-        }
-
-        .explorer-header-top { 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-            margin-bottom: 15px; 
-            gap: 20px; 
+        :root { 
+            --bg-base: #09090b; --bg-card: #141417; --border: #27272a; 
+            --text-main: #f8fafc; --text-muted: #94a3b8; 
+            --accent: #f97316; --theme: #00e5ff; --success: #10b981;
+            --tier-l: #a855f7; --tier-e: #eab308; --tier-r: #3b82f6; --tier-u: #10b981; --tier-c: #94a3b8; 
         }
         
-        .explorer-header-titles {
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-            flex: 1; 
-            min-width: 0; 
-        }
-
-        .explorer-title { 
-            font-size: 1.4rem; 
-            font-weight: 800; 
-            letter-spacing: 0.03em; 
-            margin: 0;
-        }
+        * { box-sizing: border-box; font-family: 'Inter', system-ui, -apple-system, sans-serif; }
+        body { background-color: var(--bg-base); color: var(--text-main); margin: 0; padding: 20px; }
+        #main-grid { max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px; }
         
-        #statusIndicator { 
-            font-size: 0.9rem; 
-            color: var(--theme); 
-            margin: 0;
-        }
+        .screen { display: none; }
+        .screen.active { display: block; }
 
-        .header-sub-cta { 
-            display: flex; 
-            align-items: center; 
-            gap: 15px; 
-            background: #1a1a1c; 
-            padding: 10px 15px; 
-            border-radius: 8px; 
-            border: 1px solid #333; 
-            border-left: 3px solid #d47631; 
-            flex-shrink: 0; 
-        }
+        #loading-screen { text-align: center; margin-top: 100px; background: var(--bg-card); padding: 40px; border-radius: 8px; border: 1px solid var(--border); box-shadow: 0 4px 20px rgba(0,0,0,0.5); }
+        .spinner { border: 4px solid rgba(255,255,255,0.05); width: 40px; height: 40px; border-radius: 50%; border-left-color: var(--accent); animation: spin 1s linear infinite; margin: 0 auto 20px auto; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        /* HEADER REBUILD - 2 ROW LAYOUT */
+        .mining-header { background: var(--bg-card); padding: 20px; border-radius: 8px; border: 1px solid var(--border); border-top: 3px solid var(--accent); margin-bottom: 20px; }
+        
+        /* Top Row: Title & Version Badge */
+        .mining-header-top { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); padding-bottom: 15px; margin-bottom: 15px; flex-wrap: wrap; gap: 15px; }
+        .mining-title { font-size: 1.4rem; font-weight: 800; color: var(--text-main); letter-spacing: 1px; text-transform: uppercase; margin: 0;}
+        .mining-title span { color: var(--accent); }
+        .mining-credit { font-size: 0.85rem; color: var(--theme); background: rgba(0, 229, 255, 0.1); padding: 4px 8px; border-radius: 4px; border: 1px solid rgba(0, 229, 255, 0.2); font-weight: bold; white-space: nowrap; }
+        
+        /* Bottom Row: Tabs & Subscribe CTA */
+        .mining-header-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; }
+        
+        /* CTA Box */
+        .header-sub-cta { display: flex; align-items: center; gap: 15px; background: #1a1a1c; padding: 10px 15px; border-radius: 8px; border: 1px solid #333; border-left: 3px solid #d47631; }
         .header-sub-text { display: flex; flex-direction: column; gap: 2px; text-align: left; }
         .header-sub-title { color: #ffffff; font-size: 0.95rem; font-weight: 700; margin: 0; letter-spacing: 0.2px; }
         .header-sub-desc { color: #8a8a8a; font-size: 0.75rem; margin: 0; }
         
+        /* 3D Subscribe Button */
         .sub-action-btn { display: inline-flex; align-items: center; background: linear-gradient(180deg, #ff0000 0%, #cc0000 100%); color: #ffffff; text-decoration: none; padding: 8px 18px; border-radius: 6px; font-weight: 800; font-size: 0.9rem; letter-spacing: 0.5px; box-shadow: 0 4px 0 #990000, 0 5px 10px rgba(0, 0, 0, 0.3); transition: transform 0.1s ease, box-shadow 0.1s ease, background 0.2s ease; white-space: nowrap; }
         .sub-action-btn:hover { background: linear-gradient(180deg, #ff1a1a 0%, #e60000 100%); }
         .sub-action-btn:active { transform: translateY(4px); box-shadow: 0 0 0 #990000, 0 2px 5px rgba(0, 0, 0, 0.3); }
         .sub-action-logo { width: 20px; height: 20px; border-radius: 50%; margin-right: 8px; border: 1px solid rgba(255, 255, 255, 0.3); box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); }
 
-        .explorer-header-bottom { 
-            display: flex; 
-            width: 100%;
-        }
-
-        .search-container { 
-            width: 100%; 
-        }
-
-        input[type="text"] {
-            width: 100%;
-            background: var(--bg-base);
-            border: 1px solid var(--border);
-            border-radius: 4px;
-            color: var(--text-main);
-            padding: 10px;
-            font-size: 0.9rem;
-            outline: none;
-            transition: border-color 0.2s;
-        }
-        input[type="text"]:focus { border-color: var(--theme); }
-
+        /* Responsive Breakpoints */
         @media (max-width: 950px) {
-            .explorer-header-top { flex-direction: column; align-items: stretch; }
-            .header-sub-cta { justify-content: space-between; }
+            .mining-header-bottom { flex-direction: column; align-items: flex-start; }
+            .header-sub-cta { width: 100%; justify-content: space-between; }
         }
         @media (max-width: 550px) {
-            .header-sub-cta { flex-direction: column; text-align: center; align-items: stretch; width: 100%; }
+            .mining-header-top { flex-direction: column; align-items: flex-start; }
+            .header-sub-cta { flex-direction: column; text-align: center; align-items: stretch; }
             .header-sub-text { text-align: center; }
             .sub-action-btn { justify-content: center; }
         }
 
-        /* ── Tabs & Filters ─────────────────────────────────────────────── */
-        .controls-container {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
+        /* Tabs */
+        .tab-bar { display: flex; gap: 10px; }
+        .tab-btn { background: var(--bg-base); color: var(--text-muted); border: 1px solid var(--border); padding: 10px 20px; border-radius: 4px; cursor: pointer; font-size: 0.95rem; font-weight: 600; transition: 0.2s; text-transform: uppercase; letter-spacing: 0.5px; }
+        .tab-btn:hover { background: var(--border); color: var(--text-main); }
+        .tab-btn.active { background: rgba(249, 115, 22, 0.1); color: var(--accent); border-color: var(--accent); }
 
-        .tab-container { 
-            display: flex; 
-            gap: 10px;
-            flex-wrap: wrap;
-        }
+        /* Advisory Box */
+        .advisory-box { background: rgba(249, 115, 22, 0.1); border: 1px solid rgba(249, 115, 22, 0.2); border-left: 4px solid var(--accent); padding: 15px 20px; border-radius: 4px; margin-bottom: 25px; display: flex; align-items: flex-start; gap: 15px; }
+        .advisory-icon { font-size: 1.5rem; margin-top: 2px;}
+        .advisory-text { font-size: 0.95rem; color: var(--text-main); line-height: 1.5; }
+        .advisory-text strong { color: var(--accent); }
+        .advisory-text span { display: block; margin-top: 8px; color: var(--theme); font-weight: 600;}
 
-        .tab {
-            padding: 10px 20px;
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 0.85rem;
-            font-weight: 600;
-            letter-spacing: 0.05em;
-            transition: background 0.2s, border-color 0.2s;
-        }
-        .tab:hover  { background: rgba(255,255,255,0.05); }
-        .tab.active { border-bottom: 2px solid var(--accent); color: var(--accent); }
-
-        /* System Filter Buttons */
-        .system-filters {
-            display: flex;
-            gap: 8px;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
-        .filter-label {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        .system-filter-btn {
-            padding: 8px 16px;
-            background: var(--bg-card);
-            border: 2px solid var(--border);
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 0.8rem;
-            font-weight: 700;
-            letter-spacing: 0.05em;
-            transition: all 0.2s;
-            text-transform: uppercase;
-        }
-
-        .system-filter-btn:hover {
-            background: rgba(255,255,255,0.05);
-        }
-
-        .system-filter-btn.stanton { color: var(--stanton-color); }
-        .system-filter-btn.stanton.active {
-            background: rgba(59,130,246,0.15);
-            border-color: var(--stanton-color);
-        }
-
-        .system-filter-btn.pyro { color: var(--pyro-color); }
-        .system-filter-btn.pyro.active {
-            background: rgba(239,68,68,0.15);
-            border-color: var(--pyro-color);
-        }
-
-        .system-filter-btn.nyx { color: var(--nyx-color); }
-        .system-filter-btn.nyx.active {
-            background: rgba(168,85,247,0.15);
-            border-color: var(--nyx-color);
-        }
-
-        /* ── Cards ──────────────────────────────────────────────────────── */
-        .blueprint-card,
-        .armor-set-box {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 15px;
-            display: flex;
-            flex-direction: column;
-            max-height: 420px;
-        }
-        .blueprint-card.weapon { border-left: 4px solid var(--weapon-color); }
-        .blueprint-card.ammo   { border-left: 4px solid var(--ammo-color); }
-        .armor-set-box { background: rgba(168,85,247,0.05); border-color: var(--armor-color); }
-
-        /* ── Tag ────────────────────────────────────────────────────────── */
-        .tag {
-            font-size: 0.7rem;
-            padding: 2px 6px;
-            border-radius: 4px;
-            background: var(--border);
-            color: var(--text-muted);
-            text-transform: uppercase;
-            white-space: nowrap;
-            height: fit-content;
-            margin-left: 10px;
-        }
-
-        /* ── Card / Armor headers ───────────────────────────────────────── */
-        .card-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            flex-shrink: 0;
-        }
-        .card-name { font-weight: 700; }
-
-        .armor-set-title {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            font-weight: 700;
-            color: var(--armor-color);
-            flex-shrink: 0;
-        }
-        .armor-set-title-left { display: flex; align-items: center; }
-
-        .armor-note {
-            font-size: 0.75rem;
-            color: var(--theme);
-            margin-top: 10px;
-            margin-bottom: -5px;
-            flex-shrink: 0;
-        }
-
-        /* ── Armor tiles ────────────────────────────────────────────────── */
-        .armor-tiles {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-            margin-top: 10px;
-            flex-shrink: 0;
-        }
-        .armor-tile {
-            background: var(--bg-base);
-            border: 1px solid var(--border);
-            border-radius: 4px;
-            padding: 10px;
-            font-size: 0.85rem;
-            text-align: center;
-            transition: background 0.2s, border-color 0.2s;
-        }
-        .armor-tile.interactive { cursor: pointer; border-color: rgba(0,229,255,0.4); }
-        .armor-tile.interactive:hover { background: rgba(0,229,255,0.1); border-color: var(--theme); }
-        .armor-tile.active-piece {
-            border-color: var(--accent) !important;
-            background: rgba(249,115,22,0.1) !important;
-            color: var(--accent);
-            font-weight: 700;
-        }
-
-        /* ── Mission area ───────────────────────────────────────────────── */
-        .mission-views-wrapper { display: flex; flex-direction: column; overflow: hidden; flex-grow: 1; }
-        .mission-view-container { flex-direction: column; overflow: hidden; flex-grow: 1; }
-
-        .mission-scroll-area {
-            flex-grow: 1;
-            overflow-y: auto;
-            border-top: 1px solid var(--border);
-            margin-top: 15px;
-            padding: 10px 5px 0;
-        }
-
-        .mission-header {
-            font-size: 0.8rem;
-            font-weight: 700;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            margin-bottom: 8px;
-            padding-left: 2px;
-        }
-
-        /* ── Mission list ───────────────────────────────────────────────── */
-        .mission-list { list-style: none; margin: 0; padding: 0; }
-
-        .mission-list li {
-            display: flex;
-            flex-direction: column;
-            gap: 3px;
-            margin-bottom: 7px;
-            padding: 7px 10px;
-            border-left: 2px solid var(--success);
-            border-radius: 0 3px 3px 0;
-            background: rgba(16,185,129,0.04);
-        }
-        .mission-list li.unlawful {
-            border-left-color: var(--warning);
-            background: rgba(239,68,68,0.04);
-        }
-
-        /* Top row inside each list item */
-        .mission-meta {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 6px;
-        }
-        .mission-meta-left {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            min-width: 0;
-            flex-wrap: wrap;
-        }
-        .mission-type-tag {
-            font-size: 0.65rem;
-            font-weight: 700;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 0.04em;
-            white-space: nowrap;
-            flex-shrink: 0;
-        }
-        .mission-type-sep {
-            font-size: 0.6rem;
-            color: var(--border);
-            flex-shrink: 0;
-        }
-        .mission-faction-tag {
-            font-size: 0.65rem;
-            font-weight: 600;
-            color: var(--theme);
-            letter-spacing: 0.02em;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
-        /* System Badge */
-        .mission-system-badge {
-            font-size: 0.6rem;
-            font-weight: 700;
-            padding: 2px 6px;
-            border-radius: 3px;
-            text-transform: uppercase;
-            letter-spacing: 0.04em;
-            white-space: nowrap;
-            flex-shrink: 0;
-        }
-        .mission-system-badge.stanton {
-            background: rgba(59,130,246,0.15);
-            color: var(--stanton-color);
-            border: 1px solid rgba(59,130,246,0.35);
-        }
-        .mission-system-badge.pyro {
-            background: rgba(239,68,68,0.15);
-            color: var(--pyro-color);
-            border: 1px solid rgba(239,68,68,0.35);
-        }
-        .mission-system-badge.nyx {
-            background: rgba(168,85,247,0.15);
-            color: var(--nyx-color);
-            border: 1px solid rgba(168,85,247,0.35);
-        }
-
-        .mission-badge {
-            font-size: 0.6rem;
-            font-weight: 700;
-            padding: 2px 6px;
-            border-radius: 3px;
-            text-transform: uppercase;
-            letter-spacing: 0.04em;
-            white-space: nowrap;
-            flex-shrink: 0;
-        }
-        .badge-verified   { background: rgba(16,185,129,0.15); color: var(--success); border: 1px solid rgba(16,185,129,0.35); }
-        .badge-unverified { background: rgba(239,68,68,0.15);  color: var(--warning); border: 1px solid rgba(239,68,68,0.35); }
-
-        .mission-title-text {
-            font-size: 0.85rem;
-            color: var(--text-main);
-            line-height: 1.3;
-        }
-
-        /* ── Expand button ──────────────────────────────────────────────── */
-        .expand-btn {
-            flex-shrink: 0;
-            text-align: center;
-            font-size: 0.75rem;
-            font-weight: 700;
-            color: var(--theme);
-            text-transform: uppercase;
-            border-top: 1px solid var(--border);
-            padding-top: 10px;
-            margin-top: 5px;
-            cursor: pointer;
-            transition: color 0.2s;
-        }
-        .expand-btn:hover { color: var(--accent); }
-
-        /* ── Modal ──────────────────────────────────────────────────────── */
-        .modal-overlay {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: rgba(0,0,0,0.85);
-            backdrop-filter: blur(3px);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-        .modal-content {
-            position: relative;
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-top: 4px solid var(--accent);
-            border-radius: 8px;
-            width: 100%;
-            max-width: 600px;
-            max-height: 85vh;
-            display: flex;
-            flex-direction: column;
-        }
-        .modal-close {
-            position: absolute;
-            top: 12px;
-            right: 12px;
-            font-size: 2rem;
-            color: var(--text-muted);
-            cursor: pointer;
-            transition: color 0.2s;
-            line-height: 1;
-        }
-        .modal-close:hover { color: var(--accent); }
-
-        .modal-title-area {
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-            padding: 20px 20px 0;
-            margin-bottom: 15px;
-            border-bottom: 1px solid var(--border);
-        }
-        .modal-title { font-size: 1.3rem; font-weight: 700; color: var(--text-main); }
-
-        .modal-body { overflow-y: auto; padding-right: 10px; }
-        .modal-body .mission-list li { margin-bottom: 10px; padding: 9px 12px; }
-        .modal-body .mission-title-text { font-size: 0.95rem; }
-        .modal-body .mission-header { display: none; }
+        /* Locations Grid */
+        .loc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 15px; }
+        .loc-card { background: var(--bg-card); border-radius: 8px; border: 1px solid var(--border); display: flex; flex-direction: column; overflow: hidden; transition: border-color 0.2s; }
+        .loc-card:hover { border-color: rgba(255, 255, 255, 0.1); }
+        .loc-header { background: rgba(0,0,0,0.3); padding: 15px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: flex-start; }
+        .loc-name { font-weight: 700; font-size: 1.15rem; color: var(--text-main); line-height: 1.3;}
+        .loc-sys { font-size: 0.75rem; color: var(--text-muted); background: var(--border); border: 1px solid rgba(255, 255, 255, 0.1); padding: 3px 8px; border-radius: 12px; text-transform: uppercase; font-weight: bold; letter-spacing: 1px; }
+        .loc-body { padding: 15px; display: flex; flex-direction: column; gap: 15px; }
         
-        /* ── Advisory box ───────────────────────────────────────────────── */
-        .advisory-box {
-            background: rgba(249,115,22,0.07);
-            border: 1px solid rgba(249,115,22,0.3);
-            border-left: 4px solid var(--accent);
-            border-radius: 8px;
-            padding: 14px 18px;
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            line-height: 1.6;
-        }
-        .advisory-box span {
-            display: block;
-            font-size: 0.75rem;
-            font-weight: 700;
-            color: var(--accent);
-            text-transform: uppercase;
-            letter-spacing: 0.06em;
-            margin-bottom: 6px;
-        }
+        .loc-method-group { background: var(--bg-base); border-radius: 6px; padding: 12px; border-left: 3px solid #555; }
+        .loc-method-group.Ship { border-left-color: var(--theme); }
+        .loc-method-group.ROC { border-left-color: var(--accent); }
+        .loc-method-group.Hand { border-left-color: var(--success); }
+        .loc-method-title { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; margin-bottom: 10px; color: var(--text-muted); letter-spacing: 0.5px; }
+        .loc-mat-row { display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px dashed var(--border); font-size: 0.95rem; }
+        .loc-mat-row:last-child { border-bottom: none; padding-bottom: 0; }
+        .loc-mat-pct { color: var(--theme); font-family: monospace; font-weight: bold; }
+        
+        .loc-filters { display: flex; flex-direction: column; gap: 15px; margin-bottom: 20px; background: var(--bg-card); padding: 20px; border-radius: 8px; border: 1px solid var(--border); }
+        .loc-filters-top { display: flex; justify-content: space-between; align-items: center; gap: 15px; flex-wrap: wrap; border-bottom: 1px solid var(--border); padding-bottom: 15px; }
+        .loc-filters-bottom { display: flex; flex-direction: column; gap: 10px; }
+        .loc-select { background: var(--bg-base); color: var(--text-main); border: 1px solid var(--border); padding: 10px; border-radius: 4px; flex: 1; min-width: 200px; font-size: 0.9rem; outline: none; transition: border-color 0.2s; }
+        .loc-select:focus { border-color: var(--theme); }
 
-        /* ── Legend ─────────────────────────────────────────────────────── */
-        .legend-box {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 16px 20px;
-            color: var(--text-muted);
-        }
-        
-        .legend-title {
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.07em;
-            color: var(--text-muted);
-            margin: 0 0 14px 0;
-        }
-        
-        .legend-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 16px 20px;
-        }
-        
-        .legend-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        
-        .legend-swatch { 
-            display: flex; 
-            align-items: center; 
-            gap: 10px;
-            flex-shrink: 0; 
-        }
-        
-        .legend-text { 
-            display: flex; 
-            flex-direction: column;
-            gap: 2px;
-        }
-        
-        .legend-text strong { 
-            font-size: 0.8rem; 
-            color: var(--text-main); 
-            line-height: 1.2; 
-            font-weight: 600;
-        }
-        
-        .legend-text span { 
-            font-size: 0.72rem; 
-            color: var(--text-muted); 
-            line-height: 1.4; 
-        }
-        
-        .leg-badge {
-            font-size: 0.6rem;
-            font-weight: 700;
-            padding: 2px 7px;
-            border-radius: 3px;
-            text-transform: uppercase;
-            letter-spacing: 0.04em;
-            display: inline-block;
-            white-space: nowrap;
-        }
-        
-        .leg-verified {
-            background: rgba(16,185,129,0.15);
-            color: var(--success);
-            border: 1px solid rgba(16,185,129,0.35);
-        }
-        
-        .leg-unverified {
-            background: rgba(239,68,68,0.15);
-            color: var(--warning);
-            border: 1px solid rgba(239,68,68,0.35);
-        }
-        
-        .leg-bar {
-            width: 4px;
-            height: 28px;
-            border-radius: 2px;
-        }
-        
-        .leg-bar-green { background: var(--success); }
-        .leg-bar-red { background: var(--warning); }
-        
-        .leg-type {
-            font-size: 0.65rem;
-            font-weight: 700;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 0.04em;
-            padding: 3px 8px;
-            background: rgba(255,255,255,0.03);
-            border-radius: 3px;
-        }
-        
-        .leg-faction {
-            font-size: 0.65rem;
-            font-weight: 600;
-            color: var(--theme);
-            padding: 3px 8px;
-            background: rgba(0,229,255,0.05);
-            border-radius: 3px;
-        }
-        
-        .leg-tag {
-            font-size: 0.7rem;
-            padding: 2px 6px;
-            border-radius: 4px;
-            background: var(--border);
-            color: var(--text-muted);
-            text-transform: uppercase;
-        }
+        /* Scanner View */
+        .sig-scanner-wrap { background: var(--bg-card); padding: 20px; border-radius: 8px; border: 1px solid var(--border); border-left: 3px solid var(--theme); margin-top: 0; margin-bottom: 20px; }
+        .sig-scanner-label { font-size: 0.85rem; font-weight: 700; color: var(--text-muted); margin-bottom: 12px; letter-spacing: 1px; text-transform: uppercase; }
+        .sig-scanner-row { display: flex; gap: 15px; align-items: center; flex-wrap: wrap; }
+        .sig-scanner-input { background: var(--bg-base); color: var(--theme); border: 1px solid var(--border); padding: 12px 20px; border-radius: 4px; font-size: 1.4rem; font-family: monospace; font-weight: bold; width: 180px; outline: none; transition: border-color 0.2s, box-shadow 0.2s; }
+        .sig-scanner-input:focus { border-color: var(--theme); box-shadow: 0 0 10px rgba(0, 229, 255, 0.15); }
+        .sig-result { flex: 1; display: flex; flex-direction: column; gap: 4px; }
+        .sig-result-primary { font-size: 1.25rem; display: flex; align-items: center; gap: 12px; font-weight: 600; }
+        .sig-confidence { font-size: 0.75rem; background: rgba(16, 185, 129, 0.1); color: var(--success); border: 1px solid rgba(16, 185, 129, 0.2); padding: 4px 8px; border-radius: 4px; font-weight: bold; text-transform: uppercase; }
+        .sig-result-nodes { font-size: 0.85rem; color: var(--text-muted); }
 
-        @media (max-width: 768px) {
-            .legend-grid {
-                grid-template-columns: 1fr;
-            }
-        }
+        .sig-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 15px; }
+        .sig-card { background: var(--bg-card); border-radius: 8px; padding: 15px; border: 1px solid var(--border); border-left: 4px solid var(--border); cursor: pointer; position: relative; transition: background 0.2s, transform 0.1s; }
+        .sig-card:hover { background: rgba(255, 255, 255, 0.03); transform: translateY(-2px); }
+        .sig-tier-badge { position: absolute; top: 12px; right: 12px; font-size: 0.65rem; font-weight: 800; padding: 3px 8px; border-radius: 4px; background: var(--bg-base); text-transform: uppercase; letter-spacing: 0.5px; }
+        .sig-card-name { font-size: 1.15rem; font-weight: 700; margin-bottom: 8px; color: var(--text-main); }
+        .sig-card-rs { font-size: 1.5rem; color: var(--theme); font-family: monospace; font-weight: bold; }
+        .sig-note { font-size: 0.75rem; color: var(--text-muted); margin-top: 12px; border-top: 1px solid var(--border); padding-top: 12px; display:flex; justify-content: space-between; align-items: center;}
+        
+        .sig-filter-controls { display: flex; justify-content: space-between; align-items: center; gap: 15px; margin-bottom: 15px; flex-wrap: wrap; }
+        .sig-search { flex: 1; background: var(--bg-base); color: var(--text-main); border: 1px solid var(--border); padding: 10px 15px; border-radius: 4px; font-size: 0.95rem; outline: none; transition: border-color 0.2s; min-width: 250px;}
+        .sig-search:focus { border-color: var(--accent); }
+        .mining-subtabs { display: flex; gap: 8px; }
+        .mining-subtab { background: var(--bg-card); color: var(--text-muted); border: 1px solid var(--border); padding: 8px 16px; border-radius: 4px; cursor: pointer; font-size: 0.85rem; font-weight: 600; transition: 0.2s; text-transform: uppercase;}
+        .mining-subtab.active { background: rgba(0, 229, 255, 0.1); color: var(--theme); border-color: var(--theme); }
+        .mining-subtab:hover:not(.active) { color: var(--text-main); border-color: var(--text-muted); }
+
+        .method-tag { font-size: 0.7rem; padding: 3px 8px; border-radius: 4px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; }
+        .method-ship { background: rgba(0, 229, 255, 0.1); border: 1px solid rgba(0, 229, 255, 0.2); color: var(--theme); }
+        .method-roc { background: rgba(249, 115, 22, 0.1); border: 1px solid rgba(249, 115, 22, 0.2); color: var(--accent); }
+        .method-hand { background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.2); color: var(--success); }
+
+        .tier-l { border-left-color: var(--tier-l); } .tier-l .sig-tier-badge { color: var(--tier-l); }
+        .tier-e { border-left-color: var(--tier-e); } .tier-e .sig-tier-badge { color: var(--tier-e); }
+        .tier-r { border-left-color: var(--tier-r); } .tier-r .sig-tier-badge { color: var(--tier-r); }
+        .tier-u { border-left-color: var(--tier-u); } .tier-u .sig-tier-badge { color: var(--tier-u); }
+        .tier-c { border-left-color: var(--tier-c); } .tier-c .sig-tier-badge { color: var(--tier-c); }
+        
+        .error-msg { color: var(--error); margin-top: 15px; font-weight: bold; background: rgba(239, 68, 68, 0.1); padding: 15px; border-radius: 8px; border: 1px solid rgba(239, 68, 68, 0.2); }
     </style>
 </head>
 <body>
 
-<div id="missionModal" class="modal-overlay" onclick="closeModal(event)">
-    <div class="modal-content" onclick="event.stopPropagation()">
-        <span class="modal-close" onclick="closeModal(event)">&times;</span>
-        <div class="modal-title-area">
-            <span id="modalTitleText" class="modal-title"></span>
-            <span id="modalTag" class="tag" style="margin-top:4px;"></span>
+    <div id="main-grid">
+        <div id="loading-screen" class="screen active">
+            <div class="spinner"></div>
+            <h1 style="color: var(--text-main); text-transform: uppercase; letter-spacing: 1px;">CMDR Quattro <span>4.7.1 STAR CITIZEN MINING MATERIAL FINDER 2.0</span></h1>
+            <p style="color: var(--text-muted);">Loading compiled 4.7.1 game data...</p>
+            <div id="error-output"></div>
         </div>
-        <div id="modalMissionsContent" class="modal-body"></div>
-    </div>
-</div>
 
-<div id="main-grid">
-
-    <div class="explorer-header">
-        <div class="explorer-header-top">
-            <div class="explorer-header-titles">
-                <div class="explorer-title">Star Citizen Blueprint Finder: Mission Contract Rewards Guide for 4.7.2</div>
-                <div id="statusIndicator">Fetching database...</div>
-            </div>
+        <div id="app-screen" class="screen">
             
-            <div class="header-sub-cta">
-                <div class="header-sub-text">
-                    <div class="header-sub-title">Enjoying The Tool? Say Thanks!</div>
-                    <div class="header-sub-desc">+ Get Star Citizen Guides & Updates</div>
+            <div class="mining-header">
+                <div class="mining-header-top">
+                    <div class="mining-title">CMDR QUATTRO <span>4.7.1 STAR CITIZEN MINING MATERIAL FINDER 2.0</span></div>
+                    <div class="mining-credit" id="version-label">Version: Loading...</div>
                 </div>
-                <a href="https://youtube.com/@CMDRQuattro" target="_blank" class="sub-action-btn">
-                    <img src="https://i.imgur.com/cJDkXIG.png" alt="CMDR Quattro Logo" class="sub-action-logo">
-                    <span>SUBSCRIBE</span>
-                </a>
-            </div>
-        </div>
 
-        <div class="explorer-header-bottom">
-            <div class="search-container">
-                <input type="text" id="searchInput" placeholder="Search by item name or set…" onkeyup="filterItems()">
-            </div>
-        </div>
-    </div>
-
-    <div class="advisory-box">
-        <span>⚠️ Contract Reward Advisory</span>
-        Completing a contract grants you a <b>random blueprint</b> from the reward pool tied to that specific mission. If you do not receive the specific blueprint you are looking for, you will need to repeat the contract until it drops. The good news is, most of the pools consist of full armor sets and a handful of weapons. If you do not see the exact contract you need repeat existing contracts for that faction until it appears.
-    </div>
-
-    <div class="legend-box">
-        <div class="legend-title">How to read a contract entry</div>
-        <div class="legend-grid">
-
-            <div class="legend-item">
-                <div class="legend-swatch">
-                    <div class="leg-bar leg-bar-green"></div>
-                    <span class="leg-badge leg-verified">&#x2713; Lawful</span>
-                </div>
-                <div class="legend-text">
-                    <strong>Lawful (Verified Tab)</strong>
-                    <span>Legal contracts that won't raise your CrimeStat.</span>
-                </div>
-            </div>
-
-            <div class="legend-item">
-                <div class="legend-swatch">
-                    <div class="leg-bar leg-bar-red"></div>
-                    <span class="leg-badge leg-unverified">&#x26A0; Unlawful</span>
-                </div>
-                <div class="legend-text">
-                    <strong>Unlawful (Unverified Tab)</strong>
-                    <span>Criminal contracts that typically raise CrimeStat.</span>
-                </div>
-            </div>
-
-            <div class="legend-item">
-                <div class="legend-swatch">
-                    <span class="leg-type">Mercenary</span>
-                </div>
-                <div class="legend-text">
-                    <strong>Contract Category</strong>
-                    <span>The MobiGlass tab where this mission appears.</span>
-                </div>
-            </div>
-
-            <div class="legend-item">
-                <div class="legend-swatch">
-                    <span class="leg-faction">Northrock</span>
-                </div>
-                <div class="legend-text">
-                    <strong>Faction / Mission Giver</strong>
-                    <span>Organisation offering the contract and blueprint.</span>
-                </div>
-            </div>
-
-            <div class="legend-item">
-                <div class="legend-swatch">
-                    <span class="leg-tag">Combat</span>
-                </div>
-                <div class="legend-text">
-                    <strong>Subtype Tag</strong>
-                    <span>Item category shown in the card corner.</span>
-                </div>
-            </div>
-
-            <div class="legend-item">
-                <div class="legend-swatch">
-                    <span class="mission-system-badge stanton">Stanton</span>
-                </div>
-                <div class="legend-text">
-                    <strong>System Badge</strong>
-                    <span>Star system where the contract is available.</span>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="controls-container">
-        <div class="tab-container">
-            <div class="tab active" onclick="switchTab('weapons', this)">WEAPONS</div>
-            <div class="tab"        onclick="switchTab('armor',   this)">ARMOR SETS</div>
-            <div class="tab"        onclick="switchTab('ammo',    this)">AMMO</div>
-        </div>
-
-        <div class="system-filters">
-            <span class="filter-label">Filter by System:</span>
-            <button class="system-filter-btn stanton active" onclick="toggleSystemFilter('stanton', this)">Stanton</button>
-            <button class="system-filter-btn pyro active" onclick="toggleSystemFilter('pyro', this)">Pyro</button>
-            <button class="system-filter-btn nyx active" onclick="toggleSystemFilter('nyx', this)">Nyx</button>
-        </div>
-    </div>
-
-    <div id="weaponsView" class="item-group"></div>
-    <div id="armorView"   class="item-group" style="display:none;"></div>
-    <div id="ammoView"    class="item-group" style="display:none;"></div>
-
-</div>
-
-<script>
-    /* ── State ──────────────────────────────────────────────────────────── */
-    let weaponsList = [];
-    let armorSets   = {};
-    let ammoList    = [];
-    let activeSystemFilters = new Set(['stanton', 'pyro', 'nyx']);
-
-    // The Failsafe Parser: Neutralizes JSON object dictionaries
-    function extractText(val) {
-        if (val === null || val === undefined) return "";
-        let obj = val;
-        
-        if (typeof val === 'string') {
-            let t = val.trim();
-            if (t.startsWith('{') && t.endsWith('}')) {
-                try { obj = JSON.parse(t); } catch(e) {}
-            } else {
-                return t;
-            }
-        }
-        
-        if (typeof obj === 'object' && obj !== null) {
-            if (Array.isArray(obj)) return obj.map(extractText).join(", ");
-            if (obj.en) return obj.en;
-            if (obj.English) return obj.English;
-            if (obj.name) return obj.name;
-            if (obj.productName) return obj.productName;
-            
-            const strVal = Object.values(obj).find(v => typeof v === 'string');
-            if (strVal) return strVal;
-            
-            return JSON.stringify(obj); 
-        }
-        return String(obj);
-    }
-
-    /* ── Boot ───────────────────────────────────────────────────────────── */
-    window.onload = async function () {
-        const statusEl = document.getElementById('statusIndicator');
-        try {
-            const response = await fetch('blueprint_explorer_data.json');
-            if (!response.ok) throw new Error(`HTTP ${response.status}: File not found.`);
-
-            const data = await response.json();
-            
-            let itemsArray = Array.isArray(data) ? data : (data.items || []);
-            if (itemsArray.length === 0) throw new Error("Missing 'items' array. Run the Python compiler.");
-
-            processDatabase(itemsArray);
-        } catch (err) {
-            statusEl.style.color = 'var(--warning)';
-            statusEl.textContent = `Error loading data: ${err.message}`;
-            console.error('Database error:', err);
-        }
-    };
-
-    /* ── System Filter Toggle ───────────────────────────────────────────── */
-    function toggleSystemFilter(system, btn) {
-        if (activeSystemFilters.has(system)) {
-            activeSystemFilters.delete(system);
-            btn.classList.remove('active');
-        } else {
-            activeSystemFilters.add(system);
-            btn.classList.add('active');
-        }
-        render(); 
-    }
-
-    /* ── Filter missions by active systems ──────────────────────────────── */
-    function filterMissionsBySystem(missions) {
-        if (activeSystemFilters.size === 0) return []; 
-        return missions.filter(m => {
-            let systemText = "";
-            if (typeof m === 'object' && m !== null) {
-                systemText = extractText(m.system).toLowerCase();
-            }
-            // If the database has no system defined, assume Stanton so they don't vanish
-            if (!systemText) systemText = 'stanton';
-            return activeSystemFilters.has(systemText);
-        });
-    }
-
-    /* ── Data processing ────────────────────────────────────────────────── */
-    function processDatabase(items) {
-        weaponsList = [];
-        armorSets   = {};
-        ammoList    = [];
-
-        items.forEach(item => {
-            const name = extractText(item.name || item.productName || "");
-            if (!name || name === "Unknown") return;
-
-            const type = extractText(item.type || "").toLowerCase();
-            const subtype = extractText(item.subtype || "Standard");
-            const missions = Array.isArray(item.missions) ? item.missions : [];
-            
-            const isAmmo = /magazine|battery|shell|canister/i.test(name) || type === 'ammo' || type === 'ammunition';
-
-            if (isAmmo) {
-                ammoList.push({ name, subtype, missions });
-            } else if (type === 'weapon' || type === 'weapons' || type === 'fps weapon') {
-                weaponsList.push({ name, subtype, missions });
-            } else if (type === 'armor' || type === 'armour') {
-                let setName = extractText(item.armorSet);
-                if (!setName || setName === "Unknown" || setName === "") {
-                    setName = name.replace(/\b(Helmet|Core|Arms|Legs|Backpack|Suit|Undersuit)\b/gi, '').replace(/\s{2,}/g, ' ').trim();
-                }
-                
-                if (!armorSets[setName]) {
-                    armorSets[setName] = { parts: [], subtype: subtype, partsData: {}, missions: [] };
-                }
-                armorSets[setName].parts.push(name);
-                armorSets[setName].partsData[name] = missions;
-                
-                // Keep missions as objects to preserve the system/lawful attributes
-                missions.forEach(m => {
-                    const mTitle = typeof m === 'object' && m !== null ? extractText(m.title) : extractText(m);
-                    const mSys   = typeof m === 'object' && m !== null ? extractText(m.system) : "";
-
-                    const alreadyIn = armorSets[setName].missions.some(em => {
-                        const emTitle = typeof em === 'object' && em !== null ? extractText(em.title) : extractText(em);
-                        const emSys   = typeof em === 'object' && em !== null ? extractText(em.system) : "";
-                        return emTitle === mTitle && emSys === mSys;
-                    });
-                    if (!alreadyIn) armorSets[setName].missions.push(m);
-                });
-            }
-        });
-
-        render();
-    }
-
-    /* ── Tab switching ──────────────────────────────────────────────────── */
-    function switchTab(view, el) {
-        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-        el.classList.add('active');
-        document.getElementById('weaponsView').style.display = (view === 'weapons') ? 'grid' : 'none';
-        document.getElementById('armorView').style.display   = (view === 'armor')   ? 'grid' : 'none';
-        document.getElementById('ammoView').style.display    = (view === 'ammo')    ? 'grid' : 'none';
-    }
-
-    /* ── Modal ──────────────────────────────────────────────────────────── */
-    function openModal(titleEnc, tagEnc, listEnc) {
-        document.getElementById('modalTitleText').textContent = dec(titleEnc);
-        document.getElementById('modalTag').textContent = dec(tagEnc);
-        document.getElementById('modalMissionsContent').innerHTML = dec(listEnc);
-        document.getElementById('missionModal').style.display = 'flex';
-    }
-
-    function closeModal(e) {
-        if (e.target.classList.contains('modal-close') || e.target.classList.contains('modal-overlay')) {
-            document.getElementById('missionModal').style.display = 'none';
-        }
-    }
-
-    /* ── Armor tile toggling ────────────────────────────────────────────── */
-    function toggleMissionView(baseId, containerId, tile) {
-        const siblings = tile.parentNode.querySelectorAll('.armor-tile.interactive');
-        siblings.forEach(t => t.classList.remove('active-piece'));
-        tile.classList.add('active-piece');
-
-        const containers = document.querySelectorAll(`[id^="${baseId}-"]`);
-        containers.forEach(c => c.style.display = 'none');
-        document.getElementById(containerId).style.display = 'flex';
-    }
-
-    /* ── Helpers ─────────────────────────────────────────────────────────── */
-    function enc(str) { return encodeURIComponent(String(str)).replace(/'/g, "%27").replace(/"/g, "%22"); }
-    function dec(str) { return decodeURIComponent(str); }
-
-    function serializeMissions(missions) {
-        return JSON.stringify(missions.map(m => {
-            if (typeof m === 'object' && m !== null) {
-                return [extractText(m.title), extractText(m.type), m.lawful, extractText(m.system)];
-            }
-            return extractText(m);
-        }));
-    }
-
-    function missionItemHTML(m) {
-        if (typeof m !== 'object' || m === null) {
-            return `<li><div class="mission-title-text">${extractText(m)}</div></li>`;
-        }
-
-        const lawful   = (m.lawful === true || m.lawful === 'True' || m.lawful === 'true');
-        const liClass  = lawful ? '' : ' unlawful';
-        const badgeCls = lawful ? 'badge-verified'   : 'badge-unverified';
-        const badgeTxt = lawful ? '&#x2713; Lawful' : '&#x26A0; Unlawful';
-        
-        const factionText = extractText(m.faction);
-        const faction  = factionText
-            ? `<span class="mission-type-sep">·</span><span class="mission-faction-tag">${factionText}</span>`
-            : '';
-        
-        let systemText = extractText(m.system).toLowerCase();
-        if (!systemText) systemText = 'stanton'; 
-        
-        const systemClass = systemText === 'stanton' ? 'stanton' : systemText === 'pyro' ? 'pyro' : systemText === 'nyx' ? 'nyx' : '';
-        const sysDisplay = systemText.charAt(0).toUpperCase() + systemText.slice(1);
-        const systemBadge = systemClass ? `<span class="mission-system-badge ${systemClass}">${sysDisplay}</span>` : '';
-
-        const mType = extractText(m.type) || "Contract";
-        const mTitle = extractText(m.title) || "Unknown Title";
-
-        return `<li class="${liClass}" data-system="${systemText}">` +
-                   `<div class="mission-meta">` +
-                       `<div class="mission-meta-left">` +
-                           `<span class="mission-type-tag">[${mType}]</span>` +
-                           faction +
-                           systemBadge +
-                       `</div>` +
-                       `<span class="mission-badge ${badgeCls}">${badgeTxt}</span>` +
-                   `</div>` +
-                   `<div class="mission-title-text">${mTitle}</div>` +
-               `</li>`;
-    }
-
-    function missionListHTML(label, missions) {
-        return `<div class="mission-header">${label}</div>` +
-               `<ul class="mission-list">${missions.map(missionItemHTML).join('')}</ul>`;
-    }
-
-    function expandBtn(titleEnc, tagEnc, listEnc) {
-        return `<div class="expand-btn" onclick="openModal('${titleEnc}','${tagEnc}','${listEnc}')">&#x2922; Click to expand full list</div>`;
-    }
-
-    /* ── Render ─────────────────────────────────────────────────────────── */
-    function render() {
-        renderWeapons();
-        renderAmmo();
-        renderArmor();
-
-        const wCount = weaponsList.filter(w => filterMissionsBySystem(w.missions).length > 0).length;
-        const aCount = ammoList.filter(a => filterMissionsBySystem(a.missions).length > 0).length;
-        const sCount = Object.keys(armorSets).filter(s => filterMissionsBySystem(armorSets[s].missions).length > 0).length;
-
-        const status = document.getElementById('statusIndicator');
-        status.style.color = 'var(--success)';
-        status.textContent = `Database Loaded! Showing ${wCount} weapons, ${aCount} ammo items, and ${sCount} armor sets.`;
-    }
-
-    function renderWeapons() {
-        const items = weaponsList.filter(w => filterMissionsBySystem(w.missions).length > 0);
-        
-        document.getElementById('weaponsView').innerHTML = items.map(w => {
-            const filteredMissions = filterMissionsBySystem(w.missions);
-            const subtype = w.subtype || 'weapon';
-            const list    = missionListHTML('Obtained From:', filteredMissions);
-            return `
-                <div class="blueprint-card weapon search-target">
-                    <div class="card-header">
-                        <span class="card-name search-text">${w.name}</span>
-                        <span class="tag">${subtype}</span>
+                <div class="mining-header-bottom">
+                    <div class="tab-bar">
+                        <button class="tab-btn active" id="tab-locs" onclick="switchTab('locs')">Locations & Percentages</button>
+                        <button class="tab-btn" id="tab-scan" onclick="switchTab('scan')">SIGNATURE CHECKER</button>
                     </div>
-                    <div class="mission-scroll-area">${list}</div>
-                    ${expandBtn(enc(w.name), enc(subtype), enc(list))}
-                </div>`;
-        }).join('');
-    }
-
-    function renderAmmo() {
-        const items = ammoList.filter(a => filterMissionsBySystem(a.missions).length > 0);
-        
-        document.getElementById('ammoView').innerHTML = items.map(a => {
-            const filteredMissions = filterMissionsBySystem(a.missions);
-            const subtype = a.subtype || 'ammo';
-            const list    = missionListHTML('Obtained From:', filteredMissions);
-            return `
-                <div class="blueprint-card ammo search-target">
-                    <div class="card-header">
-                        <span class="card-name search-text">${a.name}</span>
-                        <span class="tag">${subtype}</span>
+                    
+                    <div class="header-sub-cta">
+                        <div class="header-sub-text">
+                            <div class="header-sub-title">Enjoying The Tool? Say Thanks!</div>
+                            <div class="header-sub-desc">+ Get Star Citizen Guides & Updates</div>
+                        </div>
+                        <a href="https://youtube.com/@CMDRQuattro" target="_blank" class="sub-action-btn">
+                            <img src="https://i.imgur.com/cJDkXIG.png" alt="CMDR Quattro Logo" class="sub-action-logo">
+                            <span>SUBSCRIBE</span>
+                        </a>
                     </div>
-                    <div class="mission-scroll-area">${list}</div>
-                    ${expandBtn(enc(a.name), enc(subtype), enc(list))}
-                </div>`;
-        }).join('');
-    }
+                </div>
+            </div>
 
-    function renderArmor() {
-        const REQUIRED   = ['helmet', 'core', 'arms', 'legs'];
-        const PART_ORDER = ['helmet', 'core', 'arms', 'legs', 'backpack', 'undersuit'];
+            <div class="advisory-box">
+                <div class="advisory-icon">⚠️</div>
+                <div class="advisory-text">
+                    <strong>PRO TIP:</strong> I would highly advise focusing on mining in <strong>Pyro</strong>, as the material is far higher quality on average than what is present in Stanton.
+                    <span>Note: Sadaryx & Savrilium can be found at the Rock Breaker Contract Locations Exclusively For The Moment. Need help? Check out the <a href="https://citizen-starter-guide.com/rock-breaker-interactive-guide/" target="_blank" style="color: var(--accent); text-decoration: underline;">Rock Breaker Interactive Guide - Citizen Starter Guide</a>.</span>
+                </div>
+            </div>
 
-        const available = Object.keys(armorSets)
-            .filter(s => filterMissionsBySystem(armorSets[s].missions).length > 0)
-            .sort((a, b) => {
-                const partsA = armorSets[a].parts.map(p => p.toLowerCase());
-                const partsB = armorSets[b].parts.map(p => p.toLowerCase());
-                const fullA  = REQUIRED.every(r => partsA.some(p => p.includes(r)));
-                const fullB  = REQUIRED.every(r => partsB.some(p => p.includes(r)));
-                if (fullA !== fullB) return fullA ? -1 : 1;
-                return a.localeCompare(b);
-            });
+            <div id="tab-content"></div>
+        </div>
+    </div>
 
-        document.getElementById('armorView').innerHTML = available.map(setName => {
-            const set      = armorSets[setName];
-            const subtype  = set.subtype || 'armor';
-            const partLow  = set.parts.map(p => p.toLowerCase());
-            const isComplete = REQUIRED.every(r => partLow.some(p => p.includes(r)));
+    <script>
+        const COMPILED_JSON_FILE = 'mining_compiled.json'; 
 
-            const filteredMissions = filterMissionsBySystem(set.missions);
+        let SIGNATURE_DB = [];
+        let FLAT_LOCS = [];
+        let SORTED_MATS = [];
 
-            let allSame = true;
-            if (set.parts.length > 1) {
-                const ref = serializeMissions(filterMissionsBySystem(set.partsData[set.parts[0]]));
-                allSame = set.parts.slice(1).every(
-                    p => serializeMissions(filterMissionsBySystem(set.partsData[p])) === ref
-                );
+        let activeTab = 'locs';
+        let sigSearchQuery = '';
+        let locSearchQuery = '';
+        let sigMethodFilter = 'All';
+        let locFilters = ["", "", ""];
+        let locSystemFilter = 'All';
+
+        function esc(str) { 
+            const d = document.createElement('div'); 
+            d.textContent = String(str ?? ''); 
+            return d.innerHTML; 
+        }
+
+        async function fetchGameData() {
+            try {
+                const response = await fetch(COMPILED_JSON_FILE);
+                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                
+                const data = await response.json();
+                
+                document.getElementById('version-label').innerText = "LIVE BUILD: " + data.version;
+                
+                SIGNATURE_DB = data.signatures;
+                SORTED_MATS = data.materials;
+                
+                FLAT_LOCS = data.locations.map(loc => ({
+                    ...loc,
+                    allMatsSet: new Set(loc.allMats)
+                }));
+                
+                document.getElementById('loading-screen').classList.remove('active');
+                document.getElementById('app-screen').classList.add('active');
+                renderUI();
+
+            } catch (error) {
+                console.error('Fetch error:', error);
+                document.getElementById('error-output').innerHTML = `
+                    <div class="error-msg">
+                        Failed to load <code>${COMPILED_JSON_FILE}</code>.<br><br>
+                        Error details: ${error.message}
+                    </div>
+                `;
+                document.querySelector('.spinner').style.display = 'none';
             }
+        }
 
-            const sortedParts = [...set.parts].sort((a, b) => {
-                const ia = PART_ORDER.findIndex(o => a.toLowerCase().includes(o));
-                const ib = PART_ORDER.findIndex(o => b.toLowerCase().includes(o));
-                return (ia === -1 ? 99 : ia) - (ib === -1 ? 99 : ib);
-            });
+        function switchTab(tab) {
+            activeTab = tab;
+            document.getElementById('tab-locs').classList.toggle('active', tab === 'locs');
+            document.getElementById('tab-scan').classList.toggle('active', tab === 'scan');
+            renderUI();
+        }
 
-            const baseId         = `ma-${setName.replace(/[^a-zA-Z0-9]/g, '-')}`;
-            const defaultList    = missionListHTML('Set Obtained From:', filteredMissions);
+        function renderUI() {
+            let container = document.getElementById('tab-content');
+            container.innerHTML = '';
+            if (activeTab === 'locs') { renderLocations(container); } else { renderScanner(container); }
+        }
 
-            const defaultContainerHTML = `
-                <div id="${baseId}-default" class="mission-view-container" style="display:flex;">
-                    <div class="mission-scroll-area">${defaultList}</div>
-                    ${expandBtn(enc(setName + ' SET'), enc(subtype), enc(defaultList))}
-                </div>`;
+        function renderLocations(container) {
+            const wrap = document.createElement('div');
 
-            let specificContainersHTML = '';
+            const uniqueSystems = Array.from(new Set(FLAT_LOCS.map(l => l.system))).sort();
+            const sysTabsHTML = ['All', ...uniqueSystems].map(sys => 
+                `<button class="mining-subtab ${locSystemFilter === sys ? 'active' : ''}" onclick="locSystemFilter='${sys}';renderUI()">${sys}</button>`
+            ).join('');
 
-            const tilesHTML = sortedParts.map(p => {
-                if (allSame) return `<div class="armor-tile">${p}</div>`;
-
-                const pieceId     = p.replace(/[^a-zA-Z0-9]/g, '-');
-                const containerId = `${baseId}-${pieceId}`;
-                const missions    = filterMissionsBySystem(set.partsData[p]);
-
-                const specificList = missions.length > 0
-                    ? missionListHTML(`${p} Obtained From:`, missions)
-                    : `<div class="mission-header">${p} Obtained From:</div>
-                       <div style="color:var(--warning);font-size:0.8rem;margin-top:5px;padding-left:2px;">Loot Pool Unknown or Filtered</div>`;
-
-                const expandHTML = missions.length > 0
-                    ? expandBtn(enc(p), enc(subtype), enc(specificList))
-                    : '';
-
-                specificContainersHTML += `
-                    <div id="${containerId}" class="mission-view-container" style="display:none;">
-                        <div class="mission-scroll-area">${specificList}</div>
-                        ${expandHTML}
-                    </div>`;
-
-                return `<div class="armor-tile interactive" onclick="toggleMissionView('${baseId}','${containerId}',this)">${p}</div>`;
+            let selectsHTML = [0,1,2].map(i => {
+                let opts = `<option value="">-- Required Material ${i+1} --</option>`;
+                SORTED_MATS.forEach(m => { opts += `<option value="${esc(m)}" ${locFilters[i] === m ? 'selected' : ''}>${esc(m)}</option>`; });
+                return `<select class="loc-select" onchange="locFilters[${i}]=this.value;renderUI()">${opts}</select>`;
             }).join('');
 
-            const incompleteTag = isComplete
-                ? ''
-                : `<span class="tag" style="background:var(--warning);color:#fff;border:none;">INCOMPLETE</span>`;
-
-            const noteTag = allSame
-                ? ''
-                : `<div class="armor-note">* Pieces have different loot pools — click a tile to filter.</div>`;
-
-            return `
-                <div class="armor-set-box search-target">
-                    <div class="armor-set-title">
-                        <div class="armor-set-title-left">
-                            <span class="search-text">${setName} SET</span>
-                            ${incompleteTag}
+            wrap.innerHTML = `
+                <div class="loc-filters">
+                    <div class="loc-filters-top">
+                        <div style="display:flex; align-items:center; gap: 15px;">
+                            <span style="color:var(--text-muted); font-size:0.85rem; font-weight:bold; text-transform:uppercase; letter-spacing:1px; margin-top:5px;">Filter System:</span>
+                            <div class="mining-subtabs">${sysTabsHTML}</div>
                         </div>
-                        <span class="tag">${subtype}</span>
+                        <input type="text" class="sig-search" placeholder="Search locations (e.g. HUR-L1, Daymar)..." value="${esc(locSearchQuery)}" oninput="locSearchQuery=this.value;renderUI()">
                     </div>
-                    ${noteTag}
-                    <div class="armor-tiles">${tilesHTML}</div>
-                    <div class="mission-views-wrapper">
-                        ${defaultContainerHTML}
-                        ${specificContainersHTML}
+                    <div class="loc-filters-bottom">
+                        <div style="width:100%; font-size:0.85rem; font-weight:700; color:var(--text-muted); margin-bottom:4px; text-transform:uppercase; letter-spacing:0.5px;">Filter by Materials (Must contain ALL):</div>
+                        <div style="display:flex; gap:10px; width:100%; flex-wrap:wrap;">${selectsHTML}</div>
                     </div>
-                </div>`;
-        }).join('');
-    }
+                </div>
+            `;
+            container.appendChild(wrap);
 
-    /* ── Search ─────────────────────────────────────────────────────────── */
-    function filterItems() {
-        const query = document.getElementById('searchInput').value.toLowerCase();
-        document.querySelectorAll('.search-target').forEach(el => {
-            const text = el.querySelector('.search-text').textContent.toLowerCase();
-            el.style.display = text.includes(query) ? '' : 'none';
-        });
-    }
-</script>
+            const activeFilters = locFilters.filter(m => m !== '');
+            let filteredLocs = FLAT_LOCS;
+
+            if (locSearchQuery) {
+                const q = locSearchQuery.toLowerCase().trim();
+                filteredLocs = filteredLocs.filter(l => l.name.toLowerCase().includes(q));
+            }
+
+            if (locSystemFilter !== 'All') {
+                filteredLocs = filteredLocs.filter(l => l.system === locSystemFilter);
+            }
+
+            if (activeFilters.length > 0) { 
+                filteredLocs = filteredLocs.filter(l => activeFilters.every(sel => l.allMatsSet.has(sel))); 
+            }
+
+            // DYNAMIC SORTING: Calculate yield scores and sort highest to top
+            filteredLocs.forEach(loc => {
+                let sortScore = 0;
+                if (activeFilters.length > 0) {
+                    ['Ship', 'ROC', 'Hand'].forEach(method => {
+                        if (loc.methods[method]) {
+                            loc.methods[method].forEach(mat => {
+                                if (activeFilters.includes(mat.name)) {
+                                    sortScore += mat.chance;
+                                }
+                            });
+                        }
+                    });
+                }
+                loc.sortScore = sortScore;
+            });
+
+            if (activeFilters.length > 0) {
+                // Sort by combined percentage (highest on top)
+                filteredLocs.sort((a, b) => b.sortScore - a.sortScore);
+            } else {
+                // Fallback to alphabetical order if no specific materials are selected
+                filteredLocs.sort((a, b) => a.name.localeCompare(b.name));
+            }
+
+            const grid = document.createElement('div');
+            grid.className = 'loc-grid';
+            
+            if(filteredLocs.length === 0) {
+                grid.innerHTML = `<div style="padding:40px; text-align:center; color:var(--text-muted); grid-column: 1 / -1; background:var(--bg-card); border-radius:8px; border:1px dashed var(--border);">No locations found matching your filters.</div>`;
+            }
+
+            filteredLocs.forEach(loc => {
+                if (!loc.methods || Object.keys(loc.methods).length === 0) return;
+                
+                let html = `<div class="loc-card">
+                    <div class="loc-header">
+                        <div>
+                            <div class="loc-name">${esc(loc.name)}</div>
+                        </div>
+                        <div class="loc-sys">${esc(loc.system)}</div>
+                    </div>
+                    <div class="loc-body">`;
+                    
+                ['Ship', 'ROC', 'Hand'].forEach(method => {
+                    if (loc.methods[method] && loc.methods[method].length > 0) {
+                        html += `<div class="loc-method-group ${method}">
+                            <div class="loc-method-title">${method} Mining Deposits</div>`;
+                        loc.methods[method].forEach(mat => {
+                            const isHighlight = activeFilters.includes(mat.name);
+                            html += `<div class="loc-mat-row" style="${isHighlight ? 'color:var(--accent); font-weight:bold;' : ''}">
+                                <span class="loc-mat-name" style="${isHighlight ? 'color:var(--text-main);' : ''}">${esc(mat.name)}</span>
+                                <span class="loc-mat-pct" style="${isHighlight ? 'color:var(--accent);' : ''}">${mat.chance.toFixed(1)}%</span>
+                            </div>`;
+                        });
+                        html += `</div>`;
+                    }
+                });
+                
+                html += `</div></div>`;
+                grid.innerHTML += html;
+            });
+            container.appendChild(grid);
+        }
+
+        function renderScanner(container) {
+            container.innerHTML = `
+                <div class="sig-filter-controls">
+                    <input type="text" class="sig-search" placeholder="Search specific materials..." value="${esc(sigSearchQuery)}" oninput="sigSearchQuery=this.value;renderUI()">
+                    <div class="mining-subtabs">
+                        ${['All','Ship','ROC','Hand'].map(f => `<button class="mining-subtab ${sigMethodFilter===f?'active':''}" onclick="sigMethodFilter='${f}';renderUI()">${f}</button>`).join('')}
+                    </div>
+                </div>
+                <div class="sig-scanner-wrap">
+                    <div class="sig-scanner-label">SIGNATURE INPUT (Exact Cluster Math)</div>
+                    <div class="sig-scanner-row">
+                        <input type="number" class="sig-scanner-input" id="rs-input" placeholder="e.g. 12810" oninput="updateRSScanner(this.value)">
+                        <div class="sig-result" id="rs-result"><span style="color:var(--text-muted);font-size:0.9rem;">Enter a Scanning Signature from Ship HUD...</span></div>
+                    </div>
+                </div>
+                <div class="sig-grid" id="sig-grid"></div>
+            `;
+            
+            let grid = document.getElementById('sig-grid');
+            
+            const q = sigSearchQuery.toLowerCase().trim();
+            let list = SIGNATURE_DB.filter(s => {
+                if (q && !s.name.toLowerCase().includes(q)) return false;
+                if (sigMethodFilter !== 'All' && s.method !== sigMethodFilter) return false;
+                return true;
+            });
+
+            list.forEach(s => {
+                let card = document.createElement('div');
+                card.className = `sig-card tier-${s.tier.toLowerCase().charAt(0)}`; 
+                card.innerHTML = `
+                    <span class="sig-tier-badge" style="color: var(--tier-${s.tier.toLowerCase().charAt(0)})">${s.tier}</span>
+                    <div class="sig-card-name">${esc(s.name)}</div>
+                    <div class="sig-card-rs">${s.rs.toLocaleString()}</div>
+                    <div class="sig-note">
+                        <span class="method-tag method-${s.method.toLowerCase()}">${s.method}</span>
+                        <span style="color:var(--text-muted); font-family:monospace;">${esc(s.note)}</span>
+                    </div>
+                `;
+                card.onclick = () => { 
+                    document.getElementById('rs-input').value = s.rs; 
+                    updateRSScanner(s.rs); 
+                };
+                grid.appendChild(card);
+            });
+        }
+
+        window.updateRSScanner = function(rawVal) {
+            const rs = parseInt(rawVal);
+            const el = document.getElementById('rs-result');
+            if (!el || !rs || rs < 100) {
+                if(el) el.innerHTML = '<span style="color:var(--text-muted);font-size:0.9rem;">Enter an RS reading from your ship HUD...</span>';
+                return;
+            }
+
+            let matches = [];
+            SIGNATURE_DB.forEach(s => {
+                for (let n = 1; n <= 12; n++) {
+                    const expected = s.rs * n;
+                    const diff = Math.abs(rs - expected);
+                    if (diff < expected * 0.005) { 
+                        matches.push({ ...s, nodes: n, confidence: Math.round((1 - diff/(expected*0.005))*100) });
+                    }
+                }
+            });
+            matches.sort((a,b) => b.confidence - a.confidence);
+
+            if (matches.length === 0) {
+                el.innerHTML = `
+                    <div class="sig-result-primary" style="color:var(--error);">NO MATCH</div>
+                    <div class="sig-result-nodes" style="color:var(--text-muted);">RS does not map cleanly to any known cluster in the database.</div>
+                `;
+                return;
+            }
+
+            const b = matches[0];
+            const tColor = `var(--tier-${b.tier.toLowerCase().charAt(0)})`;
+            el.innerHTML = `
+                <div class="sig-result-primary">
+                    <span style="color:${tColor}">${esc(b.name)}</span>
+                    <span style="color:var(--text-main); font-weight:400;">&times; ${b.nodes} node${b.nodes > 1 ? 's' : ''}</span>
+                    <span class="method-tag method-${b.method.toLowerCase()}" style="margin-left:8px;">${b.method}</span>
+                    <span class="sig-confidence" style="margin-left:auto;">${b.confidence}%</span>
+                </div>
+                <div class="sig-result-nodes">
+                    Base: <span style="color:var(--theme);">${b.rs}</span> &middot; 
+                    Expected Cluster: <span style="color:var(--theme);">${b.rs * b.nodes}</span> &middot; 
+                    <span style="color:${tColor}; text-transform:uppercase; font-size:0.75rem; font-weight:bold;">${b.tier}</span>
+                </div>
+            `;
+        };
+
+        window.onload = fetchGameData;
+    </script>
 </body>
 </html>

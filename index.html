@@ -3,191 +3,382 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>CMDR Quattro - 4.8.2 STAR CITIZEN MINING MATERIAL FINDER 2.0</title>
+
+    <title>Star Citizen 4.8.3 Mining Finder | Hadanite, Ore & Yields</title>
+    <meta name="description" content="Star Citizen 4.8.3 mining tool: filter Stanton, Pyro & Nyx locations by material, find the best Hadanite & Quantainium nodes, and scan RS signatures.">
+    <link rel="canonical" href="https://quattrobaje3na-png.github.io/SC-Mining-Material-Finder-2.0/">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Star Citizen 4.8.3 Mining Finder | Hadanite, Ore & Yields">
+    <meta property="og:description" content="Free tool for finding the best Star Citizen mining locations by material, with live Ship/ROC/Hand drop percentages and an RS signature scanner.">
+    <meta property="og:url" content="https://quattrobaje3na-png.github.io/SC-Mining-Material-Finder-2.0/">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Star Citizen 4.8.3 Mining Finder | Hadanite, Ore & Yields">
+    <meta name="twitter:description" content="Free tool for finding the best Star Citizen mining locations by material, with live Ship/ROC/Hand drop percentages and an RS signature scanner.">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "How do I use the RS signature scanner?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Switch to the Signature Checker tab and type the raw RS number shown on your ship's mining HUD into the scanner input. The tool runs exact cluster math against the full signature database and instantly returns the matching material, rarity tier, mining method, and how many nodes make up that cluster."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Where is the best place to mine Hadanite in Star Citizen?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "As of Patch 4.8, Aberdeen — the moon orbiting Crusader in Stanton — has the richest known concentration of Hadanite, with dense surface rock clusters packed close together that make it one of the strongest ROC mining loops in the game. Use the system and material filters above to confirm the current highest-percentage Hadanite nodes, since drop tables can shift between patches."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Where do I find Quantainium in Patch 4.8.3?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Quantainium can be found via Ship and ROC mining in select asteroid clusters and surface deposits across both Stanton and Pyro — filter for it above to find the best current node before it decays."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What is the fastest way to make aUEC for in-game ship prices?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "There's no single fastest method, but chaining high-percentage Ship and ROC mining locations — especially for top-value nodes like Hadanite and Quantainium — is one of the most consistent, repeatable aUEC income loops in the game. Use the filters above to line up the best-yield locations for materials you can sell, then route to the trade terminal paying the most for your haul."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Where can I find Sadaryx and Savrilium?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Sadaryx and Savrilium are currently exclusive to Rock Breaker Contract locations and are not available through standard Ship, ROC, or Hand mining elsewhere in the verse. Check active Rock Breaker contracts specifically if you need either material."
+                }
+            }
+        ]
+    }
+    </script>
+
     <style>
-        :root { 
-            --bg-base: #09090b; --bg-card: #141417; --border: #27272a; 
-            --text-main: #f8fafc; --text-muted: #94a3b8; 
-            --accent: #f97316; --theme: #00e5ff; --success: #10b981;
-            --tier-l: #a855f7; --tier-e: #eab308; --tier-r: #3b82f6; --tier-u: #10b981; --tier-c: #94a3b8; 
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap');
+        :root {
+            /* Green digital / terminal palette, matched to the CMDR Quattro tool suite */
+            --bg-base: #050709; --bg-card: #0c0f14; --border: #172030;
+            --text-main: #e0eaf5; --text-muted: #5a7a94;
+            --accent: #00e5a0; --theme: #60a0ff; --gold: #ff9500; --success: #00e5a0; --error: #ef4444;
+            --tier-l: #a78bfa; --tier-e: #ff9500; --tier-r: #60a0ff; --tier-u: #00e5a0; --tier-c: #5a7a94;
+            --mono: 'Share Tech Mono', monospace; --heading: 'Orbitron', sans-serif; --ui: 'Rajdhani', system-ui, sans-serif;
         }
-        
-        * { box-sizing: border-box; font-family: 'Inter', system-ui, -apple-system, sans-serif; }
-        body { background-color: var(--bg-base); color: var(--text-main); margin: 0; padding: 20px; }
+
+        * { box-sizing: border-box; font-family: var(--ui), system-ui, -apple-system, sans-serif; }
+        body { background-color: var(--bg-base); color: var(--text-main); margin: 0; padding: 20px; font-size: 16px; }
+        body::before { content: ''; position: fixed; inset: 0; background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,.04) 2px, rgba(0,0,0,.04) 4px); pointer-events: none; z-index: 9999; }
         #main-grid { max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px; }
-        
+
+        .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+
+        /* Site Header */
+        .site-header { max-width: 1200px; margin: 0 auto 20px auto; padding: 0 4px; }
+        .site-header h1 { font-family: var(--heading); font-size: 1.6rem; font-weight: 700; margin: 0 0 8px 0; letter-spacing: 0.5px; text-transform: uppercase; }
+        .site-header h1 .patch-badge { display: inline-block; font-family: var(--mono); font-size: 0.8rem; font-weight: 700; color: var(--accent); background: rgba(0, 229, 160, 0.1); border: 1px solid rgba(0, 229, 160, 0.3); padding: 3px 10px; border-radius: 4px; vertical-align: middle; margin-left: 10px; letter-spacing: 1px; }
+        .site-subtitle { color: var(--text-muted); font-size: 1rem; margin: 0; max-width: 720px; line-height: 1.5; }
+
         .screen { display: none; }
         .screen.active { display: block; }
 
-        #loading-screen { text-align: center; margin-top: 100px; background: var(--bg-card); padding: 40px; border-radius: 8px; border: 1px solid var(--border); box-shadow: 0 4px 20px rgba(0,0,0,0.5); }
+        #loading-screen { text-align: center; margin-top: 60px; background: var(--bg-card); padding: 40px; border-radius: 8px; border: 1px solid var(--border); box-shadow: 0 4px 20px rgba(0,0,0,0.5); }
         .spinner { border: 4px solid rgba(255,255,255,0.05); width: 40px; height: 40px; border-radius: 50%; border-left-color: var(--accent); animation: spin 1s linear infinite; margin: 0 auto 20px auto; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        .loading-title { font-family: var(--heading); color: var(--accent); text-transform: uppercase; letter-spacing: 2px; font-weight: 700; margin: 0 0 8px 0; }
 
         /* HEADER REBUILD - 2 ROW LAYOUT */
         .mining-header { background: var(--bg-card); padding: 20px; border-radius: 8px; border: 1px solid var(--border); border-top: 3px solid var(--accent); margin-bottom: 20px; }
-        
+
         /* Top Row: Title & Version Badge */
         .mining-header-top { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); padding-bottom: 15px; margin-bottom: 15px; flex-wrap: wrap; gap: 15px; }
-        .mining-title { font-size: 1.4rem; font-weight: 800; color: var(--text-main); letter-spacing: 1px; text-transform: uppercase; margin: 0;}
+        .mining-title { font-family: var(--heading); font-size: 1.1rem; font-weight: 700; color: var(--text-main); letter-spacing: 1.5px; text-transform: uppercase; margin: 0;}
         .mining-title span { color: var(--accent); }
-        .mining-credit { font-size: 0.85rem; color: var(--theme); background: rgba(0, 229, 255, 0.1); padding: 4px 8px; border-radius: 4px; border: 1px solid rgba(0, 229, 255, 0.2); font-weight: bold; white-space: nowrap; }
-        
+        .mining-credit { font-family: var(--mono); font-size: 0.8rem; color: var(--theme); background: rgba(96, 160, 255, 0.1); padding: 4px 8px; border-radius: 4px; border: 1px solid rgba(96, 160, 255, 0.3); font-weight: bold; white-space: nowrap; letter-spacing: 0.5px; }
+
         /* Bottom Row: Tabs & Subscribe CTA */
-        .mining-header-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; }
-        
+        .mining-header-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: nowrap; gap: 10px; min-width: 0; }
+
         /* CTA Box */
-        .header-sub-cta { display: flex; align-items: center; gap: 15px; background: #1a1a1c; padding: 10px 15px; border-radius: 8px; border: 1px solid #333; border-left: 3px solid #d47631; }
-        .header-sub-text { display: flex; flex-direction: column; gap: 2px; text-align: left; }
-        .header-sub-title { color: #ffffff; font-size: 0.95rem; font-weight: 700; margin: 0; letter-spacing: 0.2px; }
-        .header-sub-desc { color: #8a8a8a; font-size: 0.75rem; margin: 0; }
-        
+        .header-sub-cta { display: flex; align-items: center; gap: 10px; background: #1a1a1c; padding: 6px 10px; border-radius: 8px; border: 1px solid #333; border-left: 3px solid #d47631; white-space: nowrap; }
+        .header-sub-text { display: flex; flex-direction: column; gap: 1px; text-align: left; }
+        .header-sub-title { color: #ffffff; font-size: 0.8rem; font-weight: 700; margin: 0; letter-spacing: 0.2px; white-space: nowrap; }
+        .header-sub-desc { color: #8a8a8a; font-size: 0.65rem; margin: 0; white-space: nowrap; }
+
         /* 3D Subscribe Button */
-        .sub-action-btn { display: inline-flex; align-items: center; background: linear-gradient(180deg, #ff0000 0%, #cc0000 100%); color: #ffffff; text-decoration: none; padding: 8px 18px; border-radius: 6px; font-weight: 800; font-size: 0.9rem; letter-spacing: 0.5px; box-shadow: 0 4px 0 #990000, 0 5px 10px rgba(0, 0, 0, 0.3); transition: transform 0.1s ease, box-shadow 0.1s ease, background 0.2s ease; white-space: nowrap; }
+        .sub-action-btn { display: inline-flex; align-items: center; background: linear-gradient(180deg, #ff0000 0%, #cc0000 100%); color: #ffffff; text-decoration: none; padding: 6px 12px; border-radius: 6px; font-weight: 800; font-size: 0.78rem; letter-spacing: 0.5px; box-shadow: 0 3px 0 #990000, 0 4px 8px rgba(0, 0, 0, 0.3); transition: transform 0.1s ease, box-shadow 0.1s ease, background 0.2s ease; white-space: nowrap; flex-shrink: 0; }
         .sub-action-btn:hover { background: linear-gradient(180deg, #ff1a1a 0%, #e60000 100%); }
-        .sub-action-btn:active { transform: translateY(4px); box-shadow: 0 0 0 #990000, 0 2px 5px rgba(0, 0, 0, 0.3); }
-        .sub-action-logo { width: 20px; height: 20px; border-radius: 50%; margin-right: 8px; border: 1px solid rgba(255, 255, 255, 0.3); box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); }
+        .sub-action-btn:active { transform: translateY(3px); box-shadow: 0 0 0 #990000, 0 1px 4px rgba(0, 0, 0, 0.3); }
+        .sub-action-logo { width: 16px; height: 16px; border-radius: 50%; margin-right: 6px; border: 1px solid rgba(255, 255, 255, 0.3); box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); }
+
+        /* Referral CTA (sits next to the Subscribe block) */
+        .header-cta-row { display: flex; gap: 8px; flex-wrap: nowrap; min-width: 0; }
+        .referral-cta { border-left-color: var(--tier-e); }
+        .referral-btn { background: linear-gradient(180deg, #eab308 0%, #b88a05 100%); box-shadow: 0 3px 0 #8a6804, 0 4px 8px rgba(0, 0, 0, 0.3); color: #1a1300; }
+        .referral-btn:hover { background: linear-gradient(180deg, #f4c016 0%, #cb9706 100%); }
+        .referral-btn:active { box-shadow: 0 0 0 #8a6804, 0 1px 4px rgba(0, 0, 0, 0.3); }
 
         /* Responsive Breakpoints */
         @media (max-width: 950px) {
+            .mining-header-bottom { flex-wrap: wrap; }
+            .header-cta-row { flex-wrap: wrap; }
+        }
+        @media (max-width: 700px) {
             .mining-header-bottom { flex-direction: column; align-items: flex-start; }
+            .header-cta-row { flex-direction: column; width: 100%; }
             .header-sub-cta { width: 100%; justify-content: space-between; }
         }
         @media (max-width: 550px) {
             .mining-header-top { flex-direction: column; align-items: flex-start; }
-            .header-sub-cta { flex-direction: column; text-align: center; align-items: stretch; }
+            .header-sub-cta { flex-direction: column; text-align: center; align-items: stretch; white-space: normal; }
             .header-sub-text { text-align: center; }
+            .header-sub-title, .header-sub-desc { white-space: normal; }
             .sub-action-btn { justify-content: center; }
         }
 
         /* Tabs */
-        .tab-bar { display: flex; gap: 10px; }
-        .tab-btn { background: var(--bg-base); color: var(--text-muted); border: 1px solid var(--border); padding: 10px 20px; border-radius: 4px; cursor: pointer; font-size: 0.95rem; font-weight: 600; transition: 0.2s; text-transform: uppercase; letter-spacing: 0.5px; }
+        .tab-bar { display: flex; gap: 8px; flex-shrink: 0; }
+        .tab-btn { background: var(--bg-base); color: var(--text-muted); border: 1px solid var(--border); padding: 8px 14px; border-radius: 4px; cursor: pointer; font-size: 0.82rem; font-weight: 600; transition: 0.2s; text-transform: uppercase; letter-spacing: 0.5px; white-space: nowrap; }
         .tab-btn:hover { background: var(--border); color: var(--text-main); }
-        .tab-btn.active { background: rgba(249, 115, 22, 0.1); color: var(--accent); border-color: var(--accent); }
+        .tab-btn.active { background: rgba(0, 229, 160, 0.1); color: var(--accent); border-color: var(--accent); }
 
         /* Advisory Box */
-        .advisory-box { background: rgba(249, 115, 22, 0.1); border: 1px solid rgba(249, 115, 22, 0.2); border-left: 4px solid var(--accent); padding: 15px 20px; border-radius: 4px; margin-bottom: 25px; display: flex; align-items: flex-start; gap: 15px; }
+        .advisory-box { background: rgba(0, 229, 160, 0.08); border: 1px solid rgba(0, 229, 160, 0.25); border-left: 4px solid var(--accent); padding: 15px 20px; border-radius: 4px; margin-bottom: 25px; display: flex; align-items: flex-start; gap: 15px; }
         .advisory-icon { font-size: 1.5rem; margin-top: 2px;}
         .advisory-text { font-size: 0.95rem; color: var(--text-main); line-height: 1.5; }
         .advisory-text strong { color: var(--accent); }
         .advisory-text span { display: block; margin-top: 8px; color: var(--theme); font-weight: 600;}
 
         /* Locations Grid */
-        .loc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 15px; }
-        .loc-card { background: var(--bg-card); border-radius: 8px; border: 1px solid var(--border); display: flex; flex-direction: column; overflow: hidden; transition: border-color 0.2s; }
+        .loc-grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 15px; }
+        .loc-card { background: var(--bg-card); border-radius: 8px; border: 1px solid var(--border); overflow: hidden; transition: border-color 0.2s; }
         .loc-card:hover { border-color: rgba(255, 255, 255, 0.1); }
+        .loc-empty { padding: 40px; text-align: center; color: var(--text-muted); grid-column: 1 / -1; background: var(--bg-card); border-radius: 8px; border: 1px dashed var(--border); list-style: none; }
         .loc-header { background: rgba(0,0,0,0.3); padding: 15px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: flex-start; }
-        .loc-name { font-weight: 700; font-size: 1.15rem; color: var(--text-main); line-height: 1.3;}
+        .loc-name { font-weight: 700; font-size: 1.15rem; color: var(--text-main); line-height: 1.3; margin: 0;}
         .loc-sys { font-size: 0.75rem; color: var(--text-muted); background: var(--border); border: 1px solid rgba(255, 255, 255, 0.1); padding: 3px 8px; border-radius: 12px; text-transform: uppercase; font-weight: bold; letter-spacing: 1px; }
         .loc-body { padding: 15px; display: flex; flex-direction: column; gap: 15px; }
-        
+
         .loc-method-group { background: var(--bg-base); border-radius: 6px; padding: 12px; border-left: 3px solid #555; }
         .loc-method-group.Ship { border-left-color: var(--theme); }
-        .loc-method-group.ROC { border-left-color: var(--accent); }
+        .loc-method-group.ROC { border-left-color: var(--gold); }
         .loc-method-group.Hand { border-left-color: var(--success); }
-        .loc-method-title { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; margin-bottom: 10px; color: var(--text-muted); letter-spacing: 0.5px; }
-        .loc-mat-row { display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px dashed var(--border); font-size: 0.95rem; }
-        .loc-mat-row:last-child { border-bottom: none; padding-bottom: 0; }
-        .loc-mat-pct { color: var(--theme); font-family: monospace; font-weight: bold; }
-        
+        .loc-method-title { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; margin: 0 0 10px 0; color: var(--text-muted); letter-spacing: 0.5px; }
+        .loc-mat-table { width: 100%; border-collapse: collapse; }
+        .loc-mat-table thead th { font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; text-align: left; border-bottom: 1px solid var(--border); padding-bottom: 6px; font-weight: 700; }
+        .loc-mat-table thead th:last-child { text-align: right; }
+        .loc-mat-table td { padding: 6px 0; border-bottom: 1px dashed var(--border); font-size: 0.95rem; }
+        .loc-mat-table tbody tr:last-child td { border-bottom: none; padding-bottom: 0; }
+        .loc-mat-pct { color: var(--accent); font-family: var(--mono); font-weight: bold; text-align: right; }
+        .loc-mat-row-highlight td.loc-mat-name { color: var(--text-main); font-weight: bold; }
+        .loc-mat-row-highlight td.loc-mat-pct { color: var(--gold); font-weight: bold; }
+
         .loc-filters { display: flex; flex-direction: column; gap: 15px; margin-bottom: 20px; background: var(--bg-card); padding: 20px; border-radius: 8px; border: 1px solid var(--border); }
         .loc-filters-top { display: flex; justify-content: space-between; align-items: center; gap: 15px; flex-wrap: wrap; border-bottom: 1px solid var(--border); padding-bottom: 15px; }
         .loc-filters-bottom { display: flex; flex-direction: column; gap: 10px; }
         .loc-select { background: var(--bg-base); color: var(--text-main); border: 1px solid var(--border); padding: 10px; border-radius: 4px; flex: 1; min-width: 200px; font-size: 0.9rem; outline: none; transition: border-color 0.2s; }
-        .loc-select:focus { border-color: var(--theme); }
+        .loc-select:focus { border-color: var(--accent); }
 
         /* Scanner View */
-        .sig-scanner-wrap { background: var(--bg-card); padding: 20px; border-radius: 8px; border: 1px solid var(--border); border-left: 3px solid var(--theme); margin-top: 0; margin-bottom: 20px; }
+        .sig-scanner-wrap { background: var(--bg-card); padding: 20px; border-radius: 8px; border: 1px solid var(--border); border-left: 3px solid var(--accent); margin-top: 0; margin-bottom: 20px; }
         .sig-scanner-label { font-size: 0.85rem; font-weight: 700; color: var(--text-muted); margin-bottom: 12px; letter-spacing: 1px; text-transform: uppercase; }
         .sig-scanner-row { display: flex; gap: 15px; align-items: center; flex-wrap: wrap; }
-        .sig-scanner-input { background: var(--bg-base); color: var(--theme); border: 1px solid var(--border); padding: 12px 20px; border-radius: 4px; font-size: 1.4rem; font-family: monospace; font-weight: bold; width: 180px; outline: none; transition: border-color 0.2s, box-shadow 0.2s; }
-        .sig-scanner-input:focus { border-color: var(--theme); box-shadow: 0 0 10px rgba(0, 229, 255, 0.15); }
+        .sig-scanner-input { background: var(--bg-base); color: var(--accent); border: 1px solid var(--border); padding: 12px 20px; border-radius: 4px; font-size: 1.4rem; font-family: var(--mono); font-weight: bold; width: 180px; outline: none; transition: border-color 0.2s, box-shadow 0.2s; }
+        .sig-scanner-input:focus { border-color: var(--accent); box-shadow: 0 0 10px rgba(0, 229, 160, 0.2); }
         .sig-result { flex: 1; display: flex; flex-direction: column; gap: 4px; }
         .sig-result-primary { font-size: 1.25rem; display: flex; align-items: center; gap: 12px; font-weight: 600; }
-        .sig-confidence { font-size: 0.75rem; background: rgba(16, 185, 129, 0.1); color: var(--success); border: 1px solid rgba(16, 185, 129, 0.2); padding: 4px 8px; border-radius: 4px; font-weight: bold; text-transform: uppercase; }
+        .sig-confidence { font-size: 0.75rem; background: rgba(0, 229, 160, 0.1); color: var(--success); border: 1px solid rgba(0, 229, 160, 0.25); padding: 4px 8px; border-radius: 4px; font-weight: bold; text-transform: uppercase; }
         .sig-result-nodes { font-size: 0.85rem; color: var(--text-muted); }
 
-        .sig-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 15px; }
+        .sig-grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 15px; }
         .sig-card { background: var(--bg-card); border-radius: 8px; padding: 15px; border: 1px solid var(--border); border-left: 4px solid var(--border); cursor: pointer; position: relative; transition: background 0.2s, transform 0.1s; }
-        .sig-card:hover { background: rgba(255, 255, 255, 0.03); transform: translateY(-2px); }
+        .sig-card:hover, .sig-card:focus-visible { background: rgba(255, 255, 255, 0.03); transform: translateY(-2px); outline: none; }
         .sig-tier-badge { position: absolute; top: 12px; right: 12px; font-size: 0.65rem; font-weight: 800; padding: 3px 8px; border-radius: 4px; background: var(--bg-base); text-transform: uppercase; letter-spacing: 0.5px; }
-        .sig-card-name { font-size: 1.15rem; font-weight: 700; margin-bottom: 8px; color: var(--text-main); }
-        .sig-card-rs { font-size: 1.5rem; color: var(--theme); font-family: monospace; font-weight: bold; }
-        .sig-note { font-size: 0.75rem; color: var(--text-muted); margin-top: 12px; border-top: 1px solid var(--border); padding-top: 12px; display:flex; justify-content: space-between; align-items: center;}
-        
+        .sig-card-name { font-size: 1.15rem; font-weight: 700; margin: 0 0 8px 0; color: var(--text-main); }
+        .sig-card-rs { font-size: 1.5rem; color: var(--accent); font-family: var(--mono); font-weight: bold; margin: 0; }
+        .sig-note { font-size: 0.75rem; color: var(--text-muted); margin: 12px 0 0 0; border-top: 1px solid var(--border); padding-top: 12px; display:flex; justify-content: space-between; align-items: center;}
+
         .sig-filter-controls { display: flex; justify-content: space-between; align-items: center; gap: 15px; margin-bottom: 15px; flex-wrap: wrap; }
         .sig-search { flex: 1; background: var(--bg-base); color: var(--text-main); border: 1px solid var(--border); padding: 10px 15px; border-radius: 4px; font-size: 0.95rem; outline: none; transition: border-color 0.2s; min-width: 250px;}
         .sig-search:focus { border-color: var(--accent); }
         .mining-subtabs { display: flex; gap: 8px; }
         .mining-subtab { background: var(--bg-card); color: var(--text-muted); border: 1px solid var(--border); padding: 8px 16px; border-radius: 4px; cursor: pointer; font-size: 0.85rem; font-weight: 600; transition: 0.2s; text-transform: uppercase;}
-        .mining-subtab.active { background: rgba(0, 229, 255, 0.1); color: var(--theme); border-color: var(--theme); }
+        .mining-subtab.active { background: rgba(0, 229, 160, 0.1); color: var(--accent); border-color: var(--accent); }
         .mining-subtab:hover:not(.active) { color: var(--text-main); border-color: var(--text-muted); }
 
-        .method-tag { font-size: 0.7rem; padding: 3px 8px; border-radius: 4px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; }
-        .method-ship { background: rgba(0, 229, 255, 0.1); border: 1px solid rgba(0, 229, 255, 0.2); color: var(--theme); }
-        .method-roc { background: rgba(249, 115, 22, 0.1); border: 1px solid rgba(249, 115, 22, 0.2); color: var(--accent); }
-        .method-hand { background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.2); color: var(--success); }
+        .method-tag { font-family: var(--mono); font-size: 0.7rem; padding: 3px 8px; border-radius: 4px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; }
+        .method-ship { background: rgba(96, 160, 255, 0.1); border: 1px solid rgba(96, 160, 255, 0.3); color: var(--theme); }
+        .method-roc { background: rgba(255, 149, 0, 0.1); border: 1px solid rgba(255, 149, 0, 0.3); color: var(--gold); }
+        .method-hand { background: rgba(0, 229, 160, 0.1); border: 1px solid rgba(0, 229, 160, 0.25); color: var(--success); }
 
         .tier-l { border-left-color: var(--tier-l); } .tier-l .sig-tier-badge { color: var(--tier-l); }
         .tier-e { border-left-color: var(--tier-e); } .tier-e .sig-tier-badge { color: var(--tier-e); }
         .tier-r { border-left-color: var(--tier-r); } .tier-r .sig-tier-badge { color: var(--tier-r); }
         .tier-u { border-left-color: var(--tier-u); } .tier-u .sig-tier-badge { color: var(--tier-u); }
         .tier-c { border-left-color: var(--tier-c); } .tier-c .sig-tier-badge { color: var(--tier-c); }
-        
+
         .error-msg { color: var(--error); margin-top: 15px; font-weight: bold; background: rgba(239, 68, 68, 0.1); padding: 15px; border-radius: 8px; border: 1px solid rgba(239, 68, 68, 0.2); }
+
+        /* Explanatory content sections */
+        .content-section { max-width: 1200px; margin: 30px auto; padding: 0 4px; }
+        .content-section h2 { font-family: var(--heading); font-size: 1.1rem; font-weight: 700; color: var(--accent); margin: 0 0 12px 0; letter-spacing: 0.5px; text-transform: uppercase; }
+        .content-section p { color: var(--text-muted); line-height: 1.7; font-size: 0.98rem; max-width: 900px; }
+
+        #faq .faq-item { margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid var(--border); }
+        #faq .faq-item:last-child { border-bottom: none; }
+        #faq h3 { font-size: 1.05rem; color: var(--text-main); margin: 0 0 8px 0; font-weight: 700; }
+        #faq p { color: var(--text-muted); line-height: 1.6; margin: 0; max-width: 900px; }
+
+        .site-footer { max-width: 1200px; margin: 30px auto 10px auto; padding: 20px 4px; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 0.85rem; line-height: 1.6; }
+        .site-footer a { color: var(--accent); }
+        .site-footer h2 { font-size: 1rem; color: var(--text-main); margin: 0 0 10px 0; }
+        .site-footer ul { list-style: none; padding: 0; margin: 0 0 16px 0; display: flex; flex-wrap: wrap; gap: 15px; }
+        .site-footer .legal { margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border); font-size: 0.78rem; }
     </style>
 </head>
 <body>
 
-    <div id="main-grid">
+    <header class="site-header">
+        <h1>Star Citizen Mining Material Finder <span class="patch-badge">Patch 4.8.3</span></h1>
+        <p class="site-subtitle">Live drop-rate data for every mineable resource in Stanton, Pyro, and Nyx &mdash; including Hadanite and Quantainium &mdash; built and maintained by CMDR Quattro.</p>
+    </header>
+
+    <main id="main-grid">
         <div id="loading-screen" class="screen active">
-            <div class="spinner"></div>
-            <h1 style="color: var(--text-main); text-transform: uppercase; letter-spacing: 1px;">CMDR Quattro <span>4.7.1 STAR CITIZEN MINING MATERIAL FINDER 2.0</span></h1>
-            <p style="color: var(--text-muted);">Loading compiled 4.8.2 game data...</p>
+            <div class="spinner" aria-hidden="true"></div>
+            <p class="loading-title">Loading Mining Material Finder&hellip;</p>
+            <p style="color: var(--text-muted);">Fetching compiled 4.8.3 game data...</p>
             <div id="error-output"></div>
         </div>
 
         <div id="app-screen" class="screen">
-            
+
             <div class="mining-header">
                 <div class="mining-header-top">
-                    <div class="mining-title">CMDR QUATTRO <span>4.8.2 STAR CITIZEN MINING MATERIAL FINDER 2.0</span></div>
+                    <div class="mining-title">CMDR Quattro's <span>Mining Tool</span></div>
                     <div class="mining-credit" id="version-label">Version: Loading...</div>
                 </div>
 
                 <div class="mining-header-bottom">
-                    <div class="tab-bar">
-                        <button class="tab-btn active" id="tab-locs" onclick="switchTab('locs')">Locations & Percentages</button>
-                        <button class="tab-btn" id="tab-scan" onclick="switchTab('scan')">SIGNATURE CHECKER</button>
+                    <div class="tab-bar" role="tablist" aria-label="Mining tool views">
+                        <button class="tab-btn active" id="tab-locs" onclick="switchTab('locs')" role="tab" aria-selected="true">Locations & Percentages</button>
+                        <button class="tab-btn" id="tab-scan" onclick="switchTab('scan')" role="tab" aria-selected="false">Signature Checker</button>
                     </div>
-                    
-                    <div class="header-sub-cta">
-                        <div class="header-sub-text">
-                            <div class="header-sub-title">Enjoying The Tool? Say Thanks!</div>
-                            <div class="header-sub-desc">+ Get Star Citizen Guides & Updates</div>
+
+                    <div class="header-cta-row">
+                        <div class="header-sub-cta">
+                            <div class="header-sub-text">
+                                <div class="header-sub-title">Enjoying The Tool? Say Thanks!</div>
+                                <div class="header-sub-desc">+ Get Star Citizen Guides & Updates</div>
+                            </div>
+                            <a href="https://youtube.com/@CMDRQuattro" target="_blank" rel="noopener" class="sub-action-btn">
+                                <img src="https://i.imgur.com/cJDkXIG.png" alt="CMDR Quattro YouTube channel logo" class="sub-action-logo">
+                                <span>Subscribe</span>
+                            </a>
                         </div>
-                        <a href="https://youtube.com/@CMDRQuattro" target="_blank" class="sub-action-btn">
-                            <img src="https://i.imgur.com/cJDkXIG.png" alt="CMDR Quattro Logo" class="sub-action-logo">
-                            <span>SUBSCRIBE</span>
-                        </a>
+
+                        <div class="header-sub-cta referral-cta">
+                            <div class="header-sub-text">
+                                <div class="header-sub-title">New to the 'Verse? +50,000 aUEC</div>
+                                <div class="header-sub-desc">Use referral code <strong>STAR-PTQ3-57MN</strong> at signup</div>
+                            </div>
+                            <a href="https://robertsspaceindustries.com/enlist?referral=STAR-PTQ3-57MN" target="_blank" rel="noopener" class="sub-action-btn referral-btn" aria-label="Enlist in Star Citizen with referral code STAR-PTQ3-57MN for a 50,000 aUEC starting bonus">
+                                <span>Enlist Now &rarr;</span>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <div class="advisory-box">
-                <div class="advisory-icon">⚠️</div>
+                <div class="advisory-icon" aria-hidden="true">⚠️</div>
                 <div class="advisory-text">
-                    <strong>PRO TIP:</strong> I would highly advise focusing on mining in <strong>Pyro</strong>, as the material is far higher quality on average than what is present in Stanton.
-                    <span>Note: Sadaryx & Savrilium can be found at the Rock Breaker Contract Locations Exclusively For The Moment. Need help? Check out the <a href="https://citizen-starter-guide.com/rock-breaker-interactive-guide/" target="_blank" style="color: var(--accent); text-decoration: underline;">Rock Breaker Interactive Guide - Citizen Starter Guide</a>.</span>
+                    <strong>PRO TIP:</strong> Focus your mining operations in <strong>Pyro</strong> &mdash; its materials are far higher quality on average than what is present in Stanton &mdash; and prioritize <strong>Hadanite</strong> ROC loops on Aberdeen if you're grinding aUEC right now. See the breakdown below for why.
+                    <span>Note: Sadaryx & Savrilium can currently be found exclusively at Rock Breaker Contract locations. Need help? Check out the <a href="https://citizen-starter-guide.com/rock-breaker-interactive-guide/" target="_blank" rel="noopener" style="color: var(--accent); text-decoration: underline;">Rock Breaker Interactive Guide on Citizen Starter Guide</a>.</span>
                 </div>
             </div>
 
             <div id="tab-content"></div>
+            <datalist id="loc-name-list"></datalist>
+            <datalist id="sig-name-list"></datalist>
         </div>
-    </div>
+    </main>
+
+    <section class="content-section" aria-labelledby="how-to-heading">
+        <h2 id="how-to-heading">How to Use the Mining Material Finder</h2>
+        <p>Start on the Locations & Percentages tab and choose a system &mdash; Stanton, Pyro, or Nyx &mdash; using the tabs above the location grid. Select up to three materials you need from the dropdown filters; the tool instantly narrows the list to locations that contain all of them and sorts the results by combined yield, so the best spot lands at the top. Each location card breaks results down by mining method (Ship, ROC, or Hand) so you know exactly what equipment to bring before you fly out. Prefer scanning in the field instead? Switch to the Signature Checker tab and enter the raw RS reading from your ship's HUD &mdash; the tool runs the cluster math instantly and tells you the material, rarity tier, and node count before you commit to a burn. The underlying data is rebuilt from the game's files for every major mining patch, including 4.8.3.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="percentages-heading">
+        <h2 id="percentages-heading">How to Read Ship, ROC, and Hand Mining Percentages</h2>
+        <p>Every location card lists three potential mining methods &mdash; Ship, ROC, and Hand &mdash; and each material under those headings shows a percentage. That number is not how much of the material exists at the location; it's the statistical likelihood of encountering that specific resource when you scan or break open a node using that method at that location. A material listed at 35% under Ship Mining means roughly one in three ship-mineable deposits you crack open there will yield that resource, while the remaining nodes are made up of the other materials listed in that same group. Because the three methods pull from separate node pools, a location can have a high Quantainium chance via Ship mining and a completely different profile via Hand or ROC mining. Always check the method that matches the equipment you're flying with &mdash; a location with great Ship percentages won't help you if you're running a ROC on the surface.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="hadanite-heading">
+        <h2 id="hadanite-heading">Best Locations for Hadanite, Quantainium, and Rare Ore in 4.8.3</h2>
+        <p>If you're optimizing a mining loop for Star Citizen 4.8.3, Hadanite belongs at the top of the list. This pink-purple mineral is one of the strongest targets for ROC mining loops right now, and its richest known concentration sits on Aberdeen, the moon orbiting Crusader in Stanton, where dense surface clusters let a ROC pilot chain nodes with minimal travel time. Quantainium remains the headline Ship and ROC target across both systems, though it decays fast after extraction, so route planning matters as much as the percentage &mdash; filter for it above to find a high-yield deposit close to a refinery. Rarer ores like Taranite, Bexalite, and Riccite tend to cluster in Pyro's less-traveled fields, rewarding pilots willing to fly further for a heavier payout per scoop. Use the material filters above rather than a static guide, since exact percentages and hot spots shift between patches.</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="system-breakdown-heading">
+        <h2 id="system-breakdown-heading">System Breakdown: Stanton vs. Pyro</h2>
+        <p>Stanton is the original, UEE-regulated system, and it shows in the mineral data: decades of corporate and player mining activity have thinned out the highest-purity nodes, so the average resource quality you'll encounter there skews lower, even though it's by far the safer system to operate in. Pyro is newer, lawless, and largely unmined, which means its asteroid fields and surface deposits still carry a noticeably higher concentration of high-tier materials. That's the basis of the Pro Tip above: if raw yield and material quality are your priority, Pyro consistently outperforms Stanton, at the cost of UEE security and longer, riskier supply runs. A handful of materials, including Sadaryx and Savrilium, are currently exclusive to Rock Breaker Contract locations regardless of system. Mining is also one of the most repeatable ways to grind aUEC, whether you're saving toward a bigger hull or just covering routine repairs and ammo &mdash; chaining high-percentage Ship and ROC locations through the filters above gets you to a usable total faster than mining wherever you happen to be.</p>
+    </section>
+
+    <section class="content-section" id="faq" aria-labelledby="faq-heading">
+        <h2 id="faq-heading">Frequently Asked Questions</h2>
+
+        <div class="faq-item">
+            <h3>How do I use the RS signature scanner?</h3>
+            <p>Switch to the Signature Checker tab and type the raw RS number shown on your ship's mining HUD into the scanner input. The tool runs exact cluster math against the full signature database and instantly returns the matching material, rarity tier, mining method, and how many nodes make up that cluster.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>Where is the best place to mine Hadanite in Star Citizen?</h3>
+            <p>As of Patch 4.8, Aberdeen &mdash; the moon orbiting Crusader in Stanton &mdash; has the richest known concentration of Hadanite, with dense surface rock clusters packed close together that make it one of the strongest ROC mining loops in the game. Use the system and material filters above to confirm the current highest-percentage Hadanite nodes, since drop tables can shift between patches.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>Where do I find Quantainium in Patch 4.8.3?</h3>
+            <p>Quantainium can be found via Ship and ROC mining in select asteroid clusters and surface deposits across both Stanton and Pyro &mdash; filter for it above to find the best current node before it decays.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>What is the fastest way to make aUEC for in-game ship prices?</h3>
+            <p>There's no single fastest method, but chaining high-percentage Ship and ROC mining locations &mdash; especially for top-value nodes like Hadanite and Quantainium &mdash; is one of the most consistent, repeatable aUEC income loops in the game. Use the filters above to line up the best-yield locations for materials you can sell, then route to the trade terminal paying the most for your haul.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>Where can I find Sadaryx and Savrilium?</h3>
+            <p>Sadaryx and Savrilium are currently exclusive to Rock Breaker Contract locations and are not available through standard Ship, ROC, or Hand mining elsewhere in the verse. Check active Rock Breaker contracts specifically if you need either material.</p>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <h2>Intel Links</h2>
+        <nav aria-label="External resource links">
+            <ul>
+                <li><a href="https://quattrobaje3na-png.github.io/Mining-Tool/" target="_blank" rel="noopener">Direct Tool</a></li>
+                <li><a href="https://citizen-starter-guide.com/star-citizen-mining-material-finder/" target="_blank" rel="noopener">Website Hub</a></li>
+                <li><a href="https://github.com/quattrobaje3na-png/Mining-Tool" target="_blank" rel="noopener">GitHub Repo</a></li>
+                <li><a href="https://youtube.com/@CMDRQuattro" target="_blank" rel="noopener">YouTube</a></li>
+            </ul>
+        </nav>
+        <p class="legal">This is a fan-made community tool. Star Citizen&reg;, Roberts Space Industries&reg;, and Cloud Imperium&reg; are registered trademarks of Cloud Imperium Rights LLC. All other content on this site is the property of its respective owners. This tool is not endorsed by or affiliated with Cloud Imperium or Roberts Space Industries. All game data is subject to change as development progresses.</p>
+        <p class="legal">Designed and maintained by CMDR Quattro. Fly safe. Mine deep.</p>
+    </footer>
 
     <script>
-        const COMPILED_JSON_FILE = 'mining_compiled.json'; 
+        const COMPILED_JSON_FILE = 'mining_compiled.json';
 
         let SIGNATURE_DB = [];
         let FLAT_LOCS = [];
@@ -200,29 +391,75 @@
         let locFilters = ["", "", ""];
         let locSystemFilter = 'All';
 
-        function esc(str) { 
-            const d = document.createElement('div'); 
-            d.textContent = String(str ?? ''); 
-            return d.innerHTML; 
+        function esc(str) {
+            const d = document.createElement('div');
+            d.textContent = String(str ?? '');
+            return d.innerHTML;
+        }
+
+        // Fills the native <datalist>s once per data load (not per render) so
+        // typing in the search boxes shows a real browser suggestion dropdown
+        // of every known location / signature name, independent of whatever
+        // filters are currently narrowing the results list below it.
+        function populateDatalists() {
+            const locNames = Array.from(new Set(FLAT_LOCS.map(l => l.name))).sort();
+            const locList = document.getElementById('loc-name-list');
+            if (locList) locList.innerHTML = locNames.map(n => `<option value="${esc(n)}">`).join('');
+
+            const sigNames = Array.from(new Set(SIGNATURE_DB.map(s => s.name))).sort();
+            const sigList = document.getElementById('sig-name-list');
+            if (sigList) sigList.innerHTML = sigNames.map(n => `<option value="${esc(n)}">`).join('');
+        }
+
+        // Ranks the closest match to the top of the list: an exact name match
+        // wins outright, then a name that starts with the query, then any
+        // other name match, then anything that only matched on a secondary
+        // field (system, material, method, note). Ties fall through to
+        // whatever comparator the caller passes in.
+        function rankByQuery(q, getName, fallbackCompare) {
+            return function (a, b) {
+                const aName = getName(a).toLowerCase(), bName = getName(b).toLowerCase();
+                const aExact = aName === q, bExact = bName === q;
+                if (aExact !== bExact) return aExact ? -1 : 1;
+                const aStarts = aName.indexOf(q) === 0, bStarts = bName.indexOf(q) === 0;
+                if (aStarts !== bStarts) return aStarts ? -1 : 1;
+                const aNameHit = aName.indexOf(q) !== -1, bNameHit = bName.indexOf(q) !== -1;
+                if (aNameHit !== bNameHit) return aNameHit ? -1 : 1;
+                return fallbackCompare(a, b);
+            };
         }
 
         async function fetchGameData() {
             try {
                 const response = await fetch(COMPILED_JSON_FILE);
                 if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-                
+
                 const data = await response.json();
-                
+
                 document.getElementById('version-label').innerText = "LIVE BUILD: " + data.version;
-                
-                SIGNATURE_DB = data.signatures;
+
                 SORTED_MATS = data.materials;
-                
-                FLAT_LOCS = data.locations.map(loc => ({
-                    ...loc,
-                    allMatsSet: new Set(loc.allMats)
+
+                // Precompute a lowercased "search haystack" per record so every
+                // keystroke just does a cheap string scan instead of rebuilding
+                // and re-lowercasing strings on every render — this is what
+                // keeps the search feeling instant on a large dataset.
+                FLAT_LOCS = data.locations.map(loc => {
+                    const allMatsSet = new Set(loc.allMats);
+                    return {
+                        ...loc,
+                        allMatsSet,
+                        searchHay: [loc.name, loc.system, ...allMatsSet].join(' ').toLowerCase()
+                    };
+                });
+
+                SIGNATURE_DB = (data.signatures || []).map(s => ({
+                    ...s,
+                    searchHay: [s.name, s.method, s.tier, s.note].filter(Boolean).join(' ').toLowerCase()
                 }));
-                
+
+                populateDatalists();
+
                 document.getElementById('loading-screen').classList.remove('active');
                 document.getElementById('app-screen').classList.add('active');
                 renderUI();
@@ -242,7 +479,9 @@
         function switchTab(tab) {
             activeTab = tab;
             document.getElementById('tab-locs').classList.toggle('active', tab === 'locs');
+            document.getElementById('tab-locs').setAttribute('aria-selected', tab === 'locs');
             document.getElementById('tab-scan').classList.toggle('active', tab === 'scan');
+            document.getElementById('tab-scan').setAttribute('aria-selected', tab === 'scan');
             renderUI();
         }
 
@@ -252,51 +491,97 @@
             if (activeTab === 'locs') { renderLocations(container); } else { renderScanner(container); }
         }
 
+        // Builds the Locations tab's controls ONCE (search box, system tabs,
+        // material selects) and wires their event listeners directly, then
+        // delegates to renderLocationResults() for the part that actually
+        // changes on every keystroke. Earlier versions rebuilt this whole
+        // tab — search input included — on every single keystroke via
+        // renderUI(), which destroyed and recreated the focused <input> each
+        // time (kicking focus out of the box after one character) and
+        // re-ran the full filter/select markup generation on top of it.
+        // That's what produced the "hangs after one letter" feel. The
+        // cargo/hauling tool never has that problem because its inputs are
+        // static, permanent DOM nodes wired up once; only their results
+        // containers get refreshed. This mirrors that pattern.
         function renderLocations(container) {
-            const wrap = document.createElement('div');
-
             const uniqueSystems = Array.from(new Set(FLAT_LOCS.map(l => l.system))).sort();
-            const sysTabsHTML = ['All', ...uniqueSystems].map(sys => 
-                `<button class="mining-subtab ${locSystemFilter === sys ? 'active' : ''}" onclick="locSystemFilter='${sys}';renderUI()">${sys}</button>`
+            const sysTabsHTML = ['All', ...uniqueSystems].map(sys =>
+                `<button type="button" class="mining-subtab ${locSystemFilter === sys ? 'active' : ''}" data-sys="${esc(sys)}">${esc(sys)}</button>`
             ).join('');
 
             let selectsHTML = [0,1,2].map(i => {
                 let opts = `<option value="">-- Required Material ${i+1} --</option>`;
                 SORTED_MATS.forEach(m => { opts += `<option value="${esc(m)}" ${locFilters[i] === m ? 'selected' : ''}>${esc(m)}</option>`; });
-                return `<select class="loc-select" onchange="locFilters[${i}]=this.value;renderUI()">${opts}</select>`;
+                return `<label class="sr-only" for="loc-filter-${i}">Required material ${i+1}</label><select id="loc-filter-${i}" class="loc-select" data-filter-idx="${i}">${opts}</select>`;
             }).join('');
 
-            wrap.innerHTML = `
+            container.innerHTML = `
                 <div class="loc-filters">
                     <div class="loc-filters-top">
                         <div style="display:flex; align-items:center; gap: 15px;">
                             <span style="color:var(--text-muted); font-size:0.85rem; font-weight:bold; text-transform:uppercase; letter-spacing:1px; margin-top:5px;">Filter System:</span>
-                            <div class="mining-subtabs">${sysTabsHTML}</div>
+                            <div class="mining-subtabs" id="loc-sys-tabs">${sysTabsHTML}</div>
                         </div>
-                        <input type="text" class="sig-search" placeholder="Search locations (e.g. HUR-L1, Daymar)..." value="${esc(locSearchQuery)}" oninput="locSearchQuery=this.value;renderUI()">
+                        <label class="sr-only" for="loc-search">Search mining locations</label>
+                        <input type="text" id="loc-search" class="sig-search" list="loc-name-list" autocomplete="off" placeholder="Search by location, system, or material..." value="${esc(locSearchQuery)}">
                     </div>
                     <div class="loc-filters-bottom">
                         <div style="width:100%; font-size:0.85rem; font-weight:700; color:var(--text-muted); margin-bottom:4px; text-transform:uppercase; letter-spacing:0.5px;">Filter by Materials (Must contain ALL):</div>
-                        <div style="display:flex; gap:10px; width:100%; flex-wrap:wrap;">${selectsHTML}</div>
+                        <div style="display:flex; gap:10px; width:100%; flex-wrap:wrap;" id="loc-mat-selects">${selectsHTML}</div>
                     </div>
                 </div>
+                <ul class="loc-grid" id="loc-grid" aria-label="Mining locations matching current filters"></ul>
             `;
-            container.appendChild(wrap);
+
+            document.getElementById('loc-search').addEventListener('input', function (e) {
+                locSearchQuery = e.target.value;
+                renderLocationResults();
+            });
+
+            document.getElementById('loc-sys-tabs').addEventListener('click', function (e) {
+                const btn = e.target.closest('[data-sys]');
+                if (!btn) return;
+                locSystemFilter = btn.dataset.sys;
+                Array.from(document.getElementById('loc-sys-tabs').children).forEach(b => b.classList.toggle('active', b === btn));
+                renderLocationResults();
+            });
+
+            document.getElementById('loc-mat-selects').addEventListener('change', function (e) {
+                const sel = e.target.closest('select[data-filter-idx]');
+                if (!sel) return;
+                locFilters[parseInt(sel.dataset.filterIdx, 10)] = sel.value;
+                renderLocationResults();
+            });
+
+            renderLocationResults();
+        }
+
+        // Filters/sorts FLAT_LOCS and repaints only #loc-grid. Built with a
+        // DocumentFragment + one appendChild, not the old `grid.innerHTML +=`
+        // loop (which re-parses the whole accumulated HTML string on every
+        // single location and turns a few hundred locations into a visibly
+        // janky O(n^2) rebuild).
+        function renderLocationResults() {
+            const grid = document.getElementById('loc-grid');
+            if (!grid) return;
 
             const activeFilters = locFilters.filter(m => m !== '');
+            const locQuery = locSearchQuery.toLowerCase().trim();
             let filteredLocs = FLAT_LOCS;
 
-            if (locSearchQuery) {
-                const q = locSearchQuery.toLowerCase().trim();
-                filteredLocs = filteredLocs.filter(l => l.name.toLowerCase().includes(q));
+            if (locQuery) {
+                // Matches on location name, system, or any material mined
+                // there, so typing "Hadanite" surfaces every location that
+                // carries it, not just locations literally named that.
+                filteredLocs = filteredLocs.filter(l => l.searchHay.indexOf(locQuery) !== -1);
             }
 
             if (locSystemFilter !== 'All') {
                 filteredLocs = filteredLocs.filter(l => l.system === locSystemFilter);
             }
 
-            if (activeFilters.length > 0) { 
-                filteredLocs = filteredLocs.filter(l => activeFilters.every(sel => l.allMatsSet.has(sel))); 
+            if (activeFilters.length > 0) {
+                filteredLocs = filteredLocs.filter(l => activeFilters.every(sel => l.allMatsSet.has(sel)));
             }
 
             // DYNAMIC SORTING: Calculate yield scores and sort highest to top
@@ -316,99 +601,153 @@
                 loc.sortScore = sortScore;
             });
 
-            if (activeFilters.length > 0) {
-                // Sort by combined percentage (highest on top)
-                filteredLocs.sort((a, b) => b.sortScore - a.sortScore);
-            } else {
-                // Fallback to alphabetical order if no specific materials are selected
-                filteredLocs.sort((a, b) => a.name.localeCompare(b.name));
+            const locFallbackSort = activeFilters.length > 0
+                ? (a, b) => b.sortScore - a.sortScore // combined percentage, highest on top
+                : (a, b) => a.name.localeCompare(b.name); // alphabetical if nothing else to rank by
+
+            filteredLocs.sort(locQuery
+                ? rankByQuery(locQuery, l => l.name, locFallbackSort)
+                : locFallbackSort);
+
+            grid.innerHTML = '';
+
+            if (filteredLocs.length === 0) {
+                grid.innerHTML = `<li class="loc-empty">No locations found matching your filters.</li>`;
+                return;
             }
 
-            const grid = document.createElement('div');
-            grid.className = 'loc-grid';
-            
-            if(filteredLocs.length === 0) {
-                grid.innerHTML = `<div style="padding:40px; text-align:center; color:var(--text-muted); grid-column: 1 / -1; background:var(--bg-card); border-radius:8px; border:1px dashed var(--border);">No locations found matching your filters.</div>`;
-            }
+            const frag = document.createDocumentFragment();
 
             filteredLocs.forEach(loc => {
                 if (!loc.methods || Object.keys(loc.methods).length === 0) return;
-                
-                let html = `<div class="loc-card">
-                    <div class="loc-header">
-                        <div>
-                            <div class="loc-name">${esc(loc.name)}</div>
-                        </div>
-                        <div class="loc-sys">${esc(loc.system)}</div>
-                    </div>
-                    <div class="loc-body">`;
-                    
+
+                let methodsHtml = '';
                 ['Ship', 'ROC', 'Hand'].forEach(method => {
                     if (loc.methods[method] && loc.methods[method].length > 0) {
-                        html += `<div class="loc-method-group ${method}">
-                            <div class="loc-method-title">${method} Mining Deposits</div>`;
+                        methodsHtml += `<div class="loc-method-group ${method}">
+                            <h4 class="loc-method-title">${method} Mining Deposits</h4>
+                            <table class="loc-mat-table">
+                                <caption class="sr-only">${method} mineable materials and drop chance at ${esc(loc.name)}</caption>
+                                <thead>
+                                    <tr><th scope="col">Material</th><th scope="col">Chance</th></tr>
+                                </thead>
+                                <tbody>`;
                         loc.methods[method].forEach(mat => {
                             const isHighlight = activeFilters.includes(mat.name);
-                            html += `<div class="loc-mat-row" style="${isHighlight ? 'color:var(--accent); font-weight:bold;' : ''}">
-                                <span class="loc-mat-name" style="${isHighlight ? 'color:var(--text-main);' : ''}">${esc(mat.name)}</span>
-                                <span class="loc-mat-pct" style="${isHighlight ? 'color:var(--accent);' : ''}">${mat.chance.toFixed(1)}%</span>
-                            </div>`;
+                            methodsHtml += `<tr class="loc-mat-row${isHighlight ? ' loc-mat-row-highlight' : ''}">
+                                <td class="loc-mat-name">${esc(mat.name)}</td>
+                                <td class="loc-mat-pct">${mat.chance.toFixed(1)}%</td>
+                            </tr>`;
                         });
-                        html += `</div>`;
+                        methodsHtml += `</tbody></table></div>`;
                     }
                 });
-                
-                html += `</div></div>`;
-                grid.innerHTML += html;
+
+                const li = document.createElement('li');
+                li.className = 'loc-card';
+                li.innerHTML = `
+                    <article>
+                        <header class="loc-header">
+                            <h3 class="loc-name">${esc(loc.name)}</h3>
+                            <span class="loc-sys">${esc(loc.system)}</span>
+                        </header>
+                        <div class="loc-body">${methodsHtml}</div>
+                    </article>
+                `;
+                frag.appendChild(li);
             });
-            container.appendChild(grid);
+
+            grid.appendChild(frag);
         }
 
+        // Same fix as renderLocations(): controls are created once and
+        // wired with addEventListener, results are repainted independently.
         function renderScanner(container) {
             container.innerHTML = `
                 <div class="sig-filter-controls">
-                    <input type="text" class="sig-search" placeholder="Search specific materials..." value="${esc(sigSearchQuery)}" oninput="sigSearchQuery=this.value;renderUI()">
-                    <div class="mining-subtabs">
-                        ${['All','Ship','ROC','Hand'].map(f => `<button class="mining-subtab ${sigMethodFilter===f?'active':''}" onclick="sigMethodFilter='${f}';renderUI()">${f}</button>`).join('')}
+                    <label class="sr-only" for="sig-search-input">Search mining signatures</label>
+                    <input type="text" id="sig-search-input" class="sig-search" list="sig-name-list" autocomplete="off" placeholder="Search specific materials..." value="${esc(sigSearchQuery)}">
+                    <div class="mining-subtabs" id="sig-method-tabs">
+                        ${['All','Ship','ROC','Hand'].map(f => `<button type="button" class="mining-subtab ${sigMethodFilter===f?'active':''}" data-method="${f}">${f}</button>`).join('')}
                     </div>
                 </div>
                 <div class="sig-scanner-wrap">
-                    <div class="sig-scanner-label">SIGNATURE INPUT (Exact Cluster Math)</div>
+                    <div class="sig-scanner-label">Signature Input (Exact Cluster Math)</div>
                     <div class="sig-scanner-row">
-                        <input type="number" class="sig-scanner-input" id="rs-input" placeholder="e.g. 12810" oninput="updateRSScanner(this.value)">
+                        <label class="sr-only" for="rs-input">Ship HUD RS signature reading</label>
+                        <input type="number" class="sig-scanner-input" id="rs-input" placeholder="e.g. 12810">
                         <div class="sig-result" id="rs-result"><span style="color:var(--text-muted);font-size:0.9rem;">Enter a Scanning Signature from Ship HUD...</span></div>
                     </div>
                 </div>
-                <div class="sig-grid" id="sig-grid"></div>
+                <ul class="sig-grid" id="sig-grid" aria-label="Known mining signatures"></ul>
             `;
-            
-            let grid = document.getElementById('sig-grid');
-            
+
+            document.getElementById('sig-search-input').addEventListener('input', function (e) {
+                sigSearchQuery = e.target.value;
+                renderScannerResults();
+            });
+
+            document.getElementById('sig-method-tabs').addEventListener('click', function (e) {
+                const btn = e.target.closest('[data-method]');
+                if (!btn) return;
+                sigMethodFilter = btn.dataset.method;
+                Array.from(document.getElementById('sig-method-tabs').children).forEach(b => b.classList.toggle('active', b === btn));
+                renderScannerResults();
+            });
+
+            document.getElementById('rs-input').addEventListener('input', function (e) {
+                updateRSScanner(e.target.value);
+            });
+
+            renderScannerResults();
+        }
+
+        function renderScannerResults() {
+            const grid = document.getElementById('sig-grid');
+            if (!grid) return;
+            grid.innerHTML = '';
+
             const q = sigSearchQuery.toLowerCase().trim();
             let list = SIGNATURE_DB.filter(s => {
-                if (q && !s.name.toLowerCase().includes(q)) return false;
+                // Matches name, method, tier, or note, so "ROC" or a tier
+                // name like "Legendary" also narrows the list usefully.
+                if (q && s.searchHay.indexOf(q) === -1) return false;
                 if (sigMethodFilter !== 'All' && s.method !== sigMethodFilter) return false;
                 return true;
             });
 
+            if (q) {
+                list = list.slice().sort(rankByQuery(q, s => s.name, (a, b) => b.rs - a.rs));
+            }
+
+            const frag = document.createDocumentFragment();
+
             list.forEach(s => {
-                let card = document.createElement('div');
-                card.className = `sig-card tier-${s.tier.toLowerCase().charAt(0)}`; 
+                let tierClass = s.tier.toLowerCase().charAt(0);
+                let card = document.createElement('li');
+                card.className = `sig-card tier-${tierClass}`;
+                card.tabIndex = 0;
+                card.setAttribute('role', 'button');
+                card.setAttribute('aria-label', `Look up ${s.name}, RS ${s.rs}`);
                 card.innerHTML = `
-                    <span class="sig-tier-badge" style="color: var(--tier-${s.tier.toLowerCase().charAt(0)})">${s.tier}</span>
-                    <div class="sig-card-name">${esc(s.name)}</div>
-                    <div class="sig-card-rs">${s.rs.toLocaleString()}</div>
-                    <div class="sig-note">
+                    <span class="sig-tier-badge" style="color: var(--tier-${tierClass})">${s.tier}</span>
+                    <h3 class="sig-card-name">${esc(s.name)}</h3>
+                    <p class="sig-card-rs"><span class="sr-only">Base RS signature: </span>${s.rs.toLocaleString()}</p>
+                    <p class="sig-note">
                         <span class="method-tag method-${s.method.toLowerCase()}">${s.method}</span>
                         <span style="color:var(--text-muted); font-family:monospace;">${esc(s.note)}</span>
-                    </div>
+                    </p>
                 `;
-                card.onclick = () => { 
-                    document.getElementById('rs-input').value = s.rs; 
-                    updateRSScanner(s.rs); 
+                const activate = () => {
+                    document.getElementById('rs-input').value = s.rs;
+                    updateRSScanner(s.rs);
                 };
-                grid.appendChild(card);
+                card.onclick = activate;
+                card.onkeydown = (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); activate(); } };
+                frag.appendChild(card);
             });
+
+            grid.appendChild(frag);
         }
 
         window.updateRSScanner = function(rawVal) {
@@ -424,7 +763,7 @@
                 for (let n = 1; n <= 12; n++) {
                     const expected = s.rs * n;
                     const diff = Math.abs(rs - expected);
-                    if (diff < expected * 0.005) { 
+                    if (diff < expected * 0.005) {
                         matches.push({ ...s, nodes: n, confidence: Math.round((1 - diff/(expected*0.005))*100) });
                     }
                 }
@@ -449,8 +788,8 @@
                     <span class="sig-confidence" style="margin-left:auto;">${b.confidence}%</span>
                 </div>
                 <div class="sig-result-nodes">
-                    Base: <span style="color:var(--theme);">${b.rs}</span> &middot; 
-                    Expected Cluster: <span style="color:var(--theme);">${b.rs * b.nodes}</span> &middot; 
+                    Base: <span style="color:var(--accent); font-family:var(--mono);">${b.rs}</span> &middot;
+                    Expected Cluster: <span style="color:var(--accent); font-family:var(--mono);">${b.rs * b.nodes}</span> &middot;
                     <span style="color:${tColor}; text-transform:uppercase; font-size:0.75rem; font-weight:bold;">${b.tier}</span>
                 </div>
             `;

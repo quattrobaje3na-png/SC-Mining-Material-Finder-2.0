@@ -78,7 +78,10 @@
 
         * { box-sizing: border-box; font-family: var(--ui), system-ui, -apple-system, sans-serif; }
         body { background-color: var(--bg-base); color: var(--text-main); margin: 0; padding: 20px; font-size: 16px; }
-        body::before { content: ''; position: fixed; inset: 0; background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,.04) 2px, rgba(0,0,0,.04) 4px); pointer-events: none; z-index: 9999; }
+        /* HUD grid overlay, low-opacity accent-green gridlines behind everything */
+        body::before { content: ''; position: fixed; inset: 0; background: linear-gradient(rgba(0, 229, 160, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 229, 160, 0.05) 1px, transparent 1px); background-size: 40px 40px; pointer-events: none; z-index: 9998; }
+        /* CRT scanline texture on top of the grid */
+        body::after { content: ''; position: fixed; inset: 0; background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,.04) 2px, rgba(0,0,0,.04) 4px); pointer-events: none; z-index: 9999; }
         #main-grid { max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px; }
 
         .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }

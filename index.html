@@ -1,20 +1,20 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport">
 
     <title>Star Citizen 4.8.3 Mining Finder | Hadanite, Ore & Yields</title>
-    <meta name="description" content="Star Citizen 4.8.3 mining tool: filter Stanton, Pyro & Nyx locations by material, find the best Hadanite & Quantainium nodes, and scan RS signatures.">
-    <link rel="canonical" href="https://quattrobaje3na-png.github.io/SC-Mining-Material-Finder-2.0/">
+    <meta content="Star Citizen 4.8.3 mining tool: filter Stanton, Pyro & Nyx locations by material, find the best Hadanite & Quantainium nodes, and scan RS signatures." name="description">
+    <link href="https://quattrobaje3na-png.github.io/SC-Mining-Material-Finder-2.0/" rel="canonical">
 
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Star Citizen 4.8.3 Mining Finder | Hadanite, Ore & Yields">
-    <meta property="og:description" content="Free tool for finding the best Star Citizen mining locations by material, with live Ship/ROC/Hand drop percentages and an RS signature scanner.">
-    <meta property="og:url" content="https://quattrobaje3na-png.github.io/SC-Mining-Material-Finder-2.0/">
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Star Citizen 4.8.3 Mining Finder | Hadanite, Ore & Yields">
-    <meta name="twitter:description" content="Free tool for finding the best Star Citizen mining locations by material, with live Ship/ROC/Hand drop percentages and an RS signature scanner.">
+    <meta content="website" property="og:type">
+    <meta content="Star Citizen 4.8.3 Mining Finder | Hadanite, Ore & Yields" property="og:title">
+    <meta content="Free tool for finding the best Star Citizen mining locations by material, with live Ship/ROC/Hand drop percentages and an RS signature scanner." property="og:description">
+    <meta content="https://quattrobaje3na-png.github.io/SC-Mining-Material-Finder-2.0/" property="og:url">
+    <meta content="summary" name="twitter:card">
+    <meta content="Star Citizen 4.8.3 Mining Finder | Hadanite, Ore & Yields" name="twitter:title">
+    <meta content="Free tool for finding the best Star Citizen mining locations by material, with live Ship/ROC/Hand drop percentages and an RS signature scanner." name="twitter:description">
 
     <script type="application/ld+json">
     {
@@ -60,194 +60,245 @@
                     "@type": "Answer",
                     "text": "Sadaryx and Savrilium are currently exclusive to Rock Breaker Contract locations and are not available through standard Ship, ROC, or Hand mining elsewhere in the verse. Check active Rock Breaker contracts specifically if you need either material."
                 }
+            },
+            {
+                "@type": "Question",
+                "name": "Which Star Citizen refining method should I use?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "It depends on what you're refining. Use an Efficient method — Dinyx Solventation, Ferron Exchange, or Pyrometric Chromalysis — for scarce or high-value ore like Hadanite and Quantainium, since it returns the highest yield per unit of raw input. Use a Wasteful method — Kazen Winnowing, Cormack Method, or XCR Reaction — for cheap, plentiful ore when you need fast turnover instead. Normal methods are a reasonable default when you're not optimizing for either extreme."
+                }
             }
         ]
     }
     </script>
 
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap');
-        :root {
-            /* Green digital / terminal palette, matched to the CMDR Quattro tool suite */
-            --bg-base: #050709; --bg-card: #0c0f14; --border: #172030;
-            --text-main: #e0eaf5; --text-muted: #5a7a94;
-            --accent: #00e5a0; --theme: #60a0ff; --gold: #ff9500; --success: #00e5a0; --error: #ef4444;
-            --tier-l: #a78bfa; --tier-e: #ff9500; --tier-r: #60a0ff; --tier-u: #00e5a0; --tier-c: #5a7a94;
-            --mono: 'Share Tech Mono', monospace; --heading: 'Orbitron', sans-serif; --ui: 'Rajdhani', system-ui, sans-serif;
-        }
-
-        * { box-sizing: border-box; font-family: var(--ui), system-ui, -apple-system, sans-serif; }
-        body { background-color: var(--bg-base); color: var(--text-main); margin: 0; padding: 20px; font-size: 16px; }
-        /* HUD grid overlay, low-opacity accent-green gridlines behind everything */
-        body::before { content: ''; position: fixed; inset: 0; background: linear-gradient(rgba(0, 229, 160, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 229, 160, 0.05) 1px, transparent 1px); background-size: 40px 40px; pointer-events: none; z-index: 9998; }
-        /* CRT scanline texture on top of the grid */
-        body::after { content: ''; position: fixed; inset: 0; background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,.04) 2px, rgba(0,0,0,.04) 4px); pointer-events: none; z-index: 9999; }
-        #main-grid { max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px; }
-
-        .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
-
-        /* Site Header */
-        .site-header { max-width: 1200px; margin: 0 auto 20px auto; padding: 0 4px; }
-        .site-header h1 { font-family: var(--heading); font-size: 1.6rem; font-weight: 700; margin: 0 0 8px 0; letter-spacing: 0.5px; text-transform: uppercase; }
-        .site-header h1 .patch-badge { display: inline-block; font-family: var(--mono); font-size: 0.8rem; font-weight: 700; color: var(--accent); background: rgba(0, 229, 160, 0.1); border: 1px solid rgba(0, 229, 160, 0.3); padding: 3px 10px; border-radius: 4px; vertical-align: middle; margin-left: 10px; letter-spacing: 1px; }
-        .site-subtitle { color: var(--text-muted); font-size: 1rem; margin: 0; max-width: 720px; line-height: 1.5; }
-
-        .screen { display: none; }
-        .screen.active { display: block; }
-
-        #loading-screen { text-align: center; margin-top: 60px; background: var(--bg-card); padding: 40px; border-radius: 8px; border: 1px solid var(--border); box-shadow: 0 4px 20px rgba(0,0,0,0.5); }
-        .spinner { border: 4px solid rgba(255,255,255,0.05); width: 40px; height: 40px; border-radius: 50%; border-left-color: var(--accent); animation: spin 1s linear infinite; margin: 0 auto 20px auto; }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-        .loading-title { font-family: var(--heading); color: var(--accent); text-transform: uppercase; letter-spacing: 2px; font-weight: 700; margin: 0 0 8px 0; }
-
-        /* HEADER REBUILD - 2 ROW LAYOUT */
-        .mining-header { background: var(--bg-card); padding: 20px; border-radius: 8px; border: 1px solid var(--border); border-top: 3px solid var(--accent); margin-bottom: 20px; }
-
-        /* Top Row: Title & Version Badge */
-        .mining-header-top { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); padding-bottom: 15px; margin-bottom: 15px; flex-wrap: wrap; gap: 15px; }
-        .mining-title { font-family: var(--heading); font-size: 1.1rem; font-weight: 700; color: var(--text-main); letter-spacing: 1.5px; text-transform: uppercase; margin: 0;}
-        .mining-title span { color: var(--accent); }
-        .mining-credit { font-family: var(--mono); font-size: 0.8rem; color: var(--theme); background: rgba(96, 160, 255, 0.1); padding: 4px 8px; border-radius: 4px; border: 1px solid rgba(96, 160, 255, 0.3); font-weight: bold; white-space: nowrap; letter-spacing: 0.5px; }
-
-        /* Bottom Row: Tabs & Subscribe CTA */
-        .mining-header-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: nowrap; gap: 10px; min-width: 0; }
-
-        /* CTA Box */
-        .header-sub-cta { display: flex; align-items: center; gap: 10px; background: #1a1a1c; padding: 6px 10px; border-radius: 8px; border: 1px solid #333; border-left: 3px solid #d47631; white-space: nowrap; }
-        .header-sub-text { display: flex; flex-direction: column; gap: 1px; text-align: left; }
-        .header-sub-title { color: #ffffff; font-size: 0.8rem; font-weight: 700; margin: 0; letter-spacing: 0.2px; white-space: nowrap; }
-        .header-sub-desc { color: #8a8a8a; font-size: 0.65rem; margin: 0; white-space: nowrap; }
-
-        /* 3D Subscribe Button */
-        .sub-action-btn { display: inline-flex; align-items: center; background: linear-gradient(180deg, #ff0000 0%, #cc0000 100%); color: #ffffff; text-decoration: none; padding: 6px 12px; border-radius: 6px; font-weight: 800; font-size: 0.78rem; letter-spacing: 0.5px; box-shadow: 0 3px 0 #990000, 0 4px 8px rgba(0, 0, 0, 0.3); transition: transform 0.1s ease, box-shadow 0.1s ease, background 0.2s ease; white-space: nowrap; flex-shrink: 0; }
-        .sub-action-btn:hover { background: linear-gradient(180deg, #ff1a1a 0%, #e60000 100%); }
-        .sub-action-btn:active { transform: translateY(3px); box-shadow: 0 0 0 #990000, 0 1px 4px rgba(0, 0, 0, 0.3); }
-        .sub-action-logo { width: 16px; height: 16px; border-radius: 50%; margin-right: 6px; border: 1px solid rgba(255, 255, 255, 0.3); box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); }
-
-        /* Referral CTA (sits next to the Subscribe block) */
-        .header-cta-row { display: flex; gap: 8px; flex-wrap: nowrap; min-width: 0; }
-        .referral-cta { border-left-color: var(--tier-e); }
-        .referral-btn { background: linear-gradient(180deg, #eab308 0%, #b88a05 100%); box-shadow: 0 3px 0 #8a6804, 0 4px 8px rgba(0, 0, 0, 0.3); color: #1a1300; }
-        .referral-btn:hover { background: linear-gradient(180deg, #f4c016 0%, #cb9706 100%); }
-        .referral-btn:active { box-shadow: 0 0 0 #8a6804, 0 1px 4px rgba(0, 0, 0, 0.3); }
-
-        /* Responsive Breakpoints */
-        @media (max-width: 950px) {
-            .mining-header-bottom { flex-wrap: wrap; }
-            .header-cta-row { flex-wrap: wrap; }
-        }
-        @media (max-width: 700px) {
-            .mining-header-bottom { flex-direction: column; align-items: flex-start; }
-            .header-cta-row { flex-direction: column; width: 100%; }
-            .header-sub-cta { width: 100%; justify-content: space-between; }
-        }
-        @media (max-width: 550px) {
-            .mining-header-top { flex-direction: column; align-items: flex-start; }
-            .header-sub-cta { flex-direction: column; text-align: center; align-items: stretch; white-space: normal; }
-            .header-sub-text { text-align: center; }
-            .header-sub-title, .header-sub-desc { white-space: normal; }
-            .sub-action-btn { justify-content: center; }
-        }
-
-        /* Tabs */
-        .tab-bar { display: flex; gap: 8px; flex-shrink: 0; }
-        .tab-btn { background: var(--bg-base); color: var(--text-muted); border: 1px solid var(--border); padding: 8px 14px; border-radius: 4px; cursor: pointer; font-size: 0.82rem; font-weight: 600; transition: 0.2s; text-transform: uppercase; letter-spacing: 0.5px; white-space: nowrap; }
-        .tab-btn:hover { background: var(--border); color: var(--text-main); }
-        .tab-btn.active { background: rgba(0, 229, 160, 0.1); color: var(--accent); border-color: var(--accent); }
-
-        /* Advisory Box */
-        .advisory-box { background: rgba(0, 229, 160, 0.08); border: 1px solid rgba(0, 229, 160, 0.25); border-left: 4px solid var(--accent); padding: 15px 20px; border-radius: 4px; margin-bottom: 25px; display: flex; align-items: flex-start; gap: 15px; }
-        .advisory-icon { font-size: 1.5rem; margin-top: 2px;}
-        .advisory-text { font-size: 0.95rem; color: var(--text-main); line-height: 1.5; }
-        .advisory-text strong { color: var(--accent); }
-        .advisory-text span { display: block; margin-top: 8px; color: var(--theme); font-weight: 600;}
-
-        /* Locations Grid */
-        .loc-grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 15px; }
-        .loc-card { background: var(--bg-card); border-radius: 8px; border: 1px solid var(--border); overflow: hidden; transition: border-color 0.2s; }
-        .loc-card:hover { border-color: rgba(255, 255, 255, 0.1); }
-        .loc-empty { padding: 40px; text-align: center; color: var(--text-muted); grid-column: 1 / -1; background: var(--bg-card); border-radius: 8px; border: 1px dashed var(--border); list-style: none; }
-        .loc-header { background: rgba(0,0,0,0.3); padding: 15px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: flex-start; }
-        .loc-name { font-weight: 700; font-size: 1.15rem; color: var(--text-main); line-height: 1.3; margin: 0;}
-        .loc-sys { font-size: 0.75rem; color: var(--text-muted); background: var(--border); border: 1px solid rgba(255, 255, 255, 0.1); padding: 3px 8px; border-radius: 12px; text-transform: uppercase; font-weight: bold; letter-spacing: 1px; }
-        .loc-body { padding: 15px; display: flex; flex-direction: column; gap: 15px; }
-
-        .loc-method-group { background: var(--bg-base); border-radius: 6px; padding: 12px; border-left: 3px solid #555; }
-        .loc-method-group.Ship { border-left-color: var(--theme); }
-        .loc-method-group.ROC { border-left-color: var(--gold); }
-        .loc-method-group.Hand { border-left-color: var(--success); }
-        .loc-method-title { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; margin: 0 0 10px 0; color: var(--text-muted); letter-spacing: 0.5px; }
-        .loc-mat-table { width: 100%; border-collapse: collapse; }
-        .loc-mat-table thead th { font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; text-align: left; border-bottom: 1px solid var(--border); padding-bottom: 6px; font-weight: 700; }
-        .loc-mat-table thead th:last-child { text-align: right; }
-        .loc-mat-table td { padding: 6px 0; border-bottom: 1px dashed var(--border); font-size: 0.95rem; }
-        .loc-mat-table tbody tr:last-child td { border-bottom: none; padding-bottom: 0; }
-        .loc-mat-pct { color: var(--accent); font-family: var(--mono); font-weight: bold; text-align: right; }
-        .loc-mat-row-highlight td.loc-mat-name { color: var(--text-main); font-weight: bold; }
-        .loc-mat-row-highlight td.loc-mat-pct { color: var(--gold); font-weight: bold; }
-
-        .loc-filters { display: flex; flex-direction: column; gap: 15px; margin-bottom: 20px; background: var(--bg-card); padding: 20px; border-radius: 8px; border: 1px solid var(--border); }
-        .loc-filters-top { display: flex; justify-content: space-between; align-items: center; gap: 15px; flex-wrap: wrap; border-bottom: 1px solid var(--border); padding-bottom: 15px; }
-        .loc-filters-bottom { display: flex; flex-direction: column; gap: 10px; }
-        .loc-select { background: var(--bg-base); color: var(--text-main); border: 1px solid var(--border); padding: 10px; border-radius: 4px; flex: 1; min-width: 200px; font-size: 0.9rem; outline: none; transition: border-color 0.2s; }
-        .loc-select:focus { border-color: var(--accent); }
-
-        /* Scanner View */
-        .sig-scanner-wrap { background: var(--bg-card); padding: 20px; border-radius: 8px; border: 1px solid var(--border); border-left: 3px solid var(--accent); margin-top: 0; margin-bottom: 20px; }
-        .sig-scanner-label { font-size: 0.85rem; font-weight: 700; color: var(--text-muted); margin-bottom: 12px; letter-spacing: 1px; text-transform: uppercase; }
-        .sig-scanner-row { display: flex; gap: 15px; align-items: center; flex-wrap: wrap; }
-        .sig-scanner-input { background: var(--bg-base); color: var(--accent); border: 1px solid var(--border); padding: 12px 20px; border-radius: 4px; font-size: 1.4rem; font-family: var(--mono); font-weight: bold; width: 180px; outline: none; transition: border-color 0.2s, box-shadow 0.2s; }
-        .sig-scanner-input:focus { border-color: var(--accent); box-shadow: 0 0 10px rgba(0, 229, 160, 0.2); }
-        .sig-result { flex: 1; display: flex; flex-direction: column; gap: 4px; }
-        .sig-result-primary { font-size: 1.25rem; display: flex; align-items: center; gap: 12px; font-weight: 600; }
-        .sig-confidence { font-size: 0.75rem; background: rgba(0, 229, 160, 0.1); color: var(--success); border: 1px solid rgba(0, 229, 160, 0.25); padding: 4px 8px; border-radius: 4px; font-weight: bold; text-transform: uppercase; }
-        .sig-result-nodes { font-size: 0.85rem; color: var(--text-muted); }
-
-        .sig-grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 15px; }
-        .sig-card { background: var(--bg-card); border-radius: 8px; padding: 15px; border: 1px solid var(--border); border-left: 4px solid var(--border); cursor: pointer; position: relative; transition: background 0.2s, transform 0.1s; }
-        .sig-card:hover, .sig-card:focus-visible { background: rgba(255, 255, 255, 0.03); transform: translateY(-2px); outline: none; }
-        .sig-tier-badge { position: absolute; top: 12px; right: 12px; font-size: 0.65rem; font-weight: 800; padding: 3px 8px; border-radius: 4px; background: var(--bg-base); text-transform: uppercase; letter-spacing: 0.5px; }
-        .sig-card-name { font-size: 1.15rem; font-weight: 700; margin: 0 0 8px 0; color: var(--text-main); }
-        .sig-card-rs { font-size: 1.5rem; color: var(--accent); font-family: var(--mono); font-weight: bold; margin: 0; }
-        .sig-note { font-size: 0.75rem; color: var(--text-muted); margin: 12px 0 0 0; border-top: 1px solid var(--border); padding-top: 12px; display:flex; justify-content: space-between; align-items: center;}
-
-        .sig-filter-controls { display: flex; justify-content: space-between; align-items: center; gap: 15px; margin-bottom: 15px; flex-wrap: wrap; }
-        .sig-search { flex: 1; background: var(--bg-base); color: var(--text-main); border: 1px solid var(--border); padding: 10px 15px; border-radius: 4px; font-size: 0.95rem; outline: none; transition: border-color 0.2s; min-width: 250px;}
-        .sig-search:focus { border-color: var(--accent); }
-        .mining-subtabs { display: flex; gap: 8px; }
-        .mining-subtab { background: var(--bg-card); color: var(--text-muted); border: 1px solid var(--border); padding: 8px 16px; border-radius: 4px; cursor: pointer; font-size: 0.85rem; font-weight: 600; transition: 0.2s; text-transform: uppercase;}
-        .mining-subtab.active { background: rgba(0, 229, 160, 0.1); color: var(--accent); border-color: var(--accent); }
-        .mining-subtab:hover:not(.active) { color: var(--text-main); border-color: var(--text-muted); }
-
-        .method-tag { font-family: var(--mono); font-size: 0.7rem; padding: 3px 8px; border-radius: 4px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; }
-        .method-ship { background: rgba(96, 160, 255, 0.1); border: 1px solid rgba(96, 160, 255, 0.3); color: var(--theme); }
-        .method-roc { background: rgba(255, 149, 0, 0.1); border: 1px solid rgba(255, 149, 0, 0.3); color: var(--gold); }
-        .method-hand { background: rgba(0, 229, 160, 0.1); border: 1px solid rgba(0, 229, 160, 0.25); color: var(--success); }
-
-        .tier-l { border-left-color: var(--tier-l); } .tier-l .sig-tier-badge { color: var(--tier-l); }
-        .tier-e { border-left-color: var(--tier-e); } .tier-e .sig-tier-badge { color: var(--tier-e); }
-        .tier-r { border-left-color: var(--tier-r); } .tier-r .sig-tier-badge { color: var(--tier-r); }
-        .tier-u { border-left-color: var(--tier-u); } .tier-u .sig-tier-badge { color: var(--tier-u); }
-        .tier-c { border-left-color: var(--tier-c); } .tier-c .sig-tier-badge { color: var(--tier-c); }
-
-        .error-msg { color: var(--error); margin-top: 15px; font-weight: bold; background: rgba(239, 68, 68, 0.1); padding: 15px; border-radius: 8px; border: 1px solid rgba(239, 68, 68, 0.2); }
-
-        /* Explanatory content sections */
-        .content-section { max-width: 1200px; margin: 30px auto; padding: 0 4px; }
-        .content-section h2 { font-family: var(--heading); font-size: 1.1rem; font-weight: 700; color: var(--accent); margin: 0 0 12px 0; letter-spacing: 0.5px; text-transform: uppercase; }
-        .content-section p { color: var(--text-muted); line-height: 1.7; font-size: 0.98rem; max-width: 900px; }
-
-        #faq .faq-item { margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid var(--border); }
-        #faq .faq-item:last-child { border-bottom: none; }
-        #faq h3 { font-size: 1.05rem; color: var(--text-main); margin: 0 0 8px 0; font-weight: 700; }
-        #faq p { color: var(--text-muted); line-height: 1.6; margin: 0; max-width: 900px; }
-
-        .site-footer { max-width: 1200px; margin: 30px auto 10px auto; padding: 20px 4px; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 0.85rem; line-height: 1.6; }
-        .site-footer a { color: var(--accent); }
-        .site-footer h2 { font-size: 1rem; color: var(--text-main); margin: 0 0 10px 0; }
-        .site-footer ul { list-style: none; padding: 0; margin: 0 0 16px 0; display: flex; flex-wrap: wrap; gap: 15px; }
-        .site-footer .legal { margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border); font-size: 0.78rem; }
-    </style>
+    <style>@import url(https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap);:root{--bg-base:#050709;--bg-card:#0c0f14;--border:#172030;--text-main:#e0eaf5;--text-muted:#5a7a94;--accent:#00e5a0;--theme:#60a0ff;--gold:#ff9500;--success:#00e5a0;--error:#ef4444;--tier-l:#a78bfa;--tier-e:#ff9500;--tier-r:#60a0ff;--tier-u:#00e5a0;--tier-c:#5a7a94;--mono:'Share Tech Mono',monospace;--heading:'Orbitron',sans-serif;--ui:'Rajdhani',system-ui,sans-serif}
+*{box-sizing:border-box;font-family:var(--ui),system-ui,-apple-system,sans-serif}
+body{background-color:var(--bg-base);color:var(--text-main);margin:0;padding:20px;font-size:16px}
+body::before{content:'';position:fixed;inset:0;background:linear-gradient(rgba(0,229,160,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(0,229,160,.05) 1px,transparent 1px);background-size:40px 40px;pointer-events:none;z-index:9998}
+body::after{content:'';position:fixed;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,.04) 2px,rgba(0,0,0,.04) 4px);pointer-events:none;z-index:9999}
+#main-grid{max-width:1200px;margin:0 auto;display:flex;flex-direction:column;gap:20px}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.site-header{max-width:1200px;margin:0 auto 20px auto;padding:0 4px}
+.site-header h1{font-family:var(--heading);font-size:1.6rem;font-weight:700;margin:0 0 8px 0;letter-spacing:.5px;text-transform:uppercase}
+.site-header h1 .patch-badge{display:inline-block;font-family:var(--mono);font-size:.8rem;font-weight:700;color:var(--accent);background:rgba(0,229,160,.1);border:1px solid rgba(0,229,160,.3);padding:3px 10px;border-radius:4px;vertical-align:middle;margin-left:10px;letter-spacing:1px}
+.site-subtitle{color:var(--text-muted);font-size:1rem;margin:0;max-width:720px;line-height:1.5}
+.screen{display:none}
+.screen.active{display:block}
+#loading-screen{text-align:center;margin-top:60px;background:var(--bg-card);padding:40px;border-radius:8px;border:1px solid var(--border);box-shadow:0 4px 20px rgba(0,0,0,.5)}
+.spinner{border:4px solid rgba(255,255,255,.05);width:40px;height:40px;border-radius:50%;border-left-color:var(--accent);animation:spin 1s linear infinite;margin:0 auto 20px auto}
+@keyframes spin{0%{transform:rotate(0)}
+100%{transform:rotate(360deg)}}.loading-title{font-family:var(--heading);color:var(--accent);text-transform:uppercase;letter-spacing:2px;font-weight:700;margin:0 0 8px 0}
+.mining-header{background:var(--bg-card);padding:20px;border-radius:8px;border:1px solid var(--border);border-top:3px solid var(--accent);margin-bottom:20px}
+.mining-header-top{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border);padding-bottom:15px;margin-bottom:15px;flex-wrap:wrap;gap:15px}
+.mining-title{font-family:var(--heading);font-size:1.1rem;font-weight:700;color:var(--text-main);letter-spacing:1.5px;text-transform:uppercase;margin:0}
+.mining-title span{color:var(--accent)}
+.mining-credit{font-family:var(--mono);font-size:.8rem;color:var(--theme);background:rgba(96,160,255,.1);padding:4px 8px;border-radius:4px;border:1px solid rgba(96,160,255,.3);font-weight:700;white-space:nowrap;letter-spacing:.5px}
+.mining-header-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;min-width:0}
+.header-sub-cta{display:flex;align-items:center;gap:10px;background:#1a1a1c;padding:6px 10px;border-radius:8px;border:1px solid #333;border-left:3px solid #d47631;white-space:nowrap}
+.header-sub-text{display:flex;flex-direction:column;gap:1px;text-align:left}
+.header-sub-title{color:#fff;font-size:.8rem;font-weight:700;margin:0;letter-spacing:.2px;white-space:nowrap}
+.header-sub-desc{color:#8a8a8a;font-size:.65rem;margin:0;white-space:nowrap}
+.sub-action-btn{display:inline-flex;align-items:center;background:linear-gradient(180deg,red 0,#c00 100%);color:#fff;text-decoration:none;padding:6px 12px;border-radius:6px;font-weight:800;font-size:.78rem;letter-spacing:.5px;box-shadow:0 3px 0 #900,0 4px 8px rgba(0,0,0,.3);transition:transform .1s ease,box-shadow .1s ease,background .2s ease;white-space:nowrap;flex-shrink:0}
+.sub-action-btn:hover{background:linear-gradient(180deg,#ff1a1a 0,#e60000 100%)}
+.sub-action-btn:active{transform:translateY(3px);box-shadow:0 0 0 #900,0 1px 4px rgba(0,0,0,.3)}
+.sub-action-logo{width:16px;height:16px;border-radius:50%;margin-right:6px;border:1px solid rgba(255,255,255,.3);box-shadow:0 0 5px rgba(0,0,0,.2)}
+.header-cta-row{display:flex;gap:8px;flex-wrap:nowrap;min-width:0}
+.referral-cta{border-left-color:var(--tier-e)}
+.referral-btn{background:linear-gradient(180deg,#eab308 0,#b88a05 100%);box-shadow:0 3px 0 #8a6804,0 4px 8px rgba(0,0,0,.3);color:#1a1300}
+.referral-btn:hover{background:linear-gradient(180deg,#f4c016 0,#cb9706 100%)}
+.referral-btn:active{box-shadow:0 0 0 #8a6804,0 1px 4px rgba(0,0,0,.3)}
+@media (max-width:950px){.mining-header-bottom{flex-wrap:wrap}
+.header-cta-row{flex-wrap:wrap}}@media (max-width:700px){.mining-header-bottom{flex-direction:column;align-items:flex-start}
+.header-cta-row{flex-direction:column;width:100%}
+.header-sub-cta{width:100%;justify-content:space-between}}@media (max-width:550px){.mining-header-top{flex-direction:column;align-items:flex-start}
+.header-sub-cta{flex-direction:column;text-align:center;align-items:stretch;white-space:normal}
+.header-sub-text{text-align:center}
+.header-sub-desc,.header-sub-title{white-space:normal}
+.sub-action-btn{justify-content:center}}.tab-bar{display:flex;gap:8px;flex-shrink:0;flex-wrap:wrap}
+.tab-btn{background:var(--bg-base);color:var(--text-muted);border:1px solid var(--border);padding:8px 14px;border-radius:4px;cursor:pointer;font-size:.82rem;font-weight:600;transition:.2s;text-transform:uppercase;letter-spacing:.5px;white-space:nowrap}
+.tab-btn:hover{background:var(--border);color:var(--text-main)}
+.tab-btn.active{background:rgba(0,229,160,.1);color:var(--accent);border-color:var(--accent)}
+.advisory-box{background:rgba(0,229,160,.08);border:1px solid rgba(0,229,160,.25);border-left:4px solid var(--accent);padding:15px 20px;border-radius:4px;margin-bottom:25px;display:flex;align-items:flex-start;gap:15px}
+.advisory-icon{font-size:1.5rem;margin-top:2px}
+.advisory-text{font-size:.95rem;color:var(--text-main);line-height:1.5}
+.advisory-text strong{color:var(--accent)}
+.advisory-text span{display:block;margin-top:8px;color:var(--theme);font-weight:600}
+.gear-howto-box{background:rgba(96,160,255,.06);border:1px solid rgba(96,160,255,.25);border-left:4px solid var(--theme);padding:15px 20px;border-radius:4px;margin-bottom:20px}
+.gear-howto-title{font-family:var(--heading);font-size:.85rem;font-weight:700;color:var(--theme);text-transform:uppercase;letter-spacing:1px;margin:0 0 10px 0}
+.gear-howto-list{margin:0;padding-left:20px;color:var(--text-main);font-size:.9rem;line-height:1.6}
+.gear-howto-list li{margin-bottom:4px}
+.gear-howto-list li:last-child{margin-bottom:0}
+.gear-howto-list strong{color:var(--accent)}
+.manual-builder-layout{display:flex;gap:24px;align-items:flex-start}
+.manual-builder-col{flex:0 0 360px;max-width:360px;min-width:0}
+.manual-builder-results-col{flex:1 1 0;min-width:0}
+@media (max-width:950px){.manual-builder-layout{flex-direction:column}
+.manual-builder-col{flex:1 1 auto;max-width:none;width:100%}}.stat-tooltip-pop-global{position:fixed;z-index:999;display:none;min-width:200px;max-width:280px;background:var(--bg-card);border:1px solid var(--accent);border-radius:6px;padding:10px 12px;font-size:.8rem;color:var(--text-main);box-shadow:0 6px 18px rgba(0,0,0,.45);pointer-events:none}
+.stat-tooltip-title{font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:.5px;font-size:.7rem;margin-bottom:6px}
+.stat-tooltip-row{display:flex;justify-content:space-between;gap:12px;padding:2px 0}
+.stat-tooltip-label{color:var(--text-muted)}
+.stat-tooltip-val{color:var(--text-main);font-family:var(--mono);white-space:nowrap}
+.stat-tooltip-empty{color:var(--text-muted);font-style:italic}
+.custom-select{position:relative}
+.custom-select-trigger{width:100%;display:flex;align-items:center;justify-content:space-between;gap:8px;background:var(--bg-base);border:1px solid var(--border);border-radius:4px;padding:9px 12px;color:var(--text-main);font-family:inherit;font-size:.88rem;cursor:pointer;text-align:left;transition:border-color .15s ease}
+.custom-select-trigger:focus,.custom-select-trigger:hover{border-color:var(--accent);outline:0}
+.custom-select.open .custom-select-trigger{border-color:var(--accent);border-bottom-left-radius:0;border-bottom-right-radius:0}
+.custom-select-trigger-label{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.custom-select-caret{color:var(--text-muted);flex-shrink:0;transition:transform .15s ease;font-size:.7rem}
+.custom-select.open .custom-select-caret{transform:rotate(180deg)}
+.custom-select-panel{position:relative;z-index:5;max-height:340px;overflow-y:auto;background:var(--bg-base);border:1px solid var(--accent);border-top:none;border-radius:0 0 4px 4px;padding:4px}
+.custom-select-panel[hidden]{display:none}
+.custom-select-option{display:flex;flex-direction:column;gap:5px;width:100%;text-align:left;background:0 0;border:none;border-radius:4px;padding:8px 9px;margin-bottom:2px;cursor:pointer;font-family:inherit;color:var(--text-main)}
+.custom-select-option:focus,.custom-select-option:hover{background:rgba(0,229,160,.08);outline:0}
+.custom-select-option.selected{background:rgba(0,229,160,.14)}
+.custom-select-option-name{font-size:.85rem;font-weight:600}
+.custom-select-option-stats{display:flex;flex-wrap:wrap;gap:5px}
+.equip-stat-chips{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:2px}
+.stat-chip{display:inline-flex;align-items:center;gap:3px;background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:10px;padding:2px 7px;font-size:.7rem;font-family:var(--mono);color:var(--text-muted);white-space:nowrap}
+.stat-chip-icon{font-size:1rem;line-height:1;vertical-align:-1px}
+.stat-chip-delta{font-weight:700}
+.stat-chip-delta.up{color:var(--accent)}
+.stat-chip-delta.down{color:var(--error)}
+.stat-chip-current{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--accent)}
+.stat-chip-empty{font-size:.7rem;color:var(--text-muted);font-style:italic}
+.stat-icon-legend{display:flex;flex-wrap:wrap;gap:6px 16px;margin-top:10px;padding-top:10px;border-top:1px solid var(--border)}
+.stat-icon-legend-item{display:inline-flex;align-items:center;gap:5px;font-size:.78rem;color:var(--text-muted)}
+.loc-mat-name .stat-chip-icon{margin-left:5px}
+.loc-mat-pct .stat-chip-delta{margin-left:6px}
+.loc-grid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(350px,1fr));gap:15px}
+.loc-card{background:var(--bg-card);border-radius:8px;border:1px solid var(--border);overflow:hidden;transition:border-color .2s}
+.loc-card:hover{border-color:rgba(255,255,255,.1)}
+.loc-empty{padding:40px;text-align:center;color:var(--text-muted);grid-column:1/-1;background:var(--bg-card);border-radius:8px;border:1px dashed var(--border);list-style:none}
+.loc-header{background:rgba(0,0,0,.3);padding:15px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:flex-start}
+.loc-name{font-weight:700;font-size:1.15rem;color:var(--text-main);line-height:1.3;margin:0}
+.loc-sys{font-size:.75rem;color:var(--text-muted);background:var(--border);border:1px solid rgba(255,255,255,.1);padding:3px 8px;border-radius:12px;text-transform:uppercase;font-weight:700;letter-spacing:1px}
+.loc-body{padding:15px;display:flex;flex-direction:column;gap:15px}
+.loc-method-group{background:var(--bg-base);border-radius:6px;padding:12px;border-left:3px solid #555}
+.loc-method-group.Ship{border-left-color:var(--theme)}
+.loc-method-group.ROC{border-left-color:var(--gold)}
+.loc-method-group.Hand{border-left-color:var(--success)}
+.loc-method-title{font-size:.8rem;font-weight:700;text-transform:uppercase;margin:0 0 10px 0;color:var(--text-muted);letter-spacing:.5px}
+.loc-mat-table{width:100%;border-collapse:collapse}
+.loc-mat-table thead th{font-size:.7rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:.5px;text-align:left;border-bottom:1px solid var(--border);padding-bottom:6px;font-weight:700}
+.loc-mat-table thead th:last-child{text-align:right}
+.loc-mat-table td{padding:6px 0;border-bottom:1px dashed var(--border);font-size:.95rem}
+.loc-mat-table tbody tr:last-child td{border-bottom:none;padding-bottom:0}
+.loc-mat-pct{color:var(--accent);font-family:var(--mono);font-weight:700;text-align:right}
+.loc-mat-row-highlight td.loc-mat-name{color:var(--text-main);font-weight:700}
+.loc-mat-row-highlight td.loc-mat-pct{color:var(--gold);font-weight:700}
+.loc-filters{display:flex;flex-direction:column;gap:15px;margin-bottom:20px;background:var(--bg-card);padding:20px;border-radius:8px;border:1px solid var(--border)}
+.loc-filters-top{display:flex;justify-content:space-between;align-items:center;gap:15px;flex-wrap:wrap;border-bottom:1px solid var(--border);padding-bottom:15px}
+.loc-filters-bottom{display:flex;flex-direction:column;gap:10px}
+.loc-select{background:var(--bg-base);color:var(--text-main);border:1px solid var(--border);padding:10px;border-radius:4px;flex:1;min-width:200px;font-size:.9rem;outline:0;transition:border-color .2s}
+.loc-select:focus{border-color:var(--accent)}
+.sig-scanner-wrap{background:var(--bg-card);padding:20px;border-radius:8px;border:1px solid var(--border);border-left:3px solid var(--accent);margin-top:0;margin-bottom:20px}
+.sig-scanner-label{font-size:.85rem;font-weight:700;color:var(--text-muted);margin-bottom:12px;letter-spacing:1px;text-transform:uppercase}
+.sig-scanner-row{display:flex;gap:15px;align-items:center;flex-wrap:wrap}
+.sig-scanner-input{background:var(--bg-base);color:var(--accent);border:1px solid var(--border);padding:12px 20px;border-radius:4px;font-size:1.4rem;font-family:var(--mono);font-weight:700;width:180px;outline:0;transition:border-color .2s,box-shadow .2s}
+.sig-scanner-input:focus{border-color:var(--accent);box-shadow:0 0 10px rgba(0,229,160,.2)}
+.sig-result{flex:1;display:flex;flex-direction:column;gap:4px}
+.sig-result-primary{font-size:1.25rem;display:flex;align-items:center;gap:12px;font-weight:600}
+.sig-confidence{font-size:.75rem;background:rgba(0,229,160,.1);color:var(--success);border:1px solid rgba(0,229,160,.25);padding:4px 8px;border-radius:4px;font-weight:700;text-transform:uppercase}
+.sig-result-nodes{font-size:.85rem;color:var(--text-muted)}
+.sig-grid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:15px}
+.sig-card{background:var(--bg-card);border-radius:8px;padding:15px;border:1px solid var(--border);border-left:4px solid var(--border);cursor:pointer;position:relative;transition:background .2s,transform .1s}
+.sig-card:focus-visible,.sig-card:hover{background:rgba(255,255,255,.03);transform:translateY(-2px);outline:0}
+.sig-tier-badge{position:absolute;top:12px;right:12px;font-size:.65rem;font-weight:800;padding:3px 8px;border-radius:4px;background:var(--bg-base);text-transform:uppercase;letter-spacing:.5px}
+.sig-card-name{font-size:1.15rem;font-weight:700;margin:0 0 8px 0;color:var(--text-main)}
+.sig-card-rs{font-size:1.5rem;color:var(--accent);font-family:var(--mono);font-weight:700;margin:0}
+.sig-note{font-size:.75rem;color:var(--text-muted);margin:12px 0 0 0;border-top:1px solid var(--border);padding-top:12px;display:flex;justify-content:space-between;align-items:center}
+.sig-filter-controls{display:flex;justify-content:space-between;align-items:center;gap:15px;margin-bottom:15px;flex-wrap:wrap}
+.sig-search{flex:1;background:var(--bg-base);color:var(--text-main);border:1px solid var(--border);padding:10px 15px;border-radius:4px;font-size:.95rem;outline:0;transition:border-color .2s;min-width:250px}
+.sig-search:focus{border-color:var(--accent)}
+.mining-subtabs{display:flex;gap:8px;flex-wrap:wrap}
+.mining-subtab{background:var(--bg-card);color:var(--text-muted);border:1px solid var(--border);padding:8px 16px;border-radius:4px;cursor:pointer;font-size:.85rem;font-weight:600;transition:.2s;text-transform:uppercase}
+.mining-subtab.active{background:rgba(0,229,160,.1);color:var(--accent);border-color:var(--accent)}
+.mining-subtab:hover:not(.active){color:var(--text-main);border-color:var(--text-muted)}
+.method-tag{font-family:var(--mono);font-size:.7rem;padding:3px 8px;border-radius:4px;font-weight:800;text-transform:uppercase;letter-spacing:.5px}
+.method-ship{background:rgba(96,160,255,.1);border:1px solid rgba(96,160,255,.3);color:var(--theme)}
+.method-roc{background:rgba(255,149,0,.1);border:1px solid rgba(255,149,0,.3);color:var(--gold)}
+.method-hand{background:rgba(0,229,160,.1);border:1px solid rgba(0,229,160,.25);color:var(--success)}
+.tier-l{border-left-color:var(--tier-l)}
+.tier-l .sig-tier-badge{color:var(--tier-l)}
+.tier-e{border-left-color:var(--tier-e)}
+.tier-e .sig-tier-badge{color:var(--tier-e)}
+.tier-r{border-left-color:var(--tier-r)}
+.tier-r .sig-tier-badge{color:var(--tier-r)}
+.tier-u{border-left-color:var(--tier-u)}
+.tier-u .sig-tier-badge{color:var(--tier-u)}
+.tier-c{border-left-color:var(--tier-c)}
+.tier-c .sig-tier-badge{color:var(--tier-c)}
+.error-msg{color:var(--error);margin-top:15px;font-weight:700;background:rgba(239,68,68,.1);padding:15px;border-radius:8px;border:1px solid rgba(239,68,68,.2)}
+.refine-group-title{font-family:var(--heading);font-size:.95rem;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:1px;margin:24px 0 12px 0}
+.refine-group-title:first-child{margin-top:0}
+.refine-recommend-box{border:1px solid var(--accent);border-radius:8px;background:rgba(0,229,160,.05);padding:16px 18px;margin-bottom:24px}
+.refine-yield{text-align:left!important}
+.equip-card-body{padding:15px;display:flex;flex-direction:column;gap:10px}
+.equip-meta-row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.equip-price{font-family:var(--mono);color:var(--accent);font-weight:700;font-size:1.1rem}
+.equip-vendor-count{color:var(--text-muted);font-size:.8rem}
+.equip-add-btn{background:var(--bg-base);color:var(--accent);border:1px solid var(--accent);padding:8px 12px;border-radius:4px;cursor:pointer;font-size:.82rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px;transition:.2s;width:100%}
+.equip-add-btn:hover{background:rgba(0,229,160,.1)}
+.equip-add-btn.in-list{background:rgba(0,229,160,.15);color:var(--accent);border-color:var(--accent)}
+.equip-add-btn.no-vendor{color:var(--text-muted);border-color:var(--border);cursor:not-allowed}
+.list-item-row{display:flex;justify-content:space-between;align-items:center;background:var(--bg-card);border:1px solid var(--border);border-radius:6px;padding:10px 15px;margin-bottom:8px}
+.list-item-remove{background:0 0;border:none;color:var(--error);cursor:pointer;font-size:1.1rem;padding:0 6px}
+.stop-card{background:var(--bg-card);border-radius:8px;border:1px solid var(--border);border-left:3px solid var(--accent);padding:15px;margin-bottom:12px}
+.stop-header{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px;margin-bottom:10px}
+.stop-num{font-family:var(--heading);color:var(--accent);font-weight:700;font-size:.9rem;text-transform:uppercase;letter-spacing:1px}
+.stop-loc{color:var(--text-muted);font-size:.85rem}
+.stop-items-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+.stop-item-row{display:flex;justify-content:space-between;font-size:.9rem;border-bottom:1px dashed var(--border);padding-bottom:6px}
+.stop-item-row:last-child{border-bottom:none;padding-bottom:0}
+.route-summary{display:flex;gap:20px;flex-wrap:wrap;background:rgba(0,229,160,.08);border:1px solid rgba(0,229,160,.25);border-radius:6px;padding:12px 18px;margin-bottom:18px}
+.route-summary-stat{display:flex;flex-direction:column}
+.route-summary-stat .num{font-family:var(--mono);color:var(--accent);font-size:1.3rem;font-weight:700}
+.route-summary-stat .lbl{color:var(--text-muted);font-size:.72rem;text-transform:uppercase;letter-spacing:.5px}
+.preset-grid{list-style:none;margin:0 0 20px 0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:15px}
+.preset-card{background:var(--bg-card);border:1px solid var(--border);border-top:3px solid var(--border);border-radius:8px;padding:20px;cursor:pointer;text-align:left;font:inherit;color:inherit;transition:border-color .2s,background .2s,transform .1s}
+.preset-card:hover{border-color:rgba(255,255,255,.2);transform:translateY(-2px)}
+.preset-card.active{border-color:var(--accent);border-top-color:var(--accent);background:rgba(0,229,160,.06)}
+.preset-icon{font-size:1.8rem;margin-bottom:10px}
+.preset-name{font-family:var(--heading);font-size:1rem;font-weight:700;color:var(--text-main);margin:0 0 8px 0;text-transform:uppercase;letter-spacing:.5px}
+.preset-desc{color:var(--text-muted);font-size:.85rem;line-height:1.55;margin:0}
+.preset-best-for{margin-top:12px;font-size:.72rem;color:var(--accent);font-weight:700;text-transform:uppercase;letter-spacing:.5px}
+.stat-bar-row{margin-bottom:18px}
+.stat-bar-row:last-child{margin-bottom:0}
+.stat-bar-label{display:flex;justify-content:space-between;align-items:baseline;font-size:.85rem;font-weight:700;color:var(--text-main);margin-bottom:8px}
+.stat-bar-label .pct{color:var(--accent);font-family:var(--mono)}
+.stat-bar-track{background:var(--bg-base);border:1px solid var(--border);border-radius:6px;height:14px;overflow:hidden}
+.stat-bar-fill{height:100%;border-radius:6px;transition:width .4s ease}
+.stat-bar-fill.cracking{background:linear-gradient(90deg,var(--gold),#ff5a3c)}
+.stat-bar-fill.forgiveness{background:linear-gradient(90deg,var(--theme),var(--accent))}
+.greenzone-wrap{background:var(--bg-card);border:1px solid var(--border);border-radius:8px;padding:18px 20px;margin-bottom:20px}
+.greenzone-track{position:relative;height:30px;background:repeating-linear-gradient(90deg,rgba(255,255,255,.04) 0 2px,transparent 2px 10px);border:1px solid var(--border);border-radius:6px;overflow:hidden}
+.greenzone-fill{position:absolute;top:0;bottom:0;left:50%;background:rgba(0,229,160,.35);border-left:2px solid var(--accent);border-right:2px solid var(--accent);transform:translateX(-50%);transition:width .4s ease}
+.greenzone-caption{display:flex;justify-content:space-between;font-size:.7rem;color:var(--text-muted);margin-top:8px;text-transform:uppercase;letter-spacing:.5px}
+.weakness-box{background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.3);border-left:4px solid var(--error);padding:15px 20px;border-radius:4px;margin-bottom:15px;display:flex;align-items:flex-start;gap:15px}
+.weakness-icon{font-size:1.3rem;margin-top:2px}
+.weakness-text{font-size:.9rem;color:var(--text-main);line-height:1.5}
+.weakness-text strong{color:var(--error)}
+.stat-select-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;margin:12px 0}
+.stat-select-chip{display:flex;align-items:center;gap:10px;background:var(--bg-base);border:1px solid var(--border);border-radius:6px;padding:10px 14px;cursor:pointer;transition:border-color .2s,background .2s;user-select:none}
+.stat-select-chip:hover{border-color:var(--text-muted)}
+.stat-select-chip.checked{border-color:var(--accent);background:rgba(0,229,160,.08)}
+.stat-select-chip input{accent-color:var(--accent);width:16px;height:16px;flex-shrink:0}
+.stat-select-chip .chip-icon{font-size:1.05rem}
+.stat-select-chip .chip-label{font-weight:700;font-size:.88rem;color:var(--text-main)}
+.content-section{max-width:1200px;margin:30px auto;padding:0 4px}
+.content-section h2{font-family:var(--heading);font-size:1.1rem;font-weight:700;color:var(--accent);margin:0 0 12px 0;letter-spacing:.5px;text-transform:uppercase}
+.content-section p{color:var(--text-muted);line-height:1.7;font-size:.98rem;max-width:900px}
+#faq .faq-item{margin-bottom:20px;padding-bottom:20px;border-bottom:1px solid var(--border)}
+#faq .faq-item:last-child{border-bottom:none}
+#faq h3{font-size:1.05rem;color:var(--text-main);margin:0 0 8px 0;font-weight:700}
+#faq p{color:var(--text-muted);line-height:1.6;margin:0;max-width:900px}
+.site-footer{max-width:1200px;margin:30px auto 10px auto;padding:20px 4px;border-top:1px solid var(--border);color:var(--text-muted);font-size:.85rem;line-height:1.6}
+.site-footer a{color:var(--accent)}
+.site-footer h2{font-size:1rem;color:var(--text-main);margin:0 0 10px 0}
+.site-footer ul{list-style:none;padding:0;margin:0 0 16px 0;display:flex;flex-wrap:wrap;gap:15px}
+.site-footer .legal{margin-top:16px;padding-top:16px;border-top:1px solid var(--border);font-size:.78rem}</style>
 </head>
 <body>
 
@@ -257,26 +308,18 @@
     </header>
 
     <main id="main-grid">
-        <div id="loading-screen" class="screen active">
+        <div class="screen active" id="loading-screen">
             <div class="spinner" aria-hidden="true"></div>
             <p class="loading-title">Loading Mining Material Finder&hellip;</p>
-            <p style="color: var(--text-muted);">Fetching compiled 4.8.3 game data...</p>
+            <p style="color:var(--text-muted)">Fetching compiled 4.8.3 game data...</p>
             <div id="error-output"></div>
         </div>
 
-        <div id="app-screen" class="screen">
+        <div class="screen" id="app-screen">
 
             <div class="mining-header">
                 <div class="mining-header-top">
                     <div class="mining-title">CMDR Quattro's <span>Mining Tool</span></div>
-                    <div class="mining-credit" id="version-label">Version: Loading...</div>
-                </div>
-
-                <div class="mining-header-bottom">
-                    <div class="tab-bar" role="tablist" aria-label="Mining tool views">
-                        <button class="tab-btn active" id="tab-locs" onclick="switchTab('locs')" role="tab" aria-selected="true">Locations & Percentages</button>
-                        <button class="tab-btn" id="tab-scan" onclick="switchTab('scan')" role="tab" aria-selected="false">Signature Checker</button>
-                    </div>
 
                     <div class="header-cta-row">
                         <div class="header-sub-cta">
@@ -284,8 +327,8 @@
                                 <div class="header-sub-title">Enjoying The Tool? Say Thanks!</div>
                                 <div class="header-sub-desc">+ Get Star Citizen Guides & Updates</div>
                             </div>
-                            <a href="https://youtube.com/@CMDRQuattro" target="_blank" rel="noopener" class="sub-action-btn">
-                                <img src="https://i.imgur.com/cJDkXIG.png" alt="CMDR Quattro YouTube channel logo" class="sub-action-logo">
+                            <a href="https://youtube.com/@CMDRQuattro" rel="noopener" target="_blank" class="sub-action-btn">
+                                <img alt="CMDR Quattro YouTube channel logo" class="sub-action-logo" src="https://i.imgur.com/cJDkXIG.png">
                                 <span>Subscribe</span>
                             </a>
                         </div>
@@ -295,19 +338,29 @@
                                 <div class="header-sub-title">New to the 'Verse? +50,000 aUEC</div>
                                 <div class="header-sub-desc">Use referral code <strong>STAR-PTQ3-57MN</strong> at signup</div>
                             </div>
-                            <a href="https://robertsspaceindustries.com/enlist?referral=STAR-PTQ3-57MN" target="_blank" rel="noopener" class="sub-action-btn referral-btn" aria-label="Enlist in Star Citizen with referral code STAR-PTQ3-57MN for a 50,000 aUEC starting bonus">
+                            <a href="https://robertsspaceindustries.com/enlist?referral=STAR-PTQ3-57MN" rel="noopener" target="_blank" class="sub-action-btn referral-btn" aria-label="Enlist in Star Citizen with referral code STAR-PTQ3-57MN for a 50,000 aUEC starting bonus">
                                 <span>Enlist Now &rarr;</span>
                             </a>
                         </div>
                     </div>
                 </div>
+
+                <div class="mining-header-bottom">
+                    <div class="tab-bar" aria-label="Mining tool views" role="tablist">
+                        <button aria-selected="true" class="tab-btn active" id="tab-locs" onclick='switchTab("locs")' role="tab">Locations & Percentages</button>
+                        <button aria-selected="false" class="tab-btn" id="tab-scan" onclick='switchTab("scan")' role="tab">Signature Checker</button>
+                        <button aria-selected="false" class="tab-btn" id="tab-refine" onclick='switchTab("refine")' role="tab">Refining Methods</button>
+                        <button aria-selected="false" class="tab-btn" id="tab-gear" onclick='switchTab("gear")' role="tab">Loadout & Gear</button>
+                    </div>
+                    <div class="mining-credit" id="version-label">Version: Loading...</div>
+                </div>
             </div>
 
-            <div class="advisory-box">
+            <div class="advisory-box" id="pyro-protip-box">
                 <div class="advisory-icon" aria-hidden="true">⚠️</div>
                 <div class="advisory-text">
                     <strong>PRO TIP:</strong> Focus your mining operations in <strong>Pyro</strong> &mdash; its materials are far higher quality on average than what is present in Stanton &mdash; and prioritize <strong>Hadanite</strong> ROC loops on Aberdeen if you're grinding aUEC right now. See the breakdown below for why.
-                    <span>Note: Sadaryx & Savrilium can currently be found exclusively at Rock Breaker Contract locations. Need help? Check out the <a href="https://citizen-starter-guide.com/rock-breaker-interactive-guide/" target="_blank" rel="noopener" style="color: var(--accent); text-decoration: underline;">Rock Breaker Interactive Guide on Citizen Starter Guide</a>.</span>
+                    <span>Note: Sadaryx & Savrilium can currently be found exclusively at Rock Breaker Contract locations. Need help? Check out the <a href="https://citizen-starter-guide.com/rock-breaker-interactive-guide/" rel="noopener" target="_blank" style="color:var(--accent);text-decoration:underline">Rock Breaker Interactive Guide on Citizen Starter Guide</a>.</span>
                 </div>
             </div>
 
@@ -317,27 +370,32 @@
         </div>
     </main>
 
-    <section class="content-section" aria-labelledby="how-to-heading">
+    <section aria-labelledby="how-to-heading" class="content-section">
         <h2 id="how-to-heading">How to Use the Mining Material Finder</h2>
         <p>Start on the Locations & Percentages tab and choose a system &mdash; Stanton, Pyro, or Nyx &mdash; using the tabs above the location grid. Select up to three materials you need from the dropdown filters; the tool instantly narrows the list to locations that contain all of them and sorts the results by combined yield, so the best spot lands at the top. Each location card breaks results down by mining method (Ship, ROC, or Hand) so you know exactly what equipment to bring before you fly out. Prefer scanning in the field instead? Switch to the Signature Checker tab and enter the raw RS reading from your ship's HUD &mdash; the tool runs the cluster math instantly and tells you the material, rarity tier, and node count before you commit to a burn. The underlying data is rebuilt from the game's files for every major mining patch, including 4.8.3.</p>
     </section>
 
-    <section class="content-section" aria-labelledby="percentages-heading">
+    <section aria-labelledby="percentages-heading" class="content-section">
         <h2 id="percentages-heading">How to Read Ship, ROC, and Hand Mining Percentages</h2>
         <p>Every location card lists three potential mining methods &mdash; Ship, ROC, and Hand &mdash; and each material under those headings shows a percentage. That number is not how much of the material exists at the location; it's the statistical likelihood of encountering that specific resource when you scan or break open a node using that method at that location. A material listed at 35% under Ship Mining means roughly one in three ship-mineable deposits you crack open there will yield that resource, while the remaining nodes are made up of the other materials listed in that same group. Because the three methods pull from separate node pools, a location can have a high Quantainium chance via Ship mining and a completely different profile via Hand or ROC mining. Always check the method that matches the equipment you're flying with &mdash; a location with great Ship percentages won't help you if you're running a ROC on the surface.</p>
     </section>
 
-    <section class="content-section" aria-labelledby="hadanite-heading">
+    <section aria-labelledby="hadanite-heading" class="content-section">
         <h2 id="hadanite-heading">Best Locations for Hadanite, Quantainium, and Rare Ore in 4.8.3</h2>
         <p>If you're optimizing a mining loop for Star Citizen 4.8.3, Hadanite belongs at the top of the list. This pink-purple mineral is one of the strongest targets for ROC mining loops right now, and its richest known concentration sits on Aberdeen, the moon orbiting Crusader in Stanton, where dense surface clusters let a ROC pilot chain nodes with minimal travel time. Quantainium remains the headline Ship and ROC target across both systems, though it decays fast after extraction, so route planning matters as much as the percentage &mdash; filter for it above to find a high-yield deposit close to a refinery. Rarer ores like Taranite, Bexalite, and Riccite tend to cluster in Pyro's less-traveled fields, rewarding pilots willing to fly further for a heavier payout per scoop. Use the material filters above rather than a static guide, since exact percentages and hot spots shift between patches.</p>
     </section>
 
-    <section class="content-section" aria-labelledby="system-breakdown-heading">
+    <section aria-labelledby="system-breakdown-heading" class="content-section">
         <h2 id="system-breakdown-heading">System Breakdown: Stanton vs. Pyro</h2>
         <p>Stanton is the original, UEE-regulated system, and it shows in the mineral data: decades of corporate and player mining activity have thinned out the highest-purity nodes, so the average resource quality you'll encounter there skews lower, even though it's by far the safer system to operate in. Pyro is newer, lawless, and largely unmined, which means its asteroid fields and surface deposits still carry a noticeably higher concentration of high-tier materials. That's the basis of the Pro Tip above: if raw yield and material quality are your priority, Pyro consistently outperforms Stanton, at the cost of UEE security and longer, riskier supply runs. A handful of materials, including Sadaryx and Savrilium, are currently exclusive to Rock Breaker Contract locations regardless of system. Mining is also one of the most repeatable ways to grind aUEC, whether you're saving toward a bigger hull or just covering routine repairs and ammo &mdash; chaining high-percentage Ship and ROC locations through the filters above gets you to a usable total faster than mining wherever you happen to be.</p>
     </section>
 
-    <section class="content-section" id="faq" aria-labelledby="faq-heading">
+    <section aria-labelledby="refining-heading" class="content-section">
+        <h2 id="refining-heading">Refining Methods: Speed, Cost, and Yield Trade-offs</h2>
+        <p>Finding the ore is only half the loop &mdash; what you do with it at the refinery matters just as much. Star Citizen offers nine refining methods, split across three speed tiers (Slow, Normal, Fast) with three trade-off profiles in each: Efficient, Normal, and Wasteful. Efficient methods run slowest for their speed tier but return the highest yield per unit of raw ore, which is the right call for scarce or high-value hauls like Hadanite and Quantainium. Wasteful methods finish fastest for their tier but lose more material to slag, so save them for cheap, plentiful ore when turnover matters more than yield. Normal methods split the difference and are the sensible default when you're not optimizing for either extreme. Check the Refining Methods tab above to compare all nine side by side &mdash; speed, cost, and yield &mdash; before committing your haul to a refinery.</p>
+    </section>
+
+    <section aria-labelledby="faq-heading" class="content-section" id="faq">
         <h2 id="faq-heading">Frequently Asked Questions</h2>
 
         <div class="faq-item">
@@ -364,441 +422,221 @@
             <h3>Where can I find Sadaryx and Savrilium?</h3>
             <p>Sadaryx and Savrilium are currently exclusive to Rock Breaker Contract locations and are not available through standard Ship, ROC, or Hand mining elsewhere in the verse. Check active Rock Breaker contracts specifically if you need either material.</p>
         </div>
+
+        <div class="faq-item">
+            <h3>Which Star Citizen refining method should I use?</h3>
+            <p>It depends on what you're refining. Use an Efficient method &mdash; Dinyx Solventation, Ferron Exchange, or Pyrometric Chromalysis &mdash; for scarce or high-value ore like Hadanite and Quantainium, since it returns the highest yield per unit of raw input. Use a Wasteful method &mdash; Kazen Winnowing, Cormack Method, or XCR Reaction &mdash; for cheap, plentiful ore when you need fast turnover instead. Normal methods are a reasonable default when you're not optimizing for either extreme. See the Refining Methods tab above for the full breakdown of all nine methods.</p>
+        </div>
     </section>
 
     <footer class="site-footer">
         <h2>Intel Links</h2>
         <nav aria-label="External resource links">
             <ul>
-                <li><a href="https://quattrobaje3na-png.github.io/Mining-Tool/" target="_blank" rel="noopener">Direct Tool</a></li>
-                <li><a href="https://citizen-starter-guide.com/star-citizen-mining-material-finder/" target="_blank" rel="noopener">Website Hub</a></li>
-                <li><a href="https://github.com/quattrobaje3na-png/Mining-Tool" target="_blank" rel="noopener">GitHub Repo</a></li>
-                <li><a href="https://youtube.com/@CMDRQuattro" target="_blank" rel="noopener">YouTube</a></li>
+                <li><a href="https://quattrobaje3na-png.github.io/Mining-Tool/" rel="noopener" target="_blank">Direct Tool</a></li>
+                <li><a href="https://citizen-starter-guide.com/star-citizen-mining-material-finder/" rel="noopener" target="_blank">Website Hub</a></li>
+                <li><a href="https://github.com/quattrobaje3na-png/Mining-Tool" rel="noopener" target="_blank">GitHub Repo</a></li>
+                <li><a href="https://youtube.com/@CMDRQuattro" rel="noopener" target="_blank">YouTube</a></li>
             </ul>
         </nav>
         <p class="legal">This is a fan-made community tool. Star Citizen&reg;, Roberts Space Industries&reg;, and Cloud Imperium&reg; are registered trademarks of Cloud Imperium Rights LLC. All other content on this site is the property of its respective owners. This tool is not endorsed by or affiliated with Cloud Imperium or Roberts Space Industries. All game data is subject to change as development progresses.</p>
         <p class="legal">Designed and maintained by CMDR Quattro. Fly safe. Mine deep.</p>
     </footer>
 
-    <script>
-        const COMPILED_JSON_FILE = 'mining_compiled.json';
-
-        let SIGNATURE_DB = [];
-        let FLAT_LOCS = [];
-        let SORTED_MATS = [];
-
-        let activeTab = 'locs';
-        let sigSearchQuery = '';
-        let locSearchQuery = '';
-        let sigMethodFilter = 'All';
-        let locFilters = ["", "", ""];
-        let locSystemFilter = 'All';
-
-        function esc(str) {
-            const d = document.createElement('div');
-            d.textContent = String(str ?? '');
-            return d.innerHTML;
-        }
-
-        // Fills the native <datalist>s once per data load (not per render) so
-        // typing in the search boxes shows a real browser suggestion dropdown
-        // of every known location / signature name, independent of whatever
-        // filters are currently narrowing the results list below it.
-        function populateDatalists() {
-            const locNames = Array.from(new Set(FLAT_LOCS.map(l => l.name))).sort();
-            const locList = document.getElementById('loc-name-list');
-            if (locList) locList.innerHTML = locNames.map(n => `<option value="${esc(n)}">`).join('');
-
-            const sigNames = Array.from(new Set(SIGNATURE_DB.map(s => s.name))).sort();
-            const sigList = document.getElementById('sig-name-list');
-            if (sigList) sigList.innerHTML = sigNames.map(n => `<option value="${esc(n)}">`).join('');
-        }
-
-        // Ranks the closest match to the top of the list: an exact name match
-        // wins outright, then a name that starts with the query, then any
-        // other name match, then anything that only matched on a secondary
-        // field (system, material, method, note). Ties fall through to
-        // whatever comparator the caller passes in.
-        function rankByQuery(q, getName, fallbackCompare) {
-            return function (a, b) {
-                const aName = getName(a).toLowerCase(), bName = getName(b).toLowerCase();
-                const aExact = aName === q, bExact = bName === q;
-                if (aExact !== bExact) return aExact ? -1 : 1;
-                const aStarts = aName.indexOf(q) === 0, bStarts = bName.indexOf(q) === 0;
-                if (aStarts !== bStarts) return aStarts ? -1 : 1;
-                const aNameHit = aName.indexOf(q) !== -1, bNameHit = bName.indexOf(q) !== -1;
-                if (aNameHit !== bNameHit) return aNameHit ? -1 : 1;
-                return fallbackCompare(a, b);
-            };
-        }
-
-        async function fetchGameData() {
-            try {
-                const response = await fetch(COMPILED_JSON_FILE);
-                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-
-                const data = await response.json();
-
-                document.getElementById('version-label').innerText = "LIVE BUILD: " + data.version;
-
-                SORTED_MATS = data.materials;
-
-                // Precompute a lowercased "search haystack" per record so every
-                // keystroke just does a cheap string scan instead of rebuilding
-                // and re-lowercasing strings on every render — this is what
-                // keeps the search feeling instant on a large dataset.
-                FLAT_LOCS = data.locations.map(loc => {
-                    const allMatsSet = new Set(loc.allMats);
-                    return {
-                        ...loc,
-                        allMatsSet,
-                        searchHay: [loc.name, loc.system, ...allMatsSet].join(' ').toLowerCase()
-                    };
-                });
-
-                SIGNATURE_DB = (data.signatures || []).map(s => ({
-                    ...s,
-                    searchHay: [s.name, s.method, s.tier, s.note].filter(Boolean).join(' ').toLowerCase()
-                }));
-
-                populateDatalists();
-
-                document.getElementById('loading-screen').classList.remove('active');
-                document.getElementById('app-screen').classList.add('active');
-                renderUI();
-
-            } catch (error) {
-                console.error('Fetch error:', error);
-                document.getElementById('error-output').innerHTML = `
-                    <div class="error-msg">
-                        Failed to load <code>${COMPILED_JSON_FILE}</code>.<br><br>
-                        Error details: ${error.message}
-                    </div>
-                `;
-                document.querySelector('.spinner').style.display = 'none';
-            }
-        }
-
-        function switchTab(tab) {
-            activeTab = tab;
-            document.getElementById('tab-locs').classList.toggle('active', tab === 'locs');
-            document.getElementById('tab-locs').setAttribute('aria-selected', tab === 'locs');
-            document.getElementById('tab-scan').classList.toggle('active', tab === 'scan');
-            document.getElementById('tab-scan').setAttribute('aria-selected', tab === 'scan');
-            renderUI();
-        }
-
-        function renderUI() {
-            let container = document.getElementById('tab-content');
-            container.innerHTML = '';
-            if (activeTab === 'locs') { renderLocations(container); } else { renderScanner(container); }
-        }
-
-        // Builds the Locations tab's controls ONCE (search box, system tabs,
-        // material selects) and wires their event listeners directly, then
-        // delegates to renderLocationResults() for the part that actually
-        // changes on every keystroke. Earlier versions rebuilt this whole
-        // tab — search input included — on every single keystroke via
-        // renderUI(), which destroyed and recreated the focused <input> each
-        // time (kicking focus out of the box after one character) and
-        // re-ran the full filter/select markup generation on top of it.
-        // That's what produced the "hangs after one letter" feel. The
-        // cargo/hauling tool never has that problem because its inputs are
-        // static, permanent DOM nodes wired up once; only their results
-        // containers get refreshed. This mirrors that pattern.
-        function renderLocations(container) {
-            const uniqueSystems = Array.from(new Set(FLAT_LOCS.map(l => l.system))).sort();
-            const sysTabsHTML = ['All', ...uniqueSystems].map(sys =>
-                `<button type="button" class="mining-subtab ${locSystemFilter === sys ? 'active' : ''}" data-sys="${esc(sys)}">${esc(sys)}</button>`
-            ).join('');
-
-            let selectsHTML = [0,1,2].map(i => {
-                let opts = `<option value="">-- Required Material ${i+1} --</option>`;
-                SORTED_MATS.forEach(m => { opts += `<option value="${esc(m)}" ${locFilters[i] === m ? 'selected' : ''}>${esc(m)}</option>`; });
-                return `<label class="sr-only" for="loc-filter-${i}">Required material ${i+1}</label><select id="loc-filter-${i}" class="loc-select" data-filter-idx="${i}">${opts}</select>`;
-            }).join('');
-
-            container.innerHTML = `
-                <div class="loc-filters">
-                    <div class="loc-filters-top">
-                        <div style="display:flex; align-items:center; gap: 15px;">
-                            <span style="color:var(--text-muted); font-size:0.85rem; font-weight:bold; text-transform:uppercase; letter-spacing:1px; margin-top:5px;">Filter System:</span>
-                            <div class="mining-subtabs" id="loc-sys-tabs">${sysTabsHTML}</div>
-                        </div>
-                        <label class="sr-only" for="loc-search">Search mining locations</label>
-                        <input type="text" id="loc-search" class="sig-search" list="loc-name-list" autocomplete="off" placeholder="Search by location, system, or material..." value="${esc(locSearchQuery)}">
-                    </div>
-                    <div class="loc-filters-bottom">
-                        <div style="width:100%; font-size:0.85rem; font-weight:700; color:var(--text-muted); margin-bottom:4px; text-transform:uppercase; letter-spacing:0.5px;">Filter by Materials (Must contain ALL):</div>
-                        <div style="display:flex; gap:10px; width:100%; flex-wrap:wrap;" id="loc-mat-selects">${selectsHTML}</div>
-                    </div>
-                </div>
-                <ul class="loc-grid" id="loc-grid" aria-label="Mining locations matching current filters"></ul>
-            `;
-
-            document.getElementById('loc-search').addEventListener('input', function (e) {
-                locSearchQuery = e.target.value;
-                renderLocationResults();
-            });
-
-            document.getElementById('loc-sys-tabs').addEventListener('click', function (e) {
-                const btn = e.target.closest('[data-sys]');
-                if (!btn) return;
-                locSystemFilter = btn.dataset.sys;
-                Array.from(document.getElementById('loc-sys-tabs').children).forEach(b => b.classList.toggle('active', b === btn));
-                renderLocationResults();
-            });
-
-            document.getElementById('loc-mat-selects').addEventListener('change', function (e) {
-                const sel = e.target.closest('select[data-filter-idx]');
-                if (!sel) return;
-                locFilters[parseInt(sel.dataset.filterIdx, 10)] = sel.value;
-                renderLocationResults();
-            });
-
-            renderLocationResults();
-        }
-
-        // Filters/sorts FLAT_LOCS and repaints only #loc-grid. Built with a
-        // DocumentFragment + one appendChild, not the old `grid.innerHTML +=`
-        // loop (which re-parses the whole accumulated HTML string on every
-        // single location and turns a few hundred locations into a visibly
-        // janky O(n^2) rebuild).
-        function renderLocationResults() {
-            const grid = document.getElementById('loc-grid');
-            if (!grid) return;
-
-            const activeFilters = locFilters.filter(m => m !== '');
-            const locQuery = locSearchQuery.toLowerCase().trim();
-            let filteredLocs = FLAT_LOCS;
-
-            if (locQuery) {
-                // Matches on location name, system, or any material mined
-                // there, so typing "Hadanite" surfaces every location that
-                // carries it, not just locations literally named that.
-                filteredLocs = filteredLocs.filter(l => l.searchHay.indexOf(locQuery) !== -1);
-            }
-
-            if (locSystemFilter !== 'All') {
-                filteredLocs = filteredLocs.filter(l => l.system === locSystemFilter);
-            }
-
-            if (activeFilters.length > 0) {
-                filteredLocs = filteredLocs.filter(l => activeFilters.every(sel => l.allMatsSet.has(sel)));
-            }
-
-            // DYNAMIC SORTING: Calculate yield scores and sort highest to top
-            filteredLocs.forEach(loc => {
-                let sortScore = 0;
-                if (activeFilters.length > 0) {
-                    ['Ship', 'ROC', 'Hand'].forEach(method => {
-                        if (loc.methods[method]) {
-                            loc.methods[method].forEach(mat => {
-                                if (activeFilters.includes(mat.name)) {
-                                    sortScore += mat.chance;
-                                }
-                            });
-                        }
-                    });
-                }
-                loc.sortScore = sortScore;
-            });
-
-            const locFallbackSort = activeFilters.length > 0
-                ? (a, b) => b.sortScore - a.sortScore // combined percentage, highest on top
-                : (a, b) => a.name.localeCompare(b.name); // alphabetical if nothing else to rank by
-
-            filteredLocs.sort(locQuery
-                ? rankByQuery(locQuery, l => l.name, locFallbackSort)
-                : locFallbackSort);
-
-            grid.innerHTML = '';
-
-            if (filteredLocs.length === 0) {
-                grid.innerHTML = `<li class="loc-empty">No locations found matching your filters.</li>`;
-                return;
-            }
-
-            const frag = document.createDocumentFragment();
-
-            filteredLocs.forEach(loc => {
-                if (!loc.methods || Object.keys(loc.methods).length === 0) return;
-
-                let methodsHtml = '';
-                ['Ship', 'ROC', 'Hand'].forEach(method => {
-                    if (loc.methods[method] && loc.methods[method].length > 0) {
-                        methodsHtml += `<div class="loc-method-group ${method}">
-                            <h4 class="loc-method-title">${method} Mining Deposits</h4>
-                            <table class="loc-mat-table">
-                                <caption class="sr-only">${method} mineable materials and drop chance at ${esc(loc.name)}</caption>
-                                <thead>
-                                    <tr><th scope="col">Material</th><th scope="col">Chance</th></tr>
-                                </thead>
-                                <tbody>`;
-                        loc.methods[method].forEach(mat => {
-                            const isHighlight = activeFilters.includes(mat.name);
-                            methodsHtml += `<tr class="loc-mat-row${isHighlight ? ' loc-mat-row-highlight' : ''}">
-                                <td class="loc-mat-name">${esc(mat.name)}</td>
-                                <td class="loc-mat-pct">${mat.chance.toFixed(1)}%</td>
-                            </tr>`;
-                        });
-                        methodsHtml += `</tbody></table></div>`;
-                    }
-                });
-
-                const li = document.createElement('li');
-                li.className = 'loc-card';
-                li.innerHTML = `
-                    <article>
-                        <header class="loc-header">
-                            <h3 class="loc-name">${esc(loc.name)}</h3>
-                            <span class="loc-sys">${esc(loc.system)}</span>
-                        </header>
-                        <div class="loc-body">${methodsHtml}</div>
-                    </article>
-                `;
-                frag.appendChild(li);
-            });
-
-            grid.appendChild(frag);
-        }
-
-        // Same fix as renderLocations(): controls are created once and
-        // wired with addEventListener, results are repainted independently.
-        function renderScanner(container) {
-            container.innerHTML = `
-                <div class="sig-filter-controls">
-                    <label class="sr-only" for="sig-search-input">Search mining signatures</label>
-                    <input type="text" id="sig-search-input" class="sig-search" list="sig-name-list" autocomplete="off" placeholder="Search specific materials..." value="${esc(sigSearchQuery)}">
-                    <div class="mining-subtabs" id="sig-method-tabs">
-                        ${['All','Ship','ROC','Hand'].map(f => `<button type="button" class="mining-subtab ${sigMethodFilter===f?'active':''}" data-method="${f}">${f}</button>`).join('')}
-                    </div>
-                </div>
-                <div class="sig-scanner-wrap">
-                    <div class="sig-scanner-label">Signature Input (Exact Cluster Math)</div>
-                    <div class="sig-scanner-row">
-                        <label class="sr-only" for="rs-input">Ship HUD RS signature reading</label>
-                        <input type="number" class="sig-scanner-input" id="rs-input" placeholder="e.g. 12810">
-                        <div class="sig-result" id="rs-result"><span style="color:var(--text-muted);font-size:0.9rem;">Enter a Scanning Signature from Ship HUD...</span></div>
-                    </div>
-                </div>
-                <ul class="sig-grid" id="sig-grid" aria-label="Known mining signatures"></ul>
-            `;
-
-            document.getElementById('sig-search-input').addEventListener('input', function (e) {
-                sigSearchQuery = e.target.value;
-                renderScannerResults();
-            });
-
-            document.getElementById('sig-method-tabs').addEventListener('click', function (e) {
-                const btn = e.target.closest('[data-method]');
-                if (!btn) return;
-                sigMethodFilter = btn.dataset.method;
-                Array.from(document.getElementById('sig-method-tabs').children).forEach(b => b.classList.toggle('active', b === btn));
-                renderScannerResults();
-            });
-
-            document.getElementById('rs-input').addEventListener('input', function (e) {
-                updateRSScanner(e.target.value);
-            });
-
-            renderScannerResults();
-        }
-
-        function renderScannerResults() {
-            const grid = document.getElementById('sig-grid');
-            if (!grid) return;
-            grid.innerHTML = '';
-
-            const q = sigSearchQuery.toLowerCase().trim();
-            let list = SIGNATURE_DB.filter(s => {
-                // Matches name, method, tier, or note, so "ROC" or a tier
-                // name like "Legendary" also narrows the list usefully.
-                if (q && s.searchHay.indexOf(q) === -1) return false;
-                if (sigMethodFilter !== 'All' && s.method !== sigMethodFilter) return false;
-                return true;
-            });
-
-            if (q) {
-                list = list.slice().sort(rankByQuery(q, s => s.name, (a, b) => b.rs - a.rs));
-            }
-
-            const frag = document.createDocumentFragment();
-
-            list.forEach(s => {
-                let tierClass = s.tier.toLowerCase().charAt(0);
-                let card = document.createElement('li');
-                card.className = `sig-card tier-${tierClass}`;
-                card.tabIndex = 0;
-                card.setAttribute('role', 'button');
-                card.setAttribute('aria-label', `Look up ${s.name}, RS ${s.rs}`);
-                card.innerHTML = `
-                    <span class="sig-tier-badge" style="color: var(--tier-${tierClass})">${s.tier}</span>
-                    <h3 class="sig-card-name">${esc(s.name)}</h3>
-                    <p class="sig-card-rs"><span class="sr-only">Base RS signature: </span>${s.rs.toLocaleString()}</p>
-                    <p class="sig-note">
-                        <span class="method-tag method-${s.method.toLowerCase()}">${s.method}</span>
-                        <span style="color:var(--text-muted); font-family:monospace;">${esc(s.note)}</span>
-                    </p>
-                `;
-                const activate = () => {
-                    document.getElementById('rs-input').value = s.rs;
-                    updateRSScanner(s.rs);
-                };
-                card.onclick = activate;
-                card.onkeydown = (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); activate(); } };
-                frag.appendChild(card);
-            });
-
-            grid.appendChild(frag);
-        }
-
-        window.updateRSScanner = function(rawVal) {
-            const rs = parseInt(rawVal);
-            const el = document.getElementById('rs-result');
-            if (!el || !rs || rs < 100) {
-                if(el) el.innerHTML = '<span style="color:var(--text-muted);font-size:0.9rem;">Enter an RS reading from your ship HUD...</span>';
-                return;
-            }
-
-            let matches = [];
-            SIGNATURE_DB.forEach(s => {
-                for (let n = 1; n <= 12; n++) {
-                    const expected = s.rs * n;
-                    const diff = Math.abs(rs - expected);
-                    if (diff < expected * 0.005) {
-                        matches.push({ ...s, nodes: n, confidence: Math.round((1 - diff/(expected*0.005))*100) });
-                    }
-                }
-            });
-            matches.sort((a,b) => b.confidence - a.confidence);
-
-            if (matches.length === 0) {
-                el.innerHTML = `
-                    <div class="sig-result-primary" style="color:var(--error);">NO MATCH</div>
-                    <div class="sig-result-nodes" style="color:var(--text-muted);">RS does not map cleanly to any known cluster in the database.</div>
-                `;
-                return;
-            }
-
-            const b = matches[0];
-            const tColor = `var(--tier-${b.tier.toLowerCase().charAt(0)})`;
-            el.innerHTML = `
-                <div class="sig-result-primary">
-                    <span style="color:${tColor}">${esc(b.name)}</span>
-                    <span style="color:var(--text-main); font-weight:400;">&times; ${b.nodes} node${b.nodes > 1 ? 's' : ''}</span>
-                    <span class="method-tag method-${b.method.toLowerCase()}" style="margin-left:8px;">${b.method}</span>
-                    <span class="sig-confidence" style="margin-left:auto;">${b.confidence}%</span>
-                </div>
-                <div class="sig-result-nodes">
-                    Base: <span style="color:var(--accent); font-family:var(--mono);">${b.rs}</span> &middot;
-                    Expected Cluster: <span style="color:var(--accent); font-family:var(--mono);">${b.rs * b.nodes}</span> &middot;
-                    <span style="color:${tColor}; text-transform:uppercase; font-size:0.75rem; font-weight:bold;">${b.tier}</span>
-                </div>
-            `;
-        };
-
-        window.onload = fetchGameData;
-    </script>
+    <script>const COMPILED_JSON_FILE="mining_compiled.json";let SIGNATURE_DB=[],FLAT_LOCS=[],SORTED_MATS=[],activeTab="locs",sigSearchQuery="",locSearchQuery="",sigMethodFilter="All",locFilters=["","",""],locSystemFilter="All",refineQualityFilter="All";const EQUIPMENT_JSON_FILE="mining_equipment.json",SHOPPING_LIST_KEY="sc_mining_shopping_list"
+;let EQUIP_ITEMS=[],EQUIP_BY_ID={},equipCategoryFilter="All",equipSearchQuery="",shoppingList=new Map;try{const e=JSON.parse(localStorage.getItem(SHOPPING_LIST_KEY)||"[]");if(Array.isArray(e)){const t=e.map(e=>Array.isArray(e)?e:[e,1]);shoppingList=new Map(t)}}catch(e){}const PLAYER_LOCATION_KEY="sc_mining_player_location";let playerLocation={system:"",region:""};try{
+const e=JSON.parse(localStorage.getItem(PLAYER_LOCATION_KEY)||"null");e&&e.system&&e.region&&(playerLocation=e)}catch(e){}function savePlayerLocation(){localStorage.setItem(PLAYER_LOCATION_KEY,JSON.stringify(playerLocation))}const REFINING_METHODS=[{name:"Dinyx Solventation",speedTier:"Slow",quality:"Efficient",speed:"Very Low",cost:"Low",yieldLevel:"High"},{name:"Thermonatic Deposition",
+speedTier:"Slow",quality:"Normal",speed:"Low",cost:"Low",yieldLevel:"Moderate"},{name:"Kazen Winnowing",speedTier:"Slow",quality:"Wasteful",speed:"Moderate",cost:"Low",yieldLevel:"Low"},{name:"Ferron Exchange",speedTier:"Normal",quality:"Efficient",speed:"Low",cost:"Moderate",yieldLevel:"High"},{name:"Electrostarolysis",speedTier:"Normal",quality:"Normal",speed:"Moderate",cost:"Moderate",
+yieldLevel:"Moderate"},{name:"Cormack Method",speedTier:"Normal",quality:"Wasteful",speed:"High",cost:"Moderate",yieldLevel:"Low"},{name:"Pyrometric Chromalysis",speedTier:"Fast",quality:"Efficient",speed:"Low",cost:"High",yieldLevel:"High"},{name:"Gaskin Process",speedTier:"Fast",quality:"Normal",speed:"High",cost:"High",yieldLevel:"Moderate"},{name:"XCR Reaction",speedTier:"Fast",
+quality:"Wasteful",speed:"High",cost:"High",yieldLevel:"Low"}],REFINE_QUAL_CLASS={Efficient:"method-hand",Normal:"method-ship",Wasteful:"method-roc"},REFINE_COST_RANK={Low:0,Moderate:1,High:2};function bestCostEffective(e){return REFINING_METHODS.filter(t=>t.quality===e&&"High"!==t.cost).sort((e,t)=>REFINE_COST_RANK[t.cost]-REFINE_COST_RANK[e.cost])[0]}function esc(e){
+const t=document.createElement("div");return t.textContent=String(e??""),t.innerHTML}function populateDatalists(){const e=Array.from(new Set(FLAT_LOCS.map(e=>e.name))).sort(),t=document.getElementById("loc-name-list");t&&(t.innerHTML=e.map(e=>`<option value="${esc(e)}">`).join(""));const n=Array.from(new Set(SIGNATURE_DB.map(e=>e.name))).sort(),a=document.getElementById("sig-name-list")
+;a&&(a.innerHTML=n.map(e=>`<option value="${esc(e)}">`).join(""))}function rankByQuery(e,t,n){return function(a,o){const s=t(a).toLowerCase(),i=t(o).toLowerCase(),r=s===e;if(r!==(i===e))return r?-1:1;const l=0===s.indexOf(e);if(l!==(0===i.indexOf(e)))return l?-1:1;const c=-1!==s.indexOf(e);return c!==(-1!==i.indexOf(e))?c?-1:1:n(a,o)}}async function fetchGameData(){try{
+const e=await fetch(COMPILED_JSON_FILE);if(!e.ok)throw new Error(`HTTP error! status: ${e.status}`);const t=await e.json();document.getElementById("version-label").innerText="LIVE BUILD: "+t.version,SORTED_MATS=t.materials,FLAT_LOCS=t.locations.map(e=>{const t=new Set(e.allMats);return{...e,allMatsSet:t,searchHay:[e.name,e.system,...t].join(" ").toLowerCase()}}),
+SIGNATURE_DB=(t.signatures||[]).map(e=>({...e,searchHay:[e.name,e.method,e.tier,e.note].filter(Boolean).join(" ").toLowerCase()})),populateDatalists(),document.getElementById("loading-screen").classList.remove("active"),document.getElementById("app-screen").classList.add("active"),renderUI()}catch(e){console.error("Fetch error:",e),
+document.getElementById("error-output").innerHTML=`\n                    <div class="error-msg">\n                        Failed to load <code>${COMPILED_JSON_FILE}</code>.<br><br>\n                        Error details: ${e.message}\n                    </div>\n                `,document.querySelector(".spinner").style.display="none"}}function switchTab(e){activeTab=e,
+document.getElementById("tab-locs").classList.toggle("active","locs"===e),document.getElementById("tab-locs").setAttribute("aria-selected","locs"===e),document.getElementById("tab-scan").classList.toggle("active","scan"===e),document.getElementById("tab-scan").setAttribute("aria-selected","scan"===e),document.getElementById("tab-refine").classList.toggle("active","refine"===e),
+document.getElementById("tab-refine").setAttribute("aria-selected","refine"===e),document.getElementById("tab-gear").classList.toggle("active","gear"===e),document.getElementById("tab-gear").setAttribute("aria-selected","gear"===e),renderUI()}function renderUI(){let e=document.getElementById("tab-content");e.innerHTML="";const t=document.getElementById("pyro-protip-box")
+;t&&(t.style.display="locs"===activeTab?"":"none"),"locs"===activeTab?renderLocations(e):"scan"===activeTab?renderScanner(e):"refine"===activeTab?renderRefining(e):renderGearTab(e)}function renderLocations(e){
+const t=["All",...Array.from(new Set(FLAT_LOCS.map(e=>e.system))).sort()].map(e=>`<button type="button" class="mining-subtab ${locSystemFilter===e?"active":""}" data-sys="${esc(e)}">${esc(e)}</button>`).join("");let n=[0,1,2].map(e=>{let t=`<option value="">-- Required Material ${e+1} --</option>`;return SORTED_MATS.forEach(n=>{
+t+=`<option value="${esc(n)}" ${locFilters[e]===n?"selected":""}>${esc(n)}</option>`}),`<label class="sr-only" for="loc-filter-${e}">Required material ${e+1}</label><select id="loc-filter-${e}" class="loc-select" data-filter-idx="${e}">${t}</select>`}).join("")
+;e.innerHTML=`\n                <div class="loc-filters">\n                    <div class="loc-filters-top">\n                        <div style="display:flex; align-items:center; gap: 15px;">\n                            <span style="color:var(--text-muted); font-size:0.85rem; font-weight:bold; text-transform:uppercase; letter-spacing:1px; margin-top:5px;">Filter System:</span>\n                            <div class="mining-subtabs" id="loc-sys-tabs">${t}</div>\n                        </div>\n                        <label class="sr-only" for="loc-search">Search mining locations</label>\n                        <input type="text" id="loc-search" class="sig-search" list="loc-name-list" autocomplete="off" placeholder="Search by location, system, or material..." value="${esc(locSearchQuery)}">\n                    </div>\n                    <div class="loc-filters-bottom">\n                        <div style="width:100%; font-size:0.85rem; font-weight:700; color:var(--text-muted); margin-bottom:4px; text-transform:uppercase; letter-spacing:0.5px;">Filter by Materials (Must contain ALL):</div>\n                        <div style="display:flex; gap:10px; width:100%; flex-wrap:wrap;" id="loc-mat-selects">${n}</div>\n                    </div>\n                </div>\n                <ul class="loc-grid" id="loc-grid" aria-label="Mining locations matching current filters"></ul>\n            `,
+document.getElementById("loc-search").addEventListener("input",function(e){locSearchQuery=e.target.value,renderLocationResults()}),document.getElementById("loc-sys-tabs").addEventListener("click",function(e){const t=e.target.closest("[data-sys]");t&&(locSystemFilter=t.dataset.sys,Array.from(document.getElementById("loc-sys-tabs").children).forEach(e=>e.classList.toggle("active",e===t)),
+renderLocationResults())}),document.getElementById("loc-mat-selects").addEventListener("change",function(e){const t=e.target.closest("select[data-filter-idx]");t&&(locFilters[parseInt(t.dataset.filterIdx,10)]=t.value,renderLocationResults())}),renderLocationResults()}function renderLocationResults(){const e=document.getElementById("loc-grid");if(!e)return
+;const t=locFilters.filter(e=>""!==e),n=locSearchQuery.toLowerCase().trim();let a=FLAT_LOCS;n&&(a=a.filter(e=>-1!==e.searchHay.indexOf(n))),"All"!==locSystemFilter&&(a=a.filter(e=>e.system===locSystemFilter)),t.length>0&&(a=a.filter(e=>t.every(t=>e.allMatsSet.has(t)))),a.forEach(e=>{let n=0;t.length>0&&["Ship","ROC","Hand"].forEach(a=>{e.methods[a]&&e.methods[a].forEach(e=>{
+t.includes(e.name)&&(n+=e.chance)})}),e.sortScore=n});const o=t.length>0?(e,t)=>t.sortScore-e.sortScore:(e,t)=>e.name.localeCompare(t.name);if(a.sort(n?rankByQuery(n,e=>e.name,o):o),e.innerHTML="",0===a.length)return void(e.innerHTML='<li class="loc-empty">No locations found matching your filters.</li>');const s=document.createDocumentFragment();a.forEach(e=>{
+if(!e.methods||0===Object.keys(e.methods).length)return;let n="";["Ship","ROC","Hand"].forEach(a=>{
+e.methods[a]&&e.methods[a].length>0&&(n+=`<div class="loc-method-group ${a}">\n                            <h4 class="loc-method-title">${a} Mining Deposits</h4>\n                            <table class="loc-mat-table">\n                                <caption class="sr-only">${a} mineable materials and drop chance at ${esc(e.name)}</caption>\n                                <thead>\n                                    <tr><th scope="col">Material</th><th scope="col">Chance</th></tr>\n                                </thead>\n                                <tbody>`,
+e.methods[a].forEach(e=>{const a=t.includes(e.name);n+=`<tr class="loc-mat-row${a?" loc-mat-row-highlight":""}">\n                                <td class="loc-mat-name">${esc(e.name)}</td>\n                                <td class="loc-mat-pct">${e.chance.toFixed(1)}%</td>\n                            </tr>`}),n+="</tbody></table></div>")});const a=document.createElement("li")
+;a.className="loc-card",
+a.innerHTML=`\n                    <article>\n                        <header class="loc-header">\n                            <h3 class="loc-name">${esc(e.name)}</h3>\n                            <span class="loc-sys">${esc(e.system)}</span>\n                        </header>\n                        <div class="loc-body">${n}</div>\n                    </article>\n                `,
+s.appendChild(a)}),e.appendChild(s)}function renderScanner(e){
+e.innerHTML=`\n                <div class="sig-filter-controls">\n                    <label class="sr-only" for="sig-search-input">Search mining signatures</label>\n                    <input type="text" id="sig-search-input" class="sig-search" list="sig-name-list" autocomplete="off" placeholder="Search specific materials..." value="${esc(sigSearchQuery)}">\n                    <div class="mining-subtabs" id="sig-method-tabs">\n                        ${["All","Ship","ROC","Hand"].map(e=>`<button type="button" class="mining-subtab ${sigMethodFilter===e?"active":""}" data-method="${e}">${e}</button>`).join("")}\n                    </div>\n                </div>\n                <div class="sig-scanner-wrap">\n                    <div class="sig-scanner-label">Signature Input (Exact Cluster Math)</div>\n                    <div class="sig-scanner-row">\n                        <label class="sr-only" for="rs-input">Ship HUD RS signature reading</label>\n                        <input type="number" class="sig-scanner-input" id="rs-input" placeholder="e.g. 12810">\n                        <div class="sig-result" id="rs-result"><span style="color:var(--text-muted);font-size:0.9rem;">Enter a Scanning Signature from Ship HUD...</span></div>\n                    </div>\n                </div>\n                <ul class="sig-grid" id="sig-grid" aria-label="Known mining signatures"></ul>\n            `,
+document.getElementById("sig-search-input").addEventListener("input",function(e){sigSearchQuery=e.target.value,renderScannerResults()}),document.getElementById("sig-method-tabs").addEventListener("click",function(e){const t=e.target.closest("[data-method]");t&&(sigMethodFilter=t.dataset.method,
+Array.from(document.getElementById("sig-method-tabs").children).forEach(e=>e.classList.toggle("active",e===t)),renderScannerResults())}),document.getElementById("rs-input").addEventListener("input",function(e){updateRSScanner(e.target.value)}),renderScannerResults()}function renderScannerResults(){const e=document.getElementById("sig-grid");if(!e)return;e.innerHTML=""
+;const t=sigSearchQuery.toLowerCase().trim();let n=SIGNATURE_DB.filter(e=>(!t||-1!==e.searchHay.indexOf(t))&&("All"===sigMethodFilter||e.method===sigMethodFilter));t&&(n=n.slice().sort(rankByQuery(t,e=>e.name,(e,t)=>t.rs-e.rs)));const a=document.createDocumentFragment();n.forEach(e=>{let t=e.tier.toLowerCase().charAt(0),n=document.createElement("li");n.className=`sig-card tier-${t}`,n.tabIndex=0,
+n.setAttribute("role","button"),n.setAttribute("aria-label",`Look up ${e.name}, RS ${e.rs}`),
+n.innerHTML=`\n                    <span class="sig-tier-badge" style="color: var(--tier-${t})">${e.tier}</span>\n                    <h3 class="sig-card-name">${esc(e.name)}</h3>\n                    <p class="sig-card-rs"><span class="sr-only">Base RS signature: </span>${e.rs.toLocaleString()}</p>\n                    <p class="sig-note">\n                        <span class="method-tag method-${e.method.toLowerCase()}">${e.method}</span>\n                        <span style="color:var(--text-muted); font-family:monospace;">${esc(e.note)}</span>\n                    </p>\n                `
+;const o=()=>{document.getElementById("rs-input").value=e.rs,updateRSScanner(e.rs)};n.onclick=o,n.onkeydown=e=>{"Enter"!==e.key&&" "!==e.key||(e.preventDefault(),o())},a.appendChild(n)}),e.appendChild(a)}function renderRefining(e){
+const t=["All","Efficient","Normal","Wasteful"].map(e=>`<button type="button" class="mining-subtab ${refineQualityFilter===e?"active":""}" data-qual="${esc(e)}">${esc(e)}</button>`).join("")
+;e.innerHTML=`\n                <div class="loc-filters">\n                    <div class="loc-filters-top" style="border-bottom:none; padding-bottom:0;">\n                        <span style="color:var(--text-muted); font-size:0.85rem; font-weight:bold; text-transform:uppercase; letter-spacing:1px;">Filter by Trade-off:</span>\n                        <div class="mining-subtabs" id="refine-qual-tabs">${t}</div>\n                    </div>\n                </div>\n                <div class="refine-recommend-box">\n                    <div class="refine-group-title" style="margin-top:0;">// Beginner Quick Pick &mdash; Best Option Per Category</div>\n                    <ul class="loc-grid" aria-label="Recommended refining method per trade-off category">${["Efficient","Normal","Wasteful"].map(e=>{
+const t=bestCostEffective(e)
+;return`\n                        <li class="loc-card">\n                            <article>\n                                <header class="loc-header">\n                                    <h4 class="loc-name">${esc(t.name)}</h4>\n                                    <span class="method-tag ${REFINE_QUAL_CLASS[t.quality]}">${esc(t.quality)}</span>\n                                </header>\n                                <div class="loc-body">\n                                    <p style="color:var(--text-muted); font-size:0.75rem; text-transform:uppercase; letter-spacing:0.5px; margin:0 0 8px 0;">Most cost-effective ${esc(e)} pick</p>\n                                    <table class="loc-mat-table">\n                                        <caption class="sr-only">Speed, cost, and yield for ${esc(t.name)}</caption>\n                                        <thead><tr><th scope="col">Speed</th><th scope="col">Cost</th><th scope="col" class="refine-yield">Yield</th></tr></thead>\n                                        <tbody><tr><td>${esc(t.speed)}</td><td>${esc(t.cost)}</td><td class="loc-mat-pct refine-yield">${esc(t.yieldLevel)}</td></tr></tbody>\n                                    </table>\n                                </div>\n                            </article>\n                        </li>`
+}).join("")}</ul>\n                </div>\n                <div id="refine-groups"></div>\n                <div class="advisory-box" style="margin-top:20px; margin-bottom:0;">\n                    <div class="advisory-icon" aria-hidden="true">i</div>\n                    <div class="advisory-text">\n                        <strong>QUICK REFERENCE:</strong> <strong>Efficient</strong> &mdash; slowest for the speed tier, but the highest yield per unit of raw input. Best for scarce or high-value ores.\n                        <span><strong>Normal</strong> &mdash; middle ground on every axis. The default unless you're optimizing for yield or turnover.</span>\n                        <span><strong>Wasteful</strong> &mdash; fastest for the speed tier, but you lose more material to slag. Use it when the rock is cheap and you need throughput.</span>\n                    </div>\n                </div>\n            `,
+document.getElementById("refine-qual-tabs").addEventListener("click",function(e){const t=e.target.closest("[data-qual]");t&&(refineQualityFilter=t.dataset.qual,Array.from(document.getElementById("refine-qual-tabs").children).forEach(e=>e.classList.toggle("active",e===t)),renderRefiningResults())}),renderRefiningResults()}function renderRefiningResults(){
+const e=document.getElementById("refine-groups");if(!e)return;let t="";[{tier:"Slow",label:"Slow Processing"},{tier:"Normal",label:"Normal Processing"},{tier:"Fast",label:"Fast Processing"}].forEach(e=>{const n=REFINING_METHODS.filter(t=>t.speedTier===e.tier&&("All"===refineQualityFilter||t.quality===refineQualityFilter))
+;0!==n.length&&(t+=`<h3 class="refine-group-title">// ${esc(e.label)}</h3><ul class="loc-grid" aria-label="${esc(e.label)} refining methods">`,n.forEach(e=>{
+t+=`\n                        <li class="loc-card">\n                            <article>\n                                <header class="loc-header">\n                                    <h4 class="loc-name">${esc(e.name)}</h4>\n                                    <span class="method-tag ${REFINE_QUAL_CLASS[e.quality]}">${esc(e.quality)}</span>\n                                </header>\n                                <div class="loc-body">\n                                    <table class="loc-mat-table">\n                                        <caption class="sr-only">Speed, cost, and yield for ${esc(e.name)}</caption>\n                                        <thead><tr><th scope="col">Speed</th><th scope="col">Cost</th><th scope="col" class="refine-yield">Yield</th></tr></thead>\n                                        <tbody><tr><td>${esc(e.speed)}</td><td>${esc(e.cost)}</td><td class="loc-mat-pct refine-yield">${esc(e.yieldLevel)}</td></tr></tbody>\n                                    </table>\n                                </div>\n                            </article>\n                        </li>\n                    `
+}),t+="</ul>")}),e.innerHTML=t||'<p style="color:var(--text-muted); text-align:center; padding:30px 0;">No refining methods match this filter.</p>'}async function fetchEquipmentData(){try{const e=await fetch(EQUIPMENT_JSON_FILE);if(!e.ok)throw new Error(`HTTP error! status: ${e.status}`);const t=await e.json();EQUIP_ITEMS=(t.items||[]).slice().sort((e,t)=>e.name.localeCompare(t.name)),
+EQUIP_BY_ID={},EQUIP_ITEMS.forEach(e=>{EQUIP_BY_ID[e.id]=e}),STAT_RANGE_CACHE={},"gear"===activeTab&&renderUI()}catch(e){console.error("Equipment fetch error:",e),EQUIP_ITEMS=[],EQUIP_BY_ID={},"gear"===activeTab&&renderUI()}}function saveShoppingList(){localStorage.setItem(SHOPPING_LIST_KEY,JSON.stringify(Array.from(shoppingList.entries())))}function cartTotalCount(){let e=0
+;return shoppingList.forEach(t=>{e+=t}),e}function renderEquipmentCatalog(e){const t=["All",...Array.from(new Set(EQUIP_ITEMS.map(e=>e.category)))].map(e=>`<button type="button" class="mining-subtab ${equipCategoryFilter===e?"active":""}" data-cat="${esc(e)}">${esc(e)}</button>`).join("")
+;e.innerHTML=`\n                <div class="loc-filters">\n                    <div class="loc-filters-top">\n                        <div class="mining-subtabs" id="equip-cat-tabs">${t}</div>\n                        <label class="sr-only" for="equip-search">Search equipment</label>\n                        <input type="text" id="equip-search" class="sig-search" autocomplete="off" placeholder="Search lasers, modules, gadgets..." value="${esc(equipSearchQuery)}">\n                    </div>\n                    ${buildStatIconLegendHTML()}\n                </div>\n                <ul class="loc-grid" id="equip-grid" aria-label="Mining equipment catalog"></ul>\n            `,
+document.getElementById("equip-cat-tabs").addEventListener("click",function(e){const t=e.target.closest("[data-cat]");t&&(equipCategoryFilter=t.dataset.cat,Array.from(document.getElementById("equip-cat-tabs").children).forEach(e=>e.classList.toggle("active",e===t)),renderEquipmentGrid())}),document.getElementById("equip-search").addEventListener("input",function(e){equipSearchQuery=e.target.value,
+renderEquipmentGrid()}),renderEquipmentGrid()}window.updateRSScanner=function(e){const t=parseInt(e),n=document.getElementById("rs-result");if(!n||!t||t<100)return void(n&&(n.innerHTML='<span style="color:var(--text-muted);font-size:0.9rem;">Enter an RS reading from your ship HUD...</span>'));let a=[];if(SIGNATURE_DB.forEach(e=>{for(let n=1;n<=12;n++){const o=e.rs*n,s=Math.abs(t-o)
+;s<.005*o&&a.push({...e,nodes:n,confidence:Math.round(100*(1-s/(.005*o)))})}}),a.sort((e,t)=>t.confidence-e.confidence),
+0===a.length)return void(n.innerHTML='\n                    <div class="sig-result-primary" style="color:var(--error);">NO MATCH</div>\n                    <div class="sig-result-nodes" style="color:var(--text-muted);">RS does not map cleanly to any known cluster in the database.</div>\n                ');const o=a[0],s=`var(--tier-${o.tier.toLowerCase().charAt(0)})`
+;n.innerHTML=`\n                <div class="sig-result-primary">\n                    <span style="color:${s}">${esc(o.name)}</span>\n                    <span style="color:var(--text-main); font-weight:400;">&times; ${o.nodes} node${o.nodes>1?"s":""}</span>\n                    <span class="method-tag method-${o.method.toLowerCase()}" style="margin-left:8px;">${o.method}</span>\n                    <span class="sig-confidence" style="margin-left:auto;">${o.confidence}%</span>\n                </div>\n                <div class="sig-result-nodes">\n                    Base: <span style="color:var(--accent); font-family:var(--mono);">${o.rs}</span> &middot;\n                    Expected Cluster: <span style="color:var(--accent); font-family:var(--mono);">${o.rs*o.nodes}</span> &middot;\n                    <span style="color:${s}; text-transform:uppercase; font-size:0.75rem; font-weight:bold;">${o.tier}</span>\n                </div>\n            `
+};const EQUIP_STAT_ORDER=["Item Type","Optimal Range","Maximum Range","Mining Laser Power","Extraction Laser Power","Resistance","Laser Instability","Instability","Inert Material Level","Optimal Charge Window Size","Optimal Charge Window Rate","Optimal Charge Rate","Module Slots","Volume","Duration","Uses","Cluster Modifier","Shatter Damage","Catastrophic Charge Rate","Throttle min"]
+;function renderEquipStatsTable(e){if(!e)return"";const t=Object.keys(e);if(0===t.length)return"";t.sort((e,t)=>{const n=EQUIP_STAT_ORDER.indexOf(e),a=EQUIP_STAT_ORDER.indexOf(t);return-1===n&&-1===a?e.localeCompare(t):-1===n?1:-1===a?-1:n-a})
+;return`\n                <table class="loc-mat-table">\n                    <caption class="sr-only">Stat attributes</caption>\n                    <tbody>${t.map(t=>{const n=STAT_ATTR_ICON[t]?`<span class="stat-chip-icon" aria-hidden="true">${STAT_ATTR_ICON[t]}</span>`:"";return`<tr><td class="loc-mat-name">${esc(t)}${n}</td><td class="loc-mat-pct">${esc(e[t])}</td></tr>`
+}).join("")}</tbody>\n                </table>\n            `}function renderEquipmentGrid(){const e=document.getElementById("equip-grid");if(!e)return;const t=equipSearchQuery.toLowerCase().trim();let n=EQUIP_ITEMS.filter(e=>("All"===equipCategoryFilter||e.category===equipCategoryFilter)&&!(t&&!e.name.toLowerCase().includes(t)&&!e.company.toLowerCase().includes(t)))
+;if(0===n.length)return void(e.innerHTML='<li class="loc-empty">No equipment matches your filters.</li>');const a=document.createDocumentFragment();n.forEach(e=>{const t=e.vendors.length>0,n=t?Math.min(...e.vendors.map(e=>e.price)):null,o=shoppingList.has(e.id),s=buildCatalogBigFourChips(e),i=document.createElement("li");i.className="loc-card",
+i.innerHTML=`\n                    <header class="loc-header">\n                        <h3 class="loc-name">${esc(e.name)}</h3>\n                        <span class="loc-sys">${esc(e.size?"Size "+e.size:e.category)}</span>\n                    </header>\n                    <div class="equip-card-body">\n                        <div class="equip-meta-row">\n                            <span class="method-tag method-ship">${esc(e.company)}</span>\n                            <span class="method-tag method-hand">${esc(e.category)}</span>\n                        </div>\n                        ${s?`<div class="equip-stat-chips">${s}</div>`:""}\n                        ${renderEquipStatsTable(e.attributes)}\n                        ${t?`\n                            <div class="equip-meta-row">\n                                <span class="equip-price">${n.toLocaleString()} aUEC</span>\n                                <span class="equip-vendor-count">from ${e.vendors.length} location${e.vendors.length>1?"s":""}</span>\n                            </div>\n                            <button type="button" class="equip-add-btn ${o?"in-list":""}" data-id="${e.id}">${o?"✓ In Your List":"+ Add to List"}</button>\n                        `:'\n                            <div class="equip-vendor-count">Not currently sold at any terminal</div>\n                            <button type="button" class="equip-add-btn no-vendor" disabled>No Vendor Data</button>\n                        '}\n                    </div>\n                `,
+t&&i.querySelector(".equip-add-btn").addEventListener("click",function(){shoppingList.has(e.id)?shoppingList.delete(e.id):shoppingList.set(e.id,1),saveShoppingList(),updateCartTabLabel(),renderEquipmentGrid()}),a.appendChild(i)}),e.innerHTML="",e.appendChild(a)}function renderLocationSelectorHTML(){
+const e=getPlayerLocationOptions(),t=["",...Object.keys(e)].map(e=>`<option value="${esc(e)}" ${playerLocation.system===e?"selected":""}>${e||"-- System --"}</option>`).join(""),n=playerLocation.system&&e[playerLocation.system]||[],a=playerLocation.system?["",...n].map(e=>`<option value="${esc(e)}" ${playerLocation.region===e?"selected":""}>${e||"-- Planet / Region --"}</option>`).join(""):'<option value="">-- Pick a System First --</option>'
+;return`\n                <div class="loc-filters" style="margin-bottom:20px;">\n                    <div class="loc-filters-top" style="border-bottom:none; padding-bottom:0;">\n                        <span style="color:var(--text-muted); font-size:0.85rem; font-weight:bold; text-transform:uppercase; letter-spacing:1px;">${String.fromCodePoint(128205)} Your Location (optional):</span>\n                        <div style="display:flex; gap:10px; flex-wrap:wrap;">\n                            <label class="sr-only" for="player-loc-system">Your current system</label>\n                            <select id="player-loc-system" class="loc-select" style="max-width:170px; flex:none;">${t}</select>\n                            <label class="sr-only" for="player-loc-region">Your current planet or region</label>\n                            <select id="player-loc-region" class="loc-select" style="max-width:220px; flex:none;" ${playerLocation.system?"":"disabled"}>${a}</select>\n                        </div>\n                    </div>\n                </div>\n            `
+}function wireLocationSelector(e){const t=e.querySelector("#player-loc-system"),n=e.querySelector("#player-loc-region");t&&t.addEventListener("change",function(t){playerLocation={system:t.target.value,region:""},savePlayerLocation(),renderEquipmentList(e)}),n&&n.addEventListener("change",function(t){playerLocation={system:playerLocation.system,region:t.target.value},savePlayerLocation(),
+renderEquipmentList(e)})}function renderEquipmentList(e){const t=Array.from(shoppingList.entries()).map(([e,t])=>{const n=EQUIP_BY_ID[e];return n?Object.assign({},n,{qty:t}):null}).filter(Boolean),n=renderLocationSelectorHTML()
+;if(0===t.length)return e.innerHTML=`${n}<div class="loc-empty" style="display:block;">Your list is empty. Switch to the Catalog tab and add lasers, modules, or gadgets you want to buy.</div>`,void wireLocationSelector(e)
+;const a=t.map(e=>`\n                <div class="list-item-row">\n                    <span>${e.qty>1?`<strong style="color:var(--accent);">${e.qty}x</strong> `:""}${esc(e.name)} <span style="color:var(--text-muted); font-size:0.8rem;">(${esc(e.category)})</span></span>\n                    <button type="button" class="list-item-remove" data-id="${e.id}" aria-label="Remove ${esc(e.name)}">&times;</button>\n                </div>\n            `).join(""),o=playerLocation.system&&playerLocation.region,s=computeShoppingRoute(t,o?playerLocation:null),i=s.stops.map((e,t)=>`\n                <div class="stop-card">\n                    <div class="stop-header">\n                        <span class="stop-num">Stop ${t+1}: ${esc(e.terminal)}</span>\n                        <span class="stop-loc">${esc(e.system)} &middot; ${esc(e.location)}</span>\n                    </div>\n                    ${null!=s.legKm[t]?`<div class="equip-vendor-count" style="margin-bottom:8px;">~${fmtDist(s.legKm[t])} from ${0===t&&s.startedFrom?"your location":"previous stop"}</div>`:""}\n                    <ul class="stop-items-list">\n                        ${e.items.map(e=>`<li class="stop-item-row"><span>${e.qty>1?e.qty+"x ":""}${esc(e.name)}</span><span class="loc-mat-pct">${(e.price*e.qty).toLocaleString()} aUEC</span></li>`).join("")}\n                    </ul>\n                </div>\n            `).join(""),r=s.noVendor.length>0?`\n                <div class="error-msg" style="margin-top:0; margin-bottom:20px;">\n                    Not currently sold anywhere: ${s.noVendor.map(e=>`${e.qty>1?e.qty+"x ":""}${esc(e.name)}`).join(", ")}\n                </div>\n            `:""
+;e.innerHTML=`\n                ${n}\n                <div style="margin-bottom:20px;">${a}</div>\n                <div class="advisory-box">\n                    <div class="advisory-icon" aria-hidden="true">i</div>\n                    <div class="advisory-text">\n                        <strong>ROUTE NOTE:</strong> Stops are chosen to minimize the number of terminals you have to visit, then sequenced nearest-next using a planet-to-planet QT distance model (confirmed inter-planet and inter-system gateway distances where known, orbital-scale estimates otherwise &mdash; same methodology as the hauling tool's route planner). Distances are approximate, not exact station coordinates.\n                        <span>${o?`Route starts from <strong>${esc(playerLocation.region)}, ${esc(playerLocation.system)}</strong>.`:"Set your location above to have the route start from where you actually are, instead of an arbitrary first stop."}</span>\n                    </div>\n                </div>\n                <div class="route-summary">\n                    <div class="route-summary-stat"><span class="num">${s.stops.length}</span><span class="lbl">Stops</span></div>\n                    <div class="route-summary-stat"><span class="num">${s.totalKm>0?fmtDist(s.totalKm):"—"}</span><span class="lbl">Est. Travel</span></div>\n                    <div class="route-summary-stat"><span class="num">${s.total.toLocaleString()}</span><span class="lbl">aUEC Total</span></div>\n                    <div class="route-summary-stat"><span class="num">${t.length-s.noVendor.length}/${t.length}</span><span class="lbl">Items Coverable</span></div>\n                </div>\n                ${r}\n                ${i||'<div class="loc-empty" style="display:block;">No purchasable items in your list yet.</div>'}\n            `,
+wireLocationSelector(e),e.querySelectorAll(".list-item-remove").forEach(t=>{t.addEventListener("click",function(){shoppingList.delete(parseInt(t.dataset.id,10)),saveShoppingList(),updateCartTabLabel(),renderEquipmentList(e)})})}var STANTON_PLANET_DIST_KM={Hurston:{Hurston:0,Crusader:3191e4,ArcCorp:2288e4,microTech:384e5},Crusader:{Hurston:3191e4,Crusader:0,ArcCorp:4229e4,microTech:5747e4},
+ArcCorp:{Hurston:2288e4,Crusader:4229e4,ArcCorp:0,microTech:5946e4},microTech:{Hurston:384e5,Crusader:5747e4,ArcCorp:5946e4,microTech:0}},PYRO_PLANET_DIST_KM={"Pyro I":{"Pyro I":0,Monox:1083e4,Bloom:12715e3,"Pyro IV":37085e3,"Pyro V":37085e3,Terminus:64637e3},Monox:{"Pyro I":1083e4,Monox:0,Bloom:3958e3,"Pyro IV":35443e3,"Pyro V":35443e3,Terminus:54315e3},Bloom:{"Pyro I":12715e3,Monox:3958e3,
+Bloom:0,"Pyro IV":31737e3,"Pyro V":31737e3,Terminus:51925e3},"Pyro IV":{"Pyro I":37085e3,Monox:35443e3,Bloom:31737e3,"Pyro IV":0,"Pyro V":5e6,Terminus:541e5},"Pyro V":{"Pyro I":37085e3,Monox:35443e3,Bloom:31737e3,"Pyro IV":5e6,"Pyro V":0,Terminus:541e5},Terminus:{"Pyro I":64637e3,Monox:54315e3,Bloom:51925e3,"Pyro IV":541e5,"Pyro V":541e5,Terminus:0}},STANTON_TO_PYRO_GW={ArcCorp:1656e4,
+Hurston:2968e4,Crusader:3382e4,microTech:6797e4},PYRO_GW_TO_PLANET={"Pyro I":6016e4,Monox:5677e4,Bloom:6014e4,"Pyro IV":9163e4,"Pyro V":9163e4,Terminus:8267e4},STANTON_TO_NYX_GW={Crusader:5446e4,microTech:8819e4,ArcCorp:9502e4,Hurston:8126e4},NYX_GW_TO_DEST={Levski:125e5,"People Service Station Alpha":3354e4,"People Service Station Delta":2519e4,"People Service Station Theta":5402e4,
+"People Service Station Lambda":7189e4},NYX_INTERNAL_AVG=39428e3,NYX_GW_TO_PYRO_GW_STANTON=8644e4,SAME_SYSTEM_DIST=5e7,CROSS_SYSTEM_DIST=111e6,REGION_ALIASES={MicroTech:"microTech","People's Service Station Alpha":"People Service Station Alpha","People's Service Station Delta":"People Service Station Delta","People's Service Station Theta":"People Service Station Theta",
+"People's Service Station Lambda":"People Service Station Lambda"};function vendorRegion(e){var t=(e.location||"").split(",")[0].trim();return REGION_ALIASES[t]||t}function terminalLagrangeAdj(e){var t=e||"";return/-L1\b/.test(t)?4076e4:/-L2\b/.test(t)||/-L3\b/.test(t)?19e5:/-L4\b/.test(t)?1913e4:/-L5\b/.test(t)?1915e4:0}function fmtDist(e){
+return(e=Math.round(e))>=1e6?(e/1e6).toFixed(2)+" Gm":e>=1e3?(e/1e3).toFixed(2)+" Gm":e.toLocaleString()+" km"}function distKmBetweenVendors(e,t){if(e.terminal===t.terminal)return 0;var n=vendorRegion(e),a=vendorRegion(t);if(n===a){var o=terminalLagrangeAdj(e.terminal),s=terminalLagrangeAdj(t.terminal);return Math.max(Math.abs(o-s),350)}
+if(STANTON_PLANET_DIST_KM[n]&&null!=STANTON_PLANET_DIST_KM[n][a])return STANTON_PLANET_DIST_KM[n][a];if(PYRO_PLANET_DIST_KM[n]&&null!=PYRO_PLANET_DIST_KM[n][a])return PYRO_PLANET_DIST_KM[n][a];if(e.system===t.system)return SAME_SYSTEM_DIST;if("Stanton"===e.system&&"Pyro"===t.system||"Pyro"===e.system&&"Stanton"===t.system){var i="Stanton"===e.system?n:a,r="Pyro"===e.system?n:a
+;return(STANTON_TO_PYRO_GW[i]||37e6)+(PYRO_GW_TO_PLANET[r]||738e5)}if("Stanton"===e.system&&"Nyx"===t.system||"Nyx"===e.system&&"Stanton"===t.system){var l="Stanton"===e.system?n:a,c="Nyx"===e.system?n:a;return(STANTON_TO_NYX_GW[l]||797e5)+(NYX_GW_TO_DEST[c]||NYX_INTERNAL_AVG)}return"Pyro"===e.system&&"Nyx"===t.system||"Nyx"===e.system&&"Pyro"===t.system?NYX_GW_TO_PYRO_GW_STANTON:CROSS_SYSTEM_DIST
+}function orderStopsByProximity(e){if(e.length<=1)return e;for(var t=e.slice(),n=[t.shift()],a=n[0];t.length;){for(var o=0,s=1/0,i=0;i<t.length;i++){var r=distKmBetweenVendors(a,t[i]);r<s&&(s=r,o=i)}var l=t.splice(o,1)[0];n.push(l),a=l}return n}function getPlayerLocationOptions(){return{Stanton:Object.keys(STANTON_PLANET_DIST_KM),Pyro:Object.keys(PYRO_PLANET_DIST_KM),
+Nyx:Object.keys(NYX_GW_TO_DEST)}}function computeShoppingRoute(e,t){const n=e.filter(e=>0===e.vendors.length);let a=new Set(e.filter(e=>e.vendors.length>0).map(e=>e.id));const o={};e.forEach(e=>{const t=e.qty||1;e.vendors.forEach(n=>{o[n.terminal]||(o[n.terminal]={terminal:n.terminal,system:n.system,location:n.location,items:[]}),o[n.terminal].items.push({id:e.id,name:e.name,price:n.price,qty:t})
+})});let s=[],i=0;for(;a.size>0;){let e=null,t=[];if(Object.values(o).forEach(n=>{const o=n.items.filter(e=>a.has(e.id));o.length>t.length&&(e=n,t=o)}),!e||0===t.length)break;s.push({terminal:e.terminal,system:e.system,location:e.location,items:t}),t.forEach(e=>{a.delete(e.id),i+=e.price*e.qty})}const r=t&&t.system&&t.region?{terminal:"__START__",system:t.system,location:t.region+", "+t.system
+}:null;let l=orderStopsByProximity(r?[r,...s]:s);r&&(l=l.filter(e=>e!==r)),s=l;let c=0;const d=[];let u=r;for(let e=0;e<s.length;e++){const t=0!==e||r?distKmBetweenVendors(u,s[e]):null;d.push(t),null!=t&&(c+=t),u=s[e]}return{stops:s,noVendor:n,total:i,legKm:d,totalKm:c,startedFrom:r}}const MINING_SHIPS=[{key:"prospector",name:"MISC Prospector",crew:1,cargo:"32 SCU",mounts:[{label:"Main Turret",
+size:"1",fixed:null}]},{key:"mole",name:"Argo MOLE",crew:4,cargo:"96 SCU",mounts:[{label:"Front Turret",size:"2",fixed:null},{label:"Left Turret",size:"2",fixed:null},{label:"Right Turret",size:"2",fixed:null}]},{key:"golem",name:"Drake Golem",crew:1,cargo:"16 SCU",mounts:[{label:"Fixed Mount",size:"1",fixed:"Pitman Mining Laser"}]}],LOADOUT_STATE_KEY="sc_mining_loadout_config"
+;let loadoutShipKey="prospector",loadoutConfig={};try{loadoutConfig=JSON.parse(localStorage.getItem(LOADOUT_STATE_KEY)||"{}")}catch(e){loadoutConfig={}}function saveLoadoutConfig(){localStorage.setItem(LOADOUT_STATE_KEY,JSON.stringify(loadoutConfig))}function getLoadoutForShip(e){const t=MINING_SHIPS.find(t=>t.key===e);return loadoutConfig[e]||(loadoutConfig[e]={mounts:t.mounts.map(()=>({
+laserId:null,moduleIds:[]})),gadgetId:null}),loadoutConfig[e].mounts||(loadoutConfig[e].mounts=t.mounts.map(()=>({laserId:null,moduleIds:[]}))),loadoutConfig[e]}function parseStatValue(e){if(null==e)return null;const t=(e=String(e).trim()).match(/^(\d+(?:\.\d+)?)\s*-\s*(\d+(?:\.\d+)?)\s*(\S*)$/);if(t)return{isRange:!0,min:parseFloat(t[1]),max:parseFloat(t[2]),unit:t[3]||""}
+;const n=e.match(/^([+-]?\d+(?:\.\d+)?)\s*(\S*)$/);return n?{isRange:!1,value:parseFloat(n[1]),unit:n[2]||""}:null}function formatStatValue(e){if(!e)return"";if(e.isRange)return Math.round(e.min).toLocaleString()+"–"+Math.round(e.max).toLocaleString()+(e.unit?" "+e.unit:"");return(e.value>0?"+":"")+(Number.isInteger(e.value)?e.value:e.value.toFixed(1))+("%"===e.unit?"%":e.unit?" "+e.unit:"")}
+function addParsed(e,t){if(!e)return t;if(!t)return e;if(e.isRange||t.isRange){const n=e.isRange?e.min:e.value,a=e.isRange?e.max:e.value;return{isRange:!0,min:n+(t.isRange?t.min:t.value),max:a+(t.isRange?t.max:t.value),unit:e.unit||t.unit}}return{isRange:!1,value:e.value+t.value,unit:e.unit||t.unit}}function numericOf(e){return e?e.isRange?e.max:e.value:0}
+const LOADOUT_ADDITIVE_STATS=["Optimal Range","Maximum Range","Mining Laser Power","Extraction Laser Power","Resistance","Laser Instability","Instability","Inert Material Level","Optimal Charge Window Size","Optimal Charge Window Rate","Optimal Charge Rate","Shatter Damage","Catastrophic Charge Rate","Cluster Modifier","Throttle min","Power Transfer","Gather Radius","Extraction Throughput","Collection Point Radius","Collection Throughput"]
+;function computeMountStats(e,t){const n={};return[e,...t].filter(Boolean).forEach(e=>{LOADOUT_ADDITIVE_STATS.forEach(t=>{if(e.attributes&&null!=e.attributes[t]){const a=parseStatValue(e.attributes[t]);a&&(n[t]=addParsed(n[t],a))}})}),n}let statTooltipEl=null;function ensureStatTooltipEl(){return statTooltipEl||(statTooltipEl=document.createElement("div"),
+statTooltipEl.className="stat-tooltip-pop-global",statTooltipEl.setAttribute("role","tooltip"),document.body.appendChild(statTooltipEl)),statTooltipEl}function buildPartStatTooltip(e,t){if(!e)return'<div class="stat-tooltip-empty">No part selected in this slot.</div>';const n=(t||LOADOUT_ADDITIVE_STATS).map(t=>{if(!e.attributes||null==e.attributes[t])return""
+;const n=e.attributes[t],a=parseStatValue(n),o=a?formatStatValue(a):String(n);return`<div class="stat-tooltip-row"><span class="stat-tooltip-label">${esc(t)}</span><span class="stat-tooltip-val">${esc(o)}</span></div>`}).filter(Boolean).join("");return`<div class="stat-tooltip-title">${esc(e.name)}</div>${n||'<div class="stat-tooltip-empty">No stat modifiers listed.</div>'}`}
+function showStatTooltip(e,t){const n=ensureStatTooltipEl();n.innerHTML=t,n.style.display="block";const a=e.getBoundingClientRect();let o=a.left,s=a.bottom+6;const i=window.innerWidth-n.offsetWidth-10;o>i&&(o=Math.max(10,i));s>window.innerHeight-n.offsetHeight-10&&(s=Math.max(10,a.top-n.offsetHeight-6)),n.style.left=o+"px",n.style.top=s+"px"}function hideStatTooltip(){
+statTooltipEl&&(statTooltipEl.style.display="none")}function wireSelectTooltip(e,t,n){if(!e)return;const a=()=>{const a=t(),o=n?n(a):null;showStatTooltip(e,buildPartStatTooltip(a,o))};e.addEventListener("mouseenter",a),e.addEventListener("focus",a),e.addEventListener("mouseleave",hideStatTooltip),e.addEventListener("blur",hideStatTooltip),e.addEventListener("change",()=>{
+document.activeElement===e&&a()})}function findStatParsed(e,t,n){if(!e||!e.attributes)return null;if(n){const n=e.attributes[t];return null!=n?parseStatValue(n):null}const a=BIG_FOUR[t];for(let t=0;t<a.attrs.length;t++){const n=e.attributes[a.attrs[t]];if(null!=n){const e=parseStatValue(n);if(e)return e}}return null}function buildOptionStatChips(e,t,n){if(!e)return""
+;const a=t&&String(e.id)===String(t.id);let o=n||BIG_FOUR_ORDER,s=!!n;s||BIG_FOUR_ORDER.some(t=>findStatParsed(e,t,!1))||(o=Object.keys(e.attributes||{}).filter(t=>null!=parseStatValue(e.attributes[t])),s=!0);const i=o.map(n=>{const o=findStatParsed(e,n,s);if(!o)return""
+;const i=s?null:BIG_FOUR[n],r=i?i.direction:null!=STAT_ATTR_DIRECTION[n]?STAT_ATTR_DIRECTION[n]:1,l=i?i.icon:"",c=i?i.label:n,d=o.isRange?o.max:o.value,u="%"===o.unit?"%":o.unit?" "+o.unit:"",m=(d>0?"+":"")+(Number.isInteger(d)?d:d.toFixed(1))+u;let p="";if(!a){const e=findStatParsed(t,n,s),a=d-(e?e.isRange?e.max:e.value:0);if(Math.abs(a)>=.05){
+const e=Number.isInteger(a)?a:Math.round(10*a)/10,t=a*r>0;p=` <span class="stat-chip-delta ${t?"up":"down"}">${t?"&#9650;":"&#9660;"}${esc((e>0?"+":"")+e+u)}</span>`}}return`<span class="stat-chip" title="${esc(c)}">${l?`<span class="stat-chip-icon" aria-hidden="true">${l}</span>`:""}${esc(m)}${p}</span>`}).filter(Boolean).join("")
+;return(a?'<span class="stat-chip-current">Currently equipped</span>':"")+i||'<span class="stat-chip-empty">No stat data</span>'}function buildStatIconLegendHTML(){return`<div class="stat-icon-legend">${BIG_FOUR_ORDER.map(e=>{const t=BIG_FOUR[e],n=-1===t.direction?" (lower is better)":""
+;return`<span class="stat-icon-legend-item"><span class="stat-chip-icon" aria-hidden="true">${t.icon}</span>${esc(t.label)}${esc(n)}</span>`}).join("")}</div>`}function buildCatalogBigFourChips(e){return e?BIG_FOUR_ORDER.map(t=>{const n=findStatParsed(e,t,!1);if(!n)return""
+;const a=BIG_FOUR[t],o=n.isRange?n.max:n.value,s="%"===n.unit?"%":n.unit?" "+n.unit:"",i=(o>0?"+":"")+(Number.isInteger(o)?o:o.toFixed(1))+s;return`<span class="stat-chip" title="${esc(a.label)}"><span class="stat-chip-icon" aria-hidden="true">${a.icon}</span>${esc(i)}</span>`}).filter(Boolean).join(""):""}function closeAllCustomSelects(e){
+document.querySelectorAll(".custom-select.open").forEach(t=>{if(t===e)return;t.classList.remove("open");const n=t.querySelector(".custom-select-panel"),a=t.querySelector(".custom-select-trigger");n&&(n.hidden=!0),a&&a.setAttribute("aria-expanded","false")})}function wireCustomSelect(e,t){const n=e.querySelector(".custom-select-trigger"),a=e.querySelector(".custom-select-panel")
+;n&&a&&(n.addEventListener("click",function(t){t.stopPropagation();const o=a.hidden;closeAllCustomSelects(o?e:null),a.hidden=!o,e.classList.toggle("open",o),n.setAttribute("aria-expanded",String(o))}),a.addEventListener("click",e=>e.stopPropagation()),a.querySelectorAll(".custom-select-option").forEach(e=>{e.addEventListener("click",()=>t(e.dataset.value))}))}
+document.addEventListener("click",()=>closeAllCustomSelects()),document.addEventListener("keydown",e=>{"Escape"===e.key&&closeAllCustomSelects()});const BIG_FOUR={power:{key:"power",label:"Laser Power",attrs:["Mining Laser Power"],direction:1,icon:String.fromCodePoint(9889)},resistance:{key:"resistance",label:"Resistance Modifier",attrs:["Resistance"],direction:1,icon:String.fromCodePoint(128737)
+},window:{key:"window",label:"Optimal Window Size",attrs:["Optimal Charge Window Size"],direction:1,icon:String.fromCodePoint(127919)},instability:{key:"instability",label:"Instability Reduction",attrs:["Laser Instability","Instability"],direction:-1,icon:String.fromCodePoint(128201)}},BIG_FOUR_ORDER=["power","resistance","window","instability"],STAT_ATTR_DIRECTION={};BIG_FOUR_ORDER.forEach(e=>{
+BIG_FOUR[e].attrs.forEach(t=>{STAT_ATTR_DIRECTION[t]=BIG_FOUR[e].direction})});const STAT_ATTR_ICON={};BIG_FOUR_ORDER.forEach(e=>{BIG_FOUR[e].attrs.forEach(t=>{STAT_ATTR_ICON[t]=BIG_FOUR[e].icon})});const CATEGORY_SUFFIX={"Mining Laser Heads":" Mining Laser","Mining Modules":" Module",Gadgets:" Gadget"};function shortItemName(e){if(!e)return"";const t=CATEGORY_SUFFIX[e.category]
+;return t&&e.name.endsWith(t)?e.name.slice(0,-t.length):e.name}const BEGINNER_PRESETS=[{key:"training",icon:String.fromCodePoint(127891),name:"The Training Wheels",primary:["window","instability"],desc:"Maximizes Window Size and Instability Reduction so the energy bar barely moves and the green zone is huge. Built for learning the rhythm without blowing your laser.",
+bestFor:"First-time miners, low-stress solo sessions"},{key:"daily",icon:String.fromCodePoint(128176),name:"The Daily Driver",primary:[],desc:"A balanced build across all four stats -- solid cracking power without sacrificing a comfortable window. The workhorse for everyday Gold and Bexalite runs.",bestFor:"Gold, Bexalite, general aUEC farming"},{key:"volatile",icon:String.fromCodePoint(9762),
+name:"The Volatile Hunter",primary:["power","resistance"],desc:"Maximizes raw Laser Power and Resistance penetration to crack the toughest, most unstable rocks fast. Expect a twitchy window -- that is the trade-off.",bestFor:"Quantanium and other high-volatility ore"}],MOLE_PRESETS=[{key:"mole-solo",icon:String.fromCodePoint(129485),name:"The Solo Operator",
+desc:"A three-way split for flying the MOLE alone: the Helix is your primary laser for most jobs, the Hofstede handles average rocks, and the Arbor is dedicated to the smaller rocks you find around the verse that are difficult or impossible to mine with the stronger heads.",bestFor:"Solo MOLE pilots who rotate between turrets",mounts:[{head:"Helix II Mining Laser",
+modules:["Rieger Module","Rieger Module","Rieger Module"],note:"Main laser -- your primary laser for most jobs."},{head:"Hofstede-S2 Mining Laser",modules:["Forel Module","Torrent Module"],note:"Left laser -- your go-to for average rocks."},{head:"Arbor MH2 Mining Laser",modules:["Forel Module","Torrent Module"],
+note:"Right laser -- dedicated to the smaller rocks around the verse that are difficult or impossible to mine with the stronger heads."}],spares:[{name:"Sabir",count:1},{name:"BoreMax",count:1},{name:"Surge Module",count:2}],spareLaser:{head:"Helix II Mining Laser",modules:["Surge Module","Surge Module","Surge Module"]},
+freeform:'Also keep a hand tool aboard for grabbing small loose rocks (a "geo" pass) between turret runs.'},{key:"mole-safe",icon:String.fromCodePoint(128737),name:"Safe & Steady",
+desc:"A multicrew build: two hot Helix IIs handle normal cracking duty, while a deliberately detuned Arbor running double Focus (the base -15% power variant, not the milder II/III) lets a third gunner gently work small, valuable 1-4K rocks from range without blowing them up.",bestFor:"Multicrew rock breaker contracts & general mining, small/unstable 1-4K rocks",mounts:[{
+head:"Helix II Mining Laser",modules:["Focus III Module","Rieger-C3 Module","Surge Module"],note:"Primary cracking turret."},{head:"Helix II Mining Laser",modules:["Focus III Module","Rieger-C3 Module","Surge Module"],note:"Second cracking turret."},{head:"Arbor MH2 Mining Laser",modules:["Focus Module","Focus Module"],
+note:"Weakest laser, deliberately detuned -- Focus Module's -15% power (steeper than Focus II/III) keeps small unstable rocks from shattering. Keep your distance."}]},{key:"mole-multicrew",icon:String.fromCodePoint(128101),name:"Full Multicrew",desc:"Three balanced seats for a full crew: two dedicated crackers and a support gunner running FLTR-XL for extraction efficiency instead of raw power.",
+bestFor:"Full 3-person MOLE crews",mounts:[{head:"Helix II Mining Laser",modules:["Focus III Module","Torrent III Module","Optimum Module"],note:"Gunner 1."},{head:"Hofstede-S2 Mining Laser",modules:["Focus III Module","Torrent III Module"],note:"Gunner 2."},{head:"Hofstede-S2 Mining Laser",modules:["FLTR-XL Module","FLTR-XL Module"],
+note:"Gunner 3 -- support/cleanup, running extraction efficiency instead of raw power."}]}];function findItemByName(e){return EQUIP_ITEMS.find(t=>t.name===e)||null}function resolveNamedMount(e){const t=findItemByName(e.head),n=e.modules.map(findItemByName).filter(Boolean);return{head:t,modules:n,combined:t?computeMountStats(t,n):{},note:e.note}}
+let loadoutMode=["beginner","advanced","catalog","cart"].includes(loadoutConfig._uiMode)?loadoutConfig._uiMode:"beginner",beginnerPresetKey=null,advancedPrimaryKeysByMount={},advancedResultByMount={},STAT_RANGE_CACHE={};function bigFourRaw(e,t){const n=BIG_FOUR[t];for(let t=0;t<n.attrs.length;t++){const a=e[n.attrs[t]];if(null!=a)return a.isRange?a.max:a.value}return 0}function bigFourScore(e,t){
+return bigFourRaw(e,t)*BIG_FOUR[t].direction}function getAllShipHeads(){return EQUIP_ITEMS.filter(e=>"Mining Laser Heads"===e.category&&("1"===e.size||"2"===e.size))}function getLoadoutHeadPool(e){const t=getAllShipHeads();return e&&"any"!==e?t.filter(t=>e.includes(String(t.size))):t}function getModulePool(){return EQUIP_ITEMS.filter(e=>"Mining Modules"===e.category)}function getGadgetPool(){
+return EQUIP_ITEMS.filter(e=>"Gadgets"===e.category)}function getShipHeadConstraint(e){const t=MINING_SHIPS.find(t=>t.key===e);if(!t)return{fixed:null,sizes:"any"};const n=t.mounts.filter(e=>!e.fixed);if(0===n.length){const e=t.mounts[0]&&t.mounts[0].fixed;return{fixed:getAllShipHeads().find(t=>t.name===e)||null,sizes:[]}}return{fixed:null,sizes:Array.from(new Set(n.map(e=>String(e.size))))}}
+function headPoolForShip(e){const t=getShipHeadConstraint(e);return t.fixed?[t.fixed]:getLoadoutHeadPool(t.sizes)}const POWER_SCALE=40;function scaledStatScore(e,t){const n=bigFourScore(e,t);return"power"===t?n/40:n}function weightedScore(e,t){let n=0;return BIG_FOUR_ORDER.forEach(a=>{const o=scaledStatScore(e,a);n+=t.includes(a)?6*o:o}),n}function findOptimalLoadout(e,t){
+const n=t||[],a=getModulePool(),o=getGadgetPool();let s=null;return n.forEach(t=>{const n=t.attributes&&t.attributes["Module Slots"]&&parseInt(t.attributes["Module Slots"],10)||0,i=[];for(let o=0;o<n;o++){let n=null,o=-1/0;a.forEach(a=>{const s=weightedScore(computeMountStats(t,i.concat([a])),e);s>o&&(o=s,n=a)}),n&&i.push(n)}let r=null,l=weightedScore(computeMountStats(t,i),e);o.forEach(n=>{
+const a=weightedScore(computeMountStats(t,i.concat([n])),e);a>l&&(l=a,r=n)});const c=r?i.concat([r]):i,d=computeMountStats(t,c),u=weightedScore(d,e);(!s||u>s.score)&&(s={head:t,modules:i,gadget:r,combined:d,score:u,slotCount:n})}),s}function statFloorCeiling(e,t){let n=1/0;t.forEach(t=>{n=Math.min(n,bigFourScore(computeMountStats(t,[]),e))}),isFinite(n)||(n=0);const a=findOptimalLoadout([e],t)
+;let o=a?bigFourScore(a.combined,e):n+1;return o<=n&&(o=n+1),{min:n,max:o}}function computeStatRanges(e){const t=headPoolForShip(e),n={};return BIG_FOUR_ORDER.forEach(e=>{n[e]=statFloorCeiling(e,t)}),n}function normalizeStat(e,t,n){STAT_RANGE_CACHE[n]||(STAT_RANGE_CACHE[n]=computeStatRanges(n));const a=STAT_RANGE_CACHE[n][e];if(!a||a.max===a.min)return 50;const o=(t-a.min)/(a.max-a.min)*100
+;return Math.max(0,Math.min(100,Math.round(o)))}function tallyItems(e){const t=new Map;return e.forEach(e=>t.set(e.name,{item:e,count:(t.has(e.name)?t.get(e.name).count:0)+1})),Array.from(t.values())}function formatPct(e){const t=Math.round(10*e)/10;return(t>0?"+":"")+t+"%"}function bestFixModule(e,t){const n=BIG_FOUR[e],a=getModulePool().concat(getGadgetPool());let o=null,s=-1/0
+;return a.forEach(e=>{if(t.has(e.id))return;let a=null;if(n.attrs.forEach(t=>{if(null==a&&e.attributes&&null!=e.attributes[t]){const n=parseStatValue(e.attributes[t]);n&&(a=n.isRange?n.max:n.value)}}),null==a)return;const i=a*n.direction;i>s&&(s=i,o=e)}),o}function checkWeaknesses(e,t){const n=[],a=bigFourRaw(e,"window"),o=bigFourRaw(e,"instability");return a<=-25&&n.push({stat:"window",
+message:"Optimal Charge Window Size is sitting at "+formatPct(a)+' -- the safe "green zone" will be razor-thin.',fix:bestFixModule("window",t)}),o>=15&&n.push({stat:"instability",message:"Laser Instability is running at "+formatPct(o)+" -- expect the energy level to swing wildly.",fix:bestFixModule("instability",t)}),n}function addBuildToCart(e){const t=tallyItems(e.filter(Boolean))
+;return t.forEach(e=>{shoppingList.set(e.item.id,(shoppingList.get(e.item.id)||0)+e.count)}),saveShoppingList(),updateCartTabLabel(),t}function cartConfirmationHTML(e){if(!e.length)return"";const t=e.map(e=>`${e.count>1?e.count+"x ":""}${esc(e.item.name)}`).join(", ")
+;return`<div class="equip-vendor-count" style="color:var(--accent); margin-top:10px;">${String.fromCodePoint(9989)} Added to cart: ${t}. Check the Your Cart tab for the buying route.</div>`}function updateCartTabLabel(){const e=document.querySelector('#gear-mode-tabs [data-mode="cart"]');e&&(e.innerHTML=`${String.fromCodePoint(128722)} Your Cart (${cartTotalCount()})`)}function renderGearTab(e){
+e.innerHTML=`\n                <div class="gear-howto-box">\n                    <p class="gear-howto-title">How to use this tool</p>\n                    <ol class="gear-howto-list">\n                        <li><strong>Pick your ship</strong> below (Prospector, MOLE, or Golem) so recommendations only include gear it can actually mount.</li>\n                        <li><strong>Choose a mode</strong> &mdash; Beginner Wizard for a ready-made preset build, or Advanced Min-Max to pick which stats to optimize yourself.</li>\n                        <li><strong>Review the build</strong> and click <strong>Cart This Build</strong> (a MOLE carts each turret separately).</li>\n                        <li><strong>Open Your Cart</strong>, set your location, and get a buy route for everything on the list. Browse Catalog anytime to add items by hand.</li>\n                    </ol>\n                </div>\n                <div class="loc-filters">\n                    <div class="loc-filters-top" id="gear-mode-row" style="border-bottom:none; padding-bottom:0;">\n                        <span style="color:var(--text-muted); font-size:0.85rem; font-weight:bold; text-transform:uppercase; letter-spacing:1px;">Mode:</span>\n                        <div class="mining-subtabs" id="gear-mode-tabs">\n                            <button type="button" class="mining-subtab ${"beginner"===loadoutMode?"active":""}" data-mode="beginner">${String.fromCodePoint(129517)} Beginner Wizard</button>\n                            <button type="button" class="mining-subtab ${"advanced"===loadoutMode?"active":""}" data-mode="advanced">${String.fromCodePoint(9881)} Advanced Min-Max</button>\n                            <button type="button" class="mining-subtab ${"catalog"===loadoutMode?"active":""}" data-mode="catalog">${String.fromCodePoint(128214)} Catalog</button>\n                            <button type="button" class="mining-subtab ${"cart"===loadoutMode?"active":""}" data-mode="cart">${String.fromCodePoint(128722)} Your Cart (${cartTotalCount()})</button>\n                        </div>\n                    </div>\n                    <div id="gear-ship-inline"></div>\n                </div>\n                <div id="gear-advisory"></div>\n                <div id="gear-mode-body"></div>\n            `,
+document.getElementById("gear-mode-tabs").addEventListener("click",function(e){const t=e.target.closest("[data-mode]");t&&(loadoutMode=t.dataset.mode,loadoutConfig._uiMode=loadoutMode,saveLoadoutConfig(),Array.from(document.getElementById("gear-mode-tabs").children).forEach(e=>e.classList.toggle("active",e===t)),renderGearShipRow(),renderGearAdvisory(),renderGearModeBody())}),
+0!==EQUIP_ITEMS.length?(renderGearShipRow(),renderGearAdvisory(),renderGearModeBody()):document.getElementById("gear-mode-body").innerHTML=`<div class="loc-empty" style="display:block;">Equipment data hasn't loaded yet. Make sure <code>${esc(EQUIPMENT_JSON_FILE)}</code> is next to this file.</div>`}function renderGearShipRow(){
+const e=document.getElementById("gear-mode-row"),t=document.getElementById("gear-ship-inline");if(!t)return;const n="beginner"===loadoutMode||"advanced"===loadoutMode;if(e&&(e.style.borderBottom=n?"1px solid var(--border)":"none",e.style.paddingBottom=n?"15px":"0"),!n)return void(t.innerHTML="")
+;const a=MINING_SHIPS.map(e=>`<button type="button" class="mining-subtab ${loadoutShipKey===e.key?"active":""}" data-ship="${e.key}">${esc(e.name)}</button>`).join("")
+;t.innerHTML=`\n                <div class="loc-filters-top" style="border-bottom:none; padding-bottom:0; padding-top:15px;">\n                    <span style="color:var(--text-muted); font-size:0.85rem; font-weight:bold; text-transform:uppercase; letter-spacing:1px;">Your Ship:</span>\n                    <div class="mining-subtabs" id="loadout-ship-tabs-global">${a}</div>\n                </div>\n            `,
+document.getElementById("loadout-ship-tabs-global").addEventListener("click",function(e){const t=e.target.closest("[data-ship]");t&&(loadoutShipKey=t.dataset.ship,Array.from(document.getElementById("loadout-ship-tabs-global").children).forEach(e=>e.classList.toggle("active",e===t)),renderGearAdvisory(),renderGearModeBody())})}function renderGearAdvisory(){
+const e=document.getElementById("gear-advisory");if(!e)return;const t="mole"===loadoutShipKey;let n,a,o="";if("beginner"===loadoutMode)n=t?128752:129517,
+a=t?"<strong>MOLE CREW LOADOUTS:</strong> The MOLE's three turrets are built out separately below &mdash; these are field-tested three-way splits (main / secondary / support), not a single pick repeated three times.":"<strong>NEW TO MINING?</strong> Pick whichever card matches what you're doing tonight. We'll pick a mining head, the modules to slot into it, and a gadget if it helps &mdash; no spreadsheets required.",
+o=shipRestrictionHTML();else if("advanced"===loadoutMode){const e=MINING_SHIPS.find(e=>e.key===loadoutShipKey);n=9881,
+a=`<strong>MIN-MAX OPTIMIZER:</strong> ${e.mounts.length>1?`Each of your ${esc(e.name)}'s ${e.mounts.length} mounts gets its own picker below &mdash; they don't have to run identical loadouts.`:`Pick up to two stats to maximize for your ${esc(e.name)}.`} For each mount, the engine sweeps every head that mount can take and greedily fills its module slots (plus a gadget), while mathematically keeping the other Big Four stats as elevated as the remaining slots allow.`,
+o=shipRestrictionHTML()}else"catalog"===loadoutMode?(n=128214,a="<strong>CATALOG:</strong> Browse every mining head, module, and gadget in the database and add anything to your cart &mdash; no ship selection required."):(n=128722,a="<strong>YOUR CART:</strong> Everything added from the Wizard, Min-Max, or Catalog lands here, grouped into the fewest vendor stops and sequenced by travel distance.")
+;e.innerHTML=`\n                <div class="advisory-box">\n                    <div class="advisory-icon" aria-hidden="true">${String.fromCodePoint(n)}</div>\n                    <div class="advisory-text">${a}${o?`<span>${o}</span>`:""}</div>\n                </div>\n            `}function shipRestrictionHTML(){
+const e=MINING_SHIPS.find(e=>e.key===loadoutShipKey),t=getShipHeadConstraint(loadoutShipKey);if(t.fixed){const n=t.fixed.attributes&&t.fixed.attributes["Module Slots"]||null
+;return`<strong>${esc(e.name)}</strong> ships with a fixed <strong>${esc(t.fixed.name)}</strong> &mdash; it can't be swapped, so recommendations only pick modules${n?" ("+esc(n)+" slot"+("1"===n?"":"s")+")":""} and a gadget to go with it.`}const n=t.sizes.map(e=>"Size "+e).join(" / "),a=e.mounts.length
+;return`<strong>${esc(e.name)}</strong> takes <strong>${esc(n)}</strong> mining heads across its ${a} mount${1!==a?"s":""} &mdash; every recommendation below is restricted to heads and slot counts that actually fit.`}function renderGearModeBody(){const e=document.getElementById("gear-mode-body")
+;e&&("beginner"===loadoutMode?renderBeginnerWizard(e):"advanced"===loadoutMode?renderAdvancedMinMax(e):"catalog"===loadoutMode?renderEquipmentCatalog(e):renderEquipmentList(e))}function renderBeginnerWizard(e){const t="mole"===loadoutShipKey?MOLE_PRESETS:BEGINNER_PRESETS;t.some(e=>e.key===beginnerPresetKey)||(beginnerPresetKey=null)
+;const n=t.map(e=>`\n                <button type="button" class="preset-card ${beginnerPresetKey===e.key?"active":""}" data-preset="${e.key}">\n                    <div class="preset-icon" aria-hidden="true">${e.icon}</div>\n                    <h3 class="preset-name">${esc(e.name)}</h3>\n                    <p class="preset-desc">${esc(e.desc)}</p>\n                    <div class="preset-best-for">Best for: ${esc(e.bestFor)}</div>\n                </button>\n            `).join("")
+;e.innerHTML=`\n                <ul class="preset-grid" id="preset-grid" aria-label="Beginner loadout presets">${n}</ul>\n                <div id="beginner-result"></div>\n            `,document.getElementById("preset-grid").addEventListener("click",function(e){const t=e.target.closest("[data-preset]");t&&(beginnerPresetKey=t.dataset.preset,
+Array.from(document.getElementById("preset-grid").children).forEach(e=>e.classList.toggle("active",e===t)),renderBeginnerResult())}),beginnerPresetKey&&renderBeginnerResult()}function renderBeginnerResult(){if("mole"===loadoutShipKey)return void renderMolePresetResult();const e=document.getElementById("beginner-result");if(!e||!beginnerPresetKey)return
+;const t=BEGINNER_PRESETS.find(e=>e.key===beginnerPresetKey),n=MINING_SHIPS.find(e=>e.key===loadoutShipKey),a=getShipHeadConstraint(loadoutShipKey),o=headPoolForShip(loadoutShipKey),s=findOptimalLoadout(t.primary,o);if(!s)return void(e.innerHTML=`<div class="loc-empty" style="display:block;">Couldn't compute a build for your ${esc(n.name)} -- equipment data may be missing.</div>`)
+;const i=tallyItems(s.modules),r=i.length?i.map(e=>`<li class="stop-item-row"><span>${String.fromCodePoint(128295)} ${e.count>1?e.count+"x ":""}${esc(e.item.name)}</span></li>`).join(""):'<li class="stop-item-row"><span style="color:var(--text-muted);">This head has no free module slots</span></li>',l=Math.round((normalizeStat("power",bigFourScore(s.combined,"power"),loadoutShipKey)+normalizeStat("resistance",bigFourScore(s.combined,"resistance"),loadoutShipKey))/2),c=Math.round((normalizeStat("window",bigFourScore(s.combined,"window"),loadoutShipKey)+normalizeStat("instability",bigFourScore(s.combined,"instability"),loadoutShipKey))/2),d=normalizeStat("window",bigFourScore(s.combined,"window"),loadoutShipKey),u=new Set([s.head.id,...s.modules.map(e=>e.id),...s.gadget?[s.gadget.id]:[]]),m=checkWeaknesses(s.combined,u).map(e=>`\n                <div class="weakness-box">\n                    <div class="weakness-icon" aria-hidden="true">${String.fromCodePoint(9888)}</div>\n                    <div class="weakness-text">\n                        <strong>HEADS UP:</strong> ${esc(e.message)}\n                        ${e.fix?` Try adding <strong>${esc(e.fix.name)}</strong> to your shopping list to fix this.`:""}\n                    </div>\n                </div>\n            `).join("")
+;let p=0;[s.head,...s.modules,...s.gadget?[s.gadget]:[]].forEach(e=>{e.vendors&&e.vendors.length&&(p+=Math.min(...e.vendors.map(e=>e.price)))});const g=a.fixed?`<span style="color:var(--text-muted);">(Stock laser on your ${esc(n.name)} &mdash; fixed, not swappable)</span>`:`<span style="color:var(--text-muted);">(Size ${esc(s.head.size)}, ${esc(s.head.company)})</span>`
+;e.innerHTML=`\n                <div class="stop-card" style="border-left-color: var(--accent);">\n                    <div class="stop-header">\n                        <span class="stop-num">${String.fromCodePoint(128722)} Your Shopping List -- ${esc(t.name)}</span>\n                        <span class="stop-loc">${esc(n.name)}${p>0?" &middot; "+p.toLocaleString()+" aUEC est.":""}</span>\n                    </div>\n                    <ul class="stop-items-list">\n                        <li class="stop-item-row"><span>${String.fromCodePoint(9935)} Mining Head: <strong style="color:var(--text-main);">${esc(s.head.name)}</strong> ${g}</span></li>\n                        ${r}\n                        ${s.gadget?`<li class="stop-item-row"><span>${String.fromCodePoint(127899)} Gadget: <strong style="color:var(--text-main);">${esc(s.gadget.name)}</strong></span></li>`:""}\n                    </ul>\n                    <button type="button" class="equip-add-btn" id="beginner-cart-btn" style="width:auto; margin-top:14px; padding:8px 16px;">${String.fromCodePoint(128722)} Cart This Build</button>\n                    <div id="beginner-cart-confirm"></div>\n                </div>\n\n                <div class="loc-card" style="margin-bottom:20px;">\n                    <div class="equip-card-body">\n                        <div class="stat-bar-row">\n                            <div class="stat-bar-label"><span>${String.fromCodePoint(9889)} Cracking Capability</span><span class="pct">${l}%</span></div>\n                            <div class="stat-bar-track"><div class="stat-bar-fill cracking" style="width:${l}%;"></div></div>\n                        </div>\n                        <div class="stat-bar-row">\n                            <div class="stat-bar-label"><span>${String.fromCodePoint(129496)} Forgiveness / Ease of Use</span><span class="pct">${c}%</span></div>\n                            <div class="stat-bar-track"><div class="stat-bar-fill forgiveness" style="width:${c}%;"></div></div>\n                        </div>\n                    </div>\n                </div>\n\n                <div class="greenzone-wrap">\n                    <div class="stat-bar-label" style="margin-bottom:10px;"><span>${String.fromCodePoint(127919)} Simulated Optimal Charge Window</span><span class="pct">${d}% of max</span></div>\n                    <div class="greenzone-track"><div class="greenzone-fill" style="width:${Math.max(6,d)}%;"></div></div>\n                    <div class="greenzone-caption"><span>Tiny / Twitchy</span><span>Huge / Forgiving</span></div>\n                </div>\n\n                ${m}\n            `,
+document.getElementById("beginner-cart-btn").addEventListener("click",function(){const e=addBuildToCart([s.head,...s.modules,s.gadget]);document.getElementById("beginner-cart-confirm").innerHTML=cartConfirmationHTML(e)})}function renderMolePresetResult(){const e=document.getElementById("beginner-result");if(!e||!beginnerPresetKey)return;const t=MOLE_PRESETS.find(e=>e.key===beginnerPresetKey)
+;if(!t)return void(e.innerHTML="");const n=MINING_SHIPS.find(e=>"mole"===e.key),a=t.mounts.map((e,t)=>({...resolveNamedMount(e),label:n.mounts[t]?n.mounts[t].label:`Mount ${t+1}`})),o=[];(t.spares||[]).forEach(e=>{const t=findItemByName(e.name);if(t)for(let n=0;n<(e.count||1);n++)o.push(t)});let s=null,i=[];t.spareLaser&&(s=findItemByName(t.spareLaser.head),
+i=t.spareLaser.modules.map(findItemByName).filter(Boolean));const r=[];a.forEach(e=>{e.head&&(r.push(e.head),r.push(...e.modules))}),r.push(...o),s&&(r.push(s),r.push(...i));let l=0;r.forEach(e=>{e.vendors&&e.vendors.length&&(l+=Math.min(...e.vendors.map(e=>e.price)))});const c=a.map(e=>{
+if(!e.head)return`<div class="loc-empty" style="display:block;">Missing catalog data for ${esc(e.label)}.</div>`
+;const t=tallyItems(e.modules),n=t.length?t.map(e=>`<li class="stop-item-row"><span>${String.fromCodePoint(128295)} ${e.count>1?e.count+"x ":""}${esc(e.item.name)}</span></li>`).join(""):'<li class="stop-item-row"><span style="color:var(--text-muted);">No modules slotted</span></li>',a=Math.round((normalizeStat("power",bigFourScore(e.combined,"power"),"mole")+normalizeStat("resistance",bigFourScore(e.combined,"resistance"),"mole"))/2),o=Math.round((normalizeStat("window",bigFourScore(e.combined,"window"),"mole")+normalizeStat("instability",bigFourScore(e.combined,"instability"),"mole"))/2),s=new Set([e.head.id,...e.modules.map(e=>e.id)]),i=checkWeaknesses(e.combined,s).map(e=>`\n                    <div class="weakness-box" style="margin-top:10px; margin-bottom:0;">\n                        <div class="weakness-icon" aria-hidden="true">${String.fromCodePoint(9888)}</div>\n                        <div class="weakness-text">${esc(e.message)}${e.fix?` Consider <strong>${esc(e.fix.name)}</strong>.`:""}</div>\n                    </div>\n                `).join("")
+;return`\n                    <div class="stop-card" style="margin-bottom:15px;">\n                        <div class="stop-header">\n                            <span class="stop-num">${esc(e.label)}: ${esc(e.head.name)}</span>\n                        </div>\n                        ${e.note?`<p style="color:var(--text-muted); font-size:0.85rem; margin:0 0 10px 0; line-height:1.5;">${esc(e.note)}</p>`:""}\n                        <ul class="stop-items-list">${n}</ul>\n                        <div style="margin-top:12px; display:grid; grid-template-columns:1fr 1fr; gap:12px;">\n                            <div class="stat-bar-row" style="margin-bottom:0;">\n                                <div class="stat-bar-label" style="font-size:0.75rem;"><span>${String.fromCodePoint(9889)} Cracking</span><span class="pct">${a}%</span></div>\n                                <div class="stat-bar-track"><div class="stat-bar-fill cracking" style="width:${a}%;"></div></div>\n                            </div>\n                            <div class="stat-bar-row" style="margin-bottom:0;">\n                                <div class="stat-bar-label" style="font-size:0.75rem;"><span>${String.fromCodePoint(129496)} Forgiveness</span><span class="pct">${o}%</span></div>\n                                <div class="stat-bar-track"><div class="stat-bar-fill forgiveness" style="width:${o}%;"></div></div>\n                            </div>\n                        </div>\n                        ${i}\n                    </div>\n                `
+}).join(""),d=tallyItems(o).map(e=>`<li class="stop-item-row"><span>${e.count>1?e.count+"x ":""}${esc(e.item.name)}</span></li>`).join(""),u=s?`<li class="stop-item-row"><span>Spare <strong style="color:var(--text-main);">${esc(s.name)}</strong> on the cargo grid, loaded with ${tallyItems(i).map(e=>(e.count>1?e.count+"x ":"")+esc(e.item.name)).join(", ")||"no modules"}</span></li>`:"",m=d||u||t.freeform?`\n                <div class="loc-card" style="margin-bottom:15px;">\n                    <header class="loc-header"><h3 class="loc-name">${String.fromCodePoint(128230)} Field Kit (carried, not equipped)</h3></header>\n                    <div class="equip-card-body">\n                        <ul class="stop-items-list">${d}${u}</ul>\n                        ${t.freeform?`<p style="color:var(--text-muted); font-size:0.85rem; margin:10px 0 0 0; line-height:1.5;">${esc(t.freeform)}</p>`:""}\n                    </div>\n                </div>\n            `:""
+;e.innerHTML=`\n                <div class="stop-card" style="border-left-color: var(--accent); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; margin-bottom:15px;">\n                    <span class="stop-num">${String.fromCodePoint(128722)} ${esc(t.name)}${l>0?" &mdash; "+l.toLocaleString()+" aUEC est.":""}</span>\n                    <button type="button" class="equip-add-btn" id="mole-cart-btn" style="width:auto; padding:8px 16px;">${String.fromCodePoint(128722)} Cart This Entire Build</button>\n                </div>\n                <div id="mole-cart-confirm"></div>\n                ${c}\n                ${m}\n            `,
+document.getElementById("mole-cart-btn").addEventListener("click",function(){const e=addBuildToCart(r);document.getElementById("mole-cart-confirm").innerHTML=cartConfirmationHTML(e)})}function mountStateKey(e,t){return e+":"+t}function headPoolForMount(e){if(e.fixed){const t=getAllShipHeads().find(t=>t.name===e.fixed)||null;return t?[t]:[]}return getLoadoutHeadPool([String(e.size)])}
+function renderAdvancedMinMax(e){const t=MINING_SHIPS.find(e=>e.key===loadoutShipKey),n=t.mounts.map((e,t)=>{const n=mountStateKey(loadoutShipKey,t),a=advancedPrimaryKeysByMount[n]||(advancedPrimaryKeysByMount[n]=[]),o=BIG_FOUR_ORDER.map(e=>{const t=BIG_FOUR[e],n=a.includes(e)
+;return`\n                        <label class="stat-select-chip ${n?"checked":""}" data-key="${e}">\n                            <input type="checkbox" data-key="${e}" ${n?"checked":""}>\n                            <span class="chip-icon" aria-hidden="true">${t.icon}</span>\n                            <span class="chip-label">${esc(t.label)}</span>\n                        </label>\n                    `
+}).join("")
+;return`\n                    <div class="loc-card" style="margin-bottom:20px;">\n                        <header class="loc-header">\n                            <h3 class="loc-name">${esc(e.label)}</h3>\n                            <span class="loc-sys">Size ${esc(e.size)}${e.fixed?" &middot; Fixed":""}</span>\n                        </header>\n                        <div class="equip-card-body">\n                            <div style="font-size:0.85rem; font-weight:700; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.5px;">Maximize for ${esc(e.label)} (choose up to 2):</div>\n                            <div class="stat-select-grid" data-chip-group="${t}">${o}</div>\n                            <div class="equip-meta-row">\n                                <button type="button" class="equip-add-btn" data-run-mount="${t}" style="width:auto; padding:10px 20px;">Find Optimal Build</button>\n                            </div>\n                            <div id="advanced-result-${t}"></div>\n                        </div>\n                    </div>\n                `
+}).join("")
+;e.innerHTML=`\n                ${n}\n\n                <div class="loc-filters" style="margin-top:10px;">\n                    <div class="loc-filters-top" style="border-bottom:none; padding-bottom:0;">\n                        <span style="color:var(--text-muted); font-size:0.85rem; font-weight:bold; text-transform:uppercase; letter-spacing:1px;">Manual Builder (${esc(t.name)}):</span>\n                    </div>\n                    ${buildStatIconLegendHTML()}\n                </div>\n                <div id="loadout-body"></div>\n            `,
+t.mounts.forEach((t,n)=>{const a=mountStateKey(loadoutShipKey,n),o=e.querySelector(`[data-chip-group="${n}"]`);o.addEventListener("change",function(e){const t=e.target.closest('input[type="checkbox"]');if(!t)return;let n=advancedPrimaryKeysByMount[a]||[];const s=t.dataset.key;t.checked?(n.length>=2&&n.shift(),n.push(s)):n=n.filter(e=>e!==s),advancedPrimaryKeysByMount[a]=n,
+o.querySelectorAll(".stat-select-chip").forEach(e=>{const t=n.includes(e.dataset.key);e.classList.toggle("checked",t),e.querySelector("input").checked=t})}),e.querySelector(`[data-run-mount="${n}"]`).addEventListener("click",function(){const e=advancedPrimaryKeysByMount[a]||[];0!==e.length?(advancedResultByMount[a]=findOptimalLoadout(e,headPoolForMount(t)),
+renderAdvancedResultForMount(n,t)):alert("Pick at least one stat to maximize for "+t.label+" first.")})}),renderLoadoutBody(),t.mounts.forEach((e,t)=>renderAdvancedResultForMount(t,e))}function renderAdvancedResultForMount(e,t){const n=document.getElementById(`advanced-result-${e}`);if(!n)return;const a=mountStateKey(loadoutShipKey,e),o=advancedResultByMount[a];if(!o)return void(n.innerHTML="")
+;const s=tallyItems(o.modules),i=s.length?s.map(e=>`<li class="stop-item-row"><span>${e.count>1?e.count+"x ":""}${esc(e.item.name)}</span><span class="loc-mat-pct">${esc(e.item.attributes&&e.item.attributes["Item Type"]||"")}</span></li>`).join(""):'<li class="stop-item-row"><span style="color:var(--text-muted);">No module slots on this head</span></li>',r=LOADOUT_ADDITIVE_STATS.filter(e=>null!=o.combined[e]).map(e=>`<tr><td class="loc-mat-name">${esc(e)}</td><td class="loc-mat-pct">${esc(formatStatValue(o.combined[e]))}</td></tr>`).join(""),l=o.head.attributes&&o.head.attributes["Optimal Range"]||String.fromCharCode(8212),c=o.head.attributes&&o.head.attributes["Maximum Range"]||String.fromCharCode(8212),d=new Set([o.head.id,...o.modules.map(e=>e.id),...o.gadget?[o.gadget.id]:[]]),u=checkWeaknesses(o.combined,d).map(e=>`\n                <div class="weakness-box">\n                    <div class="weakness-icon" aria-hidden="true">${String.fromCodePoint(9888)}</div>\n                    <div class="weakness-text">\n                        <strong>WEAKNESS DETECTED:</strong> ${esc(e.message)}\n                        ${e.fix?`<br>Suggested fix: equip <strong>${esc(e.fix.name)}</strong> (${esc(e.fix.attributes&&e.fix.attributes["Item Type"]||e.fix.category)})`:""}\n                    </div>\n                </div>\n            `).join(""),m=t.fixed?"":`<button type="button" class="equip-add-btn" data-apply-mount="${e}" style="width:auto; padding:8px 14px;">Apply to ${esc(t.label)}</button>`,p=`<button type="button" class="equip-add-btn" data-cart-mount="${e}" style="width:auto; padding:8px 14px;">${String.fromCodePoint(128722)} Cart This Build</button>`,g=t.fixed?'<div class="equip-vendor-count" style="margin-bottom:0;">This mount\'s laser is fixed &mdash; the modules and gadget above are still yours to pick.</div>':""
+;n.innerHTML=`\n                <div class="stop-card" style="border-left-color: var(--accent); margin-top:14px;">\n                    <div class="stop-header">\n                        <span class="stop-num">Recommended: ${esc(o.head.name)}</span>\n                        <span class="stop-loc">${esc(o.head.company)} &middot; Size ${esc(o.head.size)} &middot; ${o.slotCount} module slot${1!==o.slotCount?"s":""}${t.fixed?" &middot; fixed laser":""}</span>\n                    </div>\n                    <ul class="stop-items-list">${i}</ul>\n                    ${o.gadget?`<div class="equip-vendor-count" style="margin-top:8px;">Gadget: ${esc(o.gadget.name)} <span style="opacity:0.7;">(gadget slot is shared ship-wide)</span></div>`:""}\n                    <table class="loc-mat-table" style="margin-top:12px;">\n                        <tbody>\n                            <tr><td class="loc-mat-name">Optimal Range</td><td class="loc-mat-pct">${esc(l)}</td></tr>\n                            <tr><td class="loc-mat-name">Maximum Range</td><td class="loc-mat-pct">${esc(c)}</td></tr>\n                            ${r}\n                        </tbody>\n                    </table>\n                </div>\n                ${u}\n                <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-bottom:4px;">\n                    ${m}\n                    ${p}\n                </div>\n                ${g}\n                <div id="advanced-cart-confirm-${e}"></div>\n            `
+;const y=n.querySelector("[data-apply-mount]");y&&y.addEventListener("click",function(){const t=getLoadoutForShip(loadoutShipKey);t.mounts[e]={laserId:o.head.id,moduleIds:o.modules.map(e=>e.id)},o.gadget&&(t.gadgetId=o.gadget.id),saveLoadoutConfig(),renderLoadoutBody()});const h=n.querySelector("[data-cart-mount]");h&&h.addEventListener("click",function(){
+const t=addBuildToCart([o.head,...o.modules,o.gadget]);document.getElementById(`advanced-cart-confirm-${e}`).innerHTML=cartConfirmationHTML(t)})}function renderLoadoutBody(){const e=document.getElementById("loadout-body");if(!e)return
+;const t=MINING_SHIPS.find(e=>e.key===loadoutShipKey),n=getLoadoutForShip(loadoutShipKey),a=EQUIP_ITEMS.filter(e=>"Mining Laser Heads"===e.category),o=EQUIP_ITEMS.filter(e=>"Mining Modules"===e.category),s=EQUIP_ITEMS.filter(e=>"Gadgets"===e.category),i=t.mounts.map((e,t)=>{const s=n.mounts[t]||(n.mounts[t]={laserId:null,moduleIds:[]});let i;if(e.fixed){const t=a.find(t=>t.name===e.fixed)
+;s.laserId=t?t.id:null,i=`<div class="equip-vendor-count">Fixed: ${esc(e.fixed)} (not swappable, stock ship laser)</div>`}else{const n=a.filter(t=>String(t.size)===String(e.size)),o=EQUIP_BY_ID[s.laserId],r=o?esc(o.name):`-- Select Size ${esc(e.size)} Laser --`
+;i=`\n                        <div class="custom-select" data-mount="${t}" data-role="laser">\n                            <button type="button" class="custom-select-trigger" aria-haspopup="listbox" aria-expanded="false">\n                                <span class="custom-select-trigger-label">${r}</span>\n                                <span class="custom-select-caret" aria-hidden="true">&#9662;</span>\n                            </button>\n                            <div class="custom-select-panel" role="listbox" hidden>\n                                <button type="button" class="custom-select-option ${s.laserId?"":"selected"}" role="option" aria-selected="${!s.laserId}" data-value="">\n                                    <span class="custom-select-option-name">-- Select Size ${esc(e.size)} Laser --</span>\n                                </button>\n                                ${n.map(e=>`\n                                    <button type="button" class="custom-select-option ${String(s.laserId)===String(e.id)?"selected":""}" role="option" aria-selected="${String(s.laserId)===String(e.id)}" data-value="${e.id}">\n                                        <span class="custom-select-option-name">${esc(e.name)}</span>\n                                        <span class="custom-select-option-stats">${buildOptionStatChips(e,o)}</span>\n                                    </button>\n                                `).join("")}\n                            </div>\n                        </div>\n                    `
+}const r=EQUIP_BY_ID[s.laserId],l=r&&r.attributes&&r.attributes["Module Slots"]&&parseInt(r.attributes["Module Slots"],10)||0;let c="";return r&&l>0?c=Array.from({length:l}).map((e,n)=>{const a=s.moduleIds[n]||"",i=EQUIP_BY_ID[a],r=i?esc(i.name):`-- Empty Slot ${n+1} --`
+;return`\n                            <div class="custom-select" data-mount="${t}" data-role="module" data-slot="${n}">\n                                <button type="button" class="custom-select-trigger" aria-haspopup="listbox" aria-expanded="false">\n                                    <span class="custom-select-trigger-label">${r}</span>\n                                    <span class="custom-select-caret" aria-hidden="true">&#9662;</span>\n                                </button>\n                                <div class="custom-select-panel" role="listbox" hidden>\n                                    <button type="button" class="custom-select-option ${a?"":"selected"}" role="option" aria-selected="${!a}" data-value="">\n                                        <span class="custom-select-option-name">-- Empty Slot ${n+1} --</span>\n                                    </button>\n                                    ${o.map(e=>`\n                                        <button type="button" class="custom-select-option ${String(a)===String(e.id)?"selected":""}" role="option" aria-selected="${String(a)===String(e.id)}" data-value="${e.id}">\n                                            <span class="custom-select-option-name">${esc(e.name)}</span>\n                                            <span class="custom-select-option-stats">${buildOptionStatChips(e,i)}</span>\n                                        </button>\n                                    `).join("")}\n                                </div>\n                            </div>\n                        `
+}).join(""):r&&(c='<div class="equip-vendor-count">This laser has no module slots.</div>'),
+`\n                    <div class="loc-card" style="margin-bottom:15px;">\n                        <header class="loc-header"><h3 class="loc-name">${esc(e.label)}</h3><span class="loc-sys">Size ${esc(e.size)}</span></header>\n                        <div class="equip-card-body">\n                            ${i}\n                            ${c}\n                        </div>\n                    </div>\n                `
+}).join(""),r=n.gadgetId||"",l=EQUIP_BY_ID[r],c=`\n                <div class="loc-card" style="margin-bottom:20px;">\n                    <header class="loc-header"><h3 class="loc-name">Gadget</h3><span class="loc-sys">1 Slot</span></header>\n                    <div class="equip-card-body">\n                        <div class="custom-select" data-role="gadget">\n                            <button type="button" class="custom-select-trigger" aria-haspopup="listbox" aria-expanded="false">\n                                <span class="custom-select-trigger-label">${l?esc(l.name):"-- No Gadget --"}</span>\n                                <span class="custom-select-caret" aria-hidden="true">&#9662;</span>\n                            </button>\n                            <div class="custom-select-panel" role="listbox" hidden>\n                                <button type="button" class="custom-select-option ${r?"":"selected"}" role="option" aria-selected="${!r}" data-value="">\n                                    <span class="custom-select-option-name">-- No Gadget --</span>\n                                </button>\n                                ${s.map(e=>`\n                                    <button type="button" class="custom-select-option ${String(r)===String(e.id)?"selected":""}" role="option" aria-selected="${String(r)===String(e.id)}" data-value="${e.id}">\n                                        <span class="custom-select-option-name">${esc(e.name)}</span>\n                                        <span class="custom-select-option-stats">${buildOptionStatChips(e,l,Object.keys(e.attributes||{}))}</span>\n                                    </button>\n                                `).join("")}\n                            </div>\n                        </div>\n                    </div>\n                </div>\n            `
+;e.innerHTML=`\n                <div style="color:var(--text-muted); font-size:0.85rem; margin-bottom:15px;">${esc(t.name)} &mdash; ${t.crew} crew &middot; ${esc(t.cargo)} cargo &middot; ${t.mounts.length} mount${t.mounts.length>1?"s":""}</div>\n                <div class="manual-builder-layout">\n                    <div class="manual-builder-col">\n                        ${i}\n                        ${c}\n                    </div>\n                    <div class="manual-builder-results-col">\n                        <div id="loadout-results"></div>\n                    </div>\n                </div>\n            `,
+e.querySelectorAll('.custom-select[data-role="laser"]').forEach(e=>{const t=parseInt(e.dataset.mount,10);wireCustomSelect(e,e=>{n.mounts[t].laserId=e?parseInt(e,10):null,n.mounts[t].moduleIds=[],saveLoadoutConfig(),renderLoadoutBody()}),wireSelectTooltip(e.querySelector(".custom-select-trigger"),()=>EQUIP_BY_ID[n.mounts[t].laserId])}),
+e.querySelectorAll('.custom-select[data-role="module"]').forEach(e=>{const t=parseInt(e.dataset.mount,10),a=parseInt(e.dataset.slot,10);wireCustomSelect(e,e=>{n.mounts[t].moduleIds||(n.mounts[t].moduleIds=[]),n.mounts[t].moduleIds[a]=e?parseInt(e,10):null,saveLoadoutConfig(),renderLoadoutBody()}),
+wireSelectTooltip(e.querySelector(".custom-select-trigger"),()=>EQUIP_BY_ID[(n.mounts[t].moduleIds||[])[a]])});const d=e.querySelector('.custom-select[data-role="gadget"]');d&&(wireCustomSelect(d,e=>{n.gadgetId=e?parseInt(e,10):null,saveLoadoutConfig(),renderLoadoutBody()}),
+wireSelectTooltip(d.querySelector(".custom-select-trigger"),()=>EQUIP_BY_ID[n.gadgetId],e=>e?Object.keys(e.attributes||{}):null)),renderLoadoutResults()}function renderLoadoutResults(){const e=document.getElementById("loadout-results");if(!e)return;const t=MINING_SHIPS.find(e=>e.key===loadoutShipKey),n=getLoadoutForShip(loadoutShipKey),a=EQUIP_BY_ID[n.gadgetId];let o=0
+;const s=t.mounts.map((e,t)=>{const a=n.mounts[t]||{laserId:null,moduleIds:[]},s=EQUIP_BY_ID[a.laserId],i=(a.moduleIds||[]).map(e=>EQUIP_BY_ID[e]).filter(Boolean);s&&s.vendors.length>0&&(o+=Math.min(...s.vendors.map(e=>e.price))),i.forEach(e=>{e.vendors.length>0&&(o+=Math.min(...e.vendors.map(e=>e.price)))});return{mount:e,laser:s,modules:i,combined:s?computeMountStats(s,i):{}}})
+;a&&a.vendors.length>0&&(o+=Math.min(...a.vendors.map(e=>e.price)));const i=s.map(e=>{if(!e.laser)return"";const t=LOADOUT_ADDITIVE_STATS.filter(t=>null!=e.combined[t]).map(t=>{const n=e.combined[t],a=e.laser.attributes&&e.laser.attributes[t],o=null!=a?parseStatValue(a):null,s=o?o.unit:n.unit,i=n.isRange?{isRange:!0,min:n.min,max:n.max,unit:s}:{isRange:!1,value:n.value,unit:s
+},r=STAT_ATTR_ICON[t]?`<span class="stat-chip-icon" aria-hidden="true">${STAT_ATTR_ICON[t]}</span>`:"",l=null!=STAT_ATTR_DIRECTION[t]?STAT_ATTR_DIRECTION[t]:1,c=e.modules.map(e=>{const n=e.attributes&&e.attributes[t];if(null==n)return"";const a=parseStatValue(n);if(!a)return"";const o=numericOf(a);if(Math.abs(o)<.05)return""
+;const s="%"===a.unit?"%":a.unit?" "+a.unit:"",i=Number.isInteger(o)?o:Math.round(10*o)/10,r=(i>0?"+":"")+i+s,c=o*l>0;return` <span class="stat-chip-delta ${c?"up":"down"}">${esc(shortItemName(e))} ${c?"&#9650;":"&#9660;"}${esc(r)}</span>`}).join("");return`<tr><td class="loc-mat-name">${esc(t)}${r}</td><td class="loc-mat-pct">${esc(formatStatValue(i))}${c}</td></tr>`
+}).join(""),n=checkWeaknesses(a?computeMountStats(e.laser,e.modules.concat([a])):e.combined,new Set([e.laser.id,...e.modules.map(e=>e.id),...a?[a.id]:[]])).map(e=>`\n                    <div class="weakness-box" style="margin-top:12px; margin-bottom:0;">\n                        <div class="weakness-icon" aria-hidden="true">${String.fromCodePoint(9888)}</div>\n                        <div class="weakness-text">\n                            <strong>WEAKNESS DETECTED:</strong> ${esc(e.message)}\n                            ${e.fix?`<br>Suggested fix: equip <strong>${esc(e.fix.name)}</strong> (${esc(e.fix.attributes&&e.fix.attributes["Item Type"]||e.fix.category)})`:""}\n                        </div>\n                    </div>\n                `).join("")
+;return`\n                    <div class="stop-card">\n                        <div class="stop-header">\n                            <span class="stop-num">${esc(e.mount.label)}: ${esc(e.laser.name)}</span>\n                            <span class="stop-loc">${e.modules.length} module${1!==e.modules.length?"s":""} equipped</span>\n                        </div>\n                        <table class="loc-mat-table"><tbody>${t||'<tr><td colspan="2" style="color:var(--text-muted);">No combinable stats found for this laser.</td></tr>'}</tbody></table>\n                        ${n}\n                    </div>\n                `
+}).join(""),r=a?Object.keys(a.attributes||{}).map(e=>`<tr><td class="loc-mat-name">${esc(e)}</td><td class="loc-mat-pct">${esc(a.attributes[e])}</td></tr>`).join(""):"",l=[];s.forEach(e=>{e.laser&&(l.push(e.laser),l.push(...e.modules))}),a&&l.push(a)
+;const c=l.length?`<div style="display:flex; justify-content:flex-end; margin-bottom:15px;"><button type="button" class="equip-add-btn" id="manual-cart-btn" style="width:auto; padding:10px 20px;">${String.fromCodePoint(128722)} Cart Entire ${esc(t.name)} Loadout</button></div><div id="manual-cart-confirm"></div>`:""
+;e.innerHTML=`\n                ${c}\n                ${i||'<div class="loc-empty" style="display:block;">Select a laser above to see combined stats.</div>'}\n                ${a?`\n                    <div class="stop-card">\n                        <div class="stop-header"><span class="stop-num">Gadget: ${esc(a.name)}</span></div>\n                        <table class="loc-mat-table"><tbody>${r||'<tr><td colspan="2" style="color:var(--text-muted);">No stats available.</td></tr>'}</tbody></table>\n                    </div>\n                `:""}\n                <div class="route-summary">\n                    <div class="route-summary-stat"><span class="num">${o.toLocaleString()}</span><span class="lbl">aUEC Loadout Cost</span></div>\n                </div>\n            `,
+l.length&&document.getElementById("manual-cart-btn").addEventListener("click",function(){const e=addBuildToCart(l);document.getElementById("manual-cart-confirm").innerHTML=cartConfirmationHTML(e)})}window.onload=function(){fetchGameData(),fetchEquipmentData()}</script>
 </body>
 </html>

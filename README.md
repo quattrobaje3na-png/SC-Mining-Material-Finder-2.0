@@ -2,7 +2,7 @@ The ultimate 4.9.X intel tool for the elite Star Citizen miner.
 
 Currently updated to be in line with 4.9 changes.
 
-The STAR CITIZEN MINING MATERIAL FINDER 2.0 has been completely rebuilt and is updated for 4.8.3 from the ground up with new features. 
+The STAR CITIZEN MINING MATERIAL FINDER 2.0 has been completely rebuilt and is updated for 4.9 from the ground up with new features. 
 
 It eliminates spreadsheet hunting by giving you 100% accurate drop rates and locations so you can mine more effectively. This new version doesn't stop once you've found the rock. The tool helps you prep before you even start looking for rocks: gear up, map your shopping route to upgrade your miner, and have access to the essentials of refining you need. Whether you are looking for direction during an event, maximizing your crafted gear's quality, or building a full loadout in under a minute, you get everything you need to mine smarter in one tool. It keeps the process simple so both new players and veterans can jump into Star Citizen 4.8.3 and start mining with ease.
 

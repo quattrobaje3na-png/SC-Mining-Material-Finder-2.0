@@ -1,0 +1,119 @@
+# Auto-translation + publish for the SC Mining Material Finder 2.0.
+#
+# Install as .github/workflows/translate.yml in the TOOL repo itself.
+# Same single-repo design as the Blueprint Finder -- see i18n/SETUP.md.
+#
+# Publishes one Pages site containing:
+#     /            English (your files, copied verbatim)
+#     /de/ /fr/ /ja/ /zh/   translated builds
+#
+# Your existing English URL is unchanged, which matters because it is already
+# embedded in the WordPress iframe at
+# citizen-starter-guide.com/star-citizen-mining-material-finder/
+#
+# If this workflow fails, Pages keeps serving the last successful deploy --
+# English goes stale, it does not break.
+
+name: translate-and-publish
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      # The bot's own translation-memory commit must not retrigger the run.
+      # [skip ci] in the commit message is the primary guard; this is a second.
+      - "i18n/tm/**"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: translate-publish
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Build dictionaries
+        env:
+          # Without this secret the build still succeeds and simply leaves
+          # engine-needed strings in English. A missing key degrades, it does
+          # not break the site.
+          GOOGLE_TRANSLATE_API_KEY: ${{ secrets.GOOGLE_TRANSLATE_API_KEY }}
+        run: |
+          python i18n/build_dicts.py --src . --out i18n/dist
+
+      - name: Integrity gate
+        run: |
+          python i18n/verify_build.py --src . --out i18n/dist
+
+      - name: Assemble publish directory
+        run: |
+          mkdir -p _site
+          # English at the root, copied verbatim -- the translation pipeline
+          # never edits these, so the existing live site cannot be corrupted.
+          cp index.html _site/
+          cp mining_compiled.json _site/
+          cp mining_equipment.json _site/
+          [ -f README.md ] && cp README.md _site/ || true
+          for L in de fr ja zh; do
+            if [ -d "i18n/dist/$L" ]; then
+              mkdir -p "_site/$L"
+              cp -r "i18n/dist/$L/." "_site/$L/"
+            fi
+          done
+          ls -la _site
+
+      - name: Commit updated translation memory
+        run: |
+          git config user.name "translate-bot"
+          git config user.email "translate-bot@users.noreply.github.com"
+          if [ -n "$(git status --porcelain i18n/tm)" ]; then
+            git add i18n/tm
+            # [skip ci] is what stops this commit from retriggering the
+            # workflow. Without it you get an infinite Actions loop.
+            git commit -m "chore(i18n): update translation memory [skip ci]"
+            git push
+          else
+            echo "translation memory unchanged"
+          fi
+
+      - name: Add language index
+        run: |
+          cd _site
+          cat > languages.html <<'HTML'
+          <!doctype html><meta charset="utf-8">
+          <title>SC Mining Material Finder — Languages</title>
+          <ul>
+            <li><a href="./">English</a></li>
+            <li><a href="de/">Deutsch</a></li>
+            <li><a href="fr/">Français</a></li>
+            <li><a href="ja/">日本語</a></li>
+            <li><a href="zh/">简体中文</a></li>
+          </ul>
+          HTML
+
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

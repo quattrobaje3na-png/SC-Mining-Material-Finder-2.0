@@ -377,14 +377,6 @@
             "chance": 66.7
           },
           {
-            "name": "Savrilium",
-            "chance": 66.7
-          },
-          {
-            "name": "Torite",
-            "chance": 33.3
-          },
-          {
             "name": "Torite",
             "chance": 33.3
           }
@@ -891,10 +883,33 @@
             "chance": 0.7
           }
         ],
-        "FPS": []
+        "ROC": [
+          {
+            "name": "Beradom",
+            "chance": 100.0
+          }
+        ],
+        "Hand": [
+          {
+            "name": "Aphorite",
+            "chance": 58.6
+          },
+          {
+            "name": "Dolivine",
+            "chance": 35.4
+          },
+          {
+            "name": "Hadanite",
+            "chance": 6.0
+          }
+        ]
       },
       "allMats": [
+        "Aphorite",
+        "Beradom",
         "Copper",
+        "Dolivine",
+        "Hadanite",
         "Iron",
         "Stileron",
         "Taranite",
@@ -939,10 +954,33 @@
             "chance": 0.7
           }
         ],
-        "FPS": []
+        "ROC": [
+          {
+            "name": "Glacosite",
+            "chance": 100.0
+          }
+        ],
+        "Hand": [
+          {
+            "name": "Aphorite",
+            "chance": 58.6
+          },
+          {
+            "name": "Dolivine",
+            "chance": 35.4
+          },
+          {
+            "name": "Hadanite",
+            "chance": 6.0
+          }
+        ]
       },
       "allMats": [
+        "Aphorite",
         "Copper",
+        "Dolivine",
+        "Glacosite",
+        "Hadanite",
         "Hephaestanite",
         "Iron",
         "Quartz",
@@ -956,7 +994,6 @@
       "name": "Pyro III (Bloom)",
       "system": "Pyro",
       "methods": {
-        "FPS": [],
         "Ship": [
           {
             "name": "Quartz",
@@ -1002,14 +1039,38 @@
             "name": "Taranite",
             "chance": 0.6
           }
+        ],
+        "ROC": [
+          {
+            "name": "Beradom",
+            "chance": 100.0
+          }
+        ],
+        "Hand": [
+          {
+            "name": "Aphorite",
+            "chance": 61.1
+          },
+          {
+            "name": "Dolivine",
+            "chance": 36.9
+          },
+          {
+            "name": "Janalite",
+            "chance": 2.0
+          }
         ]
       },
       "allMats": [
+        "Aphorite",
+        "Beradom",
         "Bexalite",
         "Borase",
+        "Dolivine",
         "Gold",
         "Hephaestanite",
         "Iron",
+        "Janalite",
         "Laranite",
         "Quartz",
         "Riccite",
@@ -1064,13 +1125,36 @@
             "chance": 0.7
           }
         ],
-        "FPS": []
+        "ROC": [
+          {
+            "name": "Feynmaline",
+            "chance": 100.0
+          }
+        ],
+        "Hand": [
+          {
+            "name": "Aphorite",
+            "chance": 58.6
+          },
+          {
+            "name": "Dolivine",
+            "chance": 35.4
+          },
+          {
+            "name": "Hadanite",
+            "chance": 6.0
+          }
+        ]
       },
       "allMats": [
+        "Aphorite",
         "Bexalite",
         "Borase",
         "Copper",
+        "Dolivine",
+        "Feynmaline",
         "Gold",
+        "Hadanite",
         "Iron",
         "Laranite",
         "Stileron",
@@ -1121,12 +1205,18 @@
             "chance": 2.8
           }
         ],
-        "FPS": []
+        "ROC": [
+          {
+            "name": "Feynmaline",
+            "chance": 100.0
+          }
+        ]
       },
       "allMats": [
         "Bexalite",
         "Borase",
         "Copper",
+        "Feynmaline",
         "Gold",
         "Hephaestanite",
         "Laranite",
@@ -1139,7 +1229,6 @@
       "name": "Pyro V-b (Vatra)",
       "system": "Pyro",
       "methods": {
-        "FPS": [],
         "Ship": [
           {
             "name": "Iron",
@@ -1173,12 +1262,41 @@
             "name": "Laranite",
             "chance": 3.1
           }
+        ],
+        "ROC": [
+          {
+            "name": "Beradom",
+            "chance": 50.0
+          },
+          {
+            "name": "Glacosite",
+            "chance": 50.0
+          }
+        ],
+        "Hand": [
+          {
+            "name": "Aphorite",
+            "chance": 58.6
+          },
+          {
+            "name": "Dolivine",
+            "chance": 35.4
+          },
+          {
+            "name": "Hadanite",
+            "chance": 6.0
+          }
         ]
       },
       "allMats": [
+        "Aphorite",
+        "Beradom",
         "Bexalite",
         "Borase",
+        "Dolivine",
+        "Glacosite",
         "Gold",
+        "Hadanite",
         "Hephaestanite",
         "Iron",
         "Laranite",
@@ -1190,7 +1308,6 @@
       "name": "Pyro V-c (Adir)",
       "system": "Pyro",
       "methods": {
-        "FPS": [],
         "Ship": [
           {
             "name": "Iron",
@@ -1220,12 +1337,36 @@
             "name": "Gold",
             "chance": 6.6
           }
+        ],
+        "ROC": [
+          {
+            "name": "Glacosite",
+            "chance": 100.0
+          }
+        ],
+        "Hand": [
+          {
+            "name": "Aphorite",
+            "chance": 58.6
+          },
+          {
+            "name": "Dolivine",
+            "chance": 35.4
+          },
+          {
+            "name": "Hadanite",
+            "chance": 6.0
+          }
         ]
       },
       "allMats": [
+        "Aphorite",
         "Bexalite",
         "Borase",
+        "Dolivine",
+        "Glacosite",
         "Gold",
+        "Hadanite",
         "Iron",
         "Laranite",
         "Riccite",
@@ -1236,7 +1377,6 @@
       "name": "Pyro V-d (Fairo)",
       "system": "Pyro",
       "methods": {
-        "FPS": [],
         "Ship": [
           {
             "name": "Tungsten",
@@ -1270,12 +1410,36 @@
             "name": "Borase",
             "chance": 5.7
           }
+        ],
+        "ROC": [
+          {
+            "name": "Beradom",
+            "chance": 100.0
+          }
+        ],
+        "Hand": [
+          {
+            "name": "Aphorite",
+            "chance": 58.6
+          },
+          {
+            "name": "Dolivine",
+            "chance": 35.4
+          },
+          {
+            "name": "Hadanite",
+            "chance": 6.0
+          }
         ]
       },
       "allMats": [
+        "Aphorite",
+        "Beradom",
         "Bexalite",
         "Borase",
+        "Dolivine",
         "Gold",
+        "Hadanite",
         "Hephaestanite",
         "Iron",
         "Laranite",
@@ -1287,7 +1451,6 @@
       "name": "Pyro V-e (Fuego)",
       "system": "Pyro",
       "methods": {
-        "FPS": [],
         "Ship": [
           {
             "name": "Aslarite",
@@ -1329,16 +1492,40 @@
             "name": "Gold",
             "chance": 5.2
           }
+        ],
+        "ROC": [
+          {
+            "name": "Feynmaline",
+            "chance": 100.0
+          }
+        ],
+        "Hand": [
+          {
+            "name": "Aphorite",
+            "chance": 61.1
+          },
+          {
+            "name": "Dolivine",
+            "chance": 36.9
+          },
+          {
+            "name": "Janalite",
+            "chance": 2.0
+          }
         ]
       },
       "allMats": [
         "Agricium",
+        "Aphorite",
         "Aslarite",
         "Bexalite",
         "Borase",
+        "Dolivine",
+        "Feynmaline",
         "Gold",
         "Hephaestanite",
         "Iron",
+        "Janalite",
         "Quartz",
         "Silicon",
         "Titanium"
@@ -1348,7 +1535,6 @@
       "name": "Pyro V-f (Vuur)",
       "system": "Pyro",
       "methods": {
-        "FPS": [],
         "Ship": [
           {
             "name": "Hephaestanite",
@@ -1390,14 +1576,38 @@
             "name": "Gold",
             "chance": 5.2
           }
+        ],
+        "ROC": [
+          {
+            "name": "Glacosite",
+            "chance": 100.0
+          }
+        ],
+        "Hand": [
+          {
+            "name": "Aphorite",
+            "chance": 58.6
+          },
+          {
+            "name": "Dolivine",
+            "chance": 35.4
+          },
+          {
+            "name": "Hadanite",
+            "chance": 6.0
+          }
         ]
       },
       "allMats": [
         "Agricium",
+        "Aphorite",
         "Aslarite",
         "Bexalite",
         "Borase",
+        "Dolivine",
+        "Glacosite",
         "Gold",
+        "Hadanite",
         "Hephaestanite",
         "Iron",
         "Quartz",
@@ -1409,7 +1619,6 @@
       "name": "Pyro VI (Terminus)",
       "system": "Pyro",
       "methods": {
-        "FPS": [],
         "Ship": [
           {
             "name": "Agricium",
@@ -1463,15 +1672,39 @@
             "name": "Taranite",
             "chance": 0.6
           }
+        ],
+        "ROC": [
+          {
+            "name": "Feynmaline",
+            "chance": 100.0
+          }
+        ],
+        "Hand": [
+          {
+            "name": "Aphorite",
+            "chance": 61.1
+          },
+          {
+            "name": "Dolivine",
+            "chance": 36.9
+          },
+          {
+            "name": "Janalite",
+            "chance": 2.0
+          }
         ]
       },
       "allMats": [
         "Agricium",
+        "Aphorite",
         "Aslarite",
         "Bexalite",
         "Borase",
         "Copper",
+        "Dolivine",
+        "Feynmaline",
         "Gold",
+        "Janalite",
         "Laranite",
         "Pressurized Ice",
         "Riccite",
@@ -1594,14 +1827,47 @@
             "chance": 0.6
           }
         ],
-        "FPS": []
+        "ROC": [
+          {
+            "name": "Feynmaline",
+            "chance": 64.0
+          },
+          {
+            "name": "Glacosite",
+            "chance": 32.0
+          },
+          {
+            "name": "Beradom",
+            "chance": 4.0
+          }
+        ],
+        "Hand": [
+          {
+            "name": "Aphorite",
+            "chance": 58.6
+          },
+          {
+            "name": "Dolivine",
+            "chance": 35.4
+          },
+          {
+            "name": "Hadanite",
+            "chance": 6.0
+          }
+        ]
       },
       "allMats": [
         "Agricium",
         "Aluminum",
+        "Aphorite",
         "Aslarite",
+        "Beradom",
         "Beryl",
         "Corundum",
+        "Dolivine",
+        "Feynmaline",
+        "Glacosite",
+        "Hadanite",
         "Ouratite",
         "Quantainium",
         "Titanium"
@@ -1657,14 +1923,47 @@
             "chance": 0.6
           }
         ],
-        "FPS": []
+        "ROC": [
+          {
+            "name": "Glacosite",
+            "chance": 59.3
+          },
+          {
+            "name": "Feynmaline",
+            "chance": 37.0
+          },
+          {
+            "name": "Beradom",
+            "chance": 3.7
+          }
+        ],
+        "Hand": [
+          {
+            "name": "Aphorite",
+            "chance": 58.6
+          },
+          {
+            "name": "Dolivine",
+            "chance": 35.4
+          },
+          {
+            "name": "Hadanite",
+            "chance": 6.0
+          }
+        ]
       },
       "allMats": [
         "Agricium",
         "Aluminum",
+        "Aphorite",
+        "Beradom",
         "Beryl",
         "Copper",
         "Corundum",
+        "Dolivine",
+        "Feynmaline",
+        "Glacosite",
+        "Hadanite",
         "Hephaestanite",
         "Ouratite",
         "Quantainium",
@@ -1827,12 +2126,45 @@
             "chance": 0.7
           }
         ],
-        "FPS": []
+        "ROC": [
+          {
+            "name": "Glacosite",
+            "chance": 84.0
+          },
+          {
+            "name": "Beradom",
+            "chance": 12.0
+          },
+          {
+            "name": "Feynmaline",
+            "chance": 4.0
+          }
+        ],
+        "Hand": [
+          {
+            "name": "Aphorite",
+            "chance": 61.1
+          },
+          {
+            "name": "Dolivine",
+            "chance": 36.9
+          },
+          {
+            "name": "Janalite",
+            "chance": 2.0
+          }
+        ]
       },
       "allMats": [
+        "Aphorite",
+        "Beradom",
         "Beryl",
+        "Dolivine",
+        "Feynmaline",
+        "Glacosite",
         "Hephaestanite",
         "Iron",
+        "Janalite",
         "Pressurized Ice",
         "Quantainium",
         "Quartz",
@@ -1881,12 +2213,45 @@
             "chance": 0.6
           }
         ],
-        "FPS": []
+        "ROC": [
+          {
+            "name": "Beradom",
+            "chance": 48.0
+          },
+          {
+            "name": "Feynmaline",
+            "chance": 40.0
+          },
+          {
+            "name": "Glacosite",
+            "chance": 12.0
+          }
+        ],
+        "Hand": [
+          {
+            "name": "Aphorite",
+            "chance": 58.6
+          },
+          {
+            "name": "Dolivine",
+            "chance": 35.4
+          },
+          {
+            "name": "Hadanite",
+            "chance": 6.0
+          }
+        ]
       },
       "allMats": [
         "Agricium",
+        "Aphorite",
         "Aslarite",
+        "Beradom",
         "Beryl",
+        "Dolivine",
+        "Feynmaline",
+        "Glacosite",
+        "Hadanite",
         "Hephaestanite",
         "Quantainium",
         "Quartz",
@@ -1925,11 +2290,44 @@
             "chance": 0.8
           }
         ],
-        "FPS": []
+        "ROC": [
+          {
+            "name": "Glacosite",
+            "chance": 68.0
+          },
+          {
+            "name": "Beradom",
+            "chance": 20.0
+          },
+          {
+            "name": "Feynmaline",
+            "chance": 12.0
+          }
+        ],
+        "Hand": [
+          {
+            "name": "Aphorite",
+            "chance": 61.1
+          },
+          {
+            "name": "Dolivine",
+            "chance": 36.9
+          },
+          {
+            "name": "Janalite",
+            "chance": 2.0
+          }
+        ]
       },
       "allMats": [
+        "Aphorite",
+        "Beradom",
         "Beryl",
         "Copper",
+        "Dolivine",
+        "Feynmaline",
+        "Glacosite",
+        "Janalite",
         "Pressurized Ice",
         "Quantainium",
         "Taranite",
@@ -1974,12 +2372,45 @@
             "chance": 0.5
           }
         ],
-        "FPS": []
+        "ROC": [
+          {
+            "name": "Beradom",
+            "chance": 56.0
+          },
+          {
+            "name": "Glacosite",
+            "chance": 32.0
+          },
+          {
+            "name": "Feynmaline",
+            "chance": 12.0
+          }
+        ],
+        "Hand": [
+          {
+            "name": "Aphorite",
+            "chance": 58.6
+          },
+          {
+            "name": "Dolivine",
+            "chance": 35.4
+          },
+          {
+            "name": "Hadanite",
+            "chance": 6.0
+          }
+        ]
       },
       "allMats": [
         "Agricium",
+        "Aphorite",
         "Aslarite",
+        "Beradom",
         "Beryl",
+        "Dolivine",
+        "Feynmaline",
+        "Glacosite",
+        "Hadanite",
         "Hephaestanite",
         "Quantainium",
         "Quartz",
@@ -2017,11 +2448,39 @@
             "chance": 0.8
           }
         ],
-        "FPS": []
+        "ROC": [
+          {
+            "name": "Glacosite",
+            "chance": 88.0
+          },
+          {
+            "name": "Beradom",
+            "chance": 12.0
+          }
+        ],
+        "Hand": [
+          {
+            "name": "Aphorite",
+            "chance": 61.1
+          },
+          {
+            "name": "Dolivine",
+            "chance": 36.9
+          },
+          {
+            "name": "Janalite",
+            "chance": 2.0
+          }
+        ]
       },
       "allMats": [
+        "Aphorite",
+        "Beradom",
         "Beryl",
         "Copper",
+        "Dolivine",
+        "Glacosite",
+        "Janalite",
         "Pressurized Ice",
         "Quantainium",
         "Taranite",
@@ -2066,14 +2525,47 @@
             "chance": 0.7
           }
         ],
-        "FPS": []
+        "ROC": [
+          {
+            "name": "Beradom",
+            "chance": 64.0
+          },
+          {
+            "name": "Glacosite",
+            "chance": 32.0
+          },
+          {
+            "name": "Feynmaline",
+            "chance": 4.0
+          }
+        ],
+        "Hand": [
+          {
+            "name": "Aphorite",
+            "chance": 58.6
+          },
+          {
+            "name": "Dolivine",
+            "chance": 35.4
+          },
+          {
+            "name": "Hadanite",
+            "chance": 6.0
+          }
+        ]
       },
       "allMats": [
         "Agricium",
         "Aluminum",
+        "Aphorite",
+        "Beradom",
         "Beryl",
         "Copper",
         "Corundum",
+        "Dolivine",
+        "Feynmaline",
+        "Glacosite",
+        "Hadanite",
         "Ouratite",
         "Quantainium",
         "Tin"
@@ -2121,15 +2613,48 @@
             "chance": 0.6
           }
         ],
-        "FPS": []
+        "ROC": [
+          {
+            "name": "Feynmaline",
+            "chance": 52.0
+          },
+          {
+            "name": "Glacosite",
+            "chance": 32.0
+          },
+          {
+            "name": "Beradom",
+            "chance": 16.0
+          }
+        ],
+        "Hand": [
+          {
+            "name": "Aphorite",
+            "chance": 58.6
+          },
+          {
+            "name": "Dolivine",
+            "chance": 35.4
+          },
+          {
+            "name": "Hadanite",
+            "chance": 6.0
+          }
+        ]
       },
       "allMats": [
         "Agricium",
         "Aluminum",
+        "Aphorite",
         "Aslarite",
+        "Beradom",
         "Beryl",
         "Copper",
         "Corundum",
+        "Dolivine",
+        "Feynmaline",
+        "Glacosite",
+        "Hadanite",
         "Quantainium",
         "Tin",
         "Titanium"
@@ -2589,12 +3114,45 @@
             "chance": 0.8
           }
         ],
-        "FPS": []
+        "ROC": [
+          {
+            "name": "Beradom",
+            "chance": 48.0
+          },
+          {
+            "name": "Glacosite",
+            "chance": 48.0
+          },
+          {
+            "name": "Feynmaline",
+            "chance": 4.0
+          }
+        ],
+        "Hand": [
+          {
+            "name": "Aphorite",
+            "chance": 61.1
+          },
+          {
+            "name": "Dolivine",
+            "chance": 36.9
+          },
+          {
+            "name": "Janalite",
+            "chance": 2.0
+          }
+        ]
       },
       "allMats": [
+        "Aphorite",
+        "Beradom",
         "Beryl",
         "Copper",
+        "Dolivine",
+        "Feynmaline",
+        "Glacosite",
         "Iron",
+        "Janalite",
         "Laranite",
         "Quantainium",
         "Tin",
@@ -2639,14 +3197,47 @@
             "chance": 0.7
           }
         ],
-        "FPS": []
+        "ROC": [
+          {
+            "name": "Glacosite",
+            "chance": 69.2
+          },
+          {
+            "name": "Feynmaline",
+            "chance": 26.9
+          },
+          {
+            "name": "Beradom",
+            "chance": 3.8
+          }
+        ],
+        "Hand": [
+          {
+            "name": "Aphorite",
+            "chance": 58.6
+          },
+          {
+            "name": "Dolivine",
+            "chance": 35.4
+          },
+          {
+            "name": "Hadanite",
+            "chance": 6.0
+          }
+        ]
       },
       "allMats": [
         "Agricium",
         "Aluminum",
+        "Aphorite",
         "Aslarite",
+        "Beradom",
         "Beryl",
         "Corundum",
+        "Dolivine",
+        "Feynmaline",
+        "Glacosite",
+        "Hadanite",
         "Iron",
         "Quantainium",
         "Titanium"
@@ -2686,12 +3277,45 @@
             "chance": 1.6
           }
         ],
-        "FPS": []
+        "ROC": [
+          {
+            "name": "Beradom",
+            "chance": 56.0
+          },
+          {
+            "name": "Glacosite",
+            "chance": 40.0
+          },
+          {
+            "name": "Feynmaline",
+            "chance": 4.0
+          }
+        ],
+        "Hand": [
+          {
+            "name": "Aphorite",
+            "chance": 61.1
+          },
+          {
+            "name": "Dolivine",
+            "chance": 36.9
+          },
+          {
+            "name": "Janalite",
+            "chance": 2.0
+          }
+        ]
       },
       "allMats": [
+        "Aphorite",
+        "Beradom",
         "Beryl",
         "Copper",
+        "Dolivine",
+        "Feynmaline",
+        "Glacosite",
         "Iron",
+        "Janalite",
         "Laranite",
         "Quantainium",
         "Tin",
@@ -2740,12 +3364,45 @@
             "chance": 0.6
           }
         ],
-        "FPS": []
+        "ROC": [
+          {
+            "name": "Glacosite",
+            "chance": 68.0
+          },
+          {
+            "name": "Beradom",
+            "chance": 24.0
+          },
+          {
+            "name": "Feynmaline",
+            "chance": 8.0
+          }
+        ],
+        "Hand": [
+          {
+            "name": "Aphorite",
+            "chance": 58.6
+          },
+          {
+            "name": "Dolivine",
+            "chance": 35.4
+          },
+          {
+            "name": "Hadanite",
+            "chance": 6.0
+          }
+        ]
       },
       "allMats": [
         "Agricium",
+        "Aphorite",
         "Aslarite",
+        "Beradom",
         "Beryl",
+        "Dolivine",
+        "Feynmaline",
+        "Glacosite",
+        "Hadanite",
         "Hephaestanite",
         "Quantainium",
         "Quartz",
@@ -2838,12 +3495,45 @@
             "chance": 0.7
           }
         ],
-        "FPS": []
+        "ROC": [
+          {
+            "name": "Glacosite",
+            "chance": 68.0
+          },
+          {
+            "name": "Beradom",
+            "chance": 28.0
+          },
+          {
+            "name": "Feynmaline",
+            "chance": 4.0
+          }
+        ],
+        "Hand": [
+          {
+            "name": "Aphorite",
+            "chance": 61.1
+          },
+          {
+            "name": "Dolivine",
+            "chance": 36.9
+          },
+          {
+            "name": "Janalite",
+            "chance": 2.0
+          }
+        ]
       },
       "allMats": [
+        "Aphorite",
+        "Beradom",
         "Beryl",
+        "Dolivine",
+        "Feynmaline",
+        "Glacosite",
         "Hephaestanite",
         "Iron",
+        "Janalite",
         "Pressurized Ice",
         "Quantainium",
         "Quartz",
@@ -2854,15 +3544,22 @@
   "materials": [
     "Agricium",
     "Aluminum",
+    "Aphorite",
     "Aslarite",
+    "Beradom",
     "Beryl",
     "Bexalite",
     "Borase",
     "Copper",
     "Corundum",
+    "Dolivine",
+    "Feynmaline",
+    "Glacosite",
     "Gold",
+    "Hadanite",
     "Hephaestanite",
     "Iron",
+    "Janalite",
     "Laranite",
     "Lindinium",
     "Ouratite",

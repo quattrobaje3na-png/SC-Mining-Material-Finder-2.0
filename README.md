@@ -1,6 +1,6 @@
-The ultimate 4.9.X intel tool for the elite Star Citizen miner. 
+The ultimate 4.10.X intel tool for the elite Star Citizen miner. 
 
-Currently updated to be in line with 4.9 changes.
+Currently updated to be in line with 4.10 changes.
 
 The STAR CITIZEN MINING MATERIAL FINDER 2.0 has been completely rebuilt and is updated for 4.9 from the ground up with new features. 
 

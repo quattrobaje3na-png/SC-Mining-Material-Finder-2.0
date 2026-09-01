@@ -1,5 +1,5 @@
 {
-  "version": "4.10.12344265",
+  "version": "4.10.191.2241",
   "signatures": [
     {
       "name": "Agricium",
@@ -367,6 +367,26 @@
     }
   ],
   "locations": [
+    {
+      "name": "Breaker Stations Interior",
+      "system": "Nyx",
+      "methods": {
+        "Hand": [
+          {
+            "name": "Aphorite",
+            "chance": 75.0
+          },
+          {
+            "name": "Sadaryx",
+            "chance": 25.0
+          }
+        ]
+      },
+      "allMats": [
+        "Aphorite",
+        "Sadaryx"
+      ]
+    },
     {
       "name": "Breaker Stations Large Geode",
       "system": "Nyx",
@@ -1210,14 +1230,31 @@
             "name": "Feynmaline",
             "chance": 100.0
           }
+        ],
+        "Hand": [
+          {
+            "name": "Aphorite",
+            "chance": 58.6
+          },
+          {
+            "name": "Dolivine",
+            "chance": 35.4
+          },
+          {
+            "name": "Hadanite",
+            "chance": 6.0
+          }
         ]
       },
       "allMats": [
+        "Aphorite",
         "Bexalite",
         "Borase",
         "Copper",
+        "Dolivine",
         "Feynmaline",
         "Gold",
+        "Hadanite",
         "Hephaestanite",
         "Laranite",
         "Riccite",
@@ -1925,16 +1962,16 @@
         ],
         "ROC": [
           {
-            "name": "Glacosite",
-            "chance": 59.3
+            "name": "Feynmaline",
+            "chance": 52.0
           },
           {
-            "name": "Feynmaline",
-            "chance": 37.0
+            "name": "Glacosite",
+            "chance": 32.0
           },
           {
             "name": "Beradom",
-            "chance": 3.7
+            "chance": 16.0
           }
         ],
         "Hand": [
@@ -2216,14 +2253,14 @@
         "ROC": [
           {
             "name": "Beradom",
-            "chance": 48.0
-          },
-          {
-            "name": "Feynmaline",
-            "chance": 40.0
+            "chance": 56.0
           },
           {
             "name": "Glacosite",
+            "chance": 32.0
+          },
+          {
+            "name": "Feynmaline",
             "chance": 12.0
           }
         ],
@@ -2375,14 +2412,14 @@
         "ROC": [
           {
             "name": "Beradom",
-            "chance": 56.0
-          },
-          {
-            "name": "Glacosite",
-            "chance": 32.0
+            "chance": 48.0
           },
           {
             "name": "Feynmaline",
+            "chance": 40.0
+          },
+          {
+            "name": "Glacosite",
             "chance": 12.0
           }
         ],
@@ -2485,6 +2522,62 @@
         "Quantainium",
         "Taranite",
         "Tin"
+      ]
+    },
+    {
+      "name": "Hathor Caves",
+      "system": "Stanton",
+      "methods": {
+        "Hand": [
+          {
+            "name": "Aphorite",
+            "chance": 30.2
+          },
+          {
+            "name": "Jaclium",
+            "chance": 19.5
+          },
+          {
+            "name": "Dolivine",
+            "chance": 18.3
+          },
+          {
+            "name": "Saldynium",
+            "chance": 15.8
+          },
+          {
+            "name": "Carinite",
+            "chance": 11.6
+          },
+          {
+            "name": "Hadanite",
+            "chance": 3.2
+          },
+          {
+            "name": "Janalite",
+            "chance": 1.1
+          },
+          {
+            "name": "Carinitepure",
+            "chance": 0.5
+          }
+        ],
+        "ROC": [
+          {
+            "name": "Carinite",
+            "chance": 100.0
+          }
+        ]
+      },
+      "allMats": [
+        "Aphorite",
+        "Carinite",
+        "Carinitepure",
+        "Dolivine",
+        "Hadanite",
+        "Jaclium",
+        "Janalite",
+        "Saldynium"
       ]
     },
     {
@@ -2615,16 +2708,16 @@
         ],
         "ROC": [
           {
-            "name": "Feynmaline",
-            "chance": 52.0
+            "name": "Glacosite",
+            "chance": 69.2
           },
           {
-            "name": "Glacosite",
-            "chance": 32.0
+            "name": "Feynmaline",
+            "chance": 26.9
           },
           {
             "name": "Beradom",
-            "chance": 16.0
+            "chance": 3.8
           }
         ],
         "Hand": [
@@ -3200,15 +3293,15 @@
         "ROC": [
           {
             "name": "Glacosite",
-            "chance": 69.2
+            "chance": 59.3
           },
           {
             "name": "Feynmaline",
-            "chance": 26.9
+            "chance": 37.0
           },
           {
             "name": "Beradom",
-            "chance": 3.8
+            "chance": 3.7
           }
         ],
         "Hand": [
@@ -3550,6 +3643,8 @@
     "Beryl",
     "Bexalite",
     "Borase",
+    "Carinite",
+    "Carinitepure",
     "Copper",
     "Corundum",
     "Dolivine",
@@ -3559,6 +3654,7 @@
     "Hadanite",
     "Hephaestanite",
     "Iron",
+    "Jaclium",
     "Janalite",
     "Laranite",
     "Lindinium",
@@ -3567,6 +3663,8 @@
     "Quantainium",
     "Quartz",
     "Riccite",
+    "Sadaryx",
+    "Saldynium",
     "Savrilium",
     "Silicon",
     "Stileron",

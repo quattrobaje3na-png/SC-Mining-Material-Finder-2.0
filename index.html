@@ -3,12 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport">
-    <!-- This page is an IFRAME inside
-         citizen-starter-guide.com/star-citizen-mining-material-finder/.
-         Left indexable it competes with that page for the same queries while
-         carrying none of its content, and it self-canonicalises with a better
-         title, so it was winning. `follow` still lets its links pass through. -->
-    <meta name="robots" content="noindex, follow">
 
     <title>Star Citizen 4.10 Mining Finder | Hadanite, Ore & Yields</title>
     <meta content="Star Citizen 4.10 mining tool: filter Stanton, Pyro & Nyx locations by material, find the best Hadanite & Quantainium nodes, and scan RS signatures." name="description">
@@ -16,11 +10,11 @@
 
     <meta content="website" property="og:type">
     <meta content="Star Citizen 4.10 Mining Finder | Hadanite, Ore & Yields" property="og:title">
-    <meta content="Free tool for finding the best Star Citizen mining locations by material, with live Ship/ROC/Hand drop percentages and an RS signature scanner." property="og:description">
+    <meta content="Free tool for finding the best Star Citizen mining locations by material, with live Ship/Vehicle/Hand drop percentages and an RS signature scanner." property="og:description">
     <meta content="https://quattrobaje3na-png.github.io/SC-Mining-Material-Finder-2.0/" property="og:url">
     <meta content="summary" name="twitter:card">
     <meta content="Star Citizen 4.10 Mining Finder | Hadanite, Ore & Yields" name="twitter:title">
-    <meta content="Free tool for finding the best Star Citizen mining locations by material, with live Ship/ROC/Hand drop percentages and an RS signature scanner." name="twitter:description">
+    <meta content="Free tool for finding the best Star Citizen mining locations by material, with live Ship/Vehicle/Hand drop percentages and an RS signature scanner." name="twitter:description">
 
     <script type="application/ld+json">
     {
@@ -40,7 +34,7 @@
                 "name": "Where is the best place to mine Hadanite in Star Citizen?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "As of Patch 4.10, Aberdeen — the moon orbiting Crusader in Stanton — has the richest known concentration of Hadanite, with dense surface rock clusters packed close together that make it one of the strongest ROC mining loops in the game. Use the system and material filters above to confirm the current highest-percentage Hadanite nodes, since drop tables can shift between patches."
+                    "text": "Hadanite is hand-mined, not vehicle-mined, and it sits at a flat 6% wherever it appears — sixteen locations across Stanton and Pyro, including Aberdeen and Ita around Hurston, Cellin, Daymar and Yela around Crusader, and most of the Pyro bodies. Because the chance is the same everywhere, the best Hadanite spot is simply the closest one to you: filter for it above and pick by travel time, not by percentage."
                 }
             },
             {
@@ -48,7 +42,7 @@
                 "name": "Where do I find Quantainium in Patch 4.10?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Quantainium can be found via Ship and ROC mining in select asteroid clusters and surface deposits across both Stanton and Pyro — filter for it above to find the best current node before it decays."
+                    "text": "Quantainium is ship-mined only — it appears in no vehicle or hand deposit — and it is rare wherever it shows up, peaking at 1.7% around Euterpe and Clio and never reaching 2% anywhere. Filter for it above to find the closest node, and plan the run before you scoop: it decays from the moment you extract it."
                 }
             },
             {
@@ -304,21 +298,7 @@ body::after{content:'';position:fixed;inset:0;background:repeating-linear-gradie
 .site-footer a{color:var(--accent)}
 .site-footer h2{font-size:1rem;color:var(--text-main);margin:0 0 10px 0}
 .site-footer ul{list-style:none;padding:0;margin:0 0 16px 0;display:flex;flex-wrap:wrap;gap:15px}
-.site-footer .legal{margin-top:16px;padding-top:16px;border-top:1px solid var(--border);font-size:.78rem}
-.trip-chips { flex-wrap: wrap; gap: 6px; margin-top: 8px; }
-.trip-chip { font-size: 0.78rem; padding: 5px 10px; }
-.trip-note { color: var(--text-muted); font-size: 0.82rem; line-height: 1.6; margin: 14px 0; }
-.trip-stop { border: 1px solid rgba(255,179,0,0.25); border-left: 3px solid #FFB300; border-radius: 6px; padding: 12px 14px; margin-bottom: 10px; background: rgba(255,179,0,0.03); }
-.trip-stop-head { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 8px; }
-.trip-step { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #FFB300; }
-.trip-stop-head strong { font-size: 1rem; }
-.trip-sys, .trip-dist { font-size: 0.72rem; color: var(--text-muted); border: 1px solid rgba(255,255,255,0.15); border-radius: 3px; padding: 1px 6px; }
-.trip-mat { display: flex; justify-content: space-between; gap: 12px; font-size: 0.85rem; padding: 3px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
-.trip-mat:last-child { border-bottom: 0; }
-.trip-poor em { color: #ff8c00; font-style: normal; font-size: 0.72rem; }
-.trip-poor { opacity: 0.85; }
-.trip-num { color: var(--text-muted); font-variant-numeric: tabular-nums; white-space: nowrap; }
-</style>
+.site-footer .legal{margin-top:16px;padding-top:16px;border-top:1px solid var(--border);font-size:.78rem}</style>
 </head>
 <body>
 
@@ -369,7 +349,6 @@ body::after{content:'';position:fixed;inset:0;background:repeating-linear-gradie
                     <div class="tab-bar" aria-label="Mining tool views" role="tablist">
                         <button aria-selected="true" class="tab-btn active" id="tab-locs" onclick='switchTab("locs")' role="tab">Locations & Percentages</button>
                         <button aria-selected="false" class="tab-btn" id="tab-scan" onclick='switchTab("scan")' role="tab">Signature Checker</button>
-                        <button aria-selected="false" class="tab-btn" id="tab-trip" onclick='switchTab("trip")' role="tab">Mining Trip Planner</button>
                         <button aria-selected="false" class="tab-btn" id="tab-refine" onclick='switchTab("refine")' role="tab">Refining Methods</button>
                         <button aria-selected="false" class="tab-btn" id="tab-gear" onclick='switchTab("gear")' role="tab">Loadout & Gear</button>
                     </div>
@@ -380,7 +359,7 @@ body::after{content:'';position:fixed;inset:0;background:repeating-linear-gradie
             <div class="advisory-box" id="pyro-protip-box">
                 <div class="advisory-icon" aria-hidden="true">⚠️</div>
                 <div class="advisory-text">
-                    <strong>PRO TIP:</strong> Focus your mining operations in <strong>Pyro</strong> &mdash; its materials are far higher quality on average than what is present in Stanton &mdash; and prioritize <strong>Hadanite</strong> ROC loops on Aberdeen if you're grinding aUEC right now. See the breakdown below for why.
+                    <strong>PRO TIP:</strong> Focus your mining operations in <strong>Pyro</strong> &mdash; its materials are far higher quality on average than what is present in Stanton &mdash; and run <strong>vehicle</strong> loops on the Pyro bodies, where a single material fills the whole deposit table, if you're grinding aUEC right now. See the breakdown below for why.
                     <span>Note: Sadaryx & Savrilium can currently largerly be found at Rock Breaker Contract locations, but can be mined around Nyx but its relatively rare. Need help? Check out the <a href="https://citizen-starter-guide.com/rock-breaker-interactive-guide/" rel="noopener" target="_blank" style="color:var(--accent);text-decoration:underline">Rock Breaker Interactive Guide on Citizen Starter Guide</a>.</span>
                 </div>
             </div>
@@ -393,17 +372,17 @@ body::after{content:'';position:fixed;inset:0;background:repeating-linear-gradie
 
     <section aria-labelledby="how-to-heading" class="content-section">
         <h2 id="how-to-heading">How to Use the Mining Material Finder</h2>
-        <p>Start on the Locations & Percentages tab and choose a system &mdash; Stanton, Pyro, or Nyx &mdash; using the tabs above the location grid. Select up to three materials you need from the dropdown filters; the tool instantly narrows the list to locations that contain all of them and sorts the results by combined yield, so the best spot lands at the top. Each location card breaks results down by mining method (Ship, ROC, or Hand) so you know exactly what equipment to bring before you fly out. Prefer scanning in the field instead? Switch to the Signature Checker tab and enter the raw RS reading from your ship's HUD &mdash; the tool runs the cluster math instantly and tells you the material, rarity tier, and node count before you commit to a burn. The underlying data is rebuilt from the game's files for every major mining patch, including 4.10.</p>
+        <p>Start on the Locations & Percentages tab and choose a system &mdash; Stanton, Pyro, or Nyx &mdash; using the tabs above the location grid. Select up to three materials you need from the dropdown filters; the tool instantly narrows the list to locations that contain all of them and sorts the results by combined yield, so the best spot lands at the top. Each location card breaks results down by mining method (Ship, Vehicle — ROC and other ground vehicles — or Hand) so you know exactly what equipment to bring before you fly out. Prefer scanning in the field instead? Switch to the Signature Checker tab and enter the raw RS reading from your ship's HUD &mdash; the tool runs the cluster math instantly and tells you the material, rarity tier, and node count before you commit to a burn. The underlying data is rebuilt from the game's files for every major mining patch, including 4.10.</p>
     </section>
 
     <section aria-labelledby="percentages-heading" class="content-section">
-        <h2 id="percentages-heading">How to Read Ship, ROC, and Hand Mining Percentages</h2>
-        <p>Every location card lists three potential mining methods &mdash; Ship, ROC, and Hand &mdash; and each material under those headings shows a percentage. That number is not how much of the material exists at the location; it's the statistical likelihood of encountering that specific resource when you scan or break open a node using that method at that location. A material listed at 35% under Ship Mining means roughly one in three ship-mineable deposits you crack open there will yield that resource, while the remaining nodes are made up of the other materials listed in that same group. Because the three methods pull from separate node pools, a location can have a high Quantainium chance via Ship mining and a completely different profile via Hand or ROC mining. Always check the method that matches the equipment you're flying with &mdash; a location with great Ship percentages won't help you if you're running a ROC on the surface.</p>
+        <h2 id="percentages-heading">How to Read Ship, Vehicle, and Hand Mining Percentages</h2>
+        <p>Every location card lists three potential mining methods &mdash; Ship, Vehicle (ROC and other ground vehicles), and Hand &mdash; and each material under those headings shows a percentage. That number is not how much of the material exists at the location; it's the statistical likelihood of encountering that specific resource when you scan or break open a node using that method at that location. A material listed at 35% under Ship Mining means roughly one in three ship-mineable deposits you crack open there will yield that resource, while the remaining nodes are made up of the other materials listed in that same group. Because the three methods pull from separate node pools, a location can have a high Quantainium chance via Ship mining and a completely different profile via Hand or vehicle mining. Always check the method that matches the equipment you're flying with &mdash; a location with great Ship percentages won't help you if you're running a ROC on the surface.</p>
     </section>
 
     <section aria-labelledby="hadanite-heading" class="content-section">
         <h2 id="hadanite-heading">Best Locations for Hadanite, Quantainium, and Rare Ore in 4.10</h2>
-        <p>If you're optimizing a mining loop for Star Citizen 4.10, Hadanite belongs at the top of the list. This pink-purple mineral is one of the strongest targets for ROC mining loops right now, and its richest known concentration sits on Aberdeen, the moon orbiting Crusader in Stanton, where dense surface clusters let a ROC pilot chain nodes with minimal travel time. Quantainium remains the headline Ship and ROC target across both systems, though it decays fast after extraction, so route planning matters as much as the percentage &mdash; filter for it above to find a high-yield deposit close to a refinery. Rarer ores like Taranite, Bexalite, and Riccite tend to cluster in Pyro's less-traveled fields, rewarding pilots willing to fly further for a heavier payout per scoop. Use the material filters above rather than a static guide, since exact percentages and hot spots shift between patches.</p>
+        <p>If you're optimizing a mining loop for Star Citizen 4.10, start by matching the material to the method, because most of them only exist under one. Vehicle mining is the cleanest case: every Pyro body with a ground deposit table is a single material at 100% &mdash; Feynmaline on Ignis, Fuego, Terminus and Pyro IV, Glacosite on Monox, Adir and Vuur, Beradom on Pyro I, Bloom and Fairo &mdash; so a ROC or ATLS run there never wastes a scan. In Stanton the best ground deposit is Aberdeen, the moon orbiting Hurston, at 64% Feynmaline. Hadanite is hand-only and a flat 6% everywhere it appears, so pick the closest of the sixteen sites rather than hunting a better percentage. Quantainium is ship-only and never above 1.7%, and it decays from the moment you extract it, so route planning matters more than the number &mdash; filter for it above and find one close to a refinery. Rarer ores like Taranite, Bexalite, and Riccite tend to cluster in Pyro's less-traveled fields, rewarding pilots willing to fly further for a heavier payout per scoop. Use the material filters above rather than a static guide, since exact percentages and hot spots shift between patches.</p>
     </section>
 
     <section aria-labelledby="system-breakdown-heading" class="content-section">
@@ -426,12 +405,12 @@ body::after{content:'';position:fixed;inset:0;background:repeating-linear-gradie
 
         <div class="faq-item">
             <h3>Where is the best place to mine Hadanite in Star Citizen?</h3>
-            <p>As of Patch 4.10, Aberdeen &mdash; the moon orbiting Crusader in Stanton &mdash; has the richest known concentration of Hadanite, with dense surface rock clusters packed close together that make it one of the strongest ROC mining loops in the game. Use the system and material filters above to confirm the current highest-percentage Hadanite nodes, since drop tables can shift between patches.</p>
+            <p>Hadanite is hand-mined, not vehicle-mined, and it sits at a flat 6% wherever it appears &mdash; sixteen locations across Stanton and Pyro, including Aberdeen and Ita around Hurston, Cellin, Daymar and Yela around Crusader, and most of the Pyro bodies. Because the chance is the same everywhere, the best Hadanite spot is simply the closest one to you: filter for it above and pick by travel time, not by percentage.</p>
         </div>
 
         <div class="faq-item">
             <h3>Where do I find Quantainium in Patch 4.10?</h3>
-            <p>Quantainium can be found via Ship and ROC mining in select asteroid clusters and surface deposits across both Stanton and Pyro &mdash; filter for it above to find the best current node before it decays.</p>
+            <p>Quantainium is ship-mined only &mdash; it appears in no vehicle or hand deposit &mdash; and it is rare wherever it shows up, peaking at 1.7% around Euterpe and Clio and never reaching 2% anywhere. Filter for it above to find the closest node, and plan the run before you scoop: it decays from the moment you extract it.</p>
         </div>
 
         <div class="faq-item">
@@ -441,7 +420,7 @@ body::after{content:'';position:fixed;inset:0;background:repeating-linear-gradie
 
         <div class="faq-item">
             <h3>Where can I find Sadaryx and Savrilium?</h3>
-            <p>Sadaryx and Savrilium are currently exclusive to Rock Breaker Contract locations and are not available through standard Ship, ROC, or Hand mining elsewhere in the verse. Check active Rock Breaker contracts specifically if you need either material.</p>
+            <p>Sadaryx really is exclusive to Rock Breaker Contract sites — hand mining at the Breaker Stations interior, at 25%. Savrilium is not: it is 66.7% at the Breaker Stations Large Geode, but it also turns up at 1.5% in both the Keeger Belt and the Glaciem Ring, so it can be ship-mined in Nyx without a contract. Check active Rock Breaker contracts first for either one — the odds there are far better.</p>
         </div>
 
         <div class="faq-item">
@@ -464,7 +443,7 @@ body::after{content:'';position:fixed;inset:0;background:repeating-linear-gradie
         <p class="legal">Designed and maintained by CMDR Quattro. Fly safe. Mine deep.</p>
     </footer>
 
-    <script>const COMPILED_JSON_FILE="mining_compiled.json";let SIGNATURE_DB=[],FLAT_LOCS=[],SORTED_MATS=[],activeTab="locs",sigSearchQuery="",locSearchQuery="",sigMethodFilter="All",locFilters=["","",""],locSystemFilter="All",refineQualityFilter="All";const EQUIPMENT_JSON_FILE="mining_equipment.json",SHOPPING_LIST_KEY="sc_mining_shopping_list"
+    <script>const COMPILED_JSON_FILE="mining_compiled.json";const METHOD_LABEL={Ship:"Ship",ROC:"Vehicle",Hand:"Hand"},methodLabel=e=>METHOD_LABEL[e]||e;let SIGNATURE_DB=[],FLAT_LOCS=[],SORTED_MATS=[],activeTab="locs",sigSearchQuery="",locSearchQuery="",sigMethodFilter="All",locFilters=["","",""],locSystemFilter="All",refineQualityFilter="All";const EQUIPMENT_JSON_FILE="mining_equipment.json",SHOPPING_LIST_KEY="sc_mining_shopping_list"
 ;let EQUIP_ITEMS=[],EQUIP_BY_ID={},equipCategoryFilter="All",equipSearchQuery="",shoppingList=new Map;try{const e=JSON.parse(localStorage.getItem(SHOPPING_LIST_KEY)||"[]");if(Array.isArray(e)){const t=e.map(e=>Array.isArray(e)?e:[e,1]);shoppingList=new Map(t)}}catch(e){}const PLAYER_LOCATION_KEY="sc_mining_player_location";let playerLocation={system:"",region:""};try{
 const e=JSON.parse(localStorage.getItem(PLAYER_LOCATION_KEY)||"null");e&&e.system&&e.region&&(playerLocation=e)}catch(e){}function savePlayerLocation(){localStorage.setItem(PLAYER_LOCATION_KEY,JSON.stringify(playerLocation))}const REFINING_METHODS=[{name:"Dinyx Solventation",speedTier:"Slow",quality:"Efficient",speed:"Very Low",cost:"Low",yieldLevel:"High"},{name:"Thermonatic Deposition",
 speedTier:"Slow",quality:"Normal",speed:"Low",cost:"Low",yieldLevel:"Moderate"},{name:"Kazen Winnowing",speedTier:"Slow",quality:"Wasteful",speed:"Moderate",cost:"Low",yieldLevel:"Low"},{name:"Ferron Exchange",speedTier:"Normal",quality:"Efficient",speed:"Low",cost:"Moderate",yieldLevel:"High"},{name:"Electrostarolysis",speedTier:"Normal",quality:"Normal",speed:"Moderate",cost:"Moderate",
@@ -476,248 +455,8 @@ const e=await fetch(COMPILED_JSON_FILE);if(!e.ok)throw new Error(`HTTP error! st
 SIGNATURE_DB=(t.signatures||[]).map(e=>({...e,searchHay:[e.name,e.method,e.tier,e.note].filter(Boolean).join(" ").toLowerCase()})),populateDatalists(),document.getElementById("loading-screen").classList.remove("active"),document.getElementById("app-screen").classList.add("active"),renderUI()}catch(e){console.error("Fetch error:",e),
 document.getElementById("error-output").innerHTML=`\n                    <div class="error-msg">\n                        Failed to load <code>${COMPILED_JSON_FILE}</code>.<br><br>\n                        Error details: ${e.message}\n                    </div>\n                `,document.querySelector(".spinner").style.display="none"}}function switchTab(e){activeTab=e,
 document.getElementById("tab-locs").classList.toggle("active","locs"===e),document.getElementById("tab-locs").setAttribute("aria-selected","locs"===e),document.getElementById("tab-scan").classList.toggle("active","scan"===e),document.getElementById("tab-scan").setAttribute("aria-selected","scan"===e),document.getElementById("tab-refine").classList.toggle("active","refine"===e),
-document.getElementById("tab-refine").setAttribute("aria-selected","refine"===e),document.getElementById("tab-gear").classList.toggle("active","gear"===e),document.getElementById("tab-gear").setAttribute("aria-selected","gear"===e),
-document.getElementById("tab-trip").classList.toggle("active","trip"===e),document.getElementById("tab-trip").setAttribute("aria-selected","trip"===e),renderUI()}
-/* ══ MINING TRIP PLANNER ══════════════════════════════════════════════════
-   Pick materials, pick where you are, get the stops that cover them.
-
-   mining_compiled.json has a system per location and no coordinates, so real
-   distance cannot be computed from it. The names do encode a hierarchy though,
-   and that is what actually matters to a player: two Hurston moons are a
-   minute apart, Hurston to microTech is a quantum trip. Proximity is scored in
-   four bands and the panel says as much rather than implying a distance.
-   ═══════════════════════════════════════════════════════════════════════ */
-var TRIP_PARENT = {
-    "Aberdeen": "Hurston", "Arial": "Hurston", "Ita": "Hurston", "Magda": "Hurston",
-    "Hurston": "Hurston",
-    "Cellin": "Crusader", "Daymar": "Crusader", "Yela": "Crusader",
-    "Yela Asteroid Belt": "Crusader",
-    "Lyria": "ArcCorp", "Wala": "ArcCorp",
-    "Calliope": "microTech", "Clio": "microTech", "Euterpe": "microTech",
-    "microTech": "microTech",
-    "Aaron Halo": "Stanton Belt",
-    "Asteroid Cluster (Low Yield)": "Stanton Belt",
-    "Asteroid Cluster (Medium Yield)": "Stanton Belt",
-    "Lagrange A": "Stanton Lagrange", "Lagrange B": "Stanton Lagrange",
-    "Lagrange C": "Stanton Lagrange", "Lagrange D": "Stanton Lagrange",
-    "Lagrange E": "Stanton Lagrange", "Lagrange F": "Stanton Lagrange",
-    "Lagrange G": "Stanton Lagrange", "Lagrange (Occupied)": "Stanton Lagrange",
-    "Pyro V-a (Ignis)": "Pyro V", "Pyro V-b (Vatra)": "Pyro V",
-    "Pyro V-c (Adir)": "Pyro V", "Pyro V-d (Fairo)": "Pyro V",
-    "Pyro V-e (Fuego)": "Pyro V", "Pyro V-f (Vuur)": "Pyro V",
-    "Pyro Belt (Cool 1)": "Pyro Belt", "Pyro Belt (Cool 2)": "Pyro Belt",
-    "Pyro Belt (Warm 1)": "Pyro Belt", "Pyro Belt (Warm 2)": "Pyro Belt",
-    "Pyro Deep Space Asteroids": "Pyro Belt", "Akiro Cluster": "Pyro Belt"
-};
-var tripWanted = [], tripStart = "", tripPlan = null;
-var tripMode = "stops";      /* "stops" = fewest stops, "odds" = best odds */
-var TRIP_FLOOR = 5;          /* percent. Below this a rock is not worth a detour. */
-var tripUseFloor = true;
-
-function tripParent(name) { return TRIP_PARENT[name] || name; }
-
-function tripDistance(a, b) {
-    if (!a || !b) { return 2; }
-    if (a.name === b.name) { return 0; }
-    if (tripParent(a.name) === tripParent(b.name)) { return 1; }
-    if (a.system === b.system) { return 2; }
-    return 3;
-}
-var TRIP_DIST_LABEL = ["you are here", "same body", "same system", "other system"];
-
-/* What a location gives you of what you still need, per method. */
-function tripYield(loc, needed, floor) {
-    var hits = [];
-    for (var method in loc.methods) {
-        var list = loc.methods[method] || [];
-        for (var i = 0; i < list.length; i++) {
-            if (needed.indexOf(list[i].name) < 0) { continue; }
-            var prev = null, j;
-            for (j = 0; j < hits.length; j++) { if (hits[j].name === list[i].name) { prev = hits[j]; } }
-            var chance = list[i].chance || 0;
-            if (chance < (floor || 0)) { continue; }
-            if (prev) {
-                if (chance > prev.chance) { prev.chance = chance; prev.method = method; }
-            } else {
-                hits.push({ name: list[i].name, chance: chance, method: method });
-            }
-        }
-    }
-    hits.sort(function (x, y) { return y.chance - x.chance; });
-    return hits;
-}
-
-/* Greedy set cover, run in two passes.
-
-   Pass 1 only considers locations that clear TRIP_FLOOR, so a 1.7% rock is
-   never offered as a reason to fly somewhere. Pass 2 runs with no floor for
-   whatever pass 1 could not place, and those hits are marked `poor` so the
-   panel says "best available, still poor" rather than quietly recommending a
-   bad detour.
-
-   Two orderings, because "I want one trip" and "I want the good rocks" are
-   different jobs:
-
-     fewest stops   [-coverage, distance, -totalYield]
-     best odds      [-bestChance, -coverage, distance]
-*/
-function tripScore(hits, dist) {
-    var sum = 0, max = 0, k;
-    for (k = 0; k < hits.length; k++) {
-        sum += hits[k].chance;
-        if (hits[k].chance > max) { max = hits[k].chance; }
-    }
-    return tripMode === "odds" ? [-max, -hits.length, dist] : [-hits.length, dist, -sum];
-}
-function tripBetter(a, b) {
-    if (!b) { return true; }
-    for (var i = 0; i < a.length; i++) {
-        if (a[i] < b[i]) { return true; }
-        if (a[i] > b[i]) { return false; }
-    }
-    return false;
-}
-
-function tripPass(needed, stops, here, floor, poor) {
-    var guard = 0;
-    while (needed.length && guard++ < 20) {
-        var bestLoc = null, bestHits = null, bestScore = null, i, k;
-        for (i = 0; i < FLAT_LOCS.length; i++) {
-            var loc = FLAT_LOCS[i];
-            var hits = tripYield(loc, needed, floor);
-            if (!hits.length) { continue; }
-            var score = tripScore(hits, tripDistance(here, loc));
-            if (tripBetter(score, bestScore)) { bestLoc = loc; bestHits = hits; bestScore = score; }
-        }
-        if (!bestLoc) { break; }
-        if (poor) { for (k = 0; k < bestHits.length; k++) { bestHits[k].poor = true; } }
-
-        /* Already stopping there: fold these in rather than list it twice. */
-        var existing = null;
-        for (k = 0; k < stops.length; k++) {
-            if (stops[k].loc.name === bestLoc.name) { existing = stops[k]; }
-        }
-        if (existing) {
-            existing.hits = existing.hits.concat(bestHits);
-        } else {
-            stops.push({ loc: bestLoc, hits: bestHits, dist: tripDistance(here, bestLoc) });
-        }
-        for (i = 0; i < bestHits.length; i++) {
-            var idx = needed.indexOf(bestHits[i].name);
-            if (idx >= 0) { needed.splice(idx, 1); }
-        }
-        here = bestLoc;
-    }
-    return here;
-}
-
-function tripBuildPlan() {
-    var start = null, i;
-    for (i = 0; i < FLAT_LOCS.length; i++) {
-        if (FLAT_LOCS[i].name === tripStart) { start = FLAT_LOCS[i]; }
-    }
-    var needed = tripWanted.slice(), stops = [];
-    var here = tripPass(needed, stops, start, tripUseFloor ? TRIP_FLOOR : 0, false);
-    var wasPoor = needed.slice();
-    if (needed.length) { tripPass(needed, stops, here, 0, true); }
-    var placedPoor = [];
-    for (i = 0; i < wasPoor.length; i++) {
-        if (needed.indexOf(wasPoor[i]) < 0) { placedPoor.push(wasPoor[i]); }
-    }
-    tripPlan = { stops: stops, missing: needed, start: start, poor: placedPoor };
-}
-
-function tripToggleMat(name) {
-    var i = tripWanted.indexOf(name);
-    if (i >= 0) { tripWanted.splice(i, 1); } else { tripWanted.push(name); }
-    tripPlan = null;
-    renderUI();
-}
-function tripSetStart(v) { tripStart = v; tripPlan = null; renderUI(); }
-function tripSetMode(m) { tripMode = m; if (tripPlan) { tripBuildPlan(); } renderUI(); }
-function tripToggleFloor() { tripUseFloor = !tripUseFloor; if (tripPlan) { tripBuildPlan(); } renderUI(); }
-function tripClear() { tripWanted = []; tripPlan = null; renderUI(); }
-function tripGo() { tripBuildPlan(); renderUI(); }
-
-function renderTrip(root) {
-    var chips = SORTED_MATS.map(function (m) {
-        var on = tripWanted.indexOf(m) >= 0;
-        return '<button type="button" class="mining-subtab trip-chip' + (on ? ' active' : '') +
-               '" onclick="tripToggleMat(' + JSON.stringify(m).replace(/"/g, '&quot;') + ')">' +
-               esc(m) + '</button>';
-    }).join('');
-
-    var opts = ['<option value="">-- Where are you starting from? --</option>'].concat(
-        FLAT_LOCS.map(function (l) { return l; })
-        .sort(function (a, b) { return a.system.localeCompare(b.system) || a.name.localeCompare(b.name); })
-        .map(function (l) {
-            return '<option value="' + esc(l.name) + '"' + (tripStart === l.name ? ' selected' : '') +
-                   '>' + esc(l.name) + ' (' + esc(l.system) + ')</option>';
-        })).join('');
-
-    var out = '';
-    if (tripPlan) {
-        if (!tripPlan.stops.length) {
-            out = '<div class="advisory-box"><div class="advisory-text">No location in the dataset ' +
-                  'carries any of those materials.</div></div>';
-        } else {
-            out = tripPlan.stops.map(function (st, i) {
-                var mats = st.hits.map(function (h) {
-                    return '<div class="trip-mat' + (h.poor ? ' trip-poor' : '') + '"><span>' +
-                           esc(h.name) + (h.poor ? ' <em>best available, still poor</em>' : '') + '</span>' +
-                           '<span class="trip-num">' + h.chance.toFixed(1) + '% &middot; ' +
-                           esc(h.method) + '</span></div>';
-                }).join('');
-                return '<div class="trip-stop"><div class="trip-stop-head">' +
-                       '<span class="trip-step">Stop ' + (i + 1) + '</span>' +
-                       '<strong>' + esc(st.loc.name) + '</strong>' +
-                       '<span class="trip-sys">' + esc(st.loc.system) + '</span>' +
-                       '<span class="trip-dist">' + TRIP_DIST_LABEL[st.dist] + '</span>' +
-                       '</div>' + mats + '</div>';
-            }).join('');
-            if (tripPlan.missing.length) {
-                out += '<div class="advisory-box"><div class="advisory-text">Nothing in the dataset ' +
-                       'yields <strong>' + esc(tripPlan.missing.join(', ')) + '</strong>.</div></div>';
-            }
-        }
-    }
-
-    root.innerHTML =
-        '<div class="loc-filters"><div class="loc-filters-top">' +
-        '<span style="color:var(--text-muted); font-size:0.85rem; font-weight:bold; text-transform:uppercase; letter-spacing:1px;">1. What do you need?</span>' +
-        '</div><div class="mining-subtabs trip-chips">' + chips + '</div>' +
-        '<div class="loc-filters-top" style="margin-top:14px;">' +
-        '<span style="color:var(--text-muted); font-size:0.85rem; font-weight:bold; text-transform:uppercase; letter-spacing:1px;">2. Where are you?</span>' +
-        '<select class="loc-select" onchange="tripSetStart(this.value)">' + opts + '</select>' +
-        '<button type="button" class="mining-subtab active" onclick="tripGo()">Plan the trip</button>' +
-        '<button type="button" class="mining-subtab" onclick="tripClear()">Clear</button>' +
-        '</div><div class="loc-filters-top" style="margin-top:10px;">' +
-        '<span style="color:var(--text-muted); font-size:0.85rem; font-weight:bold; text-transform:uppercase; letter-spacing:1px;">3. Optimise for</span>' +
-        '<button type="button" class="mining-subtab' + (tripMode === "stops" ? " active" : "") +
-          '" onclick="tripSetMode(\'stops\')">Fewest stops</button>' +
-        '<button type="button" class="mining-subtab' + (tripMode === "odds" ? " active" : "") +
-          '" onclick="tripSetMode(\'odds\')">Best odds</button>' +
-        '<button type="button" class="mining-subtab' + (tripUseFloor ? " active" : "") +
-          '" onclick="tripToggleFloor()">Skip rocks under ' + TRIP_FLOOR + '%</button>' +
-        '</div></div>' +
-        (tripPlan && tripPlan.poor && tripPlan.poor.length
-            ? '<div class="advisory-box"><div class="advisory-text">Nowhere in the game clears ' +
-              TRIP_FLOOR + '% for <strong>' + esc(tripPlan.poor.join(', ')) + '</strong>. The best ' +
-              'available is included above and marked, but it is a poor detour on its own.</div></div>'
-            : '') +
-        '<div class="trip-note">' + (tripMode === "odds"
-            ? 'Best odds: each stop is chosen for the highest chance on a material you still need, '
-              + 'so expect more stops in exchange for better rocks.'
-            : 'Fewest stops: each stop is chosen for how many of your materials it covers, then '
-              + 'for how close it is to your last stop.') +
-        ' The dataset records a system per location and no coordinates, so closeness means same '
-        + 'body, then same system, rather than a real distance.</div>' +
-        (tripWanted.length ? '' : '<div class="trip-note">Pick at least one material to plan a trip.</div>') +
-        out;
-}
-
-function renderUI(){let e=document.getElementById("tab-content");e.innerHTML="";const t=document.getElementById("pyro-protip-box")
-;t&&(t.style.display="locs"===activeTab?"":"none"),"locs"===activeTab?renderLocations(e):"scan"===activeTab?renderScanner(e):"refine"===activeTab?renderRefining(e):"trip"===activeTab?renderTrip(e):renderGearTab(e)}function renderLocations(e){
+document.getElementById("tab-refine").setAttribute("aria-selected","refine"===e),document.getElementById("tab-gear").classList.toggle("active","gear"===e),document.getElementById("tab-gear").setAttribute("aria-selected","gear"===e),renderUI()}function renderUI(){let e=document.getElementById("tab-content");e.innerHTML="";const t=document.getElementById("pyro-protip-box")
+;t&&(t.style.display="locs"===activeTab?"":"none"),"locs"===activeTab?renderLocations(e):"scan"===activeTab?renderScanner(e):"refine"===activeTab?renderRefining(e):renderGearTab(e)}function renderLocations(e){
 const t=["All",...Array.from(new Set(FLAT_LOCS.map(e=>e.system))).sort()].map(e=>`<button type="button" class="mining-subtab ${locSystemFilter===e?"active":""}" data-sys="${esc(e)}">${esc(e)}</button>`).join("");let n=[0,1,2].map(e=>{let t=`<option value="">-- Required Material ${e+1} --</option>`;return SORTED_MATS.forEach(n=>{
 t+=`<option value="${esc(n)}" ${locFilters[e]===n?"selected":""}>${esc(n)}</option>`}),`<label class="sr-only" for="loc-filter-${e}">Required material ${e+1}</label><select id="loc-filter-${e}" class="loc-select" data-filter-idx="${e}">${t}</select>`}).join("")
 ;e.innerHTML=`\n                <div class="loc-filters">\n                    <div class="loc-filters-top">\n                        <div style="display:flex; align-items:center; gap: 15px;">\n                            <span style="color:var(--text-muted); font-size:0.85rem; font-weight:bold; text-transform:uppercase; letter-spacing:1px; margin-top:5px;">Filter System:</span>\n                            <div class="mining-subtabs" id="loc-sys-tabs">${t}</div>\n                        </div>\n                        <label class="sr-only" for="loc-search">Search mining locations</label>\n                        <input type="text" id="loc-search" class="sig-search" list="loc-name-list" autocomplete="off" placeholder="Search by location, system, or material..." value="${esc(locSearchQuery)}">\n                    </div>\n                    <div class="loc-filters-bottom">\n                        <div style="width:100%; font-size:0.85rem; font-weight:700; color:var(--text-muted); margin-bottom:4px; text-transform:uppercase; letter-spacing:0.5px;">Filter by Materials (Must contain ALL):</div>\n                        <div style="display:flex; gap:10px; width:100%; flex-wrap:wrap;" id="loc-mat-selects">${n}</div>\n                    </div>\n                </div>\n                <ul class="loc-grid" id="loc-grid" aria-label="Mining locations matching current filters"></ul>\n            `,
@@ -726,17 +465,17 @@ renderLocationResults())}),document.getElementById("loc-mat-selects").addEventLi
 ;const t=locFilters.filter(e=>""!==e),n=locSearchQuery.toLowerCase().trim();let a=FLAT_LOCS;n&&(a=a.filter(e=>-1!==e.searchHay.indexOf(n))),"All"!==locSystemFilter&&(a=a.filter(e=>e.system===locSystemFilter)),t.length>0&&(a=a.filter(e=>t.every(t=>e.allMatsSet.has(t)))),a.forEach(e=>{let n=0;t.length>0&&["Ship","ROC","Hand"].forEach(a=>{e.methods[a]&&e.methods[a].forEach(e=>{
 t.includes(e.name)&&(n+=e.chance)})}),e.sortScore=n});const o=t.length>0?(e,t)=>t.sortScore-e.sortScore:(e,t)=>e.name.localeCompare(t.name);if(a.sort(n?rankByQuery(n,e=>e.name,o):o),e.innerHTML="",0===a.length)return void(e.innerHTML='<li class="loc-empty">No locations found matching your filters.</li>');const s=document.createDocumentFragment();a.forEach(e=>{
 if(!e.methods||0===Object.keys(e.methods).length)return;let n="";["Ship","ROC","Hand"].forEach(a=>{
-e.methods[a]&&e.methods[a].length>0&&(n+=`<div class="loc-method-group ${a}">\n                            <h4 class="loc-method-title">${a} Mining Deposits</h4>\n                            <table class="loc-mat-table">\n                                <caption class="sr-only">${a} mineable materials and drop chance at ${esc(e.name)}</caption>\n                                <thead>\n                                    <tr><th scope="col">Material</th><th scope="col">Chance</th></tr>\n                                </thead>\n                                <tbody>`,
+e.methods[a]&&e.methods[a].length>0&&(n+=`<div class="loc-method-group ${a}">\n                            <h4 class="loc-method-title">${methodLabel(a)} Mining Deposits</h4>\n                            <table class="loc-mat-table">\n                                <caption class="sr-only">${methodLabel(a)} mineable materials and drop chance at ${esc(e.name)}</caption>\n                                <thead>\n                                    <tr><th scope="col">Material</th><th scope="col">Chance</th></tr>\n                                </thead>\n                                <tbody>`,
 e.methods[a].forEach(e=>{const a=t.includes(e.name);n+=`<tr class="loc-mat-row${a?" loc-mat-row-highlight":""}">\n                                <td class="loc-mat-name">${esc(e.name)}</td>\n                                <td class="loc-mat-pct">${e.chance.toFixed(1)}%</td>\n                            </tr>`}),n+="</tbody></table></div>")});const a=document.createElement("li")
 ;a.className="loc-card",
 a.innerHTML=`\n                    <article>\n                        <header class="loc-header">\n                            <h3 class="loc-name">${esc(e.name)}</h3>\n                            <span class="loc-sys">${esc(e.system)}</span>\n                        </header>\n                        <div class="loc-body">${n}</div>\n                    </article>\n                `,
 s.appendChild(a)}),e.appendChild(s)}function renderScanner(e){
-e.innerHTML=`\n                <div class="sig-filter-controls">\n                    <label class="sr-only" for="sig-search-input">Search mining signatures</label>\n                    <input type="text" id="sig-search-input" class="sig-search" list="sig-name-list" autocomplete="off" placeholder="Search specific materials..." value="${esc(sigSearchQuery)}">\n                    <div class="mining-subtabs" id="sig-method-tabs">\n                        ${["All","Ship","ROC"].map(e=>`<button type="button" class="mining-subtab ${sigMethodFilter===e?"active":""}" data-method="${e}">${e}</button>`).join("")}\n                    </div>\n                </div>\n                <div class="sig-scanner-wrap">\n                    <div class="sig-scanner-label">Signature Input (Exact Cluster Math)</div>\n                    <div class="sig-scanner-row">\n                        <label class="sr-only" for="rs-input">Ship HUD RS signature reading</label>\n                        <input type="number" class="sig-scanner-input" id="rs-input" placeholder="e.g. 12810">\n                        <div class="sig-result" id="rs-result"><span style="color:var(--text-muted);font-size:0.9rem;">Enter a Scanning Signature from Ship HUD...</span></div>\n                    </div>\n                </div>\n                <ul class="sig-grid" id="sig-grid" aria-label="Known mining signatures"></ul>\n            `,
+e.innerHTML=`\n                <div class="sig-filter-controls">\n                    <label class="sr-only" for="sig-search-input">Search mining signatures</label>\n                    <input type="text" id="sig-search-input" class="sig-search" list="sig-name-list" autocomplete="off" placeholder="Search specific materials..." value="${esc(sigSearchQuery)}">\n                    <div class="mining-subtabs" id="sig-method-tabs">\n                        ${["All","Ship","ROC"].map(e=>`<button type="button" class="mining-subtab ${sigMethodFilter===e?"active":""}" data-method="${e}">${methodLabel(e)}</button>`).join("")}\n                    </div>\n                </div>\n                <div class="sig-scanner-wrap">\n                    <div class="sig-scanner-label">Signature Input (Exact Cluster Math)</div>\n                    <div class="sig-scanner-row">\n                        <label class="sr-only" for="rs-input">Ship HUD RS signature reading</label>\n                        <input type="number" class="sig-scanner-input" id="rs-input" placeholder="e.g. 12810">\n                        <div class="sig-result" id="rs-result"><span style="color:var(--text-muted);font-size:0.9rem;">Enter a Scanning Signature from Ship HUD...</span></div>\n                    </div>\n                </div>\n                <ul class="sig-grid" id="sig-grid" aria-label="Known mining signatures"></ul>\n            `,
 document.getElementById("sig-search-input").addEventListener("input",function(e){sigSearchQuery=e.target.value,renderScannerResults()}),document.getElementById("sig-method-tabs").addEventListener("click",function(e){const t=e.target.closest("[data-method]");t&&(sigMethodFilter=t.dataset.method,
 Array.from(document.getElementById("sig-method-tabs").children).forEach(e=>e.classList.toggle("active",e===t)),renderScannerResults())}),document.getElementById("rs-input").addEventListener("input",function(e){updateRSScanner(e.target.value)}),renderScannerResults()}function renderScannerResults(){const e=document.getElementById("sig-grid");if(!e)return;e.innerHTML=""
 ;const t=sigSearchQuery.toLowerCase().trim();let n=SIGNATURE_DB.filter(e=>(!t||-1!==e.searchHay.indexOf(t))&&("All"===sigMethodFilter||e.method===sigMethodFilter));t&&(n=n.slice().sort(rankByQuery(t,e=>e.name,(e,t)=>t.rs-e.rs)));const a=document.createDocumentFragment();n.forEach(e=>{let t=e.tier.toLowerCase().charAt(0),n=document.createElement("li");n.className=`sig-card tier-${t}`,n.tabIndex=0,
 n.setAttribute("role","button"),n.setAttribute("aria-label",`Look up ${e.name}, RS ${e.rs}`),
-n.innerHTML=`\n                    <span class="sig-tier-badge" style="color: var(--tier-${t})">${e.tier}</span>\n                    <h3 class="sig-card-name">${esc(e.name)}</h3>\n                    <p class="sig-card-rs"><span class="sr-only">Base RS signature: </span>${e.rs.toLocaleString()}</p>\n                    <p class="sig-note">\n                        <span class="method-tag method-${e.method.toLowerCase()}">${e.method}</span>\n                        <span style="color:var(--text-muted); font-family:monospace;">${esc(e.note)}</span>\n                    </p>\n                `
+n.innerHTML=`\n                    <span class="sig-tier-badge" style="color: var(--tier-${t})">${e.tier}</span>\n                    <h3 class="sig-card-name">${esc(e.name)}</h3>\n                    <p class="sig-card-rs"><span class="sr-only">Base RS signature: </span>${e.rs.toLocaleString()}</p>\n                    <p class="sig-note">\n                        <span class="method-tag method-${e.method.toLowerCase()}">${methodLabel(e.method)}</span>\n                        <span style="color:var(--text-muted); font-family:monospace;">${esc(e.note)}</span>\n                    </p>\n                `
 ;const o=()=>{document.getElementById("rs-input").value=e.rs,updateRSScanner(e.rs)};n.onclick=o,n.onkeydown=e=>{"Enter"!==e.key&&" "!==e.key||(e.preventDefault(),o())},a.appendChild(n)}),e.appendChild(a)}function renderRefining(e){
 const t=["All","Efficient","Normal","Wasteful"].map(e=>`<button type="button" class="mining-subtab ${refineQualityFilter===e?"active":""}" data-qual="${esc(e)}">${esc(e)}</button>`).join("")
 ;e.innerHTML=`\n                <div class="loc-filters">\n                    <div class="loc-filters-top" style="border-bottom:none; padding-bottom:0;">\n                        <span style="color:var(--text-muted); font-size:0.85rem; font-weight:bold; text-transform:uppercase; letter-spacing:1px;">Filter by Trade-off:</span>\n                        <div class="mining-subtabs" id="refine-qual-tabs">${t}</div>\n                    </div>\n                </div>\n                <div class="refine-recommend-box">\n                    <div class="refine-group-title" style="margin-top:0;">// Beginner Quick Pick &mdash; Best Option Per Category</div>\n                    <ul class="loc-grid" aria-label="Recommended refining method per trade-off category">${["Efficient","Normal","Wasteful"].map(e=>{
@@ -755,7 +494,7 @@ document.getElementById("equip-cat-tabs").addEventListener("click",function(e){c
 renderEquipmentGrid()}),renderEquipmentGrid()}window.updateRSScanner=function(e){const t=parseInt(e),n=document.getElementById("rs-result");if(!n||!t||t<100)return void(n&&(n.innerHTML='<span style="color:var(--text-muted);font-size:0.9rem;">Enter an RS reading from your ship HUD...</span>'));let a=[];if(SIGNATURE_DB.forEach(e=>{for(let n=1;n<=12;n++){const o=e.rs*n,s=Math.abs(t-o)
 ;s<.005*o&&a.push({...e,nodes:n,confidence:Math.round(100*(1-s/(.005*o)))})}}),a.sort((e,t)=>t.confidence-e.confidence),
 0===a.length)return void(n.innerHTML='\n                    <div class="sig-result-primary" style="color:var(--error);">NO MATCH</div>\n                    <div class="sig-result-nodes" style="color:var(--text-muted);">RS does not map cleanly to any known cluster in the database.</div>\n                ');const o=a[0],s=`var(--tier-${o.tier.toLowerCase().charAt(0)})`
-;n.innerHTML=`\n                <div class="sig-result-primary">\n                    <span style="color:${s}">${esc(o.name)}</span>\n                    <span style="color:var(--text-main); font-weight:400;">&times; ${o.nodes} node${o.nodes>1?"s":""}</span>\n                    <span class="method-tag method-${o.method.toLowerCase()}" style="margin-left:8px;">${o.method}</span>\n                    <span class="sig-confidence" style="margin-left:auto;">${o.confidence}%</span>\n                </div>\n                <div class="sig-result-nodes">\n                    Base: <span style="color:var(--accent); font-family:var(--mono);">${o.rs}</span> &middot;\n                    Expected Cluster: <span style="color:var(--accent); font-family:var(--mono);">${o.rs*o.nodes}</span> &middot;\n                    <span style="color:${s}; text-transform:uppercase; font-size:0.75rem; font-weight:bold;">${o.tier}</span>\n                </div>\n            `
+;n.innerHTML=`\n                <div class="sig-result-primary">\n                    <span style="color:${s}">${esc(o.name)}</span>\n                    <span style="color:var(--text-main); font-weight:400;">&times; ${o.nodes} node${o.nodes>1?"s":""}</span>\n                    <span class="method-tag method-${o.method.toLowerCase()}" style="margin-left:8px;">${methodLabel(o.method)}</span>\n                    <span class="sig-confidence" style="margin-left:auto;">${o.confidence}%</span>\n                </div>\n                <div class="sig-result-nodes">\n                    Base: <span style="color:var(--accent); font-family:var(--mono);">${o.rs}</span> &middot;\n                    Expected Cluster: <span style="color:var(--accent); font-family:var(--mono);">${o.rs*o.nodes}</span> &middot;\n                    <span style="color:${s}; text-transform:uppercase; font-size:0.75rem; font-weight:bold;">${o.tier}</span>\n                </div>\n            `
 };const EQUIP_STAT_ORDER=["Item Type","Optimal Range","Maximum Range","Mining Laser Power","Extraction Laser Power","Resistance","Laser Instability","Instability","Inert Material Level","Optimal Charge Window Size","Optimal Charge Window Rate","Optimal Charge Rate","Module Slots","Volume","Duration","Uses","Cluster Modifier","Shatter Damage","Catastrophic Charge Rate","Throttle min"]
 ;function renderEquipStatsTable(e){if(!e)return"";const t=Object.keys(e);if(0===t.length)return"";t.sort((e,t)=>{const n=EQUIP_STAT_ORDER.indexOf(e),a=EQUIP_STAT_ORDER.indexOf(t);return-1===n&&-1===a?e.localeCompare(t):-1===n?1:-1===a?-1:n-a})
 ;return`\n                <table class="loc-mat-table">\n                    <caption class="sr-only">Stat attributes</caption>\n                    <tbody>${t.map(t=>{const n=STAT_ATTR_ICON[t]?`<span class="stat-chip-icon" aria-hidden="true">${STAT_ATTR_ICON[t]}</span>`:"";return`<tr><td class="loc-mat-name">${esc(t)}${n}</td><td class="loc-mat-pct">${esc(e[t])}</td></tr>`

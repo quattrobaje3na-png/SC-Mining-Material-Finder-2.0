@@ -2754,426 +2754,6 @@
       ]
     },
     {
-      "name": "Lagrange (Occupied)",
-      "system": "Stanton",
-      "methods": {
-        "Ship": [
-          {
-            "name": "Agricium",
-            "chance": 20.7
-          },
-          {
-            "name": "Beryl",
-            "chance": 13.1
-          },
-          {
-            "name": "Iron",
-            "chance": 13.0
-          },
-          {
-            "name": "Pressurized Ice",
-            "chance": 13.0
-          },
-          {
-            "name": "Copper",
-            "chance": 13.0
-          },
-          {
-            "name": "Aslarite",
-            "chance": 10.4
-          },
-          {
-            "name": "Titanium",
-            "chance": 10.4
-          },
-          {
-            "name": "Tin",
-            "chance": 6.5
-          }
-        ]
-      },
-      "allMats": [
-        "Agricium",
-        "Aslarite",
-        "Beryl",
-        "Copper",
-        "Iron",
-        "Pressurized Ice",
-        "Tin",
-        "Titanium"
-      ]
-    },
-    {
-      "name": "Lagrange A",
-      "system": "Stanton",
-      "methods": {
-        "Ship": [
-          {
-            "name": "Laranite",
-            "chance": 17.0
-          },
-          {
-            "name": "Aluminum",
-            "chance": 16.0
-          },
-          {
-            "name": "Corundum",
-            "chance": 15.9
-          },
-          {
-            "name": "Borase",
-            "chance": 10.7
-          },
-          {
-            "name": "Hephaestanite",
-            "chance": 10.6
-          },
-          {
-            "name": "Tungsten",
-            "chance": 8.5
-          },
-          {
-            "name": "Bexalite",
-            "chance": 5.4
-          },
-          {
-            "name": "Gold",
-            "chance": 5.4
-          },
-          {
-            "name": "Quartz",
-            "chance": 5.3
-          },
-          {
-            "name": "Silicon",
-            "chance": 5.3
-          }
-        ]
-      },
-      "allMats": [
-        "Aluminum",
-        "Bexalite",
-        "Borase",
-        "Corundum",
-        "Gold",
-        "Hephaestanite",
-        "Laranite",
-        "Quartz",
-        "Silicon",
-        "Tungsten"
-      ]
-    },
-    {
-      "name": "Lagrange B",
-      "system": "Stanton",
-      "methods": {
-        "Ship": [
-          {
-            "name": "Aslarite",
-            "chance": 18.3
-          },
-          {
-            "name": "Gold",
-            "chance": 11.6
-          },
-          {
-            "name": "Iron",
-            "chance": 11.5
-          },
-          {
-            "name": "Pressurized Ice",
-            "chance": 11.5
-          },
-          {
-            "name": "Copper",
-            "chance": 11.5
-          },
-          {
-            "name": "Agricium",
-            "chance": 9.2
-          },
-          {
-            "name": "Titanium",
-            "chance": 9.2
-          },
-          {
-            "name": "Borase",
-            "chance": 5.8
-          },
-          {
-            "name": "Bexalite",
-            "chance": 5.8
-          },
-          {
-            "name": "Tin",
-            "chance": 5.7
-          }
-        ]
-      },
-      "allMats": [
-        "Agricium",
-        "Aslarite",
-        "Bexalite",
-        "Borase",
-        "Copper",
-        "Gold",
-        "Iron",
-        "Pressurized Ice",
-        "Tin",
-        "Titanium"
-      ]
-    },
-    {
-      "name": "Lagrange C",
-      "system": "Stanton",
-      "methods": {
-        "Ship": [
-          {
-            "name": "Aluminum",
-            "chance": 24.2
-          },
-          {
-            "name": "Corundum",
-            "chance": 24.2
-          },
-          {
-            "name": "Torite",
-            "chance": 19.3
-          },
-          {
-            "name": "Hephaestanite",
-            "chance": 16.1
-          },
-          {
-            "name": "Quartz",
-            "chance": 8.1
-          },
-          {
-            "name": "Silicon",
-            "chance": 8.1
-          }
-        ]
-      },
-      "allMats": [
-        "Aluminum",
-        "Corundum",
-        "Hephaestanite",
-        "Quartz",
-        "Silicon",
-        "Torite"
-      ]
-    },
-    {
-      "name": "Lagrange D",
-      "system": "Stanton",
-      "methods": {
-        "Ship": [
-          {
-            "name": "Agricium",
-            "chance": 20.7
-          },
-          {
-            "name": "Beryl",
-            "chance": 13.1
-          },
-          {
-            "name": "Iron",
-            "chance": 13.0
-          },
-          {
-            "name": "Pressurized Ice",
-            "chance": 13.0
-          },
-          {
-            "name": "Copper",
-            "chance": 13.0
-          },
-          {
-            "name": "Aslarite",
-            "chance": 10.4
-          },
-          {
-            "name": "Titanium",
-            "chance": 10.4
-          },
-          {
-            "name": "Tin",
-            "chance": 6.5
-          }
-        ]
-      },
-      "allMats": [
-        "Agricium",
-        "Aslarite",
-        "Beryl",
-        "Copper",
-        "Iron",
-        "Pressurized Ice",
-        "Tin",
-        "Titanium"
-      ]
-    },
-    {
-      "name": "Lagrange E",
-      "system": "Stanton",
-      "methods": {
-        "Ship": [
-          {
-            "name": "Titanium",
-            "chance": 18.3
-          },
-          {
-            "name": "Bexalite",
-            "chance": 11.6
-          },
-          {
-            "name": "Iron",
-            "chance": 11.5
-          },
-          {
-            "name": "Pressurized Ice",
-            "chance": 11.5
-          },
-          {
-            "name": "Copper",
-            "chance": 11.5
-          },
-          {
-            "name": "Agricium",
-            "chance": 9.2
-          },
-          {
-            "name": "Aslarite",
-            "chance": 9.2
-          },
-          {
-            "name": "Borase",
-            "chance": 5.8
-          },
-          {
-            "name": "Gold",
-            "chance": 5.8
-          },
-          {
-            "name": "Tin",
-            "chance": 5.7
-          }
-        ]
-      },
-      "allMats": [
-        "Agricium",
-        "Aslarite",
-        "Bexalite",
-        "Borase",
-        "Copper",
-        "Gold",
-        "Iron",
-        "Pressurized Ice",
-        "Tin",
-        "Titanium"
-      ]
-    },
-    {
-      "name": "Lagrange F",
-      "system": "Stanton",
-      "methods": {
-        "Ship": [
-          {
-            "name": "Tungsten",
-            "chance": 19.0
-          },
-          {
-            "name": "Corundum",
-            "chance": 17.9
-          },
-          {
-            "name": "Aluminum",
-            "chance": 17.8
-          },
-          {
-            "name": "Taranite",
-            "chance": 12.0
-          },
-          {
-            "name": "Hephaestanite",
-            "chance": 11.9
-          },
-          {
-            "name": "Laranite",
-            "chance": 9.5
-          },
-          {
-            "name": "Quartz",
-            "chance": 5.9
-          },
-          {
-            "name": "Silicon",
-            "chance": 5.9
-          }
-        ]
-      },
-      "allMats": [
-        "Aluminum",
-        "Corundum",
-        "Hephaestanite",
-        "Laranite",
-        "Quartz",
-        "Silicon",
-        "Taranite",
-        "Tungsten"
-      ]
-    },
-    {
-      "name": "Lagrange G",
-      "system": "Stanton",
-      "methods": {
-        "Ship": [
-          {
-            "name": "Agricium",
-            "chance": 20.7
-          },
-          {
-            "name": "Beryl",
-            "chance": 13.1
-          },
-          {
-            "name": "Iron",
-            "chance": 13.0
-          },
-          {
-            "name": "Pressurized Ice",
-            "chance": 13.0
-          },
-          {
-            "name": "Copper",
-            "chance": 13.0
-          },
-          {
-            "name": "Aslarite",
-            "chance": 10.4
-          },
-          {
-            "name": "Titanium",
-            "chance": 10.4
-          },
-          {
-            "name": "Tin",
-            "chance": 6.5
-          }
-        ]
-      },
-      "allMats": [
-        "Agricium",
-        "Aslarite",
-        "Beryl",
-        "Copper",
-        "Iron",
-        "Pressurized Ice",
-        "Tin",
-        "Titanium"
-      ]
-    },
-    {
       "name": "Lyria",
       "system": "Stanton",
       "methods": {
@@ -3631,6 +3211,1136 @@
         "Quantainium",
         "Quartz",
         "Silicon"
+      ]
+    },
+    {
+      "name": "HUR-L1 Green Glade Station",
+      "system": "Stanton",
+      "methods": {
+        "Ship": [
+          {
+            "name": "Laranite",
+            "chance": 17.0
+          },
+          {
+            "name": "Aluminum",
+            "chance": 16.0
+          },
+          {
+            "name": "Corundum",
+            "chance": 15.9
+          },
+          {
+            "name": "Borase",
+            "chance": 10.7
+          },
+          {
+            "name": "Hephaestanite",
+            "chance": 10.6
+          },
+          {
+            "name": "Tungsten",
+            "chance": 8.5
+          },
+          {
+            "name": "Bexalite",
+            "chance": 5.4
+          },
+          {
+            "name": "Gold",
+            "chance": 5.4
+          },
+          {
+            "name": "Quartz",
+            "chance": 5.3
+          },
+          {
+            "name": "Silicon",
+            "chance": 5.3
+          }
+        ]
+      },
+      "allMats": [
+        "Aluminum",
+        "Bexalite",
+        "Borase",
+        "Corundum",
+        "Gold",
+        "Hephaestanite",
+        "Laranite",
+        "Quartz",
+        "Silicon",
+        "Tungsten"
+      ]
+    },
+    {
+      "name": "HUR-L4 Melodic Fields Station",
+      "system": "Stanton",
+      "methods": {
+        "Ship": [
+          {
+            "name": "Laranite",
+            "chance": 17.0
+          },
+          {
+            "name": "Aluminum",
+            "chance": 16.0
+          },
+          {
+            "name": "Corundum",
+            "chance": 15.9
+          },
+          {
+            "name": "Borase",
+            "chance": 10.7
+          },
+          {
+            "name": "Hephaestanite",
+            "chance": 10.6
+          },
+          {
+            "name": "Tungsten",
+            "chance": 8.5
+          },
+          {
+            "name": "Bexalite",
+            "chance": 5.4
+          },
+          {
+            "name": "Gold",
+            "chance": 5.4
+          },
+          {
+            "name": "Quartz",
+            "chance": 5.3
+          },
+          {
+            "name": "Silicon",
+            "chance": 5.3
+          }
+        ]
+      },
+      "allMats": [
+        "Aluminum",
+        "Bexalite",
+        "Borase",
+        "Corundum",
+        "Gold",
+        "Hephaestanite",
+        "Laranite",
+        "Quartz",
+        "Silicon",
+        "Tungsten"
+      ]
+    },
+    {
+      "name": "CRU-L4 Shallow Fields Station",
+      "system": "Stanton",
+      "methods": {
+        "Ship": [
+          {
+            "name": "Aslarite",
+            "chance": 18.3
+          },
+          {
+            "name": "Gold",
+            "chance": 11.6
+          },
+          {
+            "name": "Copper",
+            "chance": 11.5
+          },
+          {
+            "name": "Iron",
+            "chance": 11.5
+          },
+          {
+            "name": "Pressurized Ice",
+            "chance": 11.5
+          },
+          {
+            "name": "Agricium",
+            "chance": 9.2
+          },
+          {
+            "name": "Titanium",
+            "chance": 9.2
+          },
+          {
+            "name": "Bexalite",
+            "chance": 5.8
+          },
+          {
+            "name": "Borase",
+            "chance": 5.8
+          },
+          {
+            "name": "Tin",
+            "chance": 5.7
+          }
+        ]
+      },
+      "allMats": [
+        "Agricium",
+        "Aslarite",
+        "Bexalite",
+        "Borase",
+        "Copper",
+        "Gold",
+        "Iron",
+        "Pressurized Ice",
+        "Tin",
+        "Titanium"
+      ]
+    },
+    {
+      "name": "ARC-L5 Yellow Core Station",
+      "system": "Stanton",
+      "methods": {
+        "Ship": [
+          {
+            "name": "Aslarite",
+            "chance": 18.3
+          },
+          {
+            "name": "Gold",
+            "chance": 11.6
+          },
+          {
+            "name": "Copper",
+            "chance": 11.5
+          },
+          {
+            "name": "Iron",
+            "chance": 11.5
+          },
+          {
+            "name": "Pressurized Ice",
+            "chance": 11.5
+          },
+          {
+            "name": "Agricium",
+            "chance": 9.2
+          },
+          {
+            "name": "Titanium",
+            "chance": 9.2
+          },
+          {
+            "name": "Bexalite",
+            "chance": 5.8
+          },
+          {
+            "name": "Borase",
+            "chance": 5.8
+          },
+          {
+            "name": "Tin",
+            "chance": 5.7
+          }
+        ]
+      },
+      "allMats": [
+        "Agricium",
+        "Aslarite",
+        "Bexalite",
+        "Borase",
+        "Copper",
+        "Gold",
+        "Iron",
+        "Pressurized Ice",
+        "Tin",
+        "Titanium"
+      ]
+    },
+    {
+      "name": "MIC-L3 Endless Odyssey Station",
+      "system": "Stanton",
+      "methods": {
+        "Ship": [
+          {
+            "name": "Aslarite",
+            "chance": 18.3
+          },
+          {
+            "name": "Gold",
+            "chance": 11.6
+          },
+          {
+            "name": "Copper",
+            "chance": 11.5
+          },
+          {
+            "name": "Iron",
+            "chance": 11.5
+          },
+          {
+            "name": "Pressurized Ice",
+            "chance": 11.5
+          },
+          {
+            "name": "Agricium",
+            "chance": 9.2
+          },
+          {
+            "name": "Titanium",
+            "chance": 9.2
+          },
+          {
+            "name": "Bexalite",
+            "chance": 5.8
+          },
+          {
+            "name": "Borase",
+            "chance": 5.8
+          },
+          {
+            "name": "Tin",
+            "chance": 5.7
+          }
+        ]
+      },
+      "allMats": [
+        "Agricium",
+        "Aslarite",
+        "Bexalite",
+        "Borase",
+        "Copper",
+        "Gold",
+        "Iron",
+        "Pressurized Ice",
+        "Tin",
+        "Titanium"
+      ]
+    },
+    {
+      "name": "HUR-L5 High Course Station",
+      "system": "Stanton",
+      "methods": {
+        "Ship": [
+          {
+            "name": "Aluminum",
+            "chance": 24.2
+          },
+          {
+            "name": "Corundum",
+            "chance": 24.2
+          },
+          {
+            "name": "Torite",
+            "chance": 19.3
+          },
+          {
+            "name": "Hephaestanite",
+            "chance": 16.1
+          },
+          {
+            "name": "Quartz",
+            "chance": 8.1
+          },
+          {
+            "name": "Silicon",
+            "chance": 8.1
+          }
+        ]
+      },
+      "allMats": [
+        "Aluminum",
+        "Corundum",
+        "Hephaestanite",
+        "Quartz",
+        "Silicon",
+        "Torite"
+      ]
+    },
+    {
+      "name": "CRU-L3 (no station)",
+      "system": "Stanton",
+      "methods": {
+        "Ship": [
+          {
+            "name": "Aluminum",
+            "chance": 24.2
+          },
+          {
+            "name": "Corundum",
+            "chance": 24.2
+          },
+          {
+            "name": "Torite",
+            "chance": 19.3
+          },
+          {
+            "name": "Hephaestanite",
+            "chance": 16.1
+          },
+          {
+            "name": "Quartz",
+            "chance": 8.1
+          },
+          {
+            "name": "Silicon",
+            "chance": 8.1
+          }
+        ]
+      },
+      "allMats": [
+        "Aluminum",
+        "Corundum",
+        "Hephaestanite",
+        "Quartz",
+        "Silicon",
+        "Torite"
+      ]
+    },
+    {
+      "name": "MIC-L1 Shallow Frontier Station",
+      "system": "Stanton",
+      "methods": {
+        "Ship": [
+          {
+            "name": "Aluminum",
+            "chance": 24.2
+          },
+          {
+            "name": "Corundum",
+            "chance": 24.2
+          },
+          {
+            "name": "Torite",
+            "chance": 19.3
+          },
+          {
+            "name": "Hephaestanite",
+            "chance": 16.1
+          },
+          {
+            "name": "Quartz",
+            "chance": 8.1
+          },
+          {
+            "name": "Silicon",
+            "chance": 8.1
+          }
+        ]
+      },
+      "allMats": [
+        "Aluminum",
+        "Corundum",
+        "Hephaestanite",
+        "Quartz",
+        "Silicon",
+        "Torite"
+      ]
+    },
+    {
+      "name": "MIC-L2 Long Forest Station",
+      "system": "Stanton",
+      "methods": {
+        "Ship": [
+          {
+            "name": "Aluminum",
+            "chance": 24.2
+          },
+          {
+            "name": "Corundum",
+            "chance": 24.2
+          },
+          {
+            "name": "Torite",
+            "chance": 19.3
+          },
+          {
+            "name": "Hephaestanite",
+            "chance": 16.1
+          },
+          {
+            "name": "Quartz",
+            "chance": 8.1
+          },
+          {
+            "name": "Silicon",
+            "chance": 8.1
+          }
+        ]
+      },
+      "allMats": [
+        "Aluminum",
+        "Corundum",
+        "Hephaestanite",
+        "Quartz",
+        "Silicon",
+        "Torite"
+      ]
+    },
+    {
+      "name": "MIC-L5 Modern Icarus Station",
+      "system": "Stanton",
+      "methods": {
+        "Ship": [
+          {
+            "name": "Aluminum",
+            "chance": 24.2
+          },
+          {
+            "name": "Corundum",
+            "chance": 24.2
+          },
+          {
+            "name": "Torite",
+            "chance": 19.3
+          },
+          {
+            "name": "Hephaestanite",
+            "chance": 16.1
+          },
+          {
+            "name": "Quartz",
+            "chance": 8.1
+          },
+          {
+            "name": "Silicon",
+            "chance": 8.1
+          }
+        ]
+      },
+      "allMats": [
+        "Aluminum",
+        "Corundum",
+        "Hephaestanite",
+        "Quartz",
+        "Silicon",
+        "Torite"
+      ]
+    },
+    {
+      "name": "CRU-L5 Beautiful Glen Station",
+      "system": "Stanton",
+      "methods": {
+        "Ship": [
+          {
+            "name": "Agricium",
+            "chance": 20.7
+          },
+          {
+            "name": "Beryl",
+            "chance": 13.1
+          },
+          {
+            "name": "Copper",
+            "chance": 13.0
+          },
+          {
+            "name": "Iron",
+            "chance": 13.0
+          },
+          {
+            "name": "Pressurized Ice",
+            "chance": 13.0
+          },
+          {
+            "name": "Aslarite",
+            "chance": 10.4
+          },
+          {
+            "name": "Titanium",
+            "chance": 10.4
+          },
+          {
+            "name": "Tin",
+            "chance": 6.5
+          }
+        ]
+      },
+      "allMats": [
+        "Agricium",
+        "Aslarite",
+        "Beryl",
+        "Copper",
+        "Iron",
+        "Pressurized Ice",
+        "Tin",
+        "Titanium"
+      ]
+    },
+    {
+      "name": "ARC-L3 Modern Express Station",
+      "system": "Stanton",
+      "methods": {
+        "Ship": [
+          {
+            "name": "Agricium",
+            "chance": 20.7
+          },
+          {
+            "name": "Beryl",
+            "chance": 13.1
+          },
+          {
+            "name": "Copper",
+            "chance": 13.0
+          },
+          {
+            "name": "Iron",
+            "chance": 13.0
+          },
+          {
+            "name": "Pressurized Ice",
+            "chance": 13.0
+          },
+          {
+            "name": "Aslarite",
+            "chance": 10.4
+          },
+          {
+            "name": "Titanium",
+            "chance": 10.4
+          },
+          {
+            "name": "Tin",
+            "chance": 6.5
+          }
+        ]
+      },
+      "allMats": [
+        "Agricium",
+        "Aslarite",
+        "Beryl",
+        "Copper",
+        "Iron",
+        "Pressurized Ice",
+        "Tin",
+        "Titanium"
+      ]
+    },
+    {
+      "name": "MIC-L4 Red Crossroads Station",
+      "system": "Stanton",
+      "methods": {
+        "Ship": [
+          {
+            "name": "Agricium",
+            "chance": 20.7
+          },
+          {
+            "name": "Beryl",
+            "chance": 13.1
+          },
+          {
+            "name": "Copper",
+            "chance": 13.0
+          },
+          {
+            "name": "Iron",
+            "chance": 13.0
+          },
+          {
+            "name": "Pressurized Ice",
+            "chance": 13.0
+          },
+          {
+            "name": "Aslarite",
+            "chance": 10.4
+          },
+          {
+            "name": "Titanium",
+            "chance": 10.4
+          },
+          {
+            "name": "Tin",
+            "chance": 6.5
+          }
+        ]
+      },
+      "allMats": [
+        "Agricium",
+        "Aslarite",
+        "Beryl",
+        "Copper",
+        "Iron",
+        "Pressurized Ice",
+        "Tin",
+        "Titanium"
+      ]
+    },
+    {
+      "name": "HUR-L3 Thundering Express Station",
+      "system": "Stanton",
+      "methods": {
+        "Ship": [
+          {
+            "name": "Titanium",
+            "chance": 18.3
+          },
+          {
+            "name": "Bexalite",
+            "chance": 11.6
+          },
+          {
+            "name": "Copper",
+            "chance": 11.5
+          },
+          {
+            "name": "Iron",
+            "chance": 11.5
+          },
+          {
+            "name": "Pressurized Ice",
+            "chance": 11.5
+          },
+          {
+            "name": "Agricium",
+            "chance": 9.2
+          },
+          {
+            "name": "Aslarite",
+            "chance": 9.2
+          },
+          {
+            "name": "Borase",
+            "chance": 5.8
+          },
+          {
+            "name": "Gold",
+            "chance": 5.8
+          },
+          {
+            "name": "Tin",
+            "chance": 5.7
+          }
+        ]
+      },
+      "allMats": [
+        "Agricium",
+        "Aslarite",
+        "Bexalite",
+        "Borase",
+        "Copper",
+        "Gold",
+        "Iron",
+        "Pressurized Ice",
+        "Tin",
+        "Titanium"
+      ]
+    },
+    {
+      "name": "CRU-L1 Ambitious Dream Station",
+      "system": "Stanton",
+      "methods": {
+        "Ship": [
+          {
+            "name": "Titanium",
+            "chance": 18.3
+          },
+          {
+            "name": "Bexalite",
+            "chance": 11.6
+          },
+          {
+            "name": "Copper",
+            "chance": 11.5
+          },
+          {
+            "name": "Iron",
+            "chance": 11.5
+          },
+          {
+            "name": "Pressurized Ice",
+            "chance": 11.5
+          },
+          {
+            "name": "Agricium",
+            "chance": 9.2
+          },
+          {
+            "name": "Aslarite",
+            "chance": 9.2
+          },
+          {
+            "name": "Borase",
+            "chance": 5.8
+          },
+          {
+            "name": "Gold",
+            "chance": 5.8
+          },
+          {
+            "name": "Tin",
+            "chance": 5.7
+          }
+        ]
+      },
+      "allMats": [
+        "Agricium",
+        "Aslarite",
+        "Bexalite",
+        "Borase",
+        "Copper",
+        "Gold",
+        "Iron",
+        "Pressurized Ice",
+        "Tin",
+        "Titanium"
+      ]
+    },
+    {
+      "name": "CRU-L2 (no station)",
+      "system": "Stanton",
+      "methods": {
+        "Ship": [
+          {
+            "name": "Titanium",
+            "chance": 18.3
+          },
+          {
+            "name": "Bexalite",
+            "chance": 11.6
+          },
+          {
+            "name": "Copper",
+            "chance": 11.5
+          },
+          {
+            "name": "Iron",
+            "chance": 11.5
+          },
+          {
+            "name": "Pressurized Ice",
+            "chance": 11.5
+          },
+          {
+            "name": "Agricium",
+            "chance": 9.2
+          },
+          {
+            "name": "Aslarite",
+            "chance": 9.2
+          },
+          {
+            "name": "Borase",
+            "chance": 5.8
+          },
+          {
+            "name": "Gold",
+            "chance": 5.8
+          },
+          {
+            "name": "Tin",
+            "chance": 5.7
+          }
+        ]
+      },
+      "allMats": [
+        "Agricium",
+        "Aslarite",
+        "Bexalite",
+        "Borase",
+        "Copper",
+        "Gold",
+        "Iron",
+        "Pressurized Ice",
+        "Tin",
+        "Titanium"
+      ]
+    },
+    {
+      "name": "HUR-L2 Faithful Dream Station",
+      "system": "Stanton",
+      "methods": {
+        "Ship": [
+          {
+            "name": "Tungsten",
+            "chance": 19.0
+          },
+          {
+            "name": "Corundum",
+            "chance": 17.9
+          },
+          {
+            "name": "Aluminum",
+            "chance": 17.8
+          },
+          {
+            "name": "Taranite",
+            "chance": 12.0
+          },
+          {
+            "name": "Hephaestanite",
+            "chance": 11.9
+          },
+          {
+            "name": "Laranite",
+            "chance": 9.5
+          },
+          {
+            "name": "Quartz",
+            "chance": 5.9
+          },
+          {
+            "name": "Silicon",
+            "chance": 5.9
+          }
+        ]
+      },
+      "allMats": [
+        "Aluminum",
+        "Corundum",
+        "Hephaestanite",
+        "Laranite",
+        "Quartz",
+        "Silicon",
+        "Taranite",
+        "Tungsten"
+      ]
+    },
+    {
+      "name": "ARC-L1 Wide Forest Station",
+      "system": "Stanton",
+      "methods": {
+        "Ship": [
+          {
+            "name": "Tungsten",
+            "chance": 19.0
+          },
+          {
+            "name": "Corundum",
+            "chance": 17.9
+          },
+          {
+            "name": "Aluminum",
+            "chance": 17.8
+          },
+          {
+            "name": "Taranite",
+            "chance": 12.0
+          },
+          {
+            "name": "Hephaestanite",
+            "chance": 11.9
+          },
+          {
+            "name": "Laranite",
+            "chance": 9.5
+          },
+          {
+            "name": "Quartz",
+            "chance": 5.9
+          },
+          {
+            "name": "Silicon",
+            "chance": 5.9
+          }
+        ]
+      },
+      "allMats": [
+        "Aluminum",
+        "Corundum",
+        "Hephaestanite",
+        "Laranite",
+        "Quartz",
+        "Silicon",
+        "Taranite",
+        "Tungsten"
+      ]
+    },
+    {
+      "name": "ARC-L2 Lively Pathway Station",
+      "system": "Stanton",
+      "methods": {
+        "Ship": [
+          {
+            "name": "Tungsten",
+            "chance": 19.0
+          },
+          {
+            "name": "Corundum",
+            "chance": 17.9
+          },
+          {
+            "name": "Aluminum",
+            "chance": 17.8
+          },
+          {
+            "name": "Taranite",
+            "chance": 12.0
+          },
+          {
+            "name": "Hephaestanite",
+            "chance": 11.9
+          },
+          {
+            "name": "Laranite",
+            "chance": 9.5
+          },
+          {
+            "name": "Quartz",
+            "chance": 5.9
+          },
+          {
+            "name": "Silicon",
+            "chance": 5.9
+          }
+        ]
+      },
+      "allMats": [
+        "Aluminum",
+        "Corundum",
+        "Hephaestanite",
+        "Laranite",
+        "Quartz",
+        "Silicon",
+        "Taranite",
+        "Tungsten"
+      ]
+    },
+    {
+      "name": "ARC-L4 Faint Glen Station",
+      "system": "Stanton",
+      "methods": {
+        "Ship": [
+          {
+            "name": "Tungsten",
+            "chance": 19.0
+          },
+          {
+            "name": "Corundum",
+            "chance": 17.9
+          },
+          {
+            "name": "Aluminum",
+            "chance": 17.8
+          },
+          {
+            "name": "Taranite",
+            "chance": 12.0
+          },
+          {
+            "name": "Hephaestanite",
+            "chance": 11.9
+          },
+          {
+            "name": "Laranite",
+            "chance": 9.5
+          },
+          {
+            "name": "Quartz",
+            "chance": 5.9
+          },
+          {
+            "name": "Silicon",
+            "chance": 5.9
+          }
+        ]
+      },
+      "allMats": [
+        "Aluminum",
+        "Corundum",
+        "Hephaestanite",
+        "Laranite",
+        "Quartz",
+        "Silicon",
+        "Taranite",
+        "Tungsten"
+      ]
+    },
+    {
+      "name": "Lagrange Cluster G (unplaced prefab)",
+      "system": "Stanton",
+      "methods": {
+        "Ship": [
+          {
+            "name": "Agricium",
+            "chance": 20.7
+          },
+          {
+            "name": "Beryl",
+            "chance": 13.1
+          },
+          {
+            "name": "Copper",
+            "chance": 13.0
+          },
+          {
+            "name": "Iron",
+            "chance": 13.0
+          },
+          {
+            "name": "Pressurized Ice",
+            "chance": 13.0
+          },
+          {
+            "name": "Aslarite",
+            "chance": 10.4
+          },
+          {
+            "name": "Titanium",
+            "chance": 10.4
+          },
+          {
+            "name": "Tin",
+            "chance": 6.5
+          }
+        ]
+      },
+      "allMats": [
+        "Agricium",
+        "Aslarite",
+        "Beryl",
+        "Copper",
+        "Iron",
+        "Pressurized Ice",
+        "Tin",
+        "Titanium"
+      ]
+    },
+    {
+      "name": "Lagrange Cluster, Occupied (unplaced prefab)",
+      "system": "Stanton",
+      "methods": {
+        "Ship": [
+          {
+            "name": "Agricium",
+            "chance": 20.7
+          },
+          {
+            "name": "Beryl",
+            "chance": 13.1
+          },
+          {
+            "name": "Copper",
+            "chance": 13.0
+          },
+          {
+            "name": "Iron",
+            "chance": 13.0
+          },
+          {
+            "name": "Pressurized Ice",
+            "chance": 13.0
+          },
+          {
+            "name": "Aslarite",
+            "chance": 10.4
+          },
+          {
+            "name": "Titanium",
+            "chance": 10.4
+          },
+          {
+            "name": "Tin",
+            "chance": 6.5
+          }
+        ]
+      },
+      "allMats": [
+        "Agricium",
+        "Aslarite",
+        "Beryl",
+        "Copper",
+        "Iron",
+        "Pressurized Ice",
+        "Tin",
+        "Titanium"
       ]
     }
   ],

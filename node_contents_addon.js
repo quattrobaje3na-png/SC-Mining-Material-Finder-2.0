@@ -184,12 +184,49 @@
          : grp.classList.contains('Hand') ? 'Hand' : null;
   }
 
+  /* JUMP LINKS PER LOCATION.
+     Ship is always the first and longest section, so Vehicle and Hand sit
+     below the fold on every card -- which is why the tool reads as
+     ship-only. Collapsing the rock detail shortens the cards; this makes the
+     other methods reachable regardless of how long they get.
+
+     Built from the sections that are actually present on THAT card, so a
+     ship-only location (an asteroid belt) gets no bar rather than dead links
+     to sections it does not have. */
+  function addJumpBar(card) {
+    if (card.getAttribute('data-nc-jump')) return;
+    var groups = card.querySelectorAll('.loc-method-group');
+    if (groups.length < 2) { card.setAttribute('data-nc-jump', '0'); return; }
+    card.setAttribute('data-nc-jump', '1');
+
+    var bar = document.createElement('div');
+    bar.className = 'nc-jump';
+    for (var i = 0; i < groups.length; i++) {
+      var g = groups[i];
+      if (!g.id) {
+        g.id = 'ncj-' + Math.random().toString(36).slice(2, 9);
+      }
+      var head = (g.textContent || '').trim().split('\n')[0];
+      // "Ship Mining Deposits" -> "Ship". The heading is the tool's, not ours.
+      var label = head.replace(/\s*Mining Deposits\s*$/i, '').trim() || head;
+      var a = document.createElement('button');
+      a.type = 'button';
+      a.className = 'nc-jump-lnk';
+      a.setAttribute('data-ncj', g.id);
+      a.textContent = label;
+      bar.appendChild(a);
+    }
+    var anchor = card.querySelector('.loc-method-group');
+    if (anchor && anchor.parentNode) anchor.parentNode.insertBefore(bar, anchor);
+  }
+
   function decorate(root) {
     if (!NC) return;
     ensureFilterWiring();
     installControl();
     var cards = (root || document).querySelectorAll('.loc-card');
     for (var c = 0; c < cards.length; c++) addSynthRows(cards[c]);
+    for (var j = 0; j < cards.length; j++) addJumpBar(cards[j]);
     var groups = (root || document).querySelectorAll('.loc-method-group');
     for (var g = 0; g < groups.length; g++) {
       var grp = groups[g];
@@ -232,8 +269,24 @@
              }).join('') + '</div>';
     }
     if (!out) return '';
-    return out + '<button type="button" class="nc-toggle" aria-expanded="false">'
+    out += '<button type="button" class="nc-toggle" aria-expanded="false">'
          + 'show mass shares</button>';
+
+    /* COLLAPSED BY DEFAULT, because expanded it buried the rest of the page.
+       Each material went from a one-line row to a ~140px block, which
+       multiplied a location's SHIP section by its number of ores: measured on
+       Aberdeen, the ship section alone ran 1,827px and pushed Vehicle to
+       1,913px and Hand to 2,396px down a 2,995px card. Nothing was missing,
+       but nobody scrolls two screens to find out. Collapsed, a material is one
+       line again and every method section is reachable; the detail is one
+       click away for the people who want it. */
+    var nPrim = grpd.primary.length, nPass = grpd.passenger.length;
+    var bits = [];
+    if (nPrim) bits.push('in ' + nPrim + ' rock' + (nPrim === 1 ? '' : 's'));
+    if (nPass) bits.push('inside ' + nPass + ' other' + (nPass === 1 ? '' : 's'));
+    return '<button type="button" class="nc-rocks-toggle" aria-expanded="false">'
+         + esc(bits.join(', ')) + '</button>'
+         + '<div class="nc-rocks" hidden>' + out + '</div>';
   }
 
   /* Opened per block, and built on first open, so the collapsed cards cost
@@ -279,7 +332,26 @@
   function wireToggle() {
     document.addEventListener('click', function (ev) {
       var b = ev.target;
-      if (!b || !b.classList || !b.classList.contains('nc-toggle')) return;
+      if (!b || !b.classList) return;
+      /* The outer collapse: reveals the rock cards for one material. */
+      if (b.classList.contains('nc-jump-lnk')) {
+        var tgt = document.getElementById(b.getAttribute('data-ncj'));
+        if (tgt) tgt.scrollIntoView({ block: 'start', behavior: 'smooth' });
+        ev.preventDefault();
+        return;
+      }
+      if (b.classList.contains('nc-rocks-toggle')) {
+        var wrap = b.nextElementSibling;
+        if (wrap && wrap.classList.contains('nc-rocks')) {
+          var open = wrap.hidden;
+          wrap.hidden = !open;
+          b.setAttribute('aria-expanded', open ? 'true' : 'false');
+          b.classList.toggle('nc-open', open);
+        }
+        ev.preventDefault();
+        return;
+      }
+      if (!b.classList.contains('nc-toggle')) return;
       toggleBlock(b.parentNode, b);
       ev.preventDefault();
     });
@@ -619,10 +691,62 @@
          tall block and drift to the bottom, away from the ore it belongs to.
          Scoped to rows we actually changed. */
       + 'tr:has(> .loc-mat-name[data-nc]) > td{vertical-align:top}'
+
+      /* EACH MATERIAL IS ITS OWN BLOCK.
+         The rock cards belong to the ore named above them, but with rows sat
+         flush against each other there was nothing marking where one ore's
+         evidence stopped and the next one's started -- the taller the block,
+         the worse it read.
+         Separation needs a real GAP, which a border-collapse:collapse table
+         cannot produce, so border-spacing is switched on for the ONE table
+         this add-on decorates and scoped by :has() so no other table on the
+         page moves. Colours are the host's own --bg-card on --bg-base, the
+         same figure/ground the location cards already use, rather than a new
+         palette. */
+      + 'table:has(.loc-mat-name[data-nc]){border-collapse:separate;'
+      + 'border-spacing:0 7px}'
+      + 'tr:has(> .loc-mat-name[data-nc]) > td{'
+      + 'background:var(--bg-card,#0c0f14);'
+      + 'border-top:1px solid var(--border,#172030);'
+      + 'border-bottom:1px solid var(--border,#172030);'
+      + 'padding-top:.5rem;padding-bottom:.55rem}'
+      + 'tr:has(> .loc-mat-name[data-nc]) > td:first-child{'
+      + 'border-left:3px solid var(--accent,#00e5a0);'
+      + 'border-top-left-radius:6px;border-bottom-left-radius:6px;'
+      + 'padding-left:.6rem}'
+      + 'tr:has(> .loc-mat-name[data-nc]) > td:last-child{'
+      + 'border-right:1px solid var(--border,#172030);'
+      + 'border-top-right-radius:6px;border-bottom-right-radius:6px}'
+      /* Alternating tint, so two adjacent blocks still read as separate
+         where a 1px border is easy to miss. */
+      + 'tr:has(> .loc-mat-name[data-nc]):nth-of-type(even) > td{'
+      + 'background:#0a0d12}'
+      + 'tr:has(> .loc-mat-name[data-nc]):nth-of-type(even) > td:first-child{'
+      + 'border-left-color:var(--theme,#60a0ff)}'
       + '.nc-toggle{margin-top:.15rem;padding:0;border:0;background:none;'
       + 'font:inherit;font-size:.95em;color:inherit;opacity:.6;cursor:pointer;'
       + 'text-decoration:underline dotted}'
       + '.nc-toggle:hover{opacity:1}'
+
+      /* The collapsed summary line. Reads as a control, not a heading, so it
+         is obvious there is more behind it. */
+      + '.nc-rocks-toggle{display:inline-block;margin-top:.15rem;padding:.05rem 0;'
+      + 'border:0;background:none;font:inherit;font-size:.9em;color:inherit;'
+      + 'opacity:.72;cursor:pointer;text-decoration:underline dotted}'
+      + '.nc-rocks-toggle:hover{opacity:1}'
+      + '.nc-rocks-toggle::before{content:"\\25B8";display:inline-block;'
+      + 'margin-right:.3rem;transition:transform .12s}'
+      + '.nc-rocks-toggle.nc-open::before{transform:rotate(90deg)}'
+      + '.nc-rocks[hidden]{display:none}'
+
+      /* Jump bar. Sits above the first method section in each location card. */
+      + '.nc-jump{display:flex;flex-wrap:wrap;gap:.35rem;margin:0 0 .5rem}'
+      + '.nc-jump-lnk{padding:.1rem .5rem;border-radius:99px;cursor:pointer;'
+      + 'font:inherit;font-size:.8em;letter-spacing:.02em;'
+      + 'color:var(--text-muted,#5a7a94);background:var(--bg-base,#050709);'
+      + 'border:1px solid var(--border,#172030)}'
+      + '.nc-jump-lnk:hover{color:var(--text-main,#e0eaf5);'
+      + 'border-color:var(--accent,#00e5a0)}'
       + '.nc-tag{font-weight:400;opacity:.6;font-style:normal;font-size:.9em}'
       + '.nc-parts{list-style:none;margin:.15rem 0 0 .9rem;padding:0;'
       + 'border-left:1px solid rgba(255,255,255,.12)}'

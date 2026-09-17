@@ -2878,5 +2878,1573 @@
     "Aluminum"
    ]
   }
- ]
+ ],
+ "fieldBehaviour": {
+  "Agricium": {
+   "sentence": "Always in groups of 3-5, within 1-12 m -- if you find one, sweep the area.",
+   "size": [
+    3,
+    5
+   ],
+   "proximity_m": [
+    1.0,
+    12.0
+   ],
+   "pct": 100.0,
+   "confidence": "solid"
+  },
+  "Aluminum": {
+   "sentence": "Always in groups of 4-6, within 1-12 m -- if you find one, sweep the area.",
+   "size": [
+    4,
+    6
+   ],
+   "proximity_m": [
+    1.0,
+    12.0
+   ],
+   "pct": 100.0,
+   "confidence": "solid"
+  },
+  "Aphorite": {
+   "sentence": "Always in groups of 10-21, within 1-4 m -- if you find one, sweep the area.",
+   "size": [
+    10,
+    21
+   ],
+   "proximity_m": [
+    1.0,
+    4.0
+   ],
+   "pct": 100.0,
+   "confidence": "solid"
+  },
+  "Aslarite": {
+   "sentence": "Always in groups of 3-5, within 1-12 m -- if you find one, sweep the area.",
+   "size": [
+    3,
+    5
+   ],
+   "proximity_m": [
+    1.0,
+    12.0
+   ],
+   "pct": 100.0,
+   "confidence": "solid"
+  },
+  "Beradom": {
+   "sentence": "Always in groups of 10-21, within 1-4 m -- if you find one, sweep the area.",
+   "size": [
+    10,
+    21
+   ],
+   "proximity_m": [
+    1.0,
+    4.0
+   ],
+   "pct": 100.0,
+   "confidence": "solid"
+  },
+  "Bexalite": {
+   "sentence": "Always in groups of 2-4, within 1-12 m -- if you find one, sweep the area.",
+   "size": [
+    2,
+    4
+   ],
+   "proximity_m": [
+    1.0,
+    12.0
+   ],
+   "pct": 100.0,
+   "confidence": "solid"
+  },
+  "Borase": {
+   "sentence": "Always in groups of 2-4, within 1-12 m -- if you find one, sweep the area.",
+   "size": [
+    2,
+    4
+   ],
+   "proximity_m": [
+    1.0,
+    12.0
+   ],
+   "pct": 100.0,
+   "confidence": "solid"
+  },
+  "Copper": {
+   "sentence": "Always in groups of 4-6, within 1-12 m -- if you find one, sweep the area.",
+   "size": [
+    4,
+    6
+   ],
+   "proximity_m": [
+    1.0,
+    12.0
+   ],
+   "pct": 100.0,
+   "confidence": "solid"
+  },
+  "Corundum": {
+   "sentence": "Always in groups of 4-6, within 1-12 m -- if you find one, sweep the area.",
+   "size": [
+    4,
+    6
+   ],
+   "proximity_m": [
+    1.0,
+    12.0
+   ],
+   "pct": 100.0,
+   "confidence": "solid"
+  },
+  "Dolivine": {
+   "sentence": "Always in groups of 10-21, within 1-4 m -- if you find one, sweep the area.",
+   "size": [
+    10,
+    21
+   ],
+   "proximity_m": [
+    1.0,
+    4.0
+   ],
+   "pct": 100.0,
+   "confidence": "solid"
+  },
+  "Feynmaline": {
+   "sentence": "Always in groups of 10-25, within 1.5-10 m -- if you find one, sweep the area.",
+   "size": [
+    10,
+    25
+   ],
+   "proximity_m": [
+    1.5,
+    10.0
+   ],
+   "pct": 100.0,
+   "confidence": "solid"
+  },
+  "Glacosite": {
+   "sentence": "Always in groups of 10-21, within 1-4 m -- if you find one, sweep the area.",
+   "size": [
+    10,
+    21
+   ],
+   "proximity_m": [
+    1.0,
+    4.0
+   ],
+   "pct": 100.0,
+   "confidence": "solid"
+  },
+  "Gold": {
+   "sentence": "Always in groups of 2-4, within 1-12 m -- if you find one, sweep the area.",
+   "size": [
+    2,
+    4
+   ],
+   "proximity_m": [
+    1.0,
+    12.0
+   ],
+   "pct": 100.0,
+   "confidence": "solid"
+  },
+  "Hadanite": {
+   "sentence": "Always in groups of 10-25, within 1.5-10 m -- if you find one, sweep the area.",
+   "size": [
+    10,
+    25
+   ],
+   "proximity_m": [
+    1.5,
+    10.0
+   ],
+   "pct": 100.0,
+   "confidence": "solid"
+  },
+  "Hephaestanite": {
+   "sentence": "Always in groups of 4-6, within 1-12 m -- if you find one, sweep the area.",
+   "size": [
+    4,
+    6
+   ],
+   "proximity_m": [
+    1.0,
+    12.0
+   ],
+   "pct": 100.0,
+   "confidence": "solid"
+  },
+  "Iron": {
+   "sentence": "Always in groups of 4-6, within 1-12 m -- if you find one, sweep the area.",
+   "size": [
+    4,
+    6
+   ],
+   "proximity_m": [
+    1.0,
+    12.0
+   ],
+   "pct": 100.0,
+   "confidence": "solid"
+  },
+  "Janalite": {
+   "sentence": "Always in groups of 10-25, within 1.5-10 m -- if you find one, sweep the area.",
+   "size": [
+    10,
+    25
+   ],
+   "proximity_m": [
+    1.5,
+    10.0
+   ],
+   "pct": 100.0,
+   "confidence": "solid"
+  },
+  "Laranite": {
+   "sentence": "Always in groups of 3-5, within 1-12 m -- if you find one, sweep the area.",
+   "size": [
+    3,
+    5
+   ],
+   "proximity_m": [
+    1.0,
+    12.0
+   ],
+   "pct": 100.0,
+   "confidence": "solid"
+  },
+  "Lindinium": {
+   "sentence": "Alone 60% of the time. When it does cluster it is 2-3 rocks.",
+   "size": [
+    2,
+    3
+   ],
+   "proximity_m": [
+    1.0,
+    12.0
+   ],
+   "pct": 40.0,
+   "confidence": "solid"
+  },
+  "Ouratite": {
+   "sentence": "Alone 60% of the time. When it does cluster it is 2-3 rocks.",
+   "size": [
+    2,
+    3
+   ],
+   "proximity_m": [
+    1.0,
+    12.0
+   ],
+   "pct": 40.0,
+   "confidence": "solid"
+  },
+  "Quantainium": {
+   "sentence": "Alone 75% of the time. When it does cluster it is a pair.",
+   "size": [
+    2,
+    2
+   ],
+   "proximity_m": [
+    1.0,
+    12.0
+   ],
+   "pct": 25.0,
+   "confidence": "solid"
+  },
+  "Quartz": {
+   "sentence": "Always in groups of 4-6, within 1-12 m -- if you find one, sweep the area.",
+   "size": [
+    4,
+    6
+   ],
+   "proximity_m": [
+    1.0,
+    12.0
+   ],
+   "pct": 100.0,
+   "confidence": "solid"
+  },
+  "Riccite": {
+   "sentence": "Alone 60% of the time. When it does cluster it is 2-3 rocks.",
+   "size": [
+    2,
+    3
+   ],
+   "proximity_m": [
+    1.0,
+    12.0
+   ],
+   "pct": 40.0,
+   "confidence": "solid"
+  },
+  "Savrilium": {
+   "sentence": "Alone 75% of the time. When it does cluster it is a pair.",
+   "size": [
+    2,
+    2
+   ],
+   "proximity_m": [
+    1.0,
+    12.0
+   ],
+   "pct": 25.0,
+   "confidence": "solid"
+  },
+  "Silicon": {
+   "sentence": "Always in groups of 4-6, within 1-12 m -- if you find one, sweep the area.",
+   "size": [
+    4,
+    6
+   ],
+   "proximity_m": [
+    1.0,
+    12.0
+   ],
+   "pct": 100.0,
+   "confidence": "solid"
+  },
+  "Stileron": {
+   "sentence": "Alone 75% of the time. When it does cluster it is a pair.",
+   "size": [
+    2,
+    2
+   ],
+   "proximity_m": [
+    1.0,
+    12.0
+   ],
+   "pct": 25.0,
+   "confidence": "solid"
+  },
+  "Taranite": {
+   "sentence": "Always in groups of 2-4, within 1-12 m -- if you find one, sweep the area.",
+   "size": [
+    2,
+    4
+   ],
+   "proximity_m": [
+    1.0,
+    12.0
+   ],
+   "pct": 100.0,
+   "confidence": "solid"
+  },
+  "Tin": {
+   "sentence": "Always in groups of 4-6, within 1-12 m -- if you find one, sweep the area.",
+   "size": [
+    4,
+    6
+   ],
+   "proximity_m": [
+    1.0,
+    12.0
+   ],
+   "pct": 100.0,
+   "confidence": "solid"
+  },
+  "Titanium": {
+   "sentence": "Always in groups of 3-5, within 1-12 m -- if you find one, sweep the area.",
+   "size": [
+    3,
+    5
+   ],
+   "proximity_m": [
+    1.0,
+    12.0
+   ],
+   "pct": 100.0,
+   "confidence": "solid"
+  },
+  "Torite": {
+   "sentence": "Always in groups of 3-5, within 1-12 m -- if you find one, sweep the area.",
+   "size": [
+    3,
+    5
+   ],
+   "proximity_m": [
+    1.0,
+    12.0
+   ],
+   "pct": 100.0,
+   "confidence": "solid"
+  },
+  "Tungsten": {
+   "sentence": "Always in groups of 3-5, within 1-12 m -- if you find one, sweep the area.",
+   "size": [
+    3,
+    5
+   ],
+   "proximity_m": [
+    1.0,
+    12.0
+   ],
+   "pct": 100.0,
+   "confidence": "solid"
+  }
+ },
+ "caveNotes": {
+  "Breaker Stations Interior": {
+   "adds": [
+    {
+     "ore": "Dolivine",
+     "pct": 34.7
+    },
+    {
+     "ore": "Hadanite",
+     "pct": 6.0
+    },
+    {
+     "ore": "Janalite",
+     "pct": 2.0
+    }
+   ],
+   "sentence": "Caves here also yield Dolivine, Hadanite, Janalite (34.7%, 6%, 2%), which the surface does not."
+  },
+  "Pyro I": {
+   "adds": [
+    {
+     "ore": "Janalite",
+     "pct": 2.0
+    }
+   ],
+   "sentence": "Caves here also yield Janalite (2%), which the surface does not."
+  },
+  "Pyro II (Monox)": {
+   "adds": [
+    {
+     "ore": "Janalite",
+     "pct": 2.0
+    }
+   ],
+   "sentence": "Caves here also yield Janalite (2%), which the surface does not."
+  },
+  "Pyro III (Bloom)": {
+   "adds": [
+    {
+     "ore": "Hadanite",
+     "pct": 6.0
+    }
+   ],
+   "sentence": "Caves here also yield Hadanite (6%), which the surface does not."
+  },
+  "Pyro IV": {
+   "adds": [
+    {
+     "ore": "Janalite",
+     "pct": 2.0
+    }
+   ],
+   "sentence": "Caves here also yield Janalite (2%), which the surface does not."
+  },
+  "Pyro V-a (Ignis)": {
+   "adds": [
+    {
+     "ore": "Janalite",
+     "pct": 2.0
+    }
+   ],
+   "sentence": "Caves here also yield Janalite (2%), which the surface does not."
+  },
+  "Pyro V-b (Vatra)": {
+   "adds": [
+    {
+     "ore": "Janalite",
+     "pct": 2.0
+    }
+   ],
+   "sentence": "Caves here also yield Janalite (2%), which the surface does not."
+  },
+  "Pyro V-c (Adir)": {
+   "adds": [
+    {
+     "ore": "Janalite",
+     "pct": 2.0
+    }
+   ],
+   "sentence": "Caves here also yield Janalite (2%), which the surface does not."
+  },
+  "Pyro V-d (Fairo)": {
+   "adds": [
+    {
+     "ore": "Janalite",
+     "pct": 2.0
+    }
+   ],
+   "sentence": "Caves here also yield Janalite (2%), which the surface does not."
+  },
+  "Pyro V-e (Fuego)": {
+   "adds": [
+    {
+     "ore": "Hadanite",
+     "pct": 6.0
+    }
+   ],
+   "sentence": "Caves here also yield Hadanite (6%), which the surface does not."
+  },
+  "Pyro V-f (Vuur)": {
+   "adds": [
+    {
+     "ore": "Janalite",
+     "pct": 2.0
+    }
+   ],
+   "sentence": "Caves here also yield Janalite (2%), which the surface does not."
+  },
+  "Pyro VI (Terminus)": {
+   "adds": [
+    {
+     "ore": "Hadanite",
+     "pct": 6.0
+    }
+   ],
+   "sentence": "Caves here also yield Hadanite (6%), which the surface does not."
+  },
+  "Aberdeen": {
+   "adds": [
+    {
+     "ore": "Janalite",
+     "pct": 2.0
+    }
+   ],
+   "sentence": "Caves here also yield Janalite (2%), which the surface does not."
+  },
+  "Arial": {
+   "adds": [
+    {
+     "ore": "Janalite",
+     "pct": 2.0
+    }
+   ],
+   "sentence": "Caves here also yield Janalite (2%), which the surface does not."
+  },
+  "Calliope": {
+   "adds": [
+    {
+     "ore": "Hadanite",
+     "pct": 6.0
+    }
+   ],
+   "sentence": "Caves here also yield Hadanite (6%), which the surface does not."
+  },
+  "Cellin": {
+   "adds": [
+    {
+     "ore": "Janalite",
+     "pct": 2.0
+    }
+   ],
+   "sentence": "Caves here also yield Janalite (2%), which the surface does not."
+  },
+  "Clio": {
+   "adds": [
+    {
+     "ore": "Hadanite",
+     "pct": 6.0
+    }
+   ],
+   "sentence": "Caves here also yield Hadanite (6%), which the surface does not."
+  },
+  "Daymar": {
+   "adds": [
+    {
+     "ore": "Janalite",
+     "pct": 2.0
+    }
+   ],
+   "sentence": "Caves here also yield Janalite (2%), which the surface does not."
+  },
+  "Euterpe": {
+   "adds": [
+    {
+     "ore": "Hadanite",
+     "pct": 6.0
+    }
+   ],
+   "sentence": "Caves here also yield Hadanite (6%), which the surface does not."
+  },
+  "Hurston": {
+   "adds": [
+    {
+     "ore": "Janalite",
+     "pct": 2.0
+    }
+   ],
+   "sentence": "Caves here also yield Janalite (2%), which the surface does not."
+  },
+  "Ita": {
+   "adds": [
+    {
+     "ore": "Janalite",
+     "pct": 2.0
+    }
+   ],
+   "sentence": "Caves here also yield Janalite (2%), which the surface does not."
+  },
+  "Lyria": {
+   "adds": [
+    {
+     "ore": "Hadanite",
+     "pct": 6.0
+    }
+   ],
+   "sentence": "Caves here also yield Hadanite (6%), which the surface does not."
+  },
+  "Magda": {
+   "adds": [
+    {
+     "ore": "Janalite",
+     "pct": 2.0
+    }
+   ],
+   "sentence": "Caves here also yield Janalite (2%), which the surface does not."
+  },
+  "Wala": {
+   "adds": [
+    {
+     "ore": "Hadanite",
+     "pct": 6.0
+    }
+   ],
+   "sentence": "Caves here also yield Hadanite (6%), which the surface does not."
+  },
+  "Yela": {
+   "adds": [
+    {
+     "ore": "Janalite",
+     "pct": 2.0
+    }
+   ],
+   "sentence": "Caves here also yield Janalite (2%), which the surface does not."
+  },
+  "microTech": {
+   "adds": [
+    {
+     "ore": "Hadanite",
+     "pct": 6.0
+    }
+   ],
+   "sentence": "Caves here also yield Hadanite (6%), which the surface does not."
+  }
+ },
+ "gear": {
+  "BoreMax": {
+   "type": "Mining Gadget",
+   "maker": "Thermyte Concern",
+   "stats": {
+    "Laser Instability": -70,
+    "Cluster Modifier": 30,
+    "Resistance": 10
+   },
+   "units": {
+    "Laser Instability": "%",
+    "Cluster Modifier": "%",
+    "Resistance": "%"
+   },
+   "power_pct": null
+  },
+  "Okunis": {
+   "type": "Mining Gadget",
+   "maker": "Shubin Interstellar",
+   "stats": {
+    "Optimal Charge Window Size": 50,
+    "Optimal Charge Window Rate": 100,
+    "Cluster Modifier": -20
+   },
+   "units": {
+    "Optimal Charge Window Size": "%",
+    "Optimal Charge Window Rate": "%",
+    "Cluster Modifier": "%"
+   },
+   "power_pct": null
+  },
+  "OptiMax": {
+   "type": "Mining Gadget",
+   "maker": "Greycat Industrial",
+   "stats": {
+    "Resistance": -30,
+    "Cluster Modifier": 60,
+    "Optimal Charge Window Size": -30
+   },
+   "units": {
+    "Resistance": "%",
+    "Cluster Modifier": "%",
+    "Optimal Charge Window Size": "%"
+   },
+   "power_pct": null
+  },
+  "Sabir": {
+   "type": "Mining Gadget",
+   "maker": "Shubin Interstellar",
+   "stats": {
+    "Optimal Charge Window Size": 50,
+    "Resistance": -50,
+    "Instability": 15
+   },
+   "units": {
+    "Optimal Charge Window Size": "%",
+    "Resistance": "%",
+    "Instability": "%"
+   },
+   "power_pct": null
+  },
+  "Stalwart": {
+   "type": "Mining Gadget",
+   "maker": "Thermyte Concern",
+   "stats": {
+    "Laser Instability": -35,
+    "Cluster Modifier": 30,
+    "Optimal Charge Window Rate": 50,
+    "Optimal Charge Window Size": -30
+   },
+   "units": {
+    "Laser Instability": "%",
+    "Cluster Modifier": "%",
+    "Optimal Charge Window Rate": "%",
+    "Optimal Charge Window Size": "%"
+   },
+   "power_pct": null
+  },
+  "Waveshift": {
+   "type": "Mining Gadget",
+   "maker": "Greycat Industrial",
+   "stats": {
+    "Laser Instability": -35,
+    "Optimal Charge Window Size": 100,
+    "Optimal Charge Window Rate": -30
+   },
+   "units": {
+    "Laser Instability": "%",
+    "Optimal Charge Window Size": "%",
+    "Optimal Charge Window Rate": "%"
+   },
+   "power_pct": null
+  },
+  "Arbor MH1 Mining Laser": {
+   "type": "Mining Laser",
+   "maker": "Greycat Industrial",
+   "stats": {
+    "Size": 1,
+    "Optimal Range": 60,
+    "Maximum Range": 180,
+    "Extraction Laser Power": 1850,
+    "Module Slots": 1,
+    "Laser Instability": -35,
+    "Optimal Charge Window Size": 40,
+    "Inert Material Level": -30,
+    "Resistance": 25
+   },
+   "units": {
+    "Optimal Range": "m",
+    "Maximum Range": "m",
+    "Laser Instability": "%",
+    "Optimal Charge Window Size": "%",
+    "Inert Material Level": "%",
+    "Resistance": "%"
+   },
+   "power_pct": 1850
+  },
+  "Arbor MH2 Mining Laser": {
+   "type": "Mining Laser",
+   "maker": "Greycat Industrial",
+   "stats": {
+    "Size": 2,
+    "Optimal Range": 90,
+    "Maximum Range": 270,
+    "Extraction Laser Power": 2590,
+    "Module Slots": 2,
+    "Laser Instability": -35,
+    "Optimal Charge Window Size": 40,
+    "Inert Material Level": -40,
+    "Resistance": 25
+   },
+   "units": {
+    "Optimal Range": "m",
+    "Maximum Range": "m",
+    "Laser Instability": "%",
+    "Optimal Charge Window Size": "%",
+    "Inert Material Level": "%",
+    "Resistance": "%"
+   },
+   "power_pct": 2590
+  },
+  "Arbor MHV Mining Laser": {
+   "type": "Mining Laser",
+   "maker": "Greycat Industrial",
+   "stats": {
+    "Size": 0,
+    "Optimal Range": 30,
+    "Maximum Range": 150,
+    "Power Transfer": 1400
+   },
+   "units": {
+    "Optimal Range": "m",
+    "Maximum Range": "m"
+   },
+   "power_pct": null
+  },
+  "Helix I Mining Laser": {
+   "type": "Mining Laser",
+   "maker": "Thermyte Concern",
+   "stats": {
+    "Size": 1,
+    "Optimal Range": 15,
+    "Maximum Range": 45,
+    "Extraction Laser Power": 1850,
+    "Module Slots": 2,
+    "Resistance": -30,
+    "Inert Material Level": -30,
+    "Optimal Charge Window Size": -40
+   },
+   "units": {
+    "Optimal Range": "m",
+    "Maximum Range": "m",
+    "Resistance": "%",
+    "Inert Material Level": "%",
+    "Optimal Charge Window Size": "%"
+   },
+   "power_pct": 1850
+  },
+  "Helix II Mining Laser": {
+   "type": "Mining Laser",
+   "maker": "Thermyte Concern",
+   "stats": {
+    "Size": 2,
+    "Optimal Range": 30,
+    "Maximum Range": 90,
+    "Extraction Laser Power": 2590,
+    "Module Slots": 3,
+    "Resistance": -30,
+    "Inert Material Level": -40,
+    "Optimal Charge Window Size": -40
+   },
+   "units": {
+    "Optimal Range": "m",
+    "Maximum Range": "m",
+    "Resistance": "%",
+    "Inert Material Level": "%",
+    "Optimal Charge Window Size": "%"
+   },
+   "power_pct": 2590
+  },
+  "Helix S Mining Laser": {
+   "type": "Mining Laser",
+   "maker": "Thermyte Concern",
+   "stats": {
+    "Size": 0,
+    "Optimal Range": 37.5,
+    "Maximum Range": 187.5,
+    "Power Transfer": 2300,
+    "Instability": -30,
+    "Resistance": -10,
+    "All Charge Rates": 20,
+    "Optimal Charge Window Size": 15,
+    "Shatter Damage": 50,
+    "Throttle Responsiveness Delay": -50,
+    "Module Slots": 3
+   },
+   "units": {
+    "Optimal Range": "m",
+    "Maximum Range": "m",
+    "Instability": "%",
+    "Resistance": "%",
+    "All Charge Rates": "%",
+    "Optimal Charge Window Size": "%",
+    "Shatter Damage": "%",
+    "Throttle Responsiveness Delay": "%"
+   },
+   "power_pct": null
+  },
+  "Hofstede-S1 Mining Laser": {
+   "type": "Mining Laser",
+   "maker": "Shubin Interstellar",
+   "stats": {
+    "Size": 1,
+    "Optimal Range": 45,
+    "Maximum Range": 135,
+    "Extraction Laser Power": 1295,
+    "Module Slots": 1,
+    "Resistance": -30,
+    "Optimal Charge Window Rate": 20,
+    "Inert Material Level": -30,
+    "Laser Instability": 10
+   },
+   "units": {
+    "Optimal Range": "m",
+    "Maximum Range": "m",
+    "Resistance": "%",
+    "Optimal Charge Window Rate": "%",
+    "Inert Material Level": "%",
+    "Laser Instability": "%"
+   },
+   "power_pct": 1295
+  },
+  "Hofstede-S2 Mining Laser": {
+   "type": "Mining Laser",
+   "maker": "Shubin Interstellar",
+   "stats": {
+    "Size": 2,
+    "Optimal Range": 60,
+    "Maximum Range": 180,
+    "Extraction Laser Power": 1295,
+    "Module Slots": 2,
+    "Resistance": -30,
+    "Optimal Charge Window Rate": 20,
+    "Inert Material Level": -40,
+    "Laser Instability": 10
+   },
+   "units": {
+    "Optimal Range": "m",
+    "Maximum Range": "m",
+    "Resistance": "%",
+    "Optimal Charge Window Rate": "%",
+    "Inert Material Level": "%",
+    "Laser Instability": "%"
+   },
+   "power_pct": 1295
+  },
+  "Hofstede-SV Mining Laser": {
+   "type": "Mining Laser",
+   "maker": "Shubin Interstellar",
+   "stats": {
+    "Size": 0,
+    "Optimal Range": 15,
+    "Maximum Range": 75,
+    "Power Transfer": 2000,
+    "Instability": -50,
+    "Module Slots": 2
+   },
+   "units": {
+    "Optimal Range": "m",
+    "Maximum Range": "m",
+    "Instability": "%"
+   },
+   "power_pct": null
+  },
+  "Impact I Mining Laser": {
+   "type": "Mining Laser",
+   "maker": "Thermyte Concern",
+   "stats": {
+    "Size": 1,
+    "Optimal Range": 45,
+    "Maximum Range": 135,
+    "Extraction Laser Power": 2775,
+    "Module Slots": 2,
+    "Laser Instability": -10,
+    "Optimal Charge Window Size": 20,
+    "Inert Material Level": -30,
+    "Resistance": 10,
+    "Optimal Charge Window Rate": -40
+   },
+   "units": {
+    "Optimal Range": "m",
+    "Maximum Range": "m",
+    "Laser Instability": "%",
+    "Optimal Charge Window Size": "%",
+    "Inert Material Level": "%",
+    "Resistance": "%",
+    "Optimal Charge Window Rate": "%"
+   },
+   "power_pct": 2775
+  },
+  "Impact II Mining Laser": {
+   "type": "Mining Laser",
+   "maker": "Thermyte Concern",
+   "stats": {
+    "Size": 2,
+    "Optimal Range": 60,
+    "Maximum Range": 180,
+    "Extraction Laser Power": 3145,
+    "Module Slots": 3,
+    "Laser Instability": -10,
+    "Optimal Charge Window Size": 20,
+    "Inert Material Level": -40,
+    "Resistance": 10,
+    "Optimal Charge Window Rate": -40
+   },
+   "units": {
+    "Optimal Range": "m",
+    "Maximum Range": "m",
+    "Laser Instability": "%",
+    "Optimal Charge Window Size": "%",
+    "Inert Material Level": "%",
+    "Resistance": "%",
+    "Optimal Charge Window Rate": "%"
+   },
+   "power_pct": 3145
+  },
+  "Impact S Mining Laser": {
+   "type": "Mining Laser",
+   "maker": "Thermyte Concern",
+   "stats": {
+    "Size": 0,
+    "Optimal Range": 30,
+    "Maximum Range": 150,
+    "Power Transfer": 3000,
+    "Optimal Charge Rate": 20,
+    "Resistance": -10,
+    "Instability": 20,
+    "Shatter Damage": 50,
+    "Overcharge Rate": 100,
+    "Module Slots": 3
+   },
+   "units": {
+    "Maximum Range": "m",
+    "Optimal Charge Rate": "%",
+    "Resistance": "%",
+    "Instability": "%",
+    "Shatter Damage": "%",
+    "Overcharge Rate": "%"
+   },
+   "power_pct": null
+  },
+  "Klein-S1 Mining Laser": {
+   "type": "Mining Laser",
+   "maker": "Shubin Interstellar",
+   "stats": {
+    "Size": 1,
+    "Optimal Range": 45,
+    "Maximum Range": 135,
+    "Extraction Laser Power": 2220,
+    "Module Slots": 0,
+    "Resistance": -45,
+    "Optimal Charge Window Size": 20,
+    "Inert Material Level": -30,
+    "Laser Instability": 35
+   },
+   "units": {
+    "Optimal Range": "m",
+    "Maximum Range": "m",
+    "Resistance": "%",
+    "Optimal Charge Window Size": "%",
+    "Inert Material Level": "%",
+    "Laser Instability": "%"
+   },
+   "power_pct": 2220
+  },
+  "Klein-S2 Mining Laser": {
+   "type": "Mining Laser",
+   "maker": "Shubin Interstellar",
+   "stats": {
+    "Size": 2,
+    "Optimal Range": 60,
+    "Maximum Range": 180,
+    "Extraction Laser Power": 2775,
+    "Module Slots": 1,
+    "Resistance": -45,
+    "Optimal Charge Window Size": 20,
+    "Inert Material Level": -40,
+    "Laser Instability": 35
+   },
+   "units": {
+    "Optimal Range": "m",
+    "Maximum Range": "m",
+    "Resistance": "%",
+    "Optimal Charge Window Size": "%",
+    "Inert Material Level": "%",
+    "Laser Instability": "%"
+   },
+   "power_pct": 2775
+  },
+  "Klein-SV Mining Laser": {
+   "type": "Mining Laser",
+   "maker": "Shubin Interstellar",
+   "stats": {
+    "Size": 0,
+    "Optimal Range": 30,
+    "Maximum Range": 150,
+    "Power Transfer": 2500,
+    "Resistance": -10,
+    "Instability": 50,
+    "Module Slots": 2
+   },
+   "units": {
+    "Optimal Range": "m",
+    "Maximum Range": "m",
+    "Resistance": "%",
+    "Instability": "%"
+   },
+   "power_pct": null
+  },
+  "Lancet MH1 Mining Laser": {
+   "type": "Mining Laser",
+   "maker": "Greycat Industrial",
+   "stats": {
+    "Size": 1,
+    "Optimal Range": 30,
+    "Maximum Range": 90,
+    "Extraction Laser Power": 1850,
+    "Module Slots": 1,
+    "Laser Instability": -10,
+    "Optimal Charge Window Rate": 40,
+    "Inert Material Level": -30,
+    "Optimal Charge Window Size": -60
+   },
+   "units": {
+    "Optimal Range": "m",
+    "Maximum Range": "m",
+    "Laser Instability": "%",
+    "Optimal Charge Window Rate": "%",
+    "Inert Material Level": "%",
+    "Optimal Charge Window Size": "%"
+   },
+   "power_pct": 1850
+  },
+  "Lancet MH2 Mining Laser": {
+   "type": "Mining Laser",
+   "maker": "Greycat Industrial",
+   "stats": {
+    "Size": 2,
+    "Optimal Range": 45,
+    "Maximum Range": 135,
+    "Extraction Laser Power": 2590,
+    "Module Slots": 2,
+    "Laser Instability": -10,
+    "Optimal Charge Window Rate": 40,
+    "Inert Material Level": -40,
+    "Optimal Charge Window Size": -60
+   },
+   "units": {
+    "Optimal Range": "m",
+    "Maximum Range": "m",
+    "Laser Instability": "%",
+    "Optimal Charge Window Rate": "%",
+    "Inert Material Level": "%",
+    "Optimal Charge Window Size": "%"
+   },
+   "power_pct": 2590
+  },
+  "Lancet MHV Mining Laser": {
+   "type": "Mining Laser",
+   "maker": "Greycat Industrial",
+   "stats": {
+    "Size": 0,
+    "Optimal Range": 30,
+    "Maximum Range": 150,
+    "Instability": -30,
+    "Resistance": -50,
+    "Power Transfer": 1200,
+    "All Charge Rates": -30,
+    "Module Slots": 3
+   },
+   "units": {
+    "Optimal Range": "m",
+    "Maximum Range": "m",
+    "Instability": "%",
+    "Resistance": "%",
+    "All Charge Rates": "%"
+   },
+   "power_pct": null
+  },
+  "Pitman Mining Laser": {
+   "type": "Mining Laser",
+   "maker": "Drake Interplanetary",
+   "stats": {
+    "Size": 1,
+    "Optimal Range": 40,
+    "Maximum Range": 45,
+    "Mining Laser Power": 3150,
+    "Module Slots": 2,
+    "Resistance": 25,
+    "Laser Instability": 35,
+    "Inert Material Level": -30,
+    "Optimal Charge Window Rate": -40
+   },
+   "units": {
+    "Optimal Range": "m",
+    "Maximum Range": "m",
+    "Resistance": "%",
+    "Laser Instability": "%",
+    "Inert Material Level": "%",
+    "Optimal Charge Window Rate": "%"
+   },
+   "power_pct": 3150
+  },
+  "Brandt Module": {
+   "type": "Mining Module (Active)",
+   "maker": "Shubin Interstellar",
+   "stats": {
+    "Shatter Damage": -30,
+    "Mining Laser Power": 135,
+    "Resistance": 15,
+    "Duration": 60,
+    "Uses": 5
+   },
+   "units": {
+    "Shatter Damage": "%",
+    "Mining Laser Power": "%",
+    "Resistance": "%",
+    "Duration": "seconds"
+   },
+   "power_pct": 135
+  },
+  "Forel Module": {
+   "type": "Mining Module (Active)",
+   "maker": "Shubin Interstellar",
+   "stats": {
+    "Extraction Laser Power": 150,
+    "Catastrophic Charge Rate": -60,
+    "Resistance": 15,
+    "Duration": 60,
+    "Uses": 6
+   },
+   "units": {
+    "Extraction Laser Power": "%",
+    "Catastrophic Charge Rate": "%",
+    "Resistance": "%",
+    "Duration": "seconds"
+   },
+   "power_pct": 150
+  },
+  "Lifeline Module": {
+   "type": "Mining Module (Active)",
+   "maker": "Greycat Industrial",
+   "stats": {
+    "Laser Instability": -20,
+    "Resistance": -15,
+    "Catastrophic Charge Rate": 60,
+    "Duration": 15,
+    "Uses": 3
+   },
+   "units": {
+    "Resistance": "%",
+    "Catastrophic Charge Rate": "%",
+    "Duration": "seconds"
+   },
+   "power_pct": null
+  },
+  "Optimum Module": {
+   "type": "Mining Module (Active)",
+   "maker": "Greycat Industrial",
+   "stats": {
+    "Laser Instability": -10,
+    "Catastrophic Charge Rate": -80,
+    "Mining Laser Power": 85,
+    "Duration": 60,
+    "Uses": 5
+   },
+   "units": {
+    "Laser Instability": "%",
+    "Catastrophic Charge Rate": "%",
+    "Mining Laser Power": "%",
+    "Duration": "seconds"
+   },
+   "power_pct": 85
+  },
+  "Rime Module": {
+   "type": "Mining Module (Active)",
+   "maker": "Greycat Industrial",
+   "stats": {
+    "Resistance": -25,
+    "Shatter Damage": -10,
+    "Mining Laser Power": 85,
+    "Duration": 20,
+    "Uses": 10
+   },
+   "units": {
+    "Resistance": "%",
+    "Shatter Damage": "%",
+    "Mining Laser Power": "%",
+    "Duration": "seconds"
+   },
+   "power_pct": 85
+  },
+  "Stampede Module": {
+   "type": "Mining Module (Active)",
+   "maker": "Thermyte Concern",
+   "stats": {
+    "Laser Instability": -10,
+    "Mining Laser Power": 135,
+    "Shatter Damage": -10,
+    "Extraction Laser Power": 85,
+    "Duration": 30,
+    "Uses": 6
+   },
+   "units": {
+    "Mining Laser Power": "%",
+    "Shatter Damage": "%",
+    "Extraction Laser Power": "%",
+    "Duration": "seconds"
+   },
+   "power_pct": 135
+  },
+  "Surge Module": {
+   "type": "Mining Module (Active)",
+   "maker": "Thermyte Concern",
+   "stats": {
+    "Mining Laser Power": 150,
+    "Resistance": -15,
+    "Laser Instability": 10,
+    "Duration": 15,
+    "Uses": 7
+   },
+   "units": {
+    "Mining Laser Power": "%",
+    "Resistance": "%",
+    "Laser Instability": "%",
+    "Duration": "seconds"
+   },
+   "power_pct": 150
+  },
+  "Torpid Module": {
+   "type": "Mining Module (Active)",
+   "maker": "Greycat Industrial",
+   "stats": {
+    "Optimal Charge Rate": 60,
+    "Catastrophic Charge Rate": -60,
+    "Shatter Damage": 40,
+    "Duration": 60,
+    "Uses": 5
+   },
+   "units": {
+    "Optimal Charge Rate": "%",
+    "Catastrophic Charge Rate": "%",
+    "Shatter Damage": "%",
+    "Duration": "seconds"
+   },
+   "power_pct": null
+  },
+  "FLTR Module": {
+   "type": "Mining Module (Passive)",
+   "maker": "Greycat Industrial",
+   "stats": {
+    "Inert Material Level": -20,
+    "Extraction Laser Power": 85
+   },
+   "units": {
+    "Inert Material Level": "%",
+    "Extraction Laser Power": "%"
+   },
+   "power_pct": 85
+  },
+  "FLTR-L Module": {
+   "type": "Mining Module (Passive)",
+   "maker": "Greycat Industrial",
+   "stats": {
+    "Inert Material Level": -23,
+    "Extraction Laser Power": 90
+   },
+   "units": {
+    "Inert Material Level": "%",
+    "Extraction Laser Power": "%"
+   },
+   "power_pct": 90
+  },
+  "FLTR-XL Module": {
+   "type": "Mining Module (Passive)",
+   "maker": "Greycat Industrial",
+   "stats": {
+    "Inert Material Level": -24,
+    "Extraction Laser Power": 95
+   },
+   "units": {
+    "Inert Material Level": "%",
+    "Extraction Laser Power": "%"
+   },
+   "power_pct": 95
+  },
+  "Focus II Module": {
+   "type": "Mining Module (Passive)",
+   "maker": "Thermyte Concern",
+   "stats": {
+    "Optimal Charge Window Size": 37,
+    "Mining Laser Power": 90
+   },
+   "units": {
+    "Optimal Charge Window Size": "%",
+    "Mining Laser Power": "%"
+   },
+   "power_pct": 90
+  },
+  "Focus III Module": {
+   "type": "Mining Module (Passive)",
+   "maker": "Thermyte Concern",
+   "stats": {
+    "Optimal Charge Window Size": 40,
+    "Mining Laser Power": 95
+   },
+   "units": {
+    "Optimal Charge Window Size": "%",
+    "Mining Laser Power": "%"
+   },
+   "power_pct": 95
+  },
+  "Focus Module": {
+   "type": "Mining Module (Passive)",
+   "maker": "Thermyte Concern",
+   "stats": {
+    "Optimal Charge Window Size": 30,
+    "Mining Laser Power": 85
+   },
+   "units": {
+    "Optimal Charge Window Size": "%",
+    "Mining Laser Power": "%"
+   },
+   "power_pct": 85
+  },
+  "Rieger Module": {
+   "type": "Mining Module (Passive)",
+   "maker": "Shubin Interstellar",
+   "stats": {
+    "Mining Laser Power": 115,
+    "Optimal Charge Window Size": -10
+   },
+   "units": {
+    "Mining Laser Power": "%",
+    "Optimal Charge Window Size": "%"
+   },
+   "power_pct": 115
+  },
+  "Rieger-C2 Module": {
+   "type": "Mining Module (Passive)",
+   "maker": "Shubin Interstellar",
+   "stats": {
+    "Mining Laser Power": 120,
+    "Optimal Charge Window Size": -3
+   },
+   "units": {
+    "Mining Laser Power": "%",
+    "Optimal Charge Window Size": "%"
+   },
+   "power_pct": 120
+  },
+  "Rieger-C3 Module": {
+   "type": "Mining Module (Passive)",
+   "maker": "Shubin Interstellar",
+   "stats": {
+    "Mining Laser Power": 125,
+    "Optimal Charge Window Size": -1
+   },
+   "units": {
+    "Mining Laser Power": "%",
+    "Optimal Charge Window Size": "%"
+   },
+   "power_pct": 125
+  },
+  "Torrent II Module": {
+   "type": "Mining Module (Passive)",
+   "maker": "Thermyte Concern",
+   "stats": {
+    "Optimal Charge Rate": 35,
+    "Optimal Charge Window Size": -3
+   },
+   "units": {
+    "Optimal Charge Rate": "%",
+    "Optimal Charge Window Size": "%"
+   },
+   "power_pct": null
+  },
+  "Torrent III Module": {
+   "type": "Mining Module (Passive)",
+   "maker": "Thermyte Concern",
+   "stats": {
+    "Optimal Charge Rate": 40,
+    "Optimal Charge Window Size": -1
+   },
+   "units": {
+    "Optimal Charge Rate": "%",
+    "Optimal Charge Window Size": "%"
+   },
+   "power_pct": null
+  },
+  "Torrent Module": {
+   "type": "Mining Module (Passive)",
+   "maker": "Thermyte Concern",
+   "stats": {
+    "Optimal Charge Rate": 30,
+    "Optimal Charge Window Size": -10
+   },
+   "units": {
+    "Optimal Charge Rate": "%",
+    "Optimal Charge Window Size": "%"
+   },
+   "power_pct": null
+  },
+  "Vaux Module": {
+   "type": "Mining Module (Passive)",
+   "maker": "Shubin Interstellar",
+   "stats": {
+    "Extraction Laser Power": 115,
+    "Optimal Charge Rate": -20
+   },
+   "units": {
+    "Extraction Laser Power": "%",
+    "Optimal Charge Rate": "%"
+   },
+   "power_pct": 115
+  },
+  "Vaux-C2 Module": {
+   "type": "Mining Module (Passive)",
+   "maker": "Shubin Interstellar",
+   "stats": {
+    "Extraction Laser Power": 120,
+    "Optimal Charge Rate": -15
+   },
+   "units": {
+    "Extraction Laser Power": "%",
+    "Optimal Charge Rate": "%"
+   },
+   "power_pct": 120
+  },
+  "Vaux-C3 Module": {
+   "type": "Mining Module (Passive)",
+   "maker": "Shubin Interstellar",
+   "stats": {
+    "Extraction Laser Power": 125,
+    "Optimal Charge Rate": -5
+   },
+   "units": {
+    "Extraction Laser Power": "%",
+    "Optimal Charge Rate": "%"
+   },
+   "power_pct": 125
+  },
+  "XTR Module": {
+   "type": "Mining Module (Passive)",
+   "maker": "Greycat Industrial",
+   "stats": {
+    "Optimal Charge Window Size": 15,
+    "Inert Material Level": -5,
+    "Extraction Laser Power": 85
+   },
+   "units": {
+    "Optimal Charge Window Size": "%",
+    "Inert Material Level": "%",
+    "Extraction Laser Power": "%"
+   },
+   "power_pct": 85
+  },
+  "XTR-L Module": {
+   "type": "Mining Module (Passive)",
+   "maker": "Greycat Industrial",
+   "stats": {
+    "Optimal Charge Window Size": 22,
+    "Inert Material Level": -5.7,
+    "Extraction Laser Power": 90
+   },
+   "units": {
+    "Optimal Charge Window Size": "%",
+    "Inert Material Level": "%",
+    "Extraction Laser Power": "%"
+   },
+   "power_pct": 90
+  },
+  "XTR-XL Module": {
+   "type": "Mining Module (Passive)",
+   "maker": "Greycat Industrial",
+   "stats": {
+    "Optimal Charge Window Size": 25,
+    "Inert Material Level": -6,
+    "Extraction Laser Power": 95
+   },
+   "units": {
+    "Optimal Charge Window Size": "%",
+    "Inert Material Level": "%",
+    "Extraction Laser Power": "%"
+   },
+   "power_pct": 95
+  }
+ },
+ "extras_note": "Cluster sizes and cave contents are read from the game's own tables. The terrain/region reading behind them is inferred, and is labelled as inferred wherever it is shown."
 }

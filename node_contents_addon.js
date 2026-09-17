@@ -128,6 +128,10 @@
              : '') + '</li>';
   }
 
+  function fmtPct(v) {
+    return (Math.round(v * 10) / 10).toString();
+  }
+
   function chip(txt, cls) {
     return '<span class="nc-chip ' + (cls || '') + '">' + esc(txt) + '</span>';
   }
@@ -220,13 +224,73 @@
     if (anchor && anchor.parentNode) anchor.parentNode.insertBefore(bar, anchor);
   }
 
+  /* WHAT THE CAVES ADD HERE, which is a per-location fact the surface tables
+     cannot express. It earns a line because it genuinely varies: at 35 of the
+     62 locations caves add four materials the surface never yields, at 16 they
+     add only janalite, and at one they add nothing at all. A single global
+     sentence would have been noise; these are not. */
+  function addCaveNote(card) {
+    if (!NC || !NC.caveNotes) return;
+    if (card.querySelector('.nc-cave')) return;
+    var nameEl = card.querySelector('.loc-name');
+    if (!nameEl) return;
+    var note = NC.caveNotes[nameEl.textContent.trim()];
+    if (!note || !note.sentence) return;
+    /* INSIDE .loc-body, as a peer of the deposit sections -- not floating
+       between the header and the body. `.loc-body` is a flex column with a
+       15px gap and 15px padding, and the method groups carry margin 0 and let
+       that gap do the spacing; a panel parked outside it was aligned to the
+       card edge instead of to the sections it belongs with. Appended LAST, so
+       the three mining methods keep their order and the caves read as the
+       supplement they are. */
+    var body = card.querySelector('.loc-body');
+    var head = card.querySelector('.loc-header');
+    if (!body && !head) return;
+    /* BUILT AS A SECTION, not as a sentence. The card's three deposit blocks
+       are each a panel on --bg-base with a 3px coloured left edge, a 6px
+       radius and an uppercase title, colour-keyed by method: Ship #60a0ff,
+       Vehicle #ff9500, Hand #00e5a0. A loose line of prose above them read as
+       a stray caption. This is a fourth panel of the same shape, in the violet
+       nothing else uses, and the materials are chips in the same MATERIAL /
+       CHANCE order the tables beneath use -- so it scans as part of the card
+       rather than as something bolted on top.
+
+       The percentages come from `adds` as data. The sentence is kept for the
+       title attribute, because it says the one thing the chips cannot: that
+       these are materials the SURFACE here does not yield. */
+    var chips = (note.adds || []).map(function (a) {
+      return '<span class="nc-cave-chip"><span class="nc-cave-ore">'
+           + esc(a.ore) + '</span>'
+           + (typeof a.pct === 'number'
+               ? '<span class="nc-cave-pct">' + fmtPct(a.pct) + '%</span>' : '')
+           + '</span>';
+    }).join('');
+    var el = document.createElement('div');
+    el.className = 'nc-cave';
+    el.setAttribute('title', note.sentence || '');
+    el.innerHTML = '<h4 class="nc-cave-title">Caves also yield</h4>'
+                 + '<div class="nc-cave-chips">' + chips + '</div>'
+                 + '<div class="nc-cave-foot">not found on the surface here</div>';
+    if (body) {
+        body.appendChild(el);
+    } else {
+        head.parentNode.insertBefore(el, head.nextSibling);
+    }
+  }
+
   function decorate(root) {
     if (!NC) return;
     ensureFilterWiring();
     installControl();
     var cards = (root || document).querySelectorAll('.loc-card');
     for (var c = 0; c < cards.length; c++) addSynthRows(cards[c]);
+    /* These two no longer share an insertion point -- the jump bar goes to
+       the top of .loc-body, the cave panel to the bottom of it -- so loop
+       order no longer decides screen order. It did when both inserted after
+       the header, and the cave panel pushed the navigation links below a 91px
+       block. */
     for (var j = 0; j < cards.length; j++) addJumpBar(cards[j]);
+    for (var k = 0; k < cards.length; k++) addCaveNote(cards[k]);
     var groups = (root || document).querySelectorAll('.loc-method-group');
     for (var g = 0; g < groups.length; g++) {
       var grp = groups[g];
@@ -245,6 +309,43 @@
         cell.appendChild(box);
       }
     }
+  }
+
+  /* HOW MANY ROCKS YOU ACTUALLY GET, which is a trip-planning fact and not a
+     composition one. A Prospector run on a 3-rock cluster and one on a
+     10-rock cluster are different trips, and the tool had no way to say so.
+     Read from the archive's clustering tables via the field guide.
+
+     THE COMPACT LABEL IS NOT THE SENTENCE. Most rows are "always in groups of
+     N-M", but Quantainium is the interesting one -- alone 75% of the time, and
+     a PAIR when it does cluster -- so a bare "groups of 2-2" would be actively
+     misleading. Below 50% clustering the chip says "usually alone" and the
+     full sentence sits in the title and in the opened block. */
+  function clusterChip(material) {
+    var fb = NC && NC.fieldBehaviour && NC.fieldBehaviour[material];
+    if (!fb || !fb.size) return '';
+    var lo = fb.size[0], hi = fb.size[1];
+    var pct = typeof fb.pct === 'number' ? fb.pct : 100;
+    var label;
+    if (pct <= 50) {
+      label = 'usually alone';
+    } else if (lo === hi) {
+      label = 'in ' + lo + 's';
+    } else {
+      label = 'groups of ' + lo + '\u2013' + hi;
+    }
+    return '<span class="nc-clus" title="' + esc(fb.sentence || '') + '">'
+         + esc(label) + '</span>';
+  }
+
+  function clusterDetail(material) {
+    var fb = NC && NC.fieldBehaviour && NC.fieldBehaviour[material];
+    if (!fb || !fb.sentence) return '';
+    var prox = fb.proximity_m
+      ? ' <span class="nc-clus-prox">within ' + fb.proximity_m[0]
+        + '\u2013' + fb.proximity_m[1] + ' m</span>'
+      : '';
+    return '<div class="nc-clus-line">' + esc(fb.sentence) + prox + '</div>';
   }
 
   /* THE COLLAPSED LINE IS THE IMPORTANT ONE -- most players will only read that.
@@ -268,7 +369,11 @@
                return cardHtml(nd, material, 'alt');
              }).join('') + '</div>';
     }
-    if (!out) return '';
+    /* A material can have clustering but no node composition, so the chip
+       cannot live behind the rock block's early return. */
+    var chip = clusterChip(material);
+    if (!out) return chip;
+    out = clusterDetail(material) + out;
     out += '<button type="button" class="nc-toggle" aria-expanded="false">'
          + 'show mass shares</button>';
 
@@ -285,7 +390,7 @@
     if (nPrim) bits.push('in ' + nPrim + ' rock' + (nPrim === 1 ? '' : 's'));
     if (nPass) bits.push('inside ' + nPass + ' other' + (nPass === 1 ? '' : 's'));
     return '<button type="button" class="nc-rocks-toggle" aria-expanded="false">'
-         + esc(bits.join(', ')) + '</button>'
+         + esc(bits.join(', ')) + '</button>' + chip
          + '<div class="nc-rocks" hidden>' + out + '</div>';
   }
 
@@ -341,8 +446,14 @@
         return;
       }
       if (b.classList.contains('nc-rocks-toggle')) {
-        var wrap = b.nextElementSibling;
-        if (wrap && wrap.classList.contains('nc-rocks')) {
+        /* LOOKED UP WITHIN THE CELL, not as nextElementSibling. It WAS the
+           next sibling until a cluster chip was inserted between the two,
+           and this silently stopped opening -- no error, the button just did
+           nothing, because the guard quietly failed its classList test. A
+           handler that finds its target by adjacency breaks the moment
+           anything is added beside it; querying the cell cannot. */
+        var wrap = b.parentNode && b.parentNode.querySelector('.nc-rocks');
+        if (wrap) {
           var open = wrap.hidden;
           wrap.hidden = !open;
           b.setAttribute('aria-expanded', open ? 'true' : 'false');
@@ -683,6 +794,27 @@
       + '.nc-chip-none{border-style:dashed;opacity:.6;font-style:italic}'
       + '.nc-chip-band{font-family:var(--mono,monospace)}'
       + '.nc-parts-wrap{margin-top:.25rem}'
+      + '.nc-clus{display:inline-block;margin-left:.4rem;padding:.02rem .35rem;'
+      + 'border-radius:3px;border:1px dashed rgba(255,255,255,.22);opacity:.85;'
+      + 'font-size:.78rem;white-space:nowrap;cursor:help}'
+      + '.nc-clus-line{margin:.15rem 0 .3rem;opacity:.9}'
+      + '.nc-clus-prox{opacity:.6}'
+      /* Shaped like .loc-method-group so it reads as a fourth section of the
+         card: same ground, same radius, same padding, same title treatment --
+         only the left edge differs, in the one hue the three methods leave
+         free. */
+      + '.nc-cave{background:var(--bg-base,#050709);border-left:3px solid #a78bfa;'
+      /* margin 0 like .loc-method-group: the parent's 15px gap spaces it. */
+      + 'border-radius:6px;padding:12px;margin:0}'
+      + '.nc-cave-title{margin:0 0 .45rem;font-size:.8rem;font-weight:700;'
+      + 'text-transform:uppercase;letter-spacing:.5px;color:#5a7a94}'
+      + '.nc-cave-chips{display:flex;flex-wrap:wrap;gap:.3rem}'
+      + '.nc-cave-chip{display:inline-flex;align-items:baseline;gap:.35rem;'
+      + 'padding:.1rem .45rem;border-radius:4px;'
+      + 'background:rgba(167,139,250,.1);border:1px solid rgba(167,139,250,.28)}'
+      + '.nc-cave-ore{font-size:.82rem}'
+      + '.nc-cave-pct{font-size:.78rem;color:#a78bfa;font-variant-numeric:tabular-nums}'
+      + '.nc-cave-foot{margin-top:.4rem;font-size:.74rem;color:#5a7a94}'
       + '.nc-subs-ctl{display:block;margin-top:.5rem;font-size:.8rem;opacity:.85;'
       + 'cursor:pointer}'
       + '.nc-synth .loc-mat-name{opacity:.95;font-style:italic}'

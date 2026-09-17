@@ -65,6 +65,8 @@ jobs:
           cp index.html _site/
           cp mining_compiled.json _site/
           cp mining_equipment.json _site/
+          cp node_contents.json _site/
+          cp node_contents_addon.js _site/
           [ -f README.md ] && cp README.md _site/ || true
           for L in de fr ja zh; do
             if [ -d "i18n/dist/$L" ]; then

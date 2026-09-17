@@ -1,0 +1,2882 @@
+{
+ "schema": "finder_node_contents/2",
+ "what": "What one mined rock contains. The finder says where a material is; this says what comes up with it.",
+ "percentages_are": "shares of the rock's mass, rolled per spawn inside each band; the rest is inert. Confirmed against a real in-game scan of an iron rock.",
+ "source_meaning": {
+  "surface": "spawns from this body's own deposit table",
+  "cave": "spawns in caves",
+  "event": "spawns during an event only"
+ },
+ "nodes": {
+  "Ship/mining_asteroidcommon_ice": {
+   "name": "Pressurized Ice",
+   "method": "Ship",
+   "parts": [
+    {
+     "ore": "Pressurized Ice",
+     "min": 9.7,
+     "max": 15.7,
+     "p": 1.0
+    },
+    {
+     "ore": "Pressurized Ice",
+     "min": 34.3,
+     "max": 84.3,
+     "p": 1.0
+    }
+   ],
+   "inert": [
+    0.0,
+    56.0
+   ],
+   "source": "surface",
+   "rs": 4300,
+   "tier": "Common"
+  },
+  "Ship/mining_asteroidcommon_silicon": {
+   "name": "Silicon",
+   "method": "Ship",
+   "parts": [
+    {
+     "ore": "Silicon",
+     "min": 5.7,
+     "max": 11.7,
+     "p": 1.0
+    },
+    {
+     "ore": "Silicon",
+     "min": 28.3,
+     "max": 78.3,
+     "p": 1.0
+    },
+    {
+     "ore": "Hephaestanite",
+     "min": 2.0,
+     "max": 5.0,
+     "p": 1.0
+    },
+    {
+     "ore": "Hephaestanite",
+     "min": 2.0,
+     "max": 5.0,
+     "p": 1.0
+    }
+   ],
+   "inert": [
+    0.0,
+    62.0
+   ],
+   "source": "surface",
+   "rs": 4255,
+   "tier": "Common"
+  },
+  "Ship/mining_asteroidcommon_aluminum": {
+   "name": "Aluminum (Ore)",
+   "method": "Ship",
+   "parts": [
+    {
+     "ore": "Aluminum",
+     "min": 2.82,
+     "max": 6.82,
+     "p": 1.0
+    },
+    {
+     "ore": "Aluminum",
+     "min": 39.18,
+     "max": 83.18,
+     "p": 1.0
+    },
+    {
+     "ore": "Corundum",
+     "min": 5.0,
+     "max": 10.0,
+     "p": 1.0
+    }
+   ],
+   "inert": [
+    0.0,
+    53.0
+   ],
+   "source": "surface",
+   "rs": 4285,
+   "tier": "Common"
+  },
+  "Ship/mining_asteroidcommon_iron": {
+   "name": "Iron",
+   "method": "Ship",
+   "parts": [
+    {
+     "ore": "Iron",
+     "min": 9.7,
+     "max": 15.7,
+     "p": 1.0
+    },
+    {
+     "ore": "Iron",
+     "min": 34.3,
+     "max": 84.3,
+     "p": 1.0
+    }
+   ],
+   "inert": [
+    0.0,
+    56.0
+   ],
+   "source": "surface",
+   "rs": 4270,
+   "tier": "Common"
+  },
+  "Ship/mining_asteroidcommon_copper": {
+   "name": "Copper (Ore)",
+   "method": "Ship",
+   "parts": [
+    {
+     "ore": "Copper",
+     "min": 5.7,
+     "max": 11.7,
+     "p": 1.0
+    },
+    {
+     "ore": "Copper",
+     "min": 28.3,
+     "max": 78.3,
+     "p": 1.0
+    },
+    {
+     "ore": "Tin",
+     "min": 5.0,
+     "max": 10.0,
+     "p": 1.0
+    }
+   ],
+   "inert": [
+    0.0,
+    61.0
+   ],
+   "source": "surface",
+   "rs": 4240,
+   "tier": "Common"
+  },
+  "Ship/mining_legendary_quantainium": {
+   "name": "Quantainium (Raw)",
+   "method": "Ship",
+   "parts": [
+    {
+     "ore": "Quantainium",
+     "min": 5.7,
+     "max": 11.7,
+     "p": 1.0
+    },
+    {
+     "ore": "Quantainium",
+     "min": 28.3,
+     "max": 78.3,
+     "p": 1.0
+    },
+    {
+     "ore": "Beryl",
+     "min": 5.0,
+     "max": 10.0,
+     "p": 1.0
+    }
+   ],
+   "inert": [
+    0.0,
+    61.0
+   ],
+   "source": "surface",
+   "rs": 3170,
+   "tier": "Legendary"
+  },
+  "Ship/mining_asteroidrare_beryl": {
+   "name": "Beryl (Raw)",
+   "method": "Ship",
+   "parts": [
+    {
+     "ore": "Beryl",
+     "min": 5.7,
+     "max": 11.7,
+     "p": 1.0
+    },
+    {
+     "ore": "Beryl",
+     "min": 38.3,
+     "max": 88.3,
+     "p": 1.0
+    }
+   ],
+   "inert": [
+    0.0,
+    56.0
+   ],
+   "source": "surface",
+   "rs": 3540,
+   "tier": "Rare"
+  },
+  "Ship/mining_asteroiduncommon_aslarite": {
+   "name": "Aslarite (Raw)",
+   "method": "Ship",
+   "parts": [
+    {
+     "ore": "Aslarite",
+     "min": 2.82,
+     "max": 6.82,
+     "p": 1.0
+    },
+    {
+     "ore": "Aslarite",
+     "min": 39.18,
+     "max": 83.18,
+     "p": 1.0
+    },
+    {
+     "ore": "Agricium",
+     "min": 2.0,
+     "max": 5.0,
+     "p": 1.0
+    },
+    {
+     "ore": "Titanium",
+     "min": 2.0,
+     "max": 5.0,
+     "p": 1.0
+    }
+   ],
+   "inert": [
+    0.0,
+    54.0
+   ],
+   "source": "surface",
+   "rs": 3840,
+   "tier": "Uncommon"
+  },
+  "Ship/mining_asteroiduncommon_titanium": {
+   "name": "Titanium (Ore)",
+   "method": "Ship",
+   "parts": [
+    {
+     "ore": "Titanium",
+     "min": 9.7,
+     "max": 15.7,
+     "p": 1.0
+    },
+    {
+     "ore": "Titanium",
+     "min": 24.3,
+     "max": 74.3,
+     "p": 1.0
+    },
+    {
+     "ore": "Agricium",
+     "min": 2.0,
+     "max": 5.0,
+     "p": 1.0
+    },
+    {
+     "ore": "Aslarite",
+     "min": 2.0,
+     "max": 5.0,
+     "p": 1.0
+    }
+   ],
+   "inert": [
+    0.0,
+    62.0
+   ],
+   "source": "surface",
+   "rs": 3855,
+   "tier": "Uncommon"
+  },
+  "Ship/mining_asteroidlegendary_quantainium": {
+   "name": "Quantainium (Raw)",
+   "method": "Ship",
+   "parts": [
+    {
+     "ore": "Quantainium",
+     "min": 5.7,
+     "max": 11.7,
+     "p": 1.0
+    },
+    {
+     "ore": "Quantainium",
+     "min": 28.3,
+     "max": 78.3,
+     "p": 1.0
+    },
+    {
+     "ore": "Beryl",
+     "min": 5.0,
+     "max": 10.0,
+     "p": 1.0
+    }
+   ],
+   "inert": [
+    0.0,
+    61.0
+   ],
+   "source": "surface",
+   "rs": 3170,
+   "tier": "Legendary"
+  },
+  "Ship/mining_asteroiduncommon_laranite": {
+   "name": "Laranite (Raw)",
+   "method": "Ship",
+   "parts": [
+    {
+     "ore": "Laranite",
+     "min": 5.7,
+     "max": 11.7,
+     "p": 1.0
+    },
+    {
+     "ore": "Laranite",
+     "min": 28.3,
+     "max": 78.3,
+     "p": 1.0
+    },
+    {
+     "ore": "Tungsten",
+     "min": 5.0,
+     "max": 10.0,
+     "p": 1.0
+    }
+   ],
+   "inert": [
+    0.0,
+    61.0
+   ],
+   "source": "surface",
+   "rs": 3825,
+   "tier": "Uncommon"
+  },
+  "Ship/mining_asteroidrare_borase": {
+   "name": "Borase (Ore)",
+   "method": "Ship",
+   "parts": [
+    {
+     "ore": "Borase",
+     "min": 9.7,
+     "max": 15.7,
+     "p": 1.0
+    },
+    {
+     "ore": "Borase",
+     "min": 24.3,
+     "max": 74.3,
+     "p": 1.0
+    },
+    {
+     "ore": "Bexalite",
+     "min": 2.0,
+     "max": 5.0,
+     "p": 1.0
+    },
+    {
+     "ore": "Gold",
+     "min": 2.0,
+     "max": 5.0,
+     "p": 1.0
+    }
+   ],
+   "inert": [
+    0.0,
+    62.0
+   ],
+   "source": "surface",
+   "rs": 3570,
+   "tier": "Rare"
+  },
+  "Ship/mining_asteroidcommon_corundum": {
+   "name": "Corundum (Raw)",
+   "method": "Ship",
+   "parts": [
+    {
+     "ore": "Corundum",
+     "min": 5.7,
+     "max": 11.7,
+     "p": 1.0
+    },
+    {
+     "ore": "Corundum",
+     "min": 28.3,
+     "max": 78.3,
+     "p": 1.0
+    },
+    {
+     "ore": "Aluminum",
+     "min": 5.0,
+     "max": 10.0,
+     "p": 1.0
+    }
+   ],
+   "inert": [
+    0.0,
+    61.0
+   ],
+   "source": "surface",
+   "rs": 4225,
+   "tier": "Common"
+  },
+  "Ship/mining_asteroidcommon_hephaestanite": {
+   "name": "Hephaestanite",
+   "method": "Ship",
+   "parts": [
+    {
+     "ore": "Hephaestanite",
+     "min": 2.82,
+     "max": 6.82,
+     "p": 1.0
+    },
+    {
+     "ore": "Hephaestanite",
+     "min": 39.18,
+     "max": 83.18,
+     "p": 1.0
+    },
+    {
+     "ore": "Quartz",
+     "min": 2.0,
+     "max": 5.0,
+     "p": 1.0
+    },
+    {
+     "ore": "Silicon",
+     "min": 2.0,
+     "max": 5.0,
+     "p": 1.0
+    }
+   ],
+   "inert": [
+    0.0,
+    54.0
+   ],
+   "source": "surface",
+   "rs": 4180,
+   "tier": "Common"
+  },
+  "Ship/mining_asteroidrare_gold": {
+   "name": "Gold (Ore)",
+   "method": "Ship",
+   "parts": [
+    {
+     "ore": "Gold",
+     "min": 5.7,
+     "max": 11.7,
+     "p": 1.0
+    },
+    {
+     "ore": "Gold",
+     "min": 28.3,
+     "max": 78.3,
+     "p": 1.0
+    },
+    {
+     "ore": "Borase",
+     "min": 2.0,
+     "max": 5.0,
+     "p": 1.0
+    },
+    {
+     "ore": "Bexalite",
+     "min": 2.0,
+     "max": 5.0,
+     "p": 1.0
+    }
+   ],
+   "inert": [
+    0.0,
+    62.0
+   ],
+   "source": "surface",
+   "rs": 3585,
+   "tier": "Rare"
+  },
+  "Ship/mining_asteroiduncommon_torite": {
+   "name": "Torite (Ore)",
+   "method": "Ship",
+   "parts": [
+    {
+     "ore": "Torite",
+     "min": 9.7,
+     "max": 15.7,
+     "p": 1.0
+    },
+    {
+     "ore": "Torite",
+     "min": 34.3,
+     "max": 84.3,
+     "p": 1.0
+    }
+   ],
+   "inert": [
+    0.0,
+    56.0
+   ],
+   "source": "surface",
+   "rs": 3900,
+   "tier": "Uncommon"
+  },
+  "Ship/mining_asteroiduncommon_agricium": {
+   "name": "Agricium (Ore)",
+   "method": "Ship",
+   "parts": [
+    {
+     "ore": "Agricium",
+     "min": 9.7,
+     "max": 15.7,
+     "p": 1.0
+    },
+    {
+     "ore": "Agricium",
+     "min": 24.3,
+     "max": 74.3,
+     "p": 1.0
+    },
+    {
+     "ore": "Aslarite",
+     "min": 2.0,
+     "max": 5.0,
+     "p": 1.0
+    },
+    {
+     "ore": "Titanium",
+     "min": 2.0,
+     "max": 5.0,
+     "p": 1.0
+    }
+   ],
+   "inert": [
+    0.0,
+    62.0
+   ],
+   "source": "surface",
+   "rs": 3885,
+   "tier": "Uncommon"
+  },
+  "Ship/mining_asteroidrare_bexalite": {
+   "name": "Bexalite (Raw)",
+   "method": "Ship",
+   "parts": [
+    {
+     "ore": "Bexalite",
+     "min": 5.7,
+     "max": 11.7,
+     "p": 1.0
+    },
+    {
+     "ore": "Bexalite",
+     "min": 28.3,
+     "max": 78.3,
+     "p": 1.0
+    },
+    {
+     "ore": "Borase",
+     "min": 2.0,
+     "max": 5.0,
+     "p": 1.0
+    },
+    {
+     "ore": "Gold",
+     "min": 2.0,
+     "max": 5.0,
+     "p": 1.0
+    }
+   ],
+   "inert": [
+    0.0,
+    62.0
+   ],
+   "source": "surface",
+   "rs": 3600,
+   "tier": "Rare"
+  },
+  "Ship/mining_asteroiduncommon_tungsten": {
+   "name": "Tungsten (Ore)",
+   "method": "Ship",
+   "parts": [
+    {
+     "ore": "Tungsten",
+     "min": 9.7,
+     "max": 15.7,
+     "p": 1.0
+    },
+    {
+     "ore": "Tungsten",
+     "min": 24.3,
+     "max": 74.3,
+     "p": 1.0
+    },
+    {
+     "ore": "Laranite",
+     "min": 5.0,
+     "max": 10.0,
+     "p": 1.0
+    }
+   ],
+   "inert": [
+    0.0,
+    61.0
+   ],
+   "source": "surface",
+   "rs": 3870,
+   "tier": "Uncommon"
+  },
+  "Ship/mining_asteroidrare_taranite": {
+   "name": "Taranite (Raw)",
+   "method": "Ship",
+   "parts": [
+    {
+     "ore": "Taranite",
+     "min": 5.7,
+     "max": 11.7,
+     "p": 1.0
+    },
+    {
+     "ore": "Taranite",
+     "min": 38.3,
+     "max": 88.3,
+     "p": 1.0
+    }
+   ],
+   "inert": [
+    0.0,
+    56.0
+   ],
+   "source": "surface",
+   "rs": 3555,
+   "tier": "Rare"
+  },
+  "Ship/mining_asteroidepic_lindinium": {
+   "name": "Lindinium (Ore)",
+   "method": "Ship",
+   "parts": [
+    {
+     "ore": "Lindinium",
+     "min": 9.7,
+     "max": 15.7,
+     "p": 1.0
+    },
+    {
+     "ore": "Lindinium",
+     "min": 24.3,
+     "max": 74.3,
+     "p": 1.0
+    },
+    {
+     "ore": "Tungsten",
+     "min": 5.0,
+     "max": 10.0,
+     "p": 1.0
+    }
+   ],
+   "inert": [
+    0.0,
+    61.0
+   ],
+   "source": "surface",
+   "rs": 3400,
+   "tier": "Epic"
+  },
+  "Ship/mining_asteroidlegendary_savrilium": {
+   "name": "Savrilium (Ore)",
+   "method": "Ship",
+   "parts": [
+    {
+     "ore": "Savrilium",
+     "min": 9.7,
+     "max": 15.7,
+     "p": 1.0
+    },
+    {
+     "ore": "Savrilium",
+     "min": 24.3,
+     "max": 74.3,
+     "p": 1.0
+    },
+    {
+     "ore": "Gold",
+     "min": 5.0,
+     "max": 10.0,
+     "p": 1.0
+    }
+   ],
+   "inert": [
+    0.0,
+    61.0
+   ],
+   "source": "surface",
+   "rs": 3200,
+   "tier": "Legendary"
+  },
+  "Hand/fpsmining_aphorite": {
+   "name": "Aphorite",
+   "method": "Hand",
+   "parts": [
+    {
+     "ore": "Aphorite",
+     "min": 50.0,
+     "max": 100.0,
+     "p": 1.0
+    }
+   ],
+   "inert": [
+    0.0,
+    50.0
+   ],
+   "source": "surface",
+   "rs": null,
+   "tier": null
+  },
+  "Hand/fpsmining_dolivine": {
+   "name": "Dolivine",
+   "method": "Hand",
+   "parts": [
+    {
+     "ore": "Dolivine",
+     "min": 50.0,
+     "max": 100.0,
+     "p": 1.0
+    }
+   ],
+   "inert": [
+    0.0,
+    50.0
+   ],
+   "source": "surface",
+   "rs": null,
+   "tier": null
+  },
+  "Hand/fpsmining_hadanite": {
+   "name": "Hadanite",
+   "method": "Hand",
+   "parts": [
+    {
+     "ore": "Hadanite",
+     "min": 50.0,
+     "max": 100.0,
+     "p": 1.0
+    }
+   ],
+   "inert": [
+    0.0,
+    50.0
+   ],
+   "source": "surface",
+   "rs": null,
+   "tier": null
+  },
+  "ROC/groundvehiclemining_beradom": {
+   "name": "Beradom",
+   "method": "ROC",
+   "parts": [
+    {
+     "ore": "Beradom",
+     "min": 50.0,
+     "max": 100.0,
+     "p": 1.0
+    }
+   ],
+   "inert": [
+    0.0,
+    50.0
+   ],
+   "source": "surface",
+   "rs": null,
+   "tier": null
+  },
+  "Ship/mining_common_iron": {
+   "name": "Iron",
+   "method": "Ship",
+   "parts": [
+    {
+     "ore": "Iron",
+     "min": 9.7,
+     "max": 15.7,
+     "p": 1.0
+    },
+    {
+     "ore": "Iron",
+     "min": 34.3,
+     "max": 84.3,
+     "p": 1.0
+    }
+   ],
+   "inert": [
+    0.0,
+    56.0
+   ],
+   "source": "surface",
+   "rs": 4270,
+   "tier": "Common"
+  },
+  "Ship/mining_common_copper": {
+   "name": "Copper (Ore)",
+   "method": "Ship",
+   "parts": [
+    {
+     "ore": "Copper",
+     "min": 5.7,
+     "max": 11.7,
+     "p": 1.0
+    },
+    {
+     "ore": "Copper",
+     "min": 28.3,
+     "max": 78.3,
+     "p": 1.0
+    },
+    {
+     "ore": "Tin",
+     "min": 5.0,
+     "max": 10.0,
+     "p": 1.0
+    }
+   ],
+   "inert": [
+    0.0,
+    61.0
+   ],
+   "source": "surface",
+   "rs": 4240,
+   "tier": "Common"
+  },
+  "Ship/mining_common_tin": {
+   "name": "Tin (Ore)",
+   "method": "Ship",
+   "parts": [
+    {
+     "ore": "Tin",
+     "min": 9.7,
+     "max": 15.7,
+     "p": 1.0
+    },
+    {
+     "ore": "Tin",
+     "min": 24.3,
+     "max": 74.3,
+     "p": 1.0
+    },
+    {
+     "ore": "Copper",
+     "min": 5.0,
+     "max": 10.0,
+     "p": 1.0
+    }
+   ],
+   "inert": [
+    0.0,
+    61.0
+   ],
+   "source": "surface",
+   "rs": 4195,
+   "tier": "Common"
+  },
+  "Ship/mining_legendary_stileron": {
+   "name": "Stileron",
+   "method": "Ship",
+   "parts": [
+    {
+     "ore": "Stileron",
+     "min": 9.7,
+     "max": 15.7,
+     "p": 1.0
+    },
+    {
+     "ore": "Stileron",
+     "min": 24.3,
+     "max": 74.3,
+     "p": 1.0
+    },
+    {
+     "ore": "Taranite",
+     "min": 5.0,
+     "max": 10.0,
+     "p": 1.0
+    }
+   ],
+   "inert": [
+    0.0,
+    61.0
+   ],
+   "source": "surface",
+   "rs": 3185,
+   "tier": "Legendary"
+  },
+  "ROC/groundvehiclemining_glacosite": {
+   "name": "Glacosite",
+   "method": "ROC",
+   "parts": [
+    {
+     "ore": "Glacosite",
+     "min": 50.0,
+     "max": 100.0,
+     "p": 1.0
+    }
+   ],
+   "inert": [
+    0.0,
+    50.0
+   ],
+   "source": "surface",
+   "rs": null,
+   "tier": null
+  },
+  "Ship/mining_common_hephaestanite": {
+   "name": "Hephaestanite",
+   "method": "Ship",
+   "parts": [
+    {
+     "ore": "Hephaestanite",
+     "min": 2.82,
+     "max": 6.82,
+     "p": 1.0
+    },
+    {
+     "ore": "Hephaestanite",
+     "min": 39.18,
+     "max": 83.18,
+     "p": 1.0
+    },
+    {
+     "ore": "Quartz",
+     "min": 2.0,
+     "max": 5.0,
+     "p": 1.0
+    },
+    {
+     "ore": "Silicon",
+     "min": 2.0,
+     "max": 5.0,
+     "p": 1.0
+    }
+   ],
+   "inert": [
+    0.0,
+    54.0
+   ],
+   "source": "surface",
+   "rs": 4180,
+   "tier": "Common"
+  },
+  "Hand/fpsmining_janalite": {
+   "name": "Janalite",
+   "method": "Hand",
+   "parts": [
+    {
+     "ore": "Janalite",
+     "min": 50.0,
+     "max": 100.0,
+     "p": 1.0
+    }
+   ],
+   "inert": [
+    0.0,
+    50.0
+   ],
+   "source": "surface",
+   "rs": null,
+   "tier": null
+  },
+  "Ship/mining_common_quartz": {
+   "name": "Quartz (Raw)",
+   "method": "Ship",
+   "parts": [
+    {
+     "ore": "Quartz",
+     "min": 5.7,
+     "max": 11.7,
+     "p": 1.0
+    },
+    {
+     "ore": "Quartz",
+     "min": 28.3,
+     "max": 78.3,
+     "p": 1.0
+    },
+    {
+     "ore": "Hephaestanite",
+     "min": 2.0,
+     "max": 5.0,
+     "p": 1.0
+    },
+    {
+     "ore": "Silicon",
+     "min": 2.0,
+     "max": 5.0,
+     "p": 1.0
+    }
+   ],
+   "inert": [
+    0.0,
+    62.0
+   ],
+   "source": "surface",
+   "rs": 4210,
+   "tier": "Common"
+  },
+  "Ship/mining_rare_borase": {
+   "name": "Borase (Ore)",
+   "method": "Ship",
+   "parts": [
+    {
+     "ore": "Borase",
+     "min": 9.7,
+     "max": 15.7,
+     "p": 1.0
+    },
+    {
+     "ore": "Borase",
+     "min": 24.3,
+     "max": 74.3,
+     "p": 1.0
+    },
+    {
+     "ore": "Bexalite",
+     "min": 2.0,
+     "max": 5.0,
+     "p": 1.0
+    },
+    {
+     "ore": "Gold",
+     "min": 2.0,
+     "max": 5.0,
+     "p": 1.0
+    }
+   ],
+   "inert": [
+    0.0,
+    62.0
+   ],
+   "source": "surface",
+   "rs": 3570,
+   "tier": "Rare"
+  },
+  "Ship/mining_epic_riccite": {
+   "name": "Riccite (Ore)",
+   "method": "Ship",
+   "parts": [
+    {
+     "ore": "Riccite",
+     "min": 9.7,
+     "max": 15.7,
+     "p": 1.0
+    },
+    {
+     "ore": "Riccite",
+     "min": 24.3,
+     "max": 74.3,
+     "p": 1.0
+    },
+    {
+     "ore": "Laranite",
+     "min": 5.0,
+     "max": 10.0,
+     "p": 1.0
+    }
+   ],
+   "inert": [
+    0.0,
+    61.0
+   ],
+   "source": "surface",
+   "rs": 3385,
+   "tier": "Epic"
+  },
+  "ROC/groundvehiclemining_feynmaline": {
+   "name": "Feynmaline",
+   "method": "ROC",
+   "parts": [
+    {
+     "ore": "Feynmaline",
+     "min": 50.0,
+     "max": 100.0,
+     "p": 1.0
+    }
+   ],
+   "inert": [
+    0.0,
+    50.0
+   ],
+   "source": "surface",
+   "rs": null,
+   "tier": null
+  },
+  "Ship/mining_uncommon_laranite": {
+   "name": "Laranite (Raw)",
+   "method": "Ship",
+   "parts": [
+    {
+     "ore": "Laranite",
+     "min": 5.7,
+     "max": 11.7,
+     "p": 1.0
+    },
+    {
+     "ore": "Laranite",
+     "min": 28.3,
+     "max": 78.3,
+     "p": 1.0
+    },
+    {
+     "ore": "Tungsten",
+     "min": 5.0,
+     "max": 10.0,
+     "p": 1.0
+    }
+   ],
+   "inert": [
+    0.0,
+    61.0
+   ],
+   "source": "surface",
+   "rs": 3825,
+   "tier": "Uncommon"
+  },
+  "Ship/mining_common_silicon": {
+   "name": "Silicon",
+   "method": "Ship",
+   "parts": [
+    {
+     "ore": "Silicon",
+     "min": 5.7,
+     "max": 11.7,
+     "p": 1.0
+    },
+    {
+     "ore": "Silicon",
+     "min": 28.3,
+     "max": 78.3,
+     "p": 1.0
+    },
+    {
+     "ore": "Hephaestanite",
+     "min": 2.0,
+     "max": 5.0,
+     "p": 1.0
+    },
+    {
+     "ore": "Hephaestanite",
+     "min": 2.0,
+     "max": 5.0,
+     "p": 1.0
+    }
+   ],
+   "inert": [
+    0.0,
+    62.0
+   ],
+   "source": "surface",
+   "rs": 4255,
+   "tier": "Common"
+  },
+  "Ship/mining_rare_gold": {
+   "name": "Gold (Ore)",
+   "method": "Ship",
+   "parts": [
+    {
+     "ore": "Gold",
+     "min": 5.7,
+     "max": 11.7,
+     "p": 1.0
+    },
+    {
+     "ore": "Gold",
+     "min": 28.3,
+     "max": 78.3,
+     "p": 1.0
+    },
+    {
+     "ore": "Borase",
+     "min": 2.0,
+     "max": 5.0,
+     "p": 1.0
+    },
+    {
+     "ore": "Bexalite",
+     "min": 2.0,
+     "max": 5.0,
+     "p": 1.0
+    }
+   ],
+   "inert": [
+    0.0,
+    62.0
+   ],
+   "source": "surface",
+   "rs": 3585,
+   "tier": "Rare"
+  },
+  "Ship/mining_uncommon_tungsten": {
+   "name": "Tungsten (Ore)",
+   "method": "Ship",
+   "parts": [
+    {
+     "ore": "Tungsten",
+     "min": 9.7,
+     "max": 15.7,
+     "p": 1.0
+    },
+    {
+     "ore": "Tungsten",
+     "min": 24.3,
+     "max": 74.3,
+     "p": 1.0
+    },
+    {
+     "ore": "Laranite",
+     "min": 5.0,
+     "max": 10.0,
+     "p": 1.0
+    }
+   ],
+   "inert": [
+    0.0,
+    61.0
+   ],
+   "source": "surface",
+   "rs": 3870,
+   "tier": "Uncommon"
+  },
+  "Ship/mining_rare_bexalite": {
+   "name": "Bexalite (Raw)",
+   "method": "Ship",
+   "parts": [
+    {
+     "ore": "Bexalite",
+     "min": 5.7,
+     "max": 11.7,
+     "p": 1.0
+    },
+    {
+     "ore": "Bexalite",
+     "min": 28.3,
+     "max": 78.3,
+     "p": 1.0
+    },
+    {
+     "ore": "Borase",
+     "min": 2.0,
+     "max": 5.0,
+     "p": 1.0
+    },
+    {
+     "ore": "Gold",
+     "min": 2.0,
+     "max": 5.0,
+     "p": 1.0
+    }
+   ],
+   "inert": [
+    0.0,
+    62.0
+   ],
+   "source": "surface",
+   "rs": 3600,
+   "tier": "Rare"
+  },
+  "Ship/mining_uncommon_aslarite": {
+   "name": "Aslarite (Raw)",
+   "method": "Ship",
+   "parts": [
+    {
+     "ore": "Aslarite",
+     "min": 2.82,
+     "max": 6.82,
+     "p": 1.0
+    },
+    {
+     "ore": "Aslarite",
+     "min": 39.18,
+     "max": 83.18,
+     "p": 1.0
+    },
+    {
+     "ore": "Agricium",
+     "min": 2.0,
+     "max": 5.0,
+     "p": 1.0
+    },
+    {
+     "ore": "Titanium",
+     "min": 2.0,
+     "max": 5.0,
+     "p": 1.0
+    }
+   ],
+   "inert": [
+    0.0,
+    54.0
+   ],
+   "source": "surface",
+   "rs": 3840,
+   "tier": "Uncommon"
+  },
+  "Ship/mining_uncommon_agricium": {
+   "name": "Agricium (Ore)",
+   "method": "Ship",
+   "parts": [
+    {
+     "ore": "Agricium",
+     "min": 9.7,
+     "max": 15.7,
+     "p": 1.0
+    },
+    {
+     "ore": "Agricium",
+     "min": 24.3,
+     "max": 74.3,
+     "p": 1.0
+    },
+    {
+     "ore": "Aslarite",
+     "min": 2.0,
+     "max": 5.0,
+     "p": 1.0
+    },
+    {
+     "ore": "Titanium",
+     "min": 2.0,
+     "max": 5.0,
+     "p": 1.0
+    }
+   ],
+   "inert": [
+    0.0,
+    62.0
+   ],
+   "source": "surface",
+   "rs": 3885,
+   "tier": "Uncommon"
+  },
+  "Ship/mining_common_ice": {
+   "name": "Pressurized Ice",
+   "method": "Ship",
+   "parts": [
+    {
+     "ore": "Pressurized Ice",
+     "min": 9.7,
+     "max": 15.7,
+     "p": 1.0
+    },
+    {
+     "ore": "Pressurized Ice",
+     "min": 34.3,
+     "max": 84.3,
+     "p": 1.0
+    }
+   ],
+   "inert": [
+    0.0,
+    56.0
+   ],
+   "source": "surface",
+   "rs": 4300,
+   "tier": "Common"
+  },
+  "Ship/mining_uncommon_titanium": {
+   "name": "Titanium (Ore)",
+   "method": "Ship",
+   "parts": [
+    {
+     "ore": "Titanium",
+     "min": 9.7,
+     "max": 15.7,
+     "p": 1.0
+    },
+    {
+     "ore": "Titanium",
+     "min": 24.3,
+     "max": 74.3,
+     "p": 1.0
+    },
+    {
+     "ore": "Agricium",
+     "min": 2.0,
+     "max": 5.0,
+     "p": 1.0
+    },
+    {
+     "ore": "Aslarite",
+     "min": 2.0,
+     "max": 5.0,
+     "p": 1.0
+    }
+   ],
+   "inert": [
+    0.0,
+    62.0
+   ],
+   "source": "surface",
+   "rs": 3855,
+   "tier": "Uncommon"
+  },
+  "Ship/mining_asteroidepic_riccite": {
+   "name": "Riccite (Ore)",
+   "method": "Ship",
+   "parts": [
+    {
+     "ore": "Riccite",
+     "min": 9.7,
+     "max": 15.7,
+     "p": 1.0
+    },
+    {
+     "ore": "Riccite",
+     "min": 24.3,
+     "max": 74.3,
+     "p": 1.0
+    },
+    {
+     "ore": "Laranite",
+     "min": 5.0,
+     "max": 10.0,
+     "p": 1.0
+    }
+   ],
+   "inert": [
+    0.0,
+    61.0
+   ],
+   "source": "surface",
+   "rs": 3385,
+   "tier": "Epic"
+  },
+  "Ship/mining_asteroidlegendary_stileron": {
+   "name": "Stileron",
+   "method": "Ship",
+   "parts": [
+    {
+     "ore": "Stileron",
+     "min": 9.7,
+     "max": 15.7,
+     "p": 1.0
+    },
+    {
+     "ore": "Stileron",
+     "min": 24.3,
+     "max": 74.3,
+     "p": 1.0
+    },
+    {
+     "ore": "Taranite",
+     "min": 5.0,
+     "max": 10.0,
+     "p": 1.0
+    }
+   ],
+   "inert": [
+    0.0,
+    61.0
+   ],
+   "source": "surface",
+   "rs": 3185,
+   "tier": "Legendary"
+  },
+  "Ship/mining_asteroidcommon_quartz": {
+   "name": "Quartz (Raw)",
+   "method": "Ship",
+   "parts": [
+    {
+     "ore": "Quartz",
+     "min": 5.7,
+     "max": 11.7,
+     "p": 1.0
+    },
+    {
+     "ore": "Quartz",
+     "min": 28.3,
+     "max": 78.3,
+     "p": 1.0
+    },
+    {
+     "ore": "Hephaestanite",
+     "min": 2.0,
+     "max": 5.0,
+     "p": 1.0
+    },
+    {
+     "ore": "Silicon",
+     "min": 2.0,
+     "max": 5.0,
+     "p": 1.0
+    }
+   ],
+   "inert": [
+    0.0,
+    62.0
+   ],
+   "source": "surface",
+   "rs": 4210,
+   "tier": "Common"
+  },
+  "Ship/mining_asteroidcommon_tin": {
+   "name": "Tin (Ore)",
+   "method": "Ship",
+   "parts": [
+    {
+     "ore": "Tin",
+     "min": 9.7,
+     "max": 15.7,
+     "p": 1.0
+    },
+    {
+     "ore": "Tin",
+     "min": 24.3,
+     "max": 74.3,
+     "p": 1.0
+    },
+    {
+     "ore": "Copper",
+     "min": 5.0,
+     "max": 10.0,
+     "p": 1.0
+    }
+   ],
+   "inert": [
+    0.0,
+    61.0
+   ],
+   "source": "surface",
+   "rs": 4195,
+   "tier": "Common"
+  },
+  "Ship/mining_common_aluminum": {
+   "name": "Aluminum (Ore)",
+   "method": "Ship",
+   "parts": [
+    {
+     "ore": "Aluminum",
+     "min": 2.82,
+     "max": 6.82,
+     "p": 1.0
+    },
+    {
+     "ore": "Aluminum",
+     "min": 39.18,
+     "max": 83.18,
+     "p": 1.0
+    },
+    {
+     "ore": "Corundum",
+     "min": 5.0,
+     "max": 10.0,
+     "p": 1.0
+    }
+   ],
+   "inert": [
+    0.0,
+    53.0
+   ],
+   "source": "surface",
+   "rs": 4285,
+   "tier": "Common"
+  },
+  "Ship/mining_epic_ouratite": {
+   "name": "Ouratite",
+   "method": "Ship",
+   "parts": [
+    {
+     "ore": "Ouratite",
+     "min": 2.82,
+     "max": 6.82,
+     "p": 1.0
+    },
+    {
+     "ore": "Ouratite",
+     "min": 39.18,
+     "max": 83.18,
+     "p": 1.0
+    },
+    {
+     "ore": "Agricium",
+     "min": 5.0,
+     "max": 10.0,
+     "p": 1.0
+    }
+   ],
+   "inert": [
+    0.0,
+    53.0
+   ],
+   "source": "surface",
+   "rs": 3370,
+   "tier": "Epic"
+  },
+  "Ship/mining_common_corundum": {
+   "name": "Corundum (Raw)",
+   "method": "Ship",
+   "parts": [
+    {
+     "ore": "Corundum",
+     "min": 5.7,
+     "max": 11.7,
+     "p": 1.0
+    },
+    {
+     "ore": "Corundum",
+     "min": 28.3,
+     "max": 78.3,
+     "p": 1.0
+    },
+    {
+     "ore": "Aluminum",
+     "min": 5.0,
+     "max": 10.0,
+     "p": 1.0
+    }
+   ],
+   "inert": [
+    0.0,
+    61.0
+   ],
+   "source": "surface",
+   "rs": 4225,
+   "tier": "Common"
+  },
+  "Ship/mining_rare_taranite": {
+   "name": "Taranite (Raw)",
+   "method": "Ship",
+   "parts": [
+    {
+     "ore": "Taranite",
+     "min": 5.7,
+     "max": 11.7,
+     "p": 1.0
+    },
+    {
+     "ore": "Taranite",
+     "min": 38.3,
+     "max": 88.3,
+     "p": 1.0
+    }
+   ],
+   "inert": [
+    0.0,
+    56.0
+   ],
+   "source": "surface",
+   "rs": 3555,
+   "tier": "Rare"
+  },
+  "Ship/mining_asteroidepic_ouratite": {
+   "name": "Ouratite",
+   "method": "Ship",
+   "parts": [
+    {
+     "ore": "Ouratite",
+     "min": 2.82,
+     "max": 6.82,
+     "p": 1.0
+    },
+    {
+     "ore": "Ouratite",
+     "min": 39.18,
+     "max": 83.18,
+     "p": 1.0
+    },
+    {
+     "ore": "Agricium",
+     "min": 5.0,
+     "max": 10.0,
+     "p": 1.0
+    }
+   ],
+   "inert": [
+    0.0,
+    53.0
+   ],
+   "source": "surface",
+   "rs": 3370,
+   "tier": "Epic"
+  },
+  "Ship/mining_rare_beryl": {
+   "name": "Beryl (Raw)",
+   "method": "Ship",
+   "parts": [
+    {
+     "ore": "Beryl",
+     "min": 5.7,
+     "max": 11.7,
+     "p": 1.0
+    },
+    {
+     "ore": "Beryl",
+     "min": 38.3,
+     "max": 88.3,
+     "p": 1.0
+    }
+   ],
+   "inert": [
+    0.0,
+    56.0
+   ],
+   "source": "surface",
+   "rs": 3540,
+   "tier": "Rare"
+  },
+  "cave/fpsmining_hadanite": {
+   "name": "Hadanite",
+   "method": "Hand",
+   "parts": [
+    {
+     "ore": "Hadanite",
+     "min": 50.0,
+     "max": 100.0,
+     "p": 1.0
+    }
+   ],
+   "inert": [
+    0.0,
+    50.0
+   ],
+   "source": "cave",
+   "rs": null,
+   "tier": null
+  },
+  "cave/groundvehiclemining_feynmaline": {
+   "name": "Feynmaline",
+   "method": "Hand",
+   "parts": [
+    {
+     "ore": "Feynmaline",
+     "min": 50.0,
+     "max": 100.0,
+     "p": 1.0
+    }
+   ],
+   "inert": [
+    0.0,
+    50.0
+   ],
+   "source": "cave",
+   "rs": null,
+   "tier": null
+  },
+  "cave/fpsmining_dolivine": {
+   "name": "Dolivine",
+   "method": "Hand",
+   "parts": [
+    {
+     "ore": "Dolivine",
+     "min": 50.0,
+     "max": 100.0,
+     "p": 1.0
+    }
+   ],
+   "inert": [
+    0.0,
+    50.0
+   ],
+   "source": "cave",
+   "rs": null,
+   "tier": null
+  },
+  "cave/groundvehiclemining_beradom": {
+   "name": "Beradom",
+   "method": "Hand",
+   "parts": [
+    {
+     "ore": "Beradom",
+     "min": 50.0,
+     "max": 100.0,
+     "p": 1.0
+    }
+   ],
+   "inert": [
+    0.0,
+    50.0
+   ],
+   "source": "cave",
+   "rs": null,
+   "tier": null
+  },
+  "cave/groundvehiclemining_glacosite": {
+   "name": "Glacosite",
+   "method": "Hand",
+   "parts": [
+    {
+     "ore": "Glacosite",
+     "min": 50.0,
+     "max": 100.0,
+     "p": 1.0
+    }
+   ],
+   "inert": [
+    0.0,
+    50.0
+   ],
+   "source": "cave",
+   "rs": null,
+   "tier": null
+  },
+  "cave/fpsmining_aphorite": {
+   "name": "Aphorite",
+   "method": "Hand",
+   "parts": [
+    {
+     "ore": "Aphorite",
+     "min": 50.0,
+     "max": 100.0,
+     "p": 1.0
+    }
+   ],
+   "inert": [
+    0.0,
+    50.0
+   ],
+   "source": "cave",
+   "rs": null,
+   "tier": null
+  },
+  "cave/fpsmining_janalite": {
+   "name": "Janalite",
+   "method": "Hand",
+   "parts": [
+    {
+     "ore": "Janalite",
+     "min": 50.0,
+     "max": 100.0,
+     "p": 1.0
+    }
+   ],
+   "inert": [
+    0.0,
+    50.0
+   ],
+   "source": "cave",
+   "rs": null,
+   "tier": null
+  },
+  "cave/fpsmining_jaclium_small": {
+   "name": "Jaclium (Ore)",
+   "method": "Hand",
+   "parts": [
+    {
+     "ore": "Jaclium",
+     "min": 50.0,
+     "max": 100.0,
+     "p": 1.0
+    }
+   ],
+   "inert": [
+    0.0,
+    50.0
+   ],
+   "source": "event",
+   "rs": null,
+   "tier": null
+  },
+  "cave/fpsmining_saldynium_small": {
+   "name": "Saldynium (Ore)",
+   "method": "Hand",
+   "parts": [
+    {
+     "ore": "Saldynium",
+     "min": 50.0,
+     "max": 100.0,
+     "p": 1.0
+    }
+   ],
+   "inert": [
+    0.0,
+    50.0
+   ],
+   "source": "event",
+   "rs": null,
+   "tier": null
+  },
+  "cave/fpsmining_jaclium": {
+   "name": "Jaclium (Ore)",
+   "method": "Hand",
+   "parts": [
+    {
+     "ore": "Jaclium",
+     "min": 50.0,
+     "max": 100.0,
+     "p": 1.0
+    }
+   ],
+   "inert": [
+    0.0,
+    50.0
+   ],
+   "source": "event",
+   "rs": null,
+   "tier": null
+  },
+  "cave/fpsmining_jaclium_large": {
+   "name": "Jaclium (Ore)",
+   "method": "Hand",
+   "parts": [
+    {
+     "ore": "Jaclium",
+     "min": 50.0,
+     "max": 100.0,
+     "p": 1.0
+    }
+   ],
+   "inert": [
+    0.0,
+    50.0
+   ],
+   "source": "event",
+   "rs": null,
+   "tier": null
+  },
+  "cave/fpsmining_saldynium": {
+   "name": "Saldynium (Ore)",
+   "method": "Hand",
+   "parts": [
+    {
+     "ore": "Saldynium",
+     "min": 50.0,
+     "max": 100.0,
+     "p": 1.0
+    }
+   ],
+   "inert": [
+    0.0,
+    50.0
+   ],
+   "source": "event",
+   "rs": null,
+   "tier": null
+  },
+  "cave/fpsmining_carinite_small": {
+   "name": "Carinite",
+   "method": "Hand",
+   "parts": [
+    {
+     "ore": "Carinite",
+     "min": 50.0,
+     "max": 100.0,
+     "p": 1.0
+    }
+   ],
+   "inert": [
+    0.0,
+    50.0
+   ],
+   "source": "event",
+   "rs": null,
+   "tier": null
+  },
+  "cave/fpsmining_saldynium_large": {
+   "name": "Saldynium (Ore)",
+   "method": "Hand",
+   "parts": [
+    {
+     "ore": "Saldynium",
+     "min": 50.0,
+     "max": 100.0,
+     "p": 1.0
+    }
+   ],
+   "inert": [
+    0.0,
+    50.0
+   ],
+   "source": "event",
+   "rs": null,
+   "tier": null
+  },
+  "cave/fpsmining_carinite": {
+   "name": "Carinite",
+   "method": "Hand",
+   "parts": [
+    {
+     "ore": "Carinite",
+     "min": 50.0,
+     "max": 100.0,
+     "p": 1.0
+    }
+   ],
+   "inert": [
+    0.0,
+    50.0
+   ],
+   "source": "event",
+   "rs": null,
+   "tier": null
+  },
+  "cave/fpsmining_carinite_large": {
+   "name": "Carinite",
+   "method": "Hand",
+   "parts": [
+    {
+     "ore": "Carinite",
+     "min": 50.0,
+     "max": 100.0,
+     "p": 1.0
+    }
+   ],
+   "inert": [
+    0.0,
+    50.0
+   ],
+   "source": "event",
+   "rs": null,
+   "tier": null
+  },
+  "cave/groundvehiclemining_carinite_small": {
+   "name": "Carinite",
+   "method": "Hand",
+   "parts": [
+    {
+     "ore": "Carinite",
+     "min": 50.0,
+     "max": 100.0,
+     "p": 1.0
+    }
+   ],
+   "inert": [
+    0.0,
+    50.0
+   ],
+   "source": "event",
+   "rs": null,
+   "tier": null
+  },
+  "cave/groundvehiclemining_carinite": {
+   "name": "Carinite",
+   "method": "Hand",
+   "parts": [
+    {
+     "ore": "Carinite",
+     "min": 50.0,
+     "max": 100.0,
+     "p": 1.0
+    }
+   ],
+   "inert": [
+    0.0,
+    50.0
+   ],
+   "source": "event",
+   "rs": null,
+   "tier": null
+  },
+  "cave/groundvehiclemining_carinite_large": {
+   "name": "Carinite",
+   "method": "Hand",
+   "parts": [
+    {
+     "ore": "Carinite",
+     "min": 50.0,
+     "max": 100.0,
+     "p": 1.0
+    }
+   ],
+   "inert": [
+    0.0,
+    50.0
+   ],
+   "source": "event",
+   "rs": null,
+   "tier": null
+  },
+  "cave/fpsmining_carinite_pure_small": {
+   "name": "Carinite (Pure)",
+   "method": "Hand",
+   "parts": [
+    {
+     "ore": "Carinitepure",
+     "min": 50.0,
+     "max": 100.0,
+     "p": 1.0
+    }
+   ],
+   "inert": [
+    0.0,
+    50.0
+   ],
+   "source": "event",
+   "rs": null,
+   "tier": null
+  }
+ },
+ "byMaterial": {
+  "Agricium": [
+   "Ship/mining_asteroiduncommon_aslarite",
+   "Ship/mining_asteroiduncommon_titanium",
+   "Ship/mining_asteroiduncommon_agricium",
+   "Ship/mining_uncommon_aslarite",
+   "Ship/mining_uncommon_agricium",
+   "Ship/mining_uncommon_titanium",
+   "Ship/mining_epic_ouratite",
+   "Ship/mining_asteroidepic_ouratite"
+  ],
+  "Aluminum": [
+   "Ship/mining_asteroidcommon_aluminum",
+   "Ship/mining_asteroidcommon_corundum",
+   "Ship/mining_common_aluminum",
+   "Ship/mining_common_corundum"
+  ],
+  "Aphorite": [
+   "Hand/fpsmining_aphorite",
+   "cave/fpsmining_aphorite"
+  ],
+  "Aslarite": [
+   "Ship/mining_asteroiduncommon_aslarite",
+   "Ship/mining_asteroiduncommon_titanium",
+   "Ship/mining_asteroiduncommon_agricium",
+   "Ship/mining_uncommon_aslarite",
+   "Ship/mining_uncommon_agricium",
+   "Ship/mining_uncommon_titanium"
+  ],
+  "Beradom": [
+   "ROC/groundvehiclemining_beradom",
+   "cave/groundvehiclemining_beradom"
+  ],
+  "Beryl": [
+   "Ship/mining_legendary_quantainium",
+   "Ship/mining_asteroidrare_beryl",
+   "Ship/mining_asteroidlegendary_quantainium",
+   "Ship/mining_rare_beryl"
+  ],
+  "Bexalite": [
+   "Ship/mining_asteroidrare_borase",
+   "Ship/mining_asteroidrare_gold",
+   "Ship/mining_asteroidrare_bexalite",
+   "Ship/mining_rare_borase",
+   "Ship/mining_rare_gold",
+   "Ship/mining_rare_bexalite"
+  ],
+  "Borase": [
+   "Ship/mining_asteroidrare_borase",
+   "Ship/mining_asteroidrare_gold",
+   "Ship/mining_asteroidrare_bexalite",
+   "Ship/mining_rare_borase",
+   "Ship/mining_rare_gold",
+   "Ship/mining_rare_bexalite"
+  ],
+  "Carinite": [
+   "cave/fpsmining_carinite_small",
+   "cave/fpsmining_carinite",
+   "cave/fpsmining_carinite_large",
+   "cave/groundvehiclemining_carinite_small",
+   "cave/groundvehiclemining_carinite",
+   "cave/groundvehiclemining_carinite_large"
+  ],
+  "Carinitepure": [
+   "cave/fpsmining_carinite_pure_small"
+  ],
+  "Copper": [
+   "Ship/mining_asteroidcommon_copper",
+   "Ship/mining_common_copper",
+   "Ship/mining_common_tin",
+   "Ship/mining_asteroidcommon_tin"
+  ],
+  "Corundum": [
+   "Ship/mining_asteroidcommon_aluminum",
+   "Ship/mining_asteroidcommon_corundum",
+   "Ship/mining_common_aluminum",
+   "Ship/mining_common_corundum"
+  ],
+  "Dolivine": [
+   "Hand/fpsmining_dolivine",
+   "cave/fpsmining_dolivine"
+  ],
+  "Feynmaline": [
+   "ROC/groundvehiclemining_feynmaline",
+   "cave/groundvehiclemining_feynmaline"
+  ],
+  "Glacosite": [
+   "ROC/groundvehiclemining_glacosite",
+   "cave/groundvehiclemining_glacosite"
+  ],
+  "Gold": [
+   "Ship/mining_asteroidrare_borase",
+   "Ship/mining_asteroidrare_gold",
+   "Ship/mining_asteroidrare_bexalite",
+   "Ship/mining_asteroidlegendary_savrilium",
+   "Ship/mining_rare_borase",
+   "Ship/mining_rare_gold",
+   "Ship/mining_rare_bexalite"
+  ],
+  "Hadanite": [
+   "Hand/fpsmining_hadanite",
+   "cave/fpsmining_hadanite"
+  ],
+  "Hephaestanite": [
+   "Ship/mining_asteroidcommon_silicon",
+   "Ship/mining_asteroidcommon_hephaestanite",
+   "Ship/mining_common_hephaestanite",
+   "Ship/mining_common_quartz",
+   "Ship/mining_common_silicon",
+   "Ship/mining_asteroidcommon_quartz"
+  ],
+  "Iron": [
+   "Ship/mining_asteroidcommon_iron",
+   "Ship/mining_common_iron"
+  ],
+  "Jaclium": [
+   "cave/fpsmining_jaclium_small",
+   "cave/fpsmining_jaclium",
+   "cave/fpsmining_jaclium_large"
+  ],
+  "Janalite": [
+   "Hand/fpsmining_janalite",
+   "cave/fpsmining_janalite"
+  ],
+  "Laranite": [
+   "Ship/mining_asteroiduncommon_laranite",
+   "Ship/mining_asteroiduncommon_tungsten",
+   "Ship/mining_epic_riccite",
+   "Ship/mining_uncommon_laranite",
+   "Ship/mining_uncommon_tungsten",
+   "Ship/mining_asteroidepic_riccite"
+  ],
+  "Lindinium": [
+   "Ship/mining_asteroidepic_lindinium"
+  ],
+  "Ouratite": [
+   "Ship/mining_epic_ouratite",
+   "Ship/mining_asteroidepic_ouratite"
+  ],
+  "Pressurized Ice": [
+   "Ship/mining_asteroidcommon_ice",
+   "Ship/mining_common_ice"
+  ],
+  "Quantainium": [
+   "Ship/mining_legendary_quantainium",
+   "Ship/mining_asteroidlegendary_quantainium"
+  ],
+  "Quartz": [
+   "Ship/mining_asteroidcommon_hephaestanite",
+   "Ship/mining_common_hephaestanite",
+   "Ship/mining_common_quartz",
+   "Ship/mining_asteroidcommon_quartz"
+  ],
+  "Riccite": [
+   "Ship/mining_epic_riccite",
+   "Ship/mining_asteroidepic_riccite"
+  ],
+  "Saldynium": [
+   "cave/fpsmining_saldynium_small",
+   "cave/fpsmining_saldynium",
+   "cave/fpsmining_saldynium_large"
+  ],
+  "Savrilium": [
+   "Ship/mining_asteroidlegendary_savrilium"
+  ],
+  "Silicon": [
+   "Ship/mining_asteroidcommon_silicon",
+   "Ship/mining_asteroidcommon_hephaestanite",
+   "Ship/mining_common_hephaestanite",
+   "Ship/mining_common_quartz",
+   "Ship/mining_common_silicon",
+   "Ship/mining_asteroidcommon_quartz"
+  ],
+  "Stileron": [
+   "Ship/mining_legendary_stileron",
+   "Ship/mining_asteroidlegendary_stileron"
+  ],
+  "Taranite": [
+   "Ship/mining_asteroidrare_taranite",
+   "Ship/mining_legendary_stileron",
+   "Ship/mining_asteroidlegendary_stileron",
+   "Ship/mining_rare_taranite"
+  ],
+  "Tin": [
+   "Ship/mining_asteroidcommon_copper",
+   "Ship/mining_common_copper",
+   "Ship/mining_common_tin",
+   "Ship/mining_asteroidcommon_tin"
+  ],
+  "Titanium": [
+   "Ship/mining_asteroiduncommon_aslarite",
+   "Ship/mining_asteroiduncommon_titanium",
+   "Ship/mining_asteroiduncommon_agricium",
+   "Ship/mining_uncommon_aslarite",
+   "Ship/mining_uncommon_agricium",
+   "Ship/mining_uncommon_titanium"
+  ],
+  "Torite": [
+   "Ship/mining_asteroiduncommon_torite"
+  ],
+  "Tungsten": [
+   "Ship/mining_asteroiduncommon_laranite",
+   "Ship/mining_asteroiduncommon_tungsten",
+   "Ship/mining_asteroidepic_lindinium",
+   "Ship/mining_uncommon_laranite",
+   "Ship/mining_uncommon_tungsten"
+  ]
+ },
+ "clusters": {
+  "Quantainium": {
+   "rs": 3170,
+   "tier": "Legendary",
+   "sizes": [
+    1,
+    2
+   ]
+  },
+  "Stileron": {
+   "rs": 3185,
+   "tier": "Legendary",
+   "sizes": [
+    1,
+    2
+   ]
+  },
+  "Savrilium": {
+   "rs": 3200,
+   "tier": "Legendary",
+   "sizes": [
+    1,
+    2
+   ]
+  },
+  "Ouratite": {
+   "rs": 3370,
+   "tier": "Epic",
+   "sizes": [
+    1,
+    2,
+    3
+   ]
+  },
+  "Riccite": {
+   "rs": 3385,
+   "tier": "Epic",
+   "sizes": [
+    1,
+    2,
+    3
+   ]
+  },
+  "Lindinium": {
+   "rs": 3400,
+   "tier": "Epic",
+   "sizes": [
+    1,
+    2,
+    3
+   ]
+  },
+  "Beryl": {
+   "rs": 3540,
+   "tier": "Rare",
+   "sizes": [
+    2,
+    3,
+    4
+   ]
+  },
+  "Taranite": {
+   "rs": 3555,
+   "tier": "Rare",
+   "sizes": [
+    2,
+    3,
+    4
+   ]
+  },
+  "Borase": {
+   "rs": 3570,
+   "tier": "Rare",
+   "sizes": [
+    2,
+    3,
+    4
+   ]
+  },
+  "Gold": {
+   "rs": 3585,
+   "tier": "Rare",
+   "sizes": [
+    2,
+    3,
+    4
+   ]
+  },
+  "Bexalite": {
+   "rs": 3600,
+   "tier": "Rare",
+   "sizes": [
+    2,
+    3,
+    4
+   ]
+  },
+  "Laranite": {
+   "rs": 3825,
+   "tier": "Uncommon",
+   "sizes": [
+    3,
+    4,
+    5
+   ]
+  },
+  "Aslarite": {
+   "rs": 3840,
+   "tier": "Uncommon",
+   "sizes": [
+    3,
+    4,
+    5
+   ]
+  },
+  "Titanium": {
+   "rs": 3855,
+   "tier": "Uncommon",
+   "sizes": [
+    3,
+    4,
+    5
+   ]
+  },
+  "Tungsten": {
+   "rs": 3870,
+   "tier": "Uncommon",
+   "sizes": [
+    3,
+    4,
+    5
+   ]
+  },
+  "Agricium": {
+   "rs": 3885,
+   "tier": "Uncommon",
+   "sizes": [
+    3,
+    4,
+    5
+   ]
+  },
+  "Torite": {
+   "rs": 3900,
+   "tier": "Uncommon",
+   "sizes": [
+    3,
+    4,
+    5
+   ]
+  },
+  "Hephaestanite": {
+   "rs": 4180,
+   "tier": "Common",
+   "sizes": [
+    4,
+    5,
+    6
+   ]
+  },
+  "Tin": {
+   "rs": 4195,
+   "tier": "Common",
+   "sizes": [
+    4,
+    5,
+    6
+   ]
+  },
+  "Quartz": {
+   "rs": 4210,
+   "tier": "Common",
+   "sizes": [
+    4,
+    5,
+    6
+   ]
+  },
+  "Corundum": {
+   "rs": 4225,
+   "tier": "Common",
+   "sizes": [
+    4,
+    5,
+    6
+   ]
+  },
+  "Copper": {
+   "rs": 4240,
+   "tier": "Common",
+   "sizes": [
+    4,
+    5,
+    6
+   ]
+  },
+  "Silicon": {
+   "rs": 4255,
+   "tier": "Common",
+   "sizes": [
+    4,
+    5,
+    6
+   ]
+  },
+  "Iron": {
+   "rs": 4270,
+   "tier": "Common",
+   "sizes": [
+    4,
+    5,
+    6
+   ]
+  },
+  "Aluminum": {
+   "rs": 4285,
+   "tier": "Common",
+   "sizes": [
+    4,
+    5,
+    6
+   ]
+  },
+  "Pressurized Ice": {
+   "rs": 4300,
+   "tier": "Common",
+   "sizes": [
+    4,
+    5,
+    6
+   ]
+  }
+ },
+ "rocShared": [
+  4000
+ ],
+ "composition_known_but_not_spawned": [
+  {
+   "rock": "angular_smooth_01_int_00020_minable",
+   "ores": [
+    "Aluminum",
+    "Bexalite",
+    "Gold",
+    "Hephaestanite",
+    "Quantainium",
+    "Taranite"
+   ]
+  },
+  {
+   "rock": "aphoritemineablerockfps_asteroid",
+   "ores": [
+    "Aphorite"
+   ]
+  },
+  {
+   "rock": "asteroidctypemineablerock",
+   "ores": [
+    "Aluminum",
+    "Bexalite",
+    "Gold",
+    "Hephaestanite",
+    "Quantainium",
+    "Taranite"
+   ]
+  },
+  {
+   "rock": "asteroidetypemineablerock",
+   "ores": [
+    "Aluminum",
+    "Beryl",
+    "Bexalite",
+    "Gold",
+    "Quantainium",
+    "Taranite"
+   ]
+  },
+  {
+   "rock": "asteroiditypemineablerock",
+   "ores": [
+    "Aluminum"
+   ]
+  },
+  {
+   "rock": "asteroidmtypemineablerock",
+   "ores": [
+    "Agricium",
+    "Aluminum",
+    "Bexalite",
+    "Gold",
+    "Quantainium",
+    "Taranite"
+   ]
+  },
+  {
+   "rock": "asteroidptypemineablerock",
+   "ores": [
+    "Aluminum",
+    "Bexalite",
+    "Gold",
+    "Laranite",
+    "Quantainium",
+    "Taranite"
+   ]
+  },
+  {
+   "rock": "asteroidqtypemineablerock",
+   "ores": [
+    "Aluminum",
+    "Bexalite",
+    "Borase",
+    "Gold",
+    "Laranite",
+    "Quantainium",
+    "Taranite"
+   ]
+  },
+  {
+   "rock": "asteroidstypemineablerock",
+   "ores": [
+    "Aluminum",
+    "Beryl",
+    "Bexalite",
+    "Gold",
+    "Laranite",
+    "Quantainium",
+    "Taranite"
+   ]
+  },
+  {
+   "rock": "atacamitemineablerock",
+   "ores": [
+    "Agricium",
+    "Aluminum",
+    "Bexalite",
+    "Gold",
+    "Hephaestanite",
+    "Quantainium",
+    "Taranite"
+   ]
+  },
+  {
+   "rock": "cavelargemineablerock",
+   "ores": [
+    "Janalite"
+   ]
+  },
+  {
+   "rock": "felsicmineablerock",
+   "ores": [
+    "Aluminum",
+    "Beryl",
+    "Bexalite",
+    "Gold",
+    "Quantainium",
+    "Taranite"
+   ]
+  },
+  {
+   "rock": "gneissmineablerock",
+   "ores": [
+    "Aluminum",
+    "Bexalite",
+    "Gold",
+    "Hephaestanite",
+    "Quantainium",
+    "Taranite"
+   ]
+  },
+  {
+   "rock": "granitemineablerock",
+   "ores": [
+    "Aluminum",
+    "Bexalite",
+    "Borase",
+    "Gold",
+    "Quantainium",
+    "Taranite"
+   ]
+  },
+  {
+   "rock": "granitemineablerock_tungsten",
+   "ores": [
+    "Bexalite",
+    "Borase",
+    "Gold",
+    "Quantainium",
+    "Taranite",
+    "Tungsten"
+   ]
+  },
+  {
+   "rock": "igneousmineablerock",
+   "ores": [
+    "Aluminum",
+    "Bexalite",
+    "Gold",
+    "Laranite",
+    "Quantainium",
+    "Taranite"
+   ]
+  },
+  {
+   "rock": "minablerock_fps_gameplayobstacle_rcd",
+   "ores": [
+    "Flowstone"
+   ]
+  },
+  {
+   "rock": "minablerock_fps_gameplayobstacle_rcd_ice",
+   "ores": [
+    "Flowstone"
+   ]
+  },
+  {
+   "rock": "minablerock_fps_gameplayobstacle_template",
+   "ores": [
+    "Flowstone"
+   ]
+  },
+  {
+   "rock": "mineablerock",
+   "ores": [
+    "Aluminum"
+   ]
+  },
+  {
+   "rock": "mineablerock_asteroidcommon_template",
+   "ores": [
+    "Aluminum"
+   ]
+  },
+  {
+   "rock": "mineablerock_asteroidepic_template",
+   "ores": [
+    "Aluminum"
+   ]
+  },
+  {
+   "rock": "mineablerock_asteroidlegendary_savrilium_rcd_small",
+   "ores": [
+    "Savrilium",
+    "Torite"
+   ]
+  },
+  {
+   "rock": "mineablerock_asteroidlegendary_template",
+   "ores": [
+    "Aluminum"
+   ]
+  },
+  {
+   "rock": "mineablerock_asteroidrare_template",
+   "ores": [
+    "Aluminum"
+   ]
+  },
+  {
+   "rock": "mineablerock_asteroiduncommon_template",
+   "ores": [
+    "Aluminum"
+   ]
+  },
+  {
+   "rock": "mineablerock_asteroiduncommon_torite_rcd_large",
+   "ores": [
+    "Torite"
+   ]
+  },
+  {
+   "rock": "mineablerock_fps_floor_blocker_placeholder",
+   "ores": [
+    "Flowstone"
+   ]
+  },
+  {
+   "rock": "mineablerock_fps_flowstone",
+   "ores": [
+    "Flowstone"
+   ]
+  },
+  {
+   "rock": "mineablerock_fps_flowstone_nobase",
+   "ores": [
+    "Flowstone"
+   ]
+  },
+  {
+   "rock": "mineablerock_fps_sadaryx",
+   "ores": [
+    "Sadaryx"
+   ]
+  },
+  {
+   "rock": "mineablerock_fps_vlkirradiatedmineablepearls",
+   "ores": [
+    "Vlklimpet"
+   ]
+  },
+  {
+   "rock": "mineablerock_fps_vlkmineablepearls",
+   "ores": [
+    "Vlklimpet"
+   ]
+  },
+  {
+   "rock": "mineablerock_surfacecommon_template",
+   "ores": [
+    "Aluminum"
+   ]
+  },
+  {
+   "rock": "mineablerock_surfaceepic_template",
+   "ores": [
+    "Aluminum"
+   ]
+  },
+  {
+   "rock": "mineablerock_surfacelegendary_template",
+   "ores": [
+    "Aluminum"
+   ]
+  },
+  {
+   "rock": "mineablerock_surfacerare_template",
+   "ores": [
+    "Aluminum"
+   ]
+  },
+  {
+   "rock": "mineablerock_surfaceuncommon_template",
+   "ores": [
+    "Aluminum"
+   ]
+  },
+  {
+   "rock": "obsidianmineablerock",
+   "ores": [
+    "Aluminum",
+    "Beryl",
+    "Bexalite",
+    "Borase",
+    "Gold",
+    "Quantainium",
+    "Taranite"
+   ]
+  },
+  {
+   "rock": "quartzitemineablerock",
+   "ores": [
+    "Agricium",
+    "Aluminum",
+    "Bexalite",
+    "Gold",
+    "Hephaestanite",
+    "Quantainium",
+    "Taranite"
+   ]
+  },
+  {
+   "rock": "shalemineablerock",
+   "ores": [
+    "Aluminum",
+    "Bexalite",
+    "Gold",
+    "Laranite",
+    "Quantainium",
+    "Taranite"
+   ]
+  },
+  {
+   "rock": "testmineablerockmodeltags",
+   "ores": [
+    "Aluminum"
+   ]
+  }
+ ]
+}

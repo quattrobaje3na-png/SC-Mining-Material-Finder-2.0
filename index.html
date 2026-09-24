@@ -126,6 +126,25 @@ body::after{content:'';position:fixed;inset:0;background:repeating-linear-gradie
 .tab-btn{background:var(--bg-base);color:var(--text-muted);border:1px solid var(--border);padding:8px 14px;border-radius:4px;cursor:pointer;font-size:.82rem;font-weight:600;transition:.2s;text-transform:uppercase;letter-spacing:.5px;white-space:nowrap}
 .tab-btn:hover{background:var(--border);color:var(--text-main)}
 .tab-btn.active{background:rgba(0,229,160,.1);color:var(--accent);border-color:var(--accent)}
+.tool-guide-line{margin:6px 0 4px;color:var(--accent);font-weight:700;font-size:.95rem;letter-spacing:.6px;text-transform:uppercase}
+.mg-header{margin:0 0 6px;padding-bottom:12px;border-bottom:1px solid var(--border)}
+.mg-eyebrow{display:block;color:var(--accent);font-size:1.35rem;font-weight:800;letter-spacing:1.4px;text-transform:uppercase;margin-bottom:8px;line-height:1.2}
+.mg-title{margin:0;font-size:.95rem;line-height:1.6;font-weight:500;color:var(--text-muted);max-width:80ch}
+.mguide{display:grid;gap:8px;max-width:900px}
+.mguide details{background:var(--bg-base);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:4px}
+.mguide summary{cursor:pointer;padding:11px 13px;font-weight:700;font-size:.85rem;text-transform:uppercase;letter-spacing:.5px;color:var(--accent);list-style:none}
+.mguide summary::-webkit-details-marker{display:none}
+.mguide summary::after{content:"+";float:right;color:var(--text-muted)}
+.mguide details[open] summary::after{content:"−"}
+.mguide summary:hover{background:var(--border)}
+.mguide .mg-body{padding:0 13px 12px}
+.mguide p{margin:0 0 10px;font-size:.88rem;line-height:1.7;color:var(--text-main)}
+.mguide ol,.mguide ul{margin:0 0 10px;padding-left:20px;font-size:.88rem;line-height:1.7;color:var(--text-main)}
+.mguide li{margin:0 0 5px}
+.mguide b{color:var(--accent)}
+.mguide .mg-key{font-family:monospace;background:var(--border);padding:1px 6px;border-radius:3px;color:var(--text-main)}
+.mguide .mg-lead{color:var(--text-muted);font-size:.85rem;margin-bottom:12px}
+.mguide .mg-warn{border-left:3px solid #ffb300;padding-left:10px;color:var(--text-muted);font-size:.85rem}
 .advisory-box{background:rgba(0,229,160,.08);border:1px solid rgba(0,229,160,.25);border-left:4px solid var(--accent);padding:15px 20px;border-radius:4px;margin-bottom:25px;display:flex;align-items:flex-start;gap:15px}
 .advisory-icon{font-size:1.5rem;margin-top:2px}
 .advisory-text{font-size:.95rem;color:var(--text-main);line-height:1.5}
@@ -324,6 +343,7 @@ body::after{content:'';position:fixed;inset:0;background:repeating-linear-gradie
 
     <header class="site-header">
         <h1>Star Citizen Mining Material Finder <span class="patch-badge">Patch 4.10</span></h1>
+        <p class="tool-guide-line">Mining Tool and Beginner Guide</p>
         <p class="site-subtitle">Live drop-rate data for every mineable resource in Stanton, Pyro, and Nyx &mdash; including Hadanite and Quantainium &mdash; built and maintained by CMDR Quattro.</p>
     </header>
 
@@ -367,6 +387,7 @@ body::after{content:'';position:fixed;inset:0;background:repeating-linear-gradie
 
                 <div class="mining-header-bottom">
                     <div class="tab-bar" aria-label="Mining tool views" role="tablist">
+                        <button aria-selected="false" class="tab-btn" id="tab-guide" onclick='switchTab("guide")' role="tab">Beginner Guide</button>
                         <button aria-selected="true" class="tab-btn active" id="tab-locs" onclick='switchTab("locs")' role="tab">Locations & Percentages</button>
                         <button aria-selected="false" class="tab-btn" id="tab-scan" onclick='switchTab("scan")' role="tab">Signature Checker</button>
                         <button aria-selected="false" class="tab-btn" id="tab-trip" onclick='switchTab("trip")' role="tab">Mining Trip Planner</button>
@@ -474,10 +495,7 @@ const t=document.createElement("div");return t.textContent=String(e??""),t.inner
 ;a&&(a.innerHTML=n.map(e=>`<option value="${esc(e)}">`).join(""))}function rankByQuery(e,t,n){return function(a,o){const s=t(a).toLowerCase(),i=t(o).toLowerCase(),r=s===e;if(r!==(i===e))return r?-1:1;const l=0===s.indexOf(e);if(l!==(0===i.indexOf(e)))return l?-1:1;const c=-1!==s.indexOf(e);return c!==(-1!==i.indexOf(e))?c?-1:1:n(a,o)}}async function fetchGameData(){try{
 const e=await fetch(COMPILED_JSON_FILE);if(!e.ok)throw new Error(`HTTP error! status: ${e.status}`);const t=await e.json();document.getElementById("version-label").innerText="LIVE BUILD: "+t.version,SORTED_MATS=t.materials,FLAT_LOCS=t.locations.map(e=>{const t=new Set(e.allMats);return{...e,allMatsSet:t,searchHay:[e.name,e.system,...t].join(" ").toLowerCase()}}),
 SIGNATURE_DB=(t.signatures||[]).map(e=>({...e,searchHay:[e.name,e.method,e.tier,e.note].filter(Boolean).join(" ").toLowerCase()})),populateDatalists(),document.getElementById("loading-screen").classList.remove("active"),document.getElementById("app-screen").classList.add("active"),renderUI()}catch(e){console.error("Fetch error:",e),
-document.getElementById("error-output").innerHTML=`\n                    <div class="error-msg">\n                        Failed to load <code>${COMPILED_JSON_FILE}</code>.<br><br>\n                        Error details: ${e.message}\n                    </div>\n                `,document.querySelector(".spinner").style.display="none"}}function switchTab(e){activeTab=e,
-document.getElementById("tab-locs").classList.toggle("active","locs"===e),document.getElementById("tab-locs").setAttribute("aria-selected","locs"===e),document.getElementById("tab-scan").classList.toggle("active","scan"===e),document.getElementById("tab-scan").setAttribute("aria-selected","scan"===e),document.getElementById("tab-refine").classList.toggle("active","refine"===e),
-document.getElementById("tab-refine").setAttribute("aria-selected","refine"===e),document.getElementById("tab-gear").classList.toggle("active","gear"===e),document.getElementById("tab-gear").setAttribute("aria-selected","gear"===e),
-document.getElementById("tab-trip").classList.toggle("active","trip"===e),document.getElementById("tab-trip").setAttribute("aria-selected","trip"===e),renderUI()}
+document.getElementById("error-output").innerHTML=`\n                    <div class="error-msg">\n                        Failed to load <code>${COMPILED_JSON_FILE}</code>.<br><br>\n                        Error details: ${e.message}\n                    </div>\n                `,document.querySelector(".spinner").style.display="none"}}function switchTab(e){activeTab=e,Array.prototype.forEach.call(document.querySelectorAll(".tab-bar .tab-btn"),function(b){var on=b.id==="tab-"+e;b.classList.toggle("active",on),b.setAttribute("aria-selected",on?"true":"false")}),renderUI()}
 /* ══ MINING TRIP PLANNER ══════════════════════════════════════════════════
    Pick materials, pick where you are, get the stops that cover them.
 
@@ -738,7 +756,100 @@ function renderTrip(root) {
 }
 
 function renderUI(){let e=document.getElementById("tab-content");e.innerHTML="";const t=document.getElementById("pyro-protip-box")
-;t&&(t.style.display="locs"===activeTab?"":"none"),"locs"===activeTab?renderLocations(e):"scan"===activeTab?renderScanner(e):"refine"===activeTab?renderRefining(e):"trip"===activeTab?renderTrip(e):renderGearTab(e)}function renderLocations(e){
+;t&&(t.style.display="locs"===activeTab?"":"none"),"locs"===activeTab?renderLocations(e):"scan"===activeTab?renderScanner(e):"refine"===activeTab?renderRefining(e):"trip"===activeTab?renderTrip(e):"guide"===activeTab?renderGuide(e):renderGearTab(e)}function renderGuide(e){e.innerHTML=`
+<div class="mguide">
+  <div class="mg-header">
+    <span class="mg-eyebrow">Beginner Guide</span>
+    <h2 class="mg-title">Mining runs in four stages: find the rock, crack it, take what falls out, then refine it. Every stage has a way to get it wrong, and most of them are quiet about it.</h2>
+  </div>
+
+  <details open>
+    <summary>Before you launch: what you actually need</summary>
+    <div class="mg-body">
+      <p>You can mine with a hand tool, and you can mine with a ground vehicle like the <b>ROC</b> or the <b>ATLS GEO</b>. Both work, and neither costs much to try.</p>
+      <p>That said, if you are starting out I would strongly recommend getting into a <b>Drake Golem</b> or a <b>MISC Prospector</b>. They open up the large deposits nothing else can touch, and that is where mining stops being pocket money.</p>
+      <p>Both are sold at the <b>New Deal</b> dealership in Lorville, and both can be rented from <b>Vantage Rentals</b>, which sits right next to the ASOP terminals you call a ship from. If you are not sure yet, just rent one. A Prospector starts at around <b>73,237 aUEC</b> for a day and a Golem at about <b>15,876</b>, which is nothing next to buying one outright.</p>
+      <p class="mg-warn">A rented ship cannot be refitted, so you fly whatever loadout it comes with.</p>
+      <p>Once you are no longer renting and own one of these ships, use the <b>Loadout &amp; Gear</b> tab in this tool. It only offers parts that actually fit the ship you picked.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>Stage 1: Prospecting, deciding what to mine and finding it</summary>
+    <div class="mg-body">
+      <p><b>Start with the material, not the rock.</b> Open the <b>Locations &amp; Percentages</b> tab, pick what you are after, and fly to the location with the highest chance of dropping it. That one decision is worth more than any amount of good scanning, because no technique saves you from mining in the wrong place.</p>
+      <p><b>Not sure what to look for?</b> Take a mining contract from the Contracts app in your mobiGlas. It tells you exactly what to bring back, and you keep whatever else comes out of the rock to refine, sell or do what you like with. You learn the loop while being paid for it rather than guessing. Then look that material up in <b>Locations &amp; Percentages</b>, and go where the odds on it are best.</p>
+      <p>Once you are there, it is a matter of finding a rock worth the time:</p>
+      <ol>
+        <li>Switch to scanning mode with <span class="mg-key">V</span>, then ping with <span class="mg-key">Tab</span>. Just tap it. The scroll wheel changes the shape of the ping: a longer, narrower cone straight ahead, or a shallower one that sweeps wider. Fitting a better radar improves what comes back, so it is worth upgrading if you mine often.</li>
+        <li>Markers appear on your HUD with a distance and a signature value attached. You can put that signature into the <b>Signature Checker</b> tab on this page before you have gone anywhere near the rock.</li>
+        <li>It will tell you the rock type and what should be inside it, or give you a range of possibilities. If it looks like it holds what you came for, fly to it. If not, keep pinging and find one that does. This is the step that saves the most time, because flying to a rock is the expensive part.</li>
+        <li>Once you are on a rock worth taking, switch to mining mode with <span class="mg-key">M</span>, aim at the deposit and leave the reticle on it. Your HUD changes and you get the exact percentages of what is inside.</li>
+      </ol>
+      <p>Those percentages will not add up to 100. Whatever is missing is inert material, and it is why a big rock is not automatically a good rock.</p>
+    </details>
+
+  <details>
+    <summary>Stage 2: Fracturing, the part that explodes</summary>
+    <div class="mg-body">
+      <p>Switch to mining mode with <span class="mg-key">M</span> if you are not already in it, and hold the left mouse button to put energy into the rock.</p>
+      <p><b>Watch the two meters either side of your targeting reticle.</b> They are the whole game here.</p>
+      <ul>
+        <li><b>The left meter is distance.</b> It shows where you are sitting relative to the optimal range for that rock. You want to be right around optimal, which means moving in or backing off depending on what you are cutting.</li>
+        <li><b>The right meter is power.</b> It shows the built up charge in the rock against its sweet spot. Adjust the laser with the mouse wheel to hold it in the green and neither exceed it nor drop below.</li>
+      </ul>
+      <p>You are aiming for a window, not a maximum:</p>
+      <ul>
+        <li><b>Below the green zone</b>, the charge you have built slowly drains away. You are losing progress rather than making it, but nothing is going to explode.</li>
+        <li><b>In the green zone</b>, the fracture bar fills for as long as you keep the power there. This is where you want to sit.</li>
+        <li><b>In the red zone</b>, just above the green, the overcharge bar fills exactly the same way. If the fracture finishes while overcharge is up, it can go off: damage to your ship, and some or all of the ore gone, depending on how deep into the red you were.</li>
+      </ul>
+      <p>Two numbers decide how twitchy that window is. <b>Resistance</b> is how much energy the rock soaks up before anything happens at all. <b>Instability</b> is how erratically it builds power while the laser is on it, which is what makes a rock awkward to hold in the green.</p>
+      <p>Distance is your second throttle. Moving closer concentrates the beam and pushes more energy in, so you can use range as well as laser power to control how fast the charge climbs and fill the fracture bar in a slower, safer way.</p>
+      <p class="mg-warn">A harvestable can be cut with a ship laser, but it holds far less energy than a proper rock. Tap the beam rather than leaning on it, or you will overcharge the thing in a second and lose it.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>Stage 3: Extraction, getting it into the hold</summary>
+    <div class="mg-body">
+      <p>Once the fracture bar fills and the rock breaks, you can end up with a few different results.</p>
+      <ol>
+        <li>A fragment outlined in <b>purple</b> is ready to take. One outlined in <b>orange</b> needs fracturing again, which is most common on very large rocks.</li>
+        <li>Press the right mouse button to swap from the fracturing laser to the extraction beam. You will know it by the look of it: three lasers converging into a cone.</li>
+        <li>Hold the left mouse button and the beam pulls the fragment in. It stops on its own when the fragment is gone or the hold is full.</li>
+      </ol>
+      <p>On foot it is simpler: look at the mineral, open your inner thought with <span class="mg-key">F</span> and stow it.</p>
+      <p>Run out of personal inventory space and you are not finished for the day. Open your inventory, use the box icon to dump everything into a portable crate, and carry on with empty pockets.</p>
+      <p>Once you have collected everything, you are ready to turn the materials in as the contract describes, or to start refining.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>Stage 4: Refining, and when to skip it</summary>
+    <div class="mg-body">
+      <p>Raw ore sells as it is, at a discount. Refining pays more but costs time and a cut of the material, and the method you pick decides the trade.</p>
+      <p>The methods pull in three directions: <b>speed</b>, <b>cost</b> and <b>yield</b>. Nothing wins on all three. A fast cheap method throws material away; the ones that keep the most make you wait.</p>
+      <p>The <b>Refining Methods</b> tab in this tool has the full chart, including a quick pick for each situation, so you are not guessing at a terminal with a full hold.</p>
+      <p>Quantainium is the exception to all of it. It decays in your hold and has to be dealt with quickly, which is why people fly it straight to a refinery rather than filling up first.</p>
+      <p class="mg-warn">Raw Quantainium is also dangerous cargo. Take a hard hit or get attacked while it is aboard and it can detonate, destroying the ship and very probably killing you with it. Fly carefully, or fly something else.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>Hand mining, and what it is good for</summary>
+    <div class="mg-body">
+      <p>Hand mining works on harvestables only, the small deposits with coloured veins running through them. You will spot them on foot far more easily than from a cockpit. Most of them can be taken with a ship as well, but you have to be far more careful and just lightly tap the beam.</p>
+      <ol>
+        <li>Equip the multi-tool, by default <span class="mg-key">4</span>, and aim down sights to scan what you are looking at.</li>
+        <li>Fracture it the same way as a ship: find the window, avoid the overcharge.</li>
+        <li>Stow the result with <span class="mg-key">F</span>, or right click with the multi-tool to pull the material into your backpack much like an extraction beam.</li>
+      </ol>
+      <p>It is slow money on its own, but it needs almost no capital, it works inside caves where nothing else does, and several materials only ever appear this way. The <b>Locations &amp; Percentages</b> tab marks which sites support hand mining.</p>
+    </div>
+  </details>
+</div>`}
+function renderLocations(e){
 const t=["All",...Array.from(new Set(FLAT_LOCS.map(e=>e.system))).sort()].map(e=>`<button type="button" class="mining-subtab ${locSystemFilter===e?"active":""}" data-sys="${esc(e)}">${esc(e)}</button>`).join("");let n=[0,1,2].map(e=>{let t=`<option value="">-- Required Material ${e+1} --</option>`;return SORTED_MATS.forEach(n=>{
 t+=`<option value="${esc(n)}" ${locFilters[e]===n?"selected":""}>${esc(n)}</option>`}),`<label class="sr-only" for="loc-filter-${e}">Required material ${e+1}</label><select id="loc-filter-${e}" class="loc-select" data-filter-idx="${e}">${t}</select>`}).join("")
 ;e.innerHTML=`\n                <div class="loc-filters">\n                    <div class="loc-filters-top">\n                        <div style="display:flex; align-items:center; gap: 15px;">\n                            <span style="color:var(--text-muted); font-size:0.85rem; font-weight:bold; text-transform:uppercase; letter-spacing:1px; margin-top:5px;">Filter System:</span>\n                            <div class="mining-subtabs" id="loc-sys-tabs">${t}</div>\n                        </div>\n                        <label class="sr-only" for="loc-search">Search mining locations</label>\n                        <input type="text" id="loc-search" class="sig-search" list="loc-name-list" autocomplete="off" placeholder="Search by location, system, or material..." value="${esc(locSearchQuery)}">\n                    </div>\n                    <div class="loc-filters-bottom">\n                        <div style="width:100%; font-size:0.85rem; font-weight:700; color:var(--text-muted); margin-bottom:4px; text-transform:uppercase; letter-spacing:0.5px;">Filter by Materials (Must contain ALL):</div>\n                        <div style="display:flex; gap:10px; width:100%; flex-wrap:wrap;" id="loc-mat-selects">${n}</div>\n                    </div>\n                </div>\n                <ul class="loc-grid" id="loc-grid" aria-label="Mining locations matching current filters"></ul>\n            `,

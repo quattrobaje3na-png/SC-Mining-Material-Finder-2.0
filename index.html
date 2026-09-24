@@ -130,6 +130,11 @@ body::after{content:'';position:fixed;inset:0;background:repeating-linear-gradie
 .mg-header{margin:0 0 6px;padding-bottom:12px;border-bottom:1px solid var(--border)}
 .mg-eyebrow{display:block;color:var(--accent);font-size:1.35rem;font-weight:800;letter-spacing:1.4px;text-transform:uppercase;margin-bottom:8px;line-height:1.2}
 .mg-title{margin:0;font-size:.95rem;line-height:1.6;font-weight:500;color:var(--text-muted);max-width:80ch}
+.mg-ctls{display:grid;gap:1px;background:var(--border);border:1px solid var(--border);margin:2px 0 12px}
+.mg-ctl{display:flex;align-items:center;justify-content:space-between;gap:12px;background:var(--bg-base);padding:8px 11px;flex-wrap:wrap}
+.mg-ctl-name{font-size:.86rem;color:var(--text-main)}
+.mg-ctl-keys{display:flex;align-items:center;gap:5px;white-space:nowrap}
+.mg-plus{color:var(--text-muted);font-size:.75rem}
 .mguide{display:grid;gap:8px;max-width:900px}
 .mguide details{background:var(--bg-base);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:4px}
 .mguide summary{cursor:pointer;padding:11px 13px;font-weight:700;font-size:.85rem;text-transform:uppercase;letter-spacing:.5px;color:var(--accent);list-style:none}
@@ -796,7 +801,7 @@ function renderUI(){let e=document.getElementById("tab-content");e.innerHTML="";
       <p><b>Watch the two meters either side of your targeting reticle.</b> They are the whole game here.</p>
       <ul>
         <li><b>The left meter is distance.</b> It shows where you are sitting relative to the optimal range for that rock. You want to be right around optimal, which means moving in or backing off depending on what you are cutting.</li>
-        <li><b>The right meter is power.</b> It shows the built up charge in the rock against its sweet spot. Adjust the laser with the mouse wheel to hold it in the green and neither exceed it nor drop below.</li>
+        <li><b>The right meter is power.</b> It shows the built up charge in the rock against its sweet spot. Hold <span class="mg-key">L-Alt</span> and roll the mouse wheel to trim the laser, keeping it in the green and neither exceeding it nor dropping below.</li>
       </ul>
       <p>You are aiming for a window, not a maximum:</p>
       <ul>
@@ -847,7 +852,23 @@ function renderUI(){let e=document.getElementById("tab-content");e.innerHTML="";
       </ol>
       <p>It is slow money on its own, but it needs almost no capital, it works inside caves where nothing else does, and several materials only ever appear this way. The <b>Locations &amp; Percentages</b> tab marks which sites support hand mining.</p>
     </div>
+    <details>
+    <summary>Mining controls, all in one place</summary>
+    <div class="mg-body">
+      <div class="mg-ctls">
+        <div class="mg-ctl"><span class="mg-ctl-name">Toggle mining mode</span><span class="mg-ctl-keys"><span class="mg-key">M</span></span></div>
+        <div class="mg-ctl"><span class="mg-ctl-name">Fire mining laser</span><span class="mg-ctl-keys"><span class="mg-key">LMB</span></span></div>
+        <div class="mg-ctl"><span class="mg-ctl-name">Switch mining laser</span><span class="mg-ctl-keys"><span class="mg-key">L-Alt</span> <span class="mg-plus">+</span> <span class="mg-key">Mouse 1</span></span></div>
+        <div class="mg-ctl"><span class="mg-ctl-name">Increase or decrease laser power</span><span class="mg-ctl-keys"><span class="mg-key">L-Alt</span> <span class="mg-plus">+</span> <span class="mg-key">Wheel</span></span></div>
+        <div class="mg-ctl"><span class="mg-ctl-name">Cycle laser gimbal</span><span class="mg-ctl-keys"><span class="mg-key">G</span></span></div>
+        <div class="mg-ctl"><span class="mg-ctl-name">Mining consumable slots</span><span class="mg-ctl-keys"><span class="mg-key">L-Alt</span> <span class="mg-plus">+</span> <span class="mg-key">1 / 2 / 3</span></span></div>
+        <div class="mg-ctl"><span class="mg-ctl-name">Permanent modifier slot</span><span class="mg-ctl-keys"><span class="mg-key">L-Alt</span> <span class="mg-plus">+</span> <span class="mg-key">4</span></span></div>
+        <div class="mg-ctl"><span class="mg-ctl-name">Jettison cargo</span><span class="mg-ctl-keys"><span class="mg-key">L-Alt</span> <span class="mg-plus">+</span> <span class="mg-key">J</span></span></div>
+      </div>
+      <p>These are the defaults. If you have rebound anything, the game's keybinding screen is the authority rather than this list.</p>
+    </div>
   </details>
+</details>
 </div>`}
 function renderLocations(e){
 const t=["All",...Array.from(new Set(FLAT_LOCS.map(e=>e.system))).sort()].map(e=>`<button type="button" class="mining-subtab ${locSystemFilter===e?"active":""}" data-sys="${esc(e)}">${esc(e)}</button>`).join("");let n=[0,1,2].map(e=>{let t=`<option value="">-- Required Material ${e+1} --</option>`;return SORTED_MATS.forEach(n=>{
